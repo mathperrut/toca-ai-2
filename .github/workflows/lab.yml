@@ -5,7 +5,7 @@
 # Não mexe no app: o APK continua sendo gerado só pela branch main.
 #   microfone    avalia o reconhecimento de acordes com o GuitarSet (CC BY 4.0)
 #   *.mjs        script Node (ex.: musicas.mjs busca acordes no Cifra Club, sem letra)
-#   *.py         script Python
+#   *.py         script Python (ex.: vozes.py gera a narração; ouvir.py confere se ela dá para entender)
 # =========================================================
 name: Laboratorio
 
@@ -50,6 +50,7 @@ jobs:
           pip install numpy scipy soundfile
           if grep -q '^microfone' tarefas.txt; then pip install basic-pitch || true; pip install onnxruntime || true; fi
           if grep -q 'vozes' tarefas.txt; then pip install kokoro-onnx soundfile; sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg; fi
+          if grep -q 'ouvir' tarefas.txt; then pip install faster-whisper; fi
 
       - name: Rodar as tarefas
         working-directory: lab
