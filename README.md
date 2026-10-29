@@ -17,10 +17,26 @@ Segunda versão do [Toca Aí](https://github.com/mathperrut/toca-a-). A base é 
 |---|---|---|
 | 1. Base e correções | Botão Voltar nas lições, botão "Consegui", trocas com microfone, som certo para cada imagem, nome e ícone novos | **Pronta** |
 | 2. Tocar junto e mudar o tom | Violão + batida, violão + batida + banda, tudo (gravação original); volume de cada parte; tom −6 a +6; repetir um trecho | **Pronta** |
-| 3. Microfone mais preciso | Medir a precisão atual com gravações reais; calibração com o seu violão; testar a IA de notas Basic Pitch | Planejada |
+| 3. Microfone mais preciso | Medir a precisão com gravações reais; jeito novo de ouvir as notas; ensinar o app a ouvir o seu violão | **Pronta** |
 | 4. Níveis e conteúdo | Iniciante, Intermediário e Avançado; cifragem, teoria, técnica, ritmos, treino de ouvido | Planejada |
 | 5. Vozes do instrutor | Vozes gravadas no app (feminina, masculina, grave e fina) | Planejada |
 | 6. Recursos extras | Repetir trecho com velocidade subindo, descobrir acordes ouvindo, treino de ouvido, gravar você tocando | Planejada |
+
+### O que mudou na Fase 3
+- **Testado com gravações de verdade:** 8.438 batidas do [GuitarSet](https://zenodo.org/records/3371780) (violonistas reais, licença CC BY 4.0), avaliadas num robô do GitHub (branch `laboratorio`, arquivo `lab/avaliar.py`).
+- **Jeito novo de ouvir as notas** (agora é o padrão):
+
+| Situação | Antes | Agora |
+|---|---|---|
+| Violão afinado: aceita o acorde certo | 64% | **77%** |
+| Violão um pouco desafinado (+35 cents): aceita o acorde certo | 36% | **72%** |
+| Depois de "Ensinar o meu violão" | — | **79%** |
+| Aceita um acorde errado | 4% | 5% |
+
+- **Ensinar o meu violão** (Ajustes, ou no professor de cada acorde): você toca cada acorde 3 vezes e o app guarda como o *seu* violão soa. Se a batida não parecer o acorde pedido, ele pede para tocar de novo.
+- **Basic Pitch (IA do Spotify):** o modelo não carregou no robô de testes e deixaria o app bem mais pesado. Como o método novo já resolveu a maior parte do problema, ficou de fora.
+
+**Como o ouvido novo funciona (para estudar):** o som vira um espectro (FFT). Em vez de somar a energia de todas as frequências, o app procura só os **picos** (as notas que soam de verdade), acha a posição exata de cada pico entre duas faixas da FFT (interpolação por parábola) e usa a escala logarítmica (`log(1 + 60·força)`) para uma nota forte não esconder as outras. Antes de juntar os picos nas 12 notas, mede **quanto o violão está desafinado** (média circular dos desvios em cents, pesada pela força de cada pico) e desconta esse desvio. Por fim compara as 12 notas com o "molde" de cada acorde (semelhança do cosseno). Arquivos: `audio-detect.js` e `jogo.js`.
 
 ### O que mudou na Fase 2
 - **Tocar junto**, na página da música, com 3 opções:

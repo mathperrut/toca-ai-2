@@ -154,6 +154,7 @@ function ensinarAcorde(caixa, nome, { aoCompletar } = {}) {
       <div class="ens-final" id="ens-final" hidden>
         <button class="btn" id="ens-corda">${IC.som} Corda por corda</button>
         <button class="btn" id="ens-mic">${IC.mic} Conferir no microfone</button>
+        <button class="btn mini sem-borda" id="ens-calib">Ensinar este acorde ao app</button>
       </div>
       <p class="ens-res" id="ens-res" aria-live="polite"></p>
     </div>`;
@@ -182,6 +183,7 @@ function ensinarAcorde(caixa, nome, { aoCompletar } = {}) {
   });
   q('#ens-corda').addEventListener('click', () => tocarCordaPorCorda(nome));
   q('#ens-mic').addEventListener('click', () => conferirAcordeMic(nome, q('#ens-res'), q('#ens-mic')));
+  q('#ens-calib').addEventListener('click', () => abrirCalibracao([nome]));
   mostrar();
 }
 // Escuta uma batida e diz se soou como o acorde pedido
@@ -204,6 +206,78 @@ async function conferirAcordeMic(nome, saida, botao) {
     else if (av.outro && av.simOutro > 0.6) saida.innerHTML = `Soou mais parecido com <b>${esc(av.outro)}</b>. Confira cada dedo e se as cordas soltas estão soando.`;
     else saida.textContent = 'Não reconheci o acorde. Alguma corda pode estar abafada: use "Corda por corda" e compare.';
   });
+}
+
+/* ===== 2b. Ensinar o app a ouvir o SEU violão (calibração) =====
+   Cada violão, cada celular e cada quarto soam diferente. Aqui o app guarda
+   como o SEU violão soa em cada acorde (a média de 3 batidas) e mistura isso
+   com o molde teórico na hora de conferir. */
+const ACORDES_CALIBRAR = ['Em', 'D', 'C', 'G', 'Am', 'A', 'E', 'Dm', 'Am7', 'Bm7', 'Em7', 'D7', 'B7', 'A7', 'E7', 'G7', 'C7'];
+function abrirCalibracao(lista = null) {
+  S.calibracao = S.calibracao || {};
+  if (!lista) {
+    lista = ACORDES_CALIBRAR.filter(a => seiAcorde(a));
+    for (const a of ACORDES_CALIBRAR.slice(0, 5)) if (!lista.includes(a)) lista.push(a);
+  }
+  let fila = [], atual = null, amostras = [], off = null, lendo = false;
+  abrirJanela('Ensinar o seu violão', `
+    <div class="calib">
+      <p class="sub">O app aprende como o seu violão e o microfone do seu celular soam. Em cada acorde, bata <b>3 vezes para baixo</b>, deixando soar entre uma e outra. Fique perto do celular, num lugar sem barulho.</p>
+      <div class="calib-lista" id="calib-lista"></div>
+      <div class="calib-area" id="calib-area" hidden></div>
+      <div class="linha-botoes"><button class="btn primario" id="calib-ir">Começar</button><button class="btn mini sem-borda" id="calib-apagar">Esquecer tudo</button></div>
+    </div>`, () => { off?.(); off = null; });
+  const q = s => $('#janela-corpo').querySelector(s);
+  const desenharLista = () => {
+    q('#calib-lista').innerHTML = lista.map(a => `<button class="calib-item ${S.calibracao[a] ? 'feito' : ''} ${a === atual ? 'agora' : ''}" data-ac="${esc(a)}"><b>${esc(a)}</b><small>${S.calibracao[a] ? 'pronto' : a === atual ? 'agora' : 'falta'}</small></button>`).join('');
+    q('#calib-lista').querySelectorAll('[data-ac]').forEach(b => b.addEventListener('click', () => { fila = [b.dataset.ac]; proximo(); }));
+  };
+  const proximo = async () => {
+    atual = fila.shift() || null; amostras = [];
+    desenharLista();
+    const area = q('#calib-area');
+    if (!atual) {
+      area.hidden = false;
+      area.innerHTML = `<p class="ps-ok">${IC.check} Pronto! Agora o microfone confere comparando com o som do seu violão.</p>`;
+      q('#calib-ir').textContent = 'Ensinar de novo';
+      off?.(); off = null; return;
+    }
+    try { await Detector.ligar(); } catch (e) { area.hidden = false; area.textContent = msgSemMicrofone(e); return; }
+    area.hidden = false;
+    area.innerHTML = `<div class="calib-acorde">${diagramaAcorde(atual, { tam: 'md' })}</div>
+      <p class="calib-pede">Toque o <b>${esc(atual)}</b>: <span id="calib-n">0</span> de 3</p>
+      <div class="medidor" aria-hidden="true"><i id="calib-nivel"></i></div>
+      <p class="sub" id="calib-msg" aria-live="polite"></p>`;
+    off?.();
+    const offA = Detector.aoAtacar(async () => {
+      if (lendo || !atual) return;
+      lendo = true;
+      await new Promise(r => setTimeout(r, 150));
+      const r = await Jogo.lerCroma(3, 45);
+      lendo = false;
+      const msg = q('#calib-msg');
+      if (!r || r.energia < 1e-6) { if (msg) msg.textContent = 'Muito baixo. Toque mais forte, perto do celular.'; return; }
+      const c = Jogo.centralizar(r.croma);
+      const teoria = Jogo.modeloNotas(notasDoAcorde(atual, 0));
+      const sim = c.reduce((t, v, i) => t + v * teoria[i], 0);
+      if (sim < 0.35) { if (msg) msg.textContent = `Esse som não parece um ${atual}. Confira os dedos e se as cordas soltas estão soando.`; return; }
+      amostras.push(c);
+      q('#calib-n').textContent = amostras.length;
+      if (msg) msg.textContent = amostras.length < 3 ? 'Boa! De novo.' : '';
+      vibrar(10);
+      if (amostras.length >= 3) {
+        const media = Jogo.centralizar(Array.from({ length: 12 }, (_, i) => amostras.reduce((t, a) => t + a[i], 0) / amostras.length));
+        S.calibracao[atual] = media.map(v => +v.toFixed(3));
+        Store.salvar();
+        setTimeout(proximo, 500);
+      }
+    });
+    const offN = Detector.aoNivel(e => { const n = q('#calib-nivel'); if (n) n.style.transform = `scaleX(${Math.min(1, Math.sqrt(e) * 4)})`; });
+    off = () => { offA(); offN(); };
+  };
+  q('#calib-ir').addEventListener('click', () => { fila = lista.filter(a => !S.calibracao[a]); if (!fila.length) fila = [...lista]; proximo(); });
+  q('#calib-apagar').addEventListener('click', () => { S.calibracao = {}; Store.salvar(); desenharLista(); toast('O app esqueceu o som do seu violão'); });
+  desenharLista();
 }
 
 /* ===== 3. Player de lições ===== */

@@ -46,11 +46,24 @@ const Jogo = (() => {
   }
   const produto = (a, b) => a.reduce((s, x, i) => s + x * b[i], 0);
 
+  /* O "molde" de um acorde: as notas do desenho (com os harmônicos) e, se você
+     ensinou o app (Ajustes > Microfone), também o som do SEU violão naquele acorde.
+     k = casa do capotraste (o som sobe k semitons: o molde gira junto). */
+  function moldeAcorde(nome, k = 0) {
+    const teoria = modeloNotas(notasDoAcorde(nome, k));
+    const cal = typeof S !== 'undefined' && S.calibracao && (S.calibracao[nome] || S.calibracao[simplificar(nome)]);
+    if (!cal) return teoria;
+    const pessoal = Array.from({ length: 12 }, (_, i) => cal[((i - k) % 12 + 12) % 12]);
+    return centralizar(teoria.map((v, i) => 0.5 * v + 0.5 * pessoal[i]));
+  }
+  // Regra para aceitar um acorde (calibrada com gravações reais no laboratório)
+  const REGRA = { limiar: 0.52, folga: 0.04 };
+
   /* Compara o som com o acorde esperado e com os outros da música.
      Aceita o acorde tocado com ou sem capotraste (muita gente não tem). */
   function avaliarAcorde(croma, esperado, outros, capo) {
     const c = centralizar(croma);
-    const variantes = nome => [...new Set([0, capo || 0])].map(k => modeloNotas(notasDoAcorde(nome, k)));
+    const variantes = nome => [...new Set([0, capo || 0])].map(k => moldeAcorde(nome, k));
     const sim = nome => Math.max(...variantes(nome).map(t => produto(c, t)));
     const sEsp = sim(esperado);
     let melhorOutro = null, sOutro = -1;
@@ -59,7 +72,7 @@ const Jogo = (() => {
       const s = sim(o);
       if (s > sOutro) { sOutro = s; melhorOutro = o; }
     }
-    const ok = sEsp >= 0.52 && sEsp >= sOutro - 0.04;
+    const ok = sEsp >= REGRA.limiar && sEsp >= sOutro - REGRA.folga;
     return { ok, sim: sEsp, outro: melhorOutro, simOutro: sOutro };
   }
   // Qual acorde comum soou mais parecido? (só para mostrar "Ouvi Em" ao aluno)
@@ -68,7 +81,7 @@ const Jogo = (() => {
     const c = centralizar(croma);
     let melhor = null, s = -1;
     for (const nome of [...new Set([...extras, ...COMUNS])]) {
-      const v = Math.max(...[...new Set([0, capo || 0])].map(k => produto(c, modeloNotas(notasDoAcorde(nome, k)))));
+      const v = Math.max(...[...new Set([0, capo || 0])].map(k => produto(c, moldeAcorde(nome, k))));
       if (v > s) { s = v; melhor = nome; }
     }
     return s > 0.6 ? melhor : null;
@@ -773,7 +786,8 @@ const Jogo = (() => {
       const tend = r.media === null ? '' : Math.abs(r.media) <= 30 ? 'Seu tempo está certinho.' : r.media < 0 ? `Você tende a tocar um pouco antes (${-r.media} ms).` : `Você tende a tocar um pouco depois (${r.media} ms).`;
       const titulo = r.modo === 'pratica' ? 'Você tocou até o fim!' : r.pct >= 90 ? 'Mandou muito bem!' : r.pct >= 70 ? 'Muito bom!' : r.pct >= 45 ? 'Bom começo!' : 'Continue praticando';
       let dica = '';
-      if (r.fracos.length) dica = `O acorde que mais deu trabalho foi o <b>${esc(r.fracos[0])}</b>. Treine a troca para ele no "1 minuto de trocas".`;
+      if (r.confirmados >= 2) dica = 'O microfone não reconheceu alguns acordes. Ensine o app a ouvir o seu violão em <b>Ajustes, Microfone</b>: leva 2 minutos.';
+      else if (r.fracos.length) dica = `O acorde que mais deu trabalho foi o <b>${esc(r.fracos[0])}</b>. Treine a troca para ele no "1 minuto de trocas".`;
       else if (r.modo === 'espera') dica = 'Quando acertar tudo sem pressa, jogue no modo "No tempo".';
       else if (r.modo === 'tempo' && r.pct >= 85 && pctVel < 100) dica = 'Pronto para subir a velocidade.';
       else if (r.modo === 'tempo' && r.pct < 45) dica = 'Tente o modo "Esperar por mim" ou uma velocidade menor.';
@@ -822,7 +836,7 @@ const Jogo = (() => {
 
   return {
     atual: null,
-    avaliarAcorde, identificar, modeloNotas, lerCroma, lerNota,
+    avaliarAcorde, identificar, modeloNotas, moldeAcorde, centralizar, lerCroma, lerNota, REGRA,
     /* Abre o jogo em tela cheia. cfg:
        { titulo, trechos | notas, padrao, ritmo ('acorde'|'tempos'|'batida'), bpm, bpmBase, capo, temCapo,
          modo ('espera'|'tempo'|'pratica'), entrada ('mic'|'toque'), facil, guia, metronomo,

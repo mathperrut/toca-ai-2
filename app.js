@@ -71,7 +71,7 @@ const LS_KEY = 'tocaai2:v1';
 function novoEstado() {
   return {
     v: 4, updatedAt: 0, xp: 0, licoes: {}, musicas: [], log: {}, recordes: {}, recordesMusica: {}, gravacoes: {}, apostilas: {},
-    tons: {}, capoFixo: {},
+    tons: {}, capoFixo: {}, calibracao: {},
     cfg: { bpm: 80, sens: 5, latencia: null, violao: 'classico', modo: 'espera', vel: 60, ritmo: 'acorde', facil: true, temCapo: false,
       metronomo: false, cordaGraveEmCima: false, tema: 'auto', vibrar: true,
       junto: 'banda', mix: { violao: 0.85, batida: 0.8, baixo: 0.85, teclado: 0.6, gravacao: 1 }, fone: false, repetir: false, fonteTudo: 'youtube' }
@@ -864,6 +864,7 @@ function abrirAjustes() {
         <label class="faixa">Sensibilidade <b id="aj-sens-v">${S.cfg.sens}</b><input type="range" id="aj-sens" min="1" max="10" value="${S.cfg.sens}"><small class="sub">Se o jogo perde batidas, aumente. Se marca batidas que você não fez, diminua.</small></label>
         <div class="linha-op"><span>Atraso do microfone<small id="aj-lat">${S.cfg.latencia == null ? 'Automático' : `${Math.round(S.cfg.latencia * 1000)} ms`}</small></span><button class="btn mini" id="aj-calibrar">Calibrar</button></div>
         <div class="luzes" id="aj-luzes" hidden></div>
+        <div class="linha-op"><span>Ensinar o meu violão<small id="aj-calib">${Object.keys(S.calibracao || {}).length ? `${Object.keys(S.calibracao).length} acordes aprendidos` : 'o microfone acerta mais quando conhece o som do seu violão'}</small></span><button class="btn mini" id="aj-calibvio">Ensinar</button></div>
         <p class="sub" id="aj-msg"></p>
       </section>
       <section class="mu-bloco"><h3>Aparência</h3>
@@ -891,6 +892,7 @@ function abrirAjustes() {
   $('#aj-sens').addEventListener('input', e => { S.cfg.sens = +e.target.value; $('#aj-sens-v').textContent = S.cfg.sens; Detector.aplicarSensibilidade(S.cfg.sens); Store.salvar(); });
   $$('#aj-tema [data-tema]').forEach(b => b.addEventListener('click', () => { S.cfg.tema = b.dataset.tema; Store.salvar(); aplicarTema(); $$('#aj-tema [data-tema]').forEach(x => x.setAttribute('aria-pressed', x === b)); }));
   $('#aj-boas').addEventListener('click', () => { S.onb = false; fecharJanela(); verificarBoasVindas(); });
+  $('#aj-calibvio').addEventListener('click', () => abrirCalibracao());
   $('#aj-calibrar').addEventListener('click', async () => {
     try { await Detector.ligar(); } catch (e) { $('#aj-msg').textContent = msgSemMicrofone(e); return; }
     if (!offNivel) offNivel = Detector.aoNivel(e => { const n = $('#aj-nivel'); if (n) n.style.transform = `scaleX(${Math.min(1, Math.sqrt(e) * 4)})`; });

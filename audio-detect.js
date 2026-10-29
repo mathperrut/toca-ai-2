@@ -96,7 +96,7 @@ const Detector = {
     // Analisador de espectro (acordes): FFT grande = mais precisão nas notas graves
     this.analisadorFreq = ctx.createAnalyser();
     this.analisadorFreq.fftSize = 8192;
-    this.analisadorFreq.smoothingTimeConstant = 0.4;
+    this.analisadorFreq.smoothingTimeConstant = 0.2;
     filtro.connect(this.analisadorFreq);
 
     // Analisador da IA: recebe o som SEM filtro, igual ao treino em Python
@@ -178,9 +178,17 @@ const Detector = {
   },
 
   /* ---------- 3. Cromagrama ----------
-     Soma a força de todas as frequências que caem na mesma NOTA
-     (Dó, Dó#, Ré...), não importa a oitava. Resultado: 12 números.
-     Um acorde de Lá menor acende Lá, Dó e Mi. */
+     Soma a força das frequências que caem na mesma NOTA (Dó, Dó#, Ré...),
+     não importa a oitava. Resultado: 12 números. Um Lá menor acende Lá, Dó e Mi.
+
+     Método NOVO (padrão), medido com gravações reais de violão (lab/):
+       1. só os PICOS do espectro contam (as notas de verdade, não o "chiado" entre elas);
+       2. a força é comprimida (log), para uma corda alta não apagar as outras;
+       3. CORREÇÃO DE AFINAÇÃO: se o violão está todo um pouco agudo ou grave
+          (iniciante esquece de afinar!), o app mede o desvio e compensa;
+       4. vai até 2000 Hz, onde ficam as notas agudas do acorde.
+     Método antigo: soma direta de cada faixa de 75 a 1100 Hz. */
+  metodo: 'novo',
   _bufEsp: null,
   croma() {
     if (!this.ligado) return null;
@@ -188,18 +196,19 @@ const Detector = {
     if (!this._bufEsp) this._bufEsp = new Float32Array(n);
     const db = this._bufEsp;
     an.getFloatFrequencyData(db);
-    const c = new Float32Array(12);
-    let energia = 0;
-    const hzPorBin = sr / an.fftSize;
-    for (let i = Math.floor(75 / hzPorBin); i < Math.min(n, Math.ceil(1100 / hzPorBin)); i++) {
-      const mag = Math.pow(10, db[i] / 20);
-      if (!isFinite(mag)) continue;
-      const midi = 69 + 12 * Math.log2((i * hzPorBin) / 440);
-      const pc = ((Math.round(midi) % 12) + 12) % 12;
-      c[pc] += mag;
-      energia += mag * mag;
+    const hz = sr / an.fftSize;
+    if (this.metodo === 'antigo') {
+      const c = new Float32Array(12);
+      let energia = 0;
+      for (let i = Math.floor(75 / hz); i < Math.min(n, Math.ceil(1100 / hz)); i++) {
+        const mag = Math.pow(10, db[i] / 20);
+        if (!isFinite(mag)) continue;
+        const pc = ((Math.round(69 + 12 * Math.log2((i * hz) / 440)) % 12) + 12) % 12;
+        c[pc] += mag; energia += mag * mag;
+      }
+      return { croma: c, energia, afinacao: 0 };
     }
-    return { croma: c, energia };
+    return cromaDePicos(db, hz, n);
   },
 
   /* ---------- 4. IA (rede neural treinada em Python) ----------
@@ -253,6 +262,35 @@ const Detector = {
 };
 
 /* ----- Funções puras (sem estado): fáceis de testar sozinhas ----- */
+// Cromagrama pelos picos do espectro (db: força em decibéis de cada faixa; hz: largura da faixa)
+function cromaDePicos(db, hz, n = db.length) {
+  const i0 = Math.max(2, Math.floor(70 / hz)), i1 = Math.min(n - 2, Math.ceil(2000 / hz));
+  let maior = 0, energia = 0;
+  for (let i = i0; i < i1; i++) { const m = Math.pow(10, db[i] / 20); if (!isFinite(m)) continue; if (m > maior) maior = m; energia += m * m; }
+  const c = new Float32Array(12);
+  if (!maior) return { croma: c, energia: 0, afinacao: 0 };
+  const L = new Float32Array(i1 - i0 + 2);
+  let lmax = 0;
+  for (let i = i0 - 1; i <= i1; i++) { const m = Math.pow(10, db[i] / 20); const v = isFinite(m) ? Math.log1p(60 * m / maior) : 0; L[i - i0 + 1] = v; if (v > lmax) lmax = v; }
+  const lim = 0.18 * lmax, picos = [];
+  for (let i = i0; i < i1; i++) {
+    const a = L[i - i0], b = L[i - i0 + 1], d0 = L[i - i0 + 2];
+    if (b > a && b >= d0 && b > lim) {
+      const den = a - 2 * b + d0, d = den ? 0.5 * (a - d0) / den : 0;   // pico entre duas faixas (interpolação)
+      picos.push([69 + 12 * Math.log2(((i + d) * hz) / 440), b]);
+    }
+  }
+  if (!picos.length) return { croma: c, energia, afinacao: 0 };
+  // afinação: média "circular" do quanto cada pico foge da nota mais perto
+  let sx = 0, sy = 0;
+  for (const [m, w] of picos) { const desv = m - Math.round(m); sx += w * Math.cos(2 * Math.PI * desv); sy += w * Math.sin(2 * Math.PI * desv); }
+  const afinacao = Math.atan2(sy, sx) / (2 * Math.PI);
+  for (const [m0, w] of picos) {
+    const m = m0 - afinacao, r = Math.round(m), dev = Math.abs(m - r);
+    c[((r % 12) + 12) % 12] += w * Math.max(0, 1 - 2 * dev);
+  }
+  return { croma: c, energia, afinacao };
+}
 const NOMES_NOTAS = ['C', 'C#', 'D', 'D#', 'E', 'F', 'F#', 'G', 'G#', 'A', 'A#', 'B'];
 const NOMES_NOTAS_PT = ['Dó', 'Dó#', 'Ré', 'Ré#', 'Mi', 'Fá', 'Fá#', 'Sol', 'Sol#', 'Lá', 'Lá#', 'Si'];
 const MIDI_CORDAS = [40, 45, 50, 55, 59, 64]; // E2 A2 D3 G3 B3 E4
