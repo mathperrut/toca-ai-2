@@ -1,6 +1,6 @@
-# Toca Aí — violão com música brasileira
+# Toca Aí 2 — violão com música brasileira
 
-App **Android (.apk)** para aprender violão do zero com MPB, rock nacional, baião e samba-rock. Você escolhe uma música, o app monta um **jogo parecido com o Yousician** e o **microfone confere** se você tocou o acorde certo, na hora certa.
+Segunda versão do [Toca Aí](https://github.com/mathperrut/toca-a-). A base é a mesma (o design, o jogo no estilo Yousician, o curso, as apostilas e o violão gravado), e as novidades entram **em fases**: cada fase termina com um APK para testar, e a próxima só começa depois de aprovada.
 
 | Parte | Linguagem | O que faz |
 |---|---|---|
@@ -11,16 +11,40 @@ App **Android (.apk)** para aprender violão do zero com MPB, rock nacional, bai
 
 ---
 
+## Fases
+
+| Fase | O que entra | Situação |
+|---|---|---|
+| 1. Base e correções | Botão Voltar nas lições, botão "Consegui", trocas com microfone, som certo para cada imagem, nome e ícone novos | **Pronta (esta versão)** |
+| 2. Tocar junto e mudar o tom | Violão + batida, violão + batida + banda, tudo (gravação original); volume de cada parte; tom −6 a +6; repetir um trecho | Planejada |
+| 3. Microfone mais preciso | Medir a precisão atual com gravações reais; calibração com o seu violão; testar a IA de notas Basic Pitch | Planejada |
+| 4. Níveis e conteúdo | Iniciante, Intermediário e Avançado; cifragem, teoria, técnica, ritmos, treino de ouvido | Planejada |
+| 5. Vozes do instrutor | Vozes gravadas no app (feminina, masculina, grave e fina) | Planejada |
+| 6. Recursos extras | Repetir trecho com velocidade subindo, descobrir acordes ouvindo, treino de ouvido, gravar você tocando | Planejada |
+
+### O que mudou na Fase 1
+- **Voltar nas lições:** um botão só. Volta uma tela; na primeira tela de uma lição, abre a lição anterior na última tela. Da tela "Lição concluída", volta para a última tela.
+- **"Consegui" no jogo:** no modo Esperar por mim, se o microfone não reconhecer em 4 segundos, aparecem **Consegui** (você confirma que tocou certo) e **Pular**. O resultado mostra quantos você confirmou.
+- **1 minuto de trocas com microfone:** bata uma vez em cada acorde; o app conta uma troca cada vez que o acorde muda (bater de novo no mesmo acorde não conta). O botão "Troquei" continua como reserva.
+- **O som é o da imagem:** no professor de acordes, cada dedo toca **só a sua nota** (a pestana toca as notas que o dedo deitado cobre) e o acorde inteiro só soa no final. Nas apostilas e lições, as cordas, as notas do braço e a tablatura tocam exatamente o que mostram, acendendo em vermelho o que está soando.
+- **Toca Aí 2 ao lado do Toca Aí:** nome, ID (`br.com.tocaai2.app`) e ícone próprios. Os dois apps podem ficar instalados juntos.
+
+**Como o microfone conta as trocas (para estudar):** a cada batida, o app transforma o som em 12 números (a força de cada nota, o *cromagrama*) e compara com o "molde" dos dois acordes. Fica com o mais parecido, se for parecido o bastante. A troca é contada quando o acorde reconhecido muda em relação ao anterior: é uma pequena **máquina de estados** com um estado só, "qual acorde soou por último".
+
+---
+
 ## 1. Instalar no celular
 
-1. No **celular**, abra `https://github.com/mathperrut/toca-a-/releases/latest`.
-2. Toque em **TocaAi.apk**, depois em **Abrir**.
+1. No **celular**, abra `https://github.com/mathperrut/toca-ai-2/releases/latest`.
+2. Toque em **TocaAi2.apk**, depois em **Abrir**.
 3. O Android avisa que o app não veio da Play Store: **Configurações → Permitir desta fonte** e volte para instalar.
 4. Na primeira vez que o app pedir o **microfone**, toque em **Permitir** (sem isso o jogo não consegue conferir o que você toca).
 
+O progresso do Toca Aí 2 começa do zero (é outro app). O Toca Aí continua instalado e funcionando.
+
 **Atualizar:** baixe a versão nova em Releases e instale **por cima**. O progresso continua, porque toda versão usa a mesma assinatura (`android-build/debug.keystore`, chave de uso pessoal, senha `android`; para a Play Store seria preciso uma chave própria e secreta).
 
-**Como o .apk nasce:** cada envio para a branch `main` faz o GitHub Actions copiar o app para um projeto Android, gerar ícones, compilar e publicar uma versão nova em **Releases** (5 a 10 minutos). Para gerar no PC (precisa do Android Studio): `npm install`, `npm run android`, `npx cap open android`.
+**Como o .apk nasce:** cada envio para a branch `main` faz o GitHub Actions copiar o app para um projeto Android, gerar ícones, compilar e publicar uma versão nova em **Releases** (versões 2.0.N). Para gerar no PC (precisa do Android Studio): `npm install`, `npm run android`, `npx cap open android`.
 
 **Pelo navegador:** dá para abrir como site (`python -m http.server 8000` e `http://localhost:8000`), mas a **busca automática de cifras só funciona no .apk** (explicação na seção 3).
 
@@ -135,8 +159,8 @@ python treinar.py
 | `som.js` | Violão gravado, batidas, metrônomo |
 | `jogo.js` | O jogo: desenho das cordas, modos, pontuação, microfone |
 | `cifras.js` | Busca e leitura de cifras, capotraste inteligente, YouTube |
-| `aprender.js` | Curso, lições, professor de acordes, tela Acordes |
-| `apostilas.js` | Apostilas, quizzes e mini vídeos |
+| `aprender.js` | Curso, lições (com Voltar), professor de acordes, sons que acompanham as imagens, 1 minuto de trocas |
+| `apostilas.js` | Apostilas, quizzes, mini vídeos e os desenhos que tocam (`ligarSons`) |
 | `youtube.js`, `gravacao.js` | Player do YouTube, sincronia e tocar junto |
 | `audio-detect.js`, `ia.js` | Microfone (ataque, cromagrama, afinador) e rede neural |
 | `app.js` | Telas, progresso, ajustes, afinador, integração com o Android |

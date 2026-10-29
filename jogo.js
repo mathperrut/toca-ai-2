@@ -334,7 +334,7 @@ const Jogo = (() => {
           this.esperando = prox; this.inicioEspera = Som.agora;
           this.mostrarEspera(prox);
           if (this.entrada === 'mic') this.ouvirEspera(prox);
-        } else if (Som.agora - this.inicioEspera > 9 && !this.dicaPular) {
+        } else if (Som.agora - this.inicioEspera > 4 && !this.dicaPular) {
           this.dicaPular = true;
           this.mostrarEspera(prox, true);
         }
@@ -343,11 +343,13 @@ const Jogo = (() => {
       if (!prox && this.cursor >= this.totalBeats + 0.5) this.terminar();
     }
 
-    mostrarEspera(e, comPular = false) {
+    // comBotoes: o microfone não reconheceu em 4 s. "Consegui" = você confirma que tocou certo.
+    mostrarEspera(e, comBotoes = false) {
       const a = this.$('#jg-aviso');
       const alvo = e.tipo === 'nota' ? `a nota da ${ORD[e.corda]} corda, casa ${e.casa}` : `<b>${esc(e.acorde)}</b>`;
-      a.innerHTML = `<span>Toque ${alvo}</span>${comPular ? `<button class="jg-pular" type="button">Pular</button>` : ''}`;
+      a.innerHTML = `<span>Toque ${alvo}</span>${comBotoes ? `<button class="jg-consegui" type="button">Consegui</button><button class="jg-pular" type="button">Pular</button>` : ''}`;
       a.hidden = false;
+      a.querySelector('.jg-consegui')?.addEventListener('click', ev => { ev.stopPropagation(); this.acertarEspera(e, 'manual'); });
       a.querySelector('.jg-pular')?.addEventListener('click', ev => { ev.stopPropagation(); this.acertarEspera(e, 'pulou'); });
     }
     // No modo espera, escuta continuamente até reconhecer o acorde/nota
@@ -379,7 +381,8 @@ const Jogo = (() => {
     }
     acertarEspera(e, como) {
       if (e.estado) return;
-      e.estado = como === 'pulou' ? 'pulou' : 'perfeito';
+      e.estado = como === 'pulou' ? 'pulou' : como === 'manual' ? 'manual' : 'perfeito';
+      if (como === 'manual') this.confirmados = (this.confirmados || 0) + 1;
       this.dicaPular = false;
       if (como !== 'pulou') { this.perf++; this.combo++; this.maxCombo = Math.max(this.maxCombo, this.combo); this.efeito(e, 'bom'); this.feedback(this.combo >= 3 ? `Isso! ${this.combo} seguidos` : 'Isso!', 'otimo'); vibrar(12); if (e.tipo === 'golpe') this.mostrarOuvi(e.acorde, true); }
       else { this.combo = 0; this.feedback('Pulou', 'neutro'); }
@@ -597,7 +600,7 @@ const Jogo = (() => {
         const x = this.x(e.beat, b);
         const ys = (e.cordas.length ? e.cordas : [0]).map(i => this.yCorda(i));
         const y1 = Math.min(...ys) - 6, y2 = Math.max(...ys) + 6;
-        const cor = e.estado === 'perfeito' || e.estado === 'bom' || e.estado === 'ok' ? '#2FD07A'
+        const cor = e.estado === 'perfeito' || e.estado === 'bom' || e.estado === 'ok' || e.estado === 'manual' ? '#2FD07A'
           : e.estado === 'acordeErrado' ? '#FFB020' : e.estado === 'passou' ? 'rgba(255,255,255,0.22)'
           : e.estado === 'livre' || e.estado === 'pulou' ? 'rgba(255,255,255,0.3)' : '#FFFFFF';
         g.fillStyle = cor;
@@ -626,7 +629,7 @@ const Jogo = (() => {
         const fim = e.beat + (e.dur || 1);
         if (fim < deBeat || e.beat > ateBeat) continue;
         const x = this.x(e.beat, b), y = this.yCorda(e.corda);
-        const cor = e.estado === 'perfeito' || e.estado === 'bom' || e.estado === 'ok' ? '#2FD07A' : e.estado === 'acordeErrado' ? '#FFB020' : e.estado === 'passou' ? '#555' : COR_DEDO[e.dedo || 0];
+        const cor = e.estado === 'perfeito' || e.estado === 'bom' || e.estado === 'ok' || e.estado === 'manual' ? '#2FD07A' : e.estado === 'acordeErrado' ? '#FFB020' : e.estado === 'passou' ? '#555' : COR_DEDO[e.dedo || 0];
         // rastro (duração da nota)
         g.fillStyle = hexAlfa(cor === '#555' ? '#FFFFFF' : cor, 0.28);
         retRedondo(g, x, y - 4, Math.max(0, this.x(fim, b) - x - 6), 8, 4); g.fill();
@@ -727,13 +730,13 @@ const Jogo = (() => {
         pct = max ? Math.round(ganhos / max * 100) : 0;
       } else if (this.modo === 'espera') {
         const obrig = this.eventos.filter(e => e.primeiro);
-        pct = obrig.length ? Math.round(obrig.filter(e => e.estado === 'perfeito').length / obrig.length * 100) : 100;
+        pct = obrig.length ? Math.round(obrig.filter(e => e.estado === 'perfeito' || e.estado === 'manual').length / obrig.length * 100) : 100;
       }
       const media = this.desvios.length >= 4 ? Math.round((mediana(this.desvios)) * 1000) : null;
       const estrelas = pct === null ? null : pct >= 90 ? 3 : pct >= 70 ? 2 : pct >= 45 ? 1 : 0;
       const fracos = Object.entries(this.fracos).sort((a, b) => b[1] - a[1]).map(([a]) => a);
       return { modo: this.modo, pct, estrelas, pontos: this.pontos, perf: this.perf, bons: this.bons, oks: this.oks, perdidas: this.perdidas,
-        maxCombo: this.maxCombo, acordesCertos: this.acordesCertos, acordesChecados: this.acordesChecados, media, fracos, notas: n, julgadas: judged.length,
+        maxCombo: this.maxCombo, confirmados: this.confirmados || 0, acordesCertos: this.acordesCertos, acordesChecados: this.acordesChecados, media, fracos, notas: n, julgadas: judged.length,
         bpm: this.bpm, bpmBase: this.cfg.bpmBase || this.bpm, entrada: this.entrada };
     }
     terminar() {
@@ -767,6 +770,7 @@ const Jogo = (() => {
           ${r.modo === 'tempo' ? `<div><dt>Perfeitos</dt><dd>${r.perf}</dd></div><div><dt>Maior sequência</dt><dd>${r.maxCombo}</dd></div>` : ''}
           ${r.acordesChecados ? `<div><dt>${this.melodia ? 'Notas certas' : 'Acordes certos'}</dt><dd>${r.acordesCertos} de ${r.acordesChecados}</dd></div>` : ''}
           ${r.modo === 'tempo' ? `<div><dt>Perdidas</dt><dd>${r.perdidas}</dd></div>` : ''}
+          ${r.confirmados ? `<div><dt>Confirmados por você</dt><dd>${r.confirmados}</dd></div>` : ''}
         </dl>
         ${tend || dica ? `<p class="jg-dica">${tend} ${dica}</p>` : ''}
         <button class="btn primario largo" data-m="denovo">Jogar de novo</button>

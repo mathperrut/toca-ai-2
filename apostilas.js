@@ -42,22 +42,24 @@ const DESENHOS = {
     </g></svg>`,
 
   // As 6 cordas com número, letra e nome
-  cordas: () => `<svg class="ap-svg" viewBox="0 0 320 170" role="img" aria-label="As seis cordas">
-    ${[0, 1, 2, 3, 4, 5].map(i => `<line class="dg-corda" style="stroke-width:${4.2 - i * 0.6}" x1="${30 + i * 52}" x2="${30 + i * 52}" y1="8" y2="104"/>
+  cordas: () => `<div class="ap-som"><svg class="ap-svg" viewBox="0 0 320 170" role="group" aria-label="As seis cordas: toque numa corda para ouvir">
+    ${[0, 1, 2, 3, 4, 5].map(i => `<g class="tocavel" data-i="${i}" data-nota="${i}:0" role="button" tabindex="0" aria-label="${ORD[i]} corda solta, ${NOME_CORDA[i]}">
+      <rect x="${30 + i * 52 - 24}" y="0" width="48" height="170" fill="transparent"/>
+      <line class="dg-corda" style="stroke-width:${4.2 - i * 0.6}" x1="${30 + i * 52}" x2="${30 + i * 52}" y1="8" y2="104"/>
       <text class="ap-t-forte" x="${30 + i * 52}" y="126" text-anchor="middle">${ORD[i]}</text>
       <text class="ap-t" x="${30 + i * 52}" y="146" text-anchor="middle">${'EADGBE'[i]}</text>
-      <text class="ap-t-fraco" x="${30 + i * 52}" y="164" text-anchor="middle">${NOME_CORDA[i].split(' ')[0]}</text>`).join('')}
-  </svg>`,
+      <text class="ap-t-fraco" x="${30 + i * 52}" y="164" text-anchor="middle">${NOME_CORDA[i].split(' ')[0]}</text></g>`).join('')}
+  </svg><button class="btn mini" data-seq="0:0 1:0 2:0 3:0 4:0 5:0">${IC.som} Ouvir as 6 cordas</button></div>`,
 
   // Casas e trastes
-  casas: () => `<svg class="ap-svg" viewBox="0 0 320 170" role="img" aria-label="Casas e trastes">
+  casas: () => `<div class="ap-som"><svg class="ap-svg" viewBox="0 0 320 170" role="img" aria-label="Casas e trastes">
     <text class="ap-t-fraco" x="160" y="14" text-anchor="middle">cabeça do violão</text>
     <line class="dg-pestana" x1="40" x2="260" y1="26" y2="26"/>
     ${[1, 2, 3, 4].map(k => `<line class="dg-traste" x1="40" x2="260" y1="${26 + k * 32}" y2="${26 + k * 32}"/><text class="ap-t" x="270" y="${26 + k * 32 - 12}">casa ${k}</text>`).join('')}
     ${[0, 1, 2, 3, 4, 5].map(i => `<line class="dg-corda" x1="${40 + i * 44}" x2="${40 + i * 44}" y1="26" y2="154"/>`).join('')}
-    <circle class="dg-dedo d1" cx="216" cy="44" r="10"/><text class="dg-num" x="216" y="48.5" text-anchor="middle">1</text>
+    <g class="tocavel" data-nota="4:1" role="button" tabindex="0" aria-label="Ouvir: 2ª corda, casa 1 (Dó)"><circle class="dg-dedo d1" cx="216" cy="44" r="10"/><text class="dg-num" x="216" y="48.5" text-anchor="middle">1</text></g>
     <text class="ap-t-fraco" x="34" y="62" text-anchor="end">traste</text>
-  </svg>`,
+  </svg><div class="linha-botoes"><button class="btn mini" data-nota="4:0">${IC.som} Corda solta (Si)</button><button class="btn mini" data-nota="4:1">${IC.som} Casa 1 (Dó)</button></div></div>`,
 
   // Dedos numerados
   dedos: () => `<div class="ap-dedos">${[1, 2, 3, 4].map(d => `<span><i class="bola d${d}">${d}</i>${NOMES_DEDOS[d]}</span>`).join('')}<span><i class="bola polegar">P</i>polegar (atrás do braço)</span></div>`,
@@ -67,37 +69,41 @@ const DESENHOS = {
     <li><span class="ap-o"></span> corda solta: toca sem apertar</li>
     <li><span class="ap-x">×</span> não toca essa corda</li>
     <li><i class="bola d1">1</i> aperte aqui com o dedo 1</li>
-    <li><b>E A D G B E</b> embaixo: o nome de cada corda</li></ul></div>`,
+    <li><b>E A D G B E</b> embaixo: o nome de cada corda</li></ul><button class="btn mini" data-ouvir="Am7">${IC.som} Ouvir o Am7</button></div>`,
 
   // Tablatura
-  tab: () => `<svg class="ap-svg" viewBox="0 0 340 150" role="img" aria-label="Exemplo de tablatura">
+  tab: () => {
+    const notas = [[2, 0], [2, 0], [1, 3], [1, 3], [0, 0], [0, 0], [1, 3]];   // linha 0 = 1ª corda (e)
+    return `<div class="ap-som"><svg class="ap-svg" viewBox="0 0 340 150" role="img" aria-label="Tablatura do começo de Brilha, Brilha Estrelinha">
     ${['e', 'B', 'G', 'D', 'A', 'E'].map((l, i) => `<text class="ap-t-forte" x="8" y="${24 + i * 20}">${l}</text><line class="dg-traste" x1="26" x2="330" y1="${20 + i * 20}" y2="${20 + i * 20}"/>`).join('')}
-    ${[[3, 0, 60], [3, 0, 100], [2, 3, 140], [2, 3, 180], [1, 0, 220], [1, 1, 260], [1, 3, 300]].map(([c, f, x]) => `<rect class="ap-tab-fundo" x="${x - 9}" y="${20 + c * 20 - 9}" width="18" height="18" rx="4"/><text class="ap-tab-num" x="${x}" y="${20 + c * 20 + 5}" text-anchor="middle">${f}</text>`).join('')}
+    ${notas.map(([c, f], k) => { const x = 60 + k * 40; return `<g data-i="${k}"><rect class="ap-tab-fundo" x="${x - 9}" y="${20 + c * 20 - 9}" width="18" height="18" rx="4"/><text class="ap-tab-num" x="${x}" y="${20 + c * 20 + 5}" text-anchor="middle">${f}</text></g>`; }).join('')}
     <text class="ap-t-fraco" x="178" y="146" text-anchor="middle">leia da esquerda para a direita</text>
-  </svg>`,
+  </svg><button class="btn mini" data-seq="${notas.map(([c, f]) => `${5 - c}:${f}`).join(' ')}">${IC.som} Ouvir a tablatura</button></div>`;
+  },
 
   // Notas na 6ª e na 5ª corda
   notasBraco: () => {
     const casas = 12, x0 = 30, dx = 24, notas6 = ['E', 'F', '', 'G', '', 'A', '', 'B', 'C', '', 'D', '', 'E'], notas5 = ['A', '', 'B', 'C', '', 'D', '', 'E', 'F', '', 'G', '', 'A'];
-    let s = `<svg class="ap-svg" viewBox="0 0 340 120" role="img" aria-label="Notas na 6ª e 5ª corda">`;
+    let s = `<div class="ap-som"><svg class="ap-svg" viewBox="0 0 340 120" role="group" aria-label="Notas na 6ª e 5ª corda: toque numa nota para ouvir">`;
     for (let k = 0; k <= casas; k++) s += `<line class="${k === 0 ? 'dg-pestana' : 'dg-traste'}" x1="${x0 + k * dx}" x2="${x0 + k * dx}" y1="30" y2="74"/>`;
     s += `<line class="dg-corda" x1="${x0}" x2="${x0 + casas * dx}" y1="40" y2="40"/><line class="dg-corda" style="stroke-width:2.6" x1="${x0}" x2="${x0 + casas * dx}" y1="64" y2="64"/>`;
     s += `<text class="ap-t-forte" x="8" y="44">5ª</text><text class="ap-t-forte" x="8" y="68">6ª</text>`;
     const pos = k => (k === 0 ? x0 - 12 : x0 + (k - 0.5) * dx);
-    notas5.forEach((n, k) => { if (n) s += `<circle class="ap-nota" cx="${pos(k)}" cy="40" r="9"/><text class="ap-nota-t" x="${pos(k)}" y="44" text-anchor="middle">${n}</text>`; });
-    notas6.forEach((n, k) => { if (n) s += `<circle class="ap-nota" cx="${pos(k)}" cy="64" r="9"/><text class="ap-nota-t" x="${pos(k)}" y="68" text-anchor="middle">${n}</text>`; });
+    const bola = (n, k, corda, y) => `<g class="tocavel" data-nota="${corda}:${k}" role="button" tabindex="0" aria-label="${n}: ${ORD[corda]} corda, ${k ? 'casa ' + k : 'solta'}"><circle class="ap-nota" cx="${pos(k)}" cy="${y}" r="9"/><text class="ap-nota-t" x="${pos(k)}" y="${y + 4}" text-anchor="middle">${n}</text></g>`;
+    notas5.forEach((n, k) => { if (n) s += bola(n, k, 1, 40); });
+    notas6.forEach((n, k) => { if (n) s += bola(n, k, 0, 64); });
     [3, 5, 7, 9, 12].forEach(k => { s += `<text class="ap-t-fraco" x="${x0 + (k - 0.5) * dx}" y="96" text-anchor="middle">${k}</text>`; });
-    return s + `<text class="ap-t-fraco" x="170" y="114" text-anchor="middle">casas com marcação no braço</text></svg>`;
+    return s + `<text class="ap-t-fraco" x="170" y="114" text-anchor="middle">casas com marcação no braço</text></svg><p class="sub">Toque numa nota para ouvir.</p></div>`;
   },
 
   // Maior x menor: E e Em lado a lado
   maiorMenor: () => `<div class="ap-par">${['E', 'Em'].map(a => `<figure>${diagramaAcorde(a, { tam: 'md' })}<figcaption><b>${a}</b> ${a === 'E' ? 'maior: som alegre' : 'menor: som triste'}<button class="btn mini" data-ouvir="${a}">${IC.som} Ouvir</button></figcaption></figure>`).join('')}</div>`,
 
   // Campo harmônico de Sol
-  campo: () => `<div class="ap-campo">${['G', 'Am', 'Bm', 'C', 'D', 'Em'].map((a, i) => `<span><b>${a}</b><small>${['I', 'ii', 'iii', 'IV', 'V', 'vi'][i]}</small></span>`).join('')}</div>`,
+  campo: () => `<div class="ap-som"><div class="ap-campo">${['G', 'Am', 'Bm', 'C', 'D', 'Em'].map((a, i) => `<button type="button" data-i="${i}" data-ouvir="${a}" aria-label="Ouvir ${a}"><b>${a}</b><small>${['I', 'ii', 'iii', 'IV', 'V', 'vi'][i]}</small></button>`).join('')}</div><button class="btn mini" data-acordes="G Am Bm C D Em">${IC.som} Ouvir a família</button></div>`,
 
   // Batidas
-  batida: () => `<div class="ap-batida">${['1', 'e', '2', 'e', '3', 'e', '4', 'e'].map((n, k) => `<span class="${k % 2 ? 'cima' : ''}"><b>${k % 2 ? '↑' : '↓'}</b><small>${n}</small></span>`).join('')}</div>`,
+  batida: () => `<div class="ap-som"><div class="ap-batida">${['1', 'e', '2', 'e', '3', 'e', '4', 'e'].map((n, k) => `<span data-i="${k}" class="${k % 2 ? 'cima' : ''}"><b>${k % 2 ? '↑' : '↓'}</b><small>${n}</small></span>`).join('')}</div><button class="btn mini" data-golpes="Em:D U D U D U D U">${IC.som} Ouvir a batida (com Em)</button></div>`,
 
   // Ritmos com botão de ouvir
   ritmos: () => `<div class="ap-ritmos">${['samba', 'pagode', 'bossa', 'baiao', 'sambarock'].map(id => { const p = patternById(id); return `<div class="ap-ritmo"><b>${esc(p.genero)}</b>${batidaHTML(p)}<button class="btn mini" data-ritmo="${id}">${IC.som} Ouvir</button></div>`; }).join('')}</div>`,
@@ -107,6 +113,30 @@ const DESENHOS = {
     <li><b>1 min</b><span>Afinar</span></li><li><b>3 min</b><span>Acorde novo, dedo a dedo</span></li>
     <li><b>3 min</b><span>1 minuto de trocas</span></li><li><b>3 min</b><span>Uma música no jogo</span></li></ol>`
 };
+
+/* ---------- Sons das imagens ----------
+   Cada imagem toca exatamente o que mostra:
+     data-ouvir="Em"          -> o acorde
+     data-nota="4:1"          -> UMA nota (corda 0 = 6ª ... 5 = 1ª; casa 0 = solta)
+     data-seq="3:0 3:0 4:3"   -> notas em sequência, acendendo cada [data-i]
+     data-acordes="G Am Bm"   -> acordes em sequência, acendendo cada [data-i]
+     data-golpes="Em:D U D U" -> uma batida com um acorde, acendendo cada [data-i]
+     data-ritmo="samba"       -> um ritmo brasileiro */
+function ligarSons(raiz) {
+  const acender = (el, i) => (el.closest('.ap-som') || raiz).querySelectorAll('[data-i]').forEach(x => x.classList.toggle('tocando', +x.dataset.i === i));
+  const piscar = el => { el.classList.add('tocando'); setTimeout(() => el.classList.remove('tocando'), 450); };
+  const ligar = (sel, fn) => raiz.querySelectorAll(sel).forEach(el => {
+    el.addEventListener('click', ev => { ev.stopPropagation(); fn(el); });
+    if (el.tagName !== 'BUTTON') el.addEventListener('keydown', ev => { if (ev.key === 'Enter' || ev.key === ' ') { ev.preventDefault(); fn(el); } });
+  });
+  const pares = txt => txt.trim().split(/\s+/).map(x => x.split(':').map(Number));
+  ligar('[data-ouvir]', el => { ouvirAcorde(el.dataset.ouvir); if (el.dataset.i !== undefined) piscar(el); });
+  ligar('[data-nota]', el => { ouvirNota(...el.dataset.nota.split(':').map(Number)); if (!el.matches('button')) piscar(el); });
+  ligar('[data-seq]', el => ouvirSequencia(pares(el.dataset.seq), { aoTocar: i => acender(el, i) }));
+  ligar('[data-acordes]', el => ouvirAcordes(el.dataset.acordes.trim().split(/\s+/), { aoTocar: i => acender(el, i) }));
+  ligar('[data-golpes]', el => { const [ac, g] = el.dataset.golpes.split(':'); ouvirGolpes(ac, g.trim().split(/\s+/), { aoTocar: i => acender(el, i) }); });
+  ligar('[data-ritmo]', el => ouvirBatida(patternById(el.dataset.ritmo), 2));
+}
 
 /* ---------- Conteúdo ---------- */
 const APOSTILAS = [
@@ -327,8 +357,7 @@ function abrirApostila(id) {
     </article>`);
   $('#janela').classList.add('cheia');
   const raiz = $('#janela-corpo');
-  raiz.querySelectorAll('[data-ouvir]').forEach(b => b.addEventListener('click', () => ouvirAcorde(b.dataset.ouvir)));
-  raiz.querySelectorAll('[data-ritmo]').forEach(b => b.addEventListener('click', () => ouvirBatida(patternById(b.dataset.ritmo), 2)));
+  ligarSons(raiz);
   montarQuiz($('#ap-quiz'), a.quiz, acertos => {
     S.apostilas = S.apostilas || {};
     const antes = S.apostilas[a.id] || 0;

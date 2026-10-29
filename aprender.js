@@ -91,6 +91,42 @@ function tocarCordaPorCorda(nome) {
 }
 function ouvirAcorde(nome) { Som.init(); Som.golpe(nome, Som.agora + 0.03, 'D', 0.34); }
 
+/* O som tem que ser o da imagem:
+   uma nota -> só a nota; várias notas -> a sequência; acorde -> o acorde. */
+function freqDaCasa(corda, casa) { return CORDAS_SOLTAS[corda] * Math.pow(2, casa / 12); }   // corda 0 = 6ª
+function ouvirNota(corda, casa) { Som.init(); Som.nota(freqDaCasa(corda, casa), Som.agora + 0.03, 0.46, corda); }
+// aoTocar(i) acende o item i na tela enquanto ele soa (i = -1 quando acaba)
+function ouvirSequencia(notas, { passo = 0.45, aoTocar = null } = {}) {
+  Som.init();
+  const t0 = Som.agora + 0.06;
+  notas.forEach(([corda, casa], i) => {
+    const t = t0 + i * passo;
+    Som.nota(freqDaCasa(corda, casa), t, 0.46, corda);
+    if (aoTocar) quandoTocar(t, () => aoTocar(i));
+  });
+  if (aoTocar) quandoTocar(t0 + notas.length * passo, () => aoTocar(-1));
+}
+function ouvirAcordes(lista, { passo = 1.1, aoTocar = null } = {}) {
+  Som.init();
+  const t0 = Som.agora + 0.05;
+  lista.forEach((a, i) => { const t = t0 + i * passo; Som.golpe(a, t, 'D', 0.32); if (aoTocar) quandoTocar(t, () => aoTocar(i)); });
+  if (aoTocar) quandoTocar(t0 + lista.length * passo, () => aoTocar(-1));
+}
+// golpes: 'D U D U' (para baixo / para cima) com um acorde
+function ouvirGolpes(acorde, golpes, { passo = 0.32, aoTocar = null } = {}) {
+  Som.init();
+  const t0 = Som.agora + 0.05;
+  golpes.forEach((g, i) => { const t = t0 + i * passo; Som.golpe(acorde, t, g, g === 'U' ? 0.24 : 0.32); if (aoTocar) quandoTocar(t, () => aoTocar(i)); });
+  if (aoTocar) quandoTocar(t0 + golpes.length * passo, () => aoTocar(-1));
+}
+// As notas de um passo do professor (um dedo = uma nota; dedo deitado = várias notas).
+// Na pestana o desenho mostra o dedo cobrindo todas as cordas do meio, então soam todas.
+function notasDoPasso(p) {
+  let cordas = [...p.cordas].sort((x, y) => x - y);
+  if (p.pestana) { const de = cordas[0], ate = cordas.at(-1); cordas = Array.from({ length: ate - de + 1 }, (_, k) => de + k); }
+  return cordas.map(c => [c, p.casa]);
+}
+
 /* Acordes aprendidos (pelas lições concluídas ou marcados à mão) */
 function acordesAprendidos() {
   const set = new Set(S.acordesSei || []);
@@ -130,13 +166,20 @@ function ensinarAcorde(caixa, nome, { aoCompletar } = {}) {
       : `<span class="ens-passo">Passo ${k + 1} de ${passos.length}</span> ${textoPasso(passos[k])}`;
     q('#ens-final').hidden = !final;
     q('#ens-prox').hidden = final;
+    // o botão diz o que vai soar: a nota do dedo da vez ou o acorde inteiro
+    const nNotas = final ? 0 : passos[k].cordas.length;
+    q('#ens-ouvir').innerHTML = `${IC.som} ${final ? 'Ouvir o acorde' : nNotas > 1 ? 'Ouvir as notas' : 'Ouvir a nota'}`;
     q('#ens-volta').disabled = k === 0;
     caixa.querySelectorAll('#ens-pontos i').forEach((b, j) => { b.classList.toggle('feito', j < k); b.classList.toggle('on', j === k); });
     if (final && !completou) { completou = true; aoCompletar?.(); }
   };
   q('#ens-prox').addEventListener('click', () => { k = Math.min(passos.length, k + 1); mostrar(); });
   q('#ens-volta').addEventListener('click', () => { k = Math.max(0, k - 1); mostrar(); q('#ens-res').textContent = ''; });
-  q('#ens-ouvir').addEventListener('click', () => ouvirAcorde(nome));
+  q('#ens-ouvir').addEventListener('click', () => {
+    if (k >= passos.length) return ouvirAcorde(nome);
+    const notas = notasDoPasso(passos[k]);
+    if (notas.length === 1) ouvirNota(...notas[0]); else ouvirSequencia(notas, { passo: 0.3 });
+  });
   q('#ens-corda').addEventListener('click', () => tocarCordaPorCorda(nome));
   q('#ens-mic').addEventListener('click', () => conferirAcordeMic(nome, q('#ens-res'), q('#ens-mic')));
   mostrar();
@@ -167,22 +210,32 @@ async function conferirAcordeMic(nome, saida, botao) {
 function unidadeDaLicao(id) { return CURSO.find(u => u.licoes.some(l => l.id === id)); }
 function proximaLicao() { return LESSONS.find(l => !S.licoes[l.id]); }
 
-function abrirLicao(id) {
+/* passo: em que tela começar (número, ou 'fim' para a última).
+   O botão Voltar volta uma tela; na primeira tela, volta para a lição anterior. */
+function abrirLicao(id, { passo = 0 } = {}) {
   const l = lessonById(id), u = unidadeDaLicao(id);
-  let i = 0, limpar = null, acaoFinal = null;
+  const pos = LESSONS.findIndex(x => x.id === id), anterior = LESSONS[pos - 1] || null;
+  let i = passo === 'fim' ? l.passos.length - 1 : Math.max(0, Math.min(l.passos.length - 1, passo | 0));
+  let limpar = null, acaoFinal = null;
   abrirJanela(l.titulo, `
     <div class="lc">
       <div class="lc-prog" aria-hidden="true"><i id="lc-barra"></i></div>
       <div class="lc-passo" id="lc-passo"></div>
-      <div class="lc-rodape"><button class="btn primario largo grande" id="lc-cont">Continuar</button></div>
+      <div class="lc-rodape">
+        <button class="btn grande lc-voltar" id="lc-volta">${IC.voltar}<span>Voltar</span></button>
+        <button class="btn primario largo grande" id="lc-cont">Continuar</button>
+      </div>
     </div>`, () => { limpar?.(); limpar = null; });
   $('#janela').classList.add('cheia');
-  const area = $('#lc-passo'), cont = $('#lc-cont');
+  const area = $('#lc-passo'), cont = $('#lc-cont'), volta = $('#lc-volta');
   const mostrar = () => {
     limpar?.(); limpar = null;
+    acaoFinal = null;
     const p = l.passos[i];
     $('#lc-barra').style.transform = `scaleX(${i / l.passos.length})`;
     cont.disabled = false; cont.textContent = 'Continuar';
+    volta.disabled = i === 0 && !anterior;
+    volta.setAttribute('aria-label', i === 0 && anterior ? `Voltar para a lição anterior: ${anterior.titulo}` : 'Voltar uma tela');
     area.innerHTML = '';
     area.classList.remove('entrar'); void area.offsetWidth; area.classList.add('entrar');
     $('#janela-corpo').scrollTop = 0;
@@ -192,7 +245,12 @@ function abrirLicao(id) {
     if (cont.disabled) return;
     if (acaoFinal) return acaoFinal();
     if (i < l.passos.length - 1) { i++; mostrar(); }
-    else acaoFinal = concluirLicao(l, u, area, cont, () => { limpar?.(); limpar = null; });
+    else { acaoFinal = concluirLicao(l, u, area, cont, () => { limpar?.(); limpar = null; }); volta.disabled = false; }
+  });
+  volta.addEventListener('click', () => {
+    if (acaoFinal) { mostrar(); return; }                 // da tela "Lição concluída" volta para a última tela
+    if (i > 0) { i--; mostrar(); return; }
+    if (anterior) { limpar?.(); limpar = null; abrirLicao(anterior.id, { passo: 'fim' }); }
   });
   mostrar();
 }
@@ -200,7 +258,7 @@ function abrirLicao(id) {
 const PASSOS = {
   texto(area, p) {
     area.innerHTML = `<div class="ps-texto">${p.visual ? `<div class="ps-visual">${DESENHOS[p.visual]?.() || ''}</div>` : ''}<h3>${esc(p.titulo)}</h3><p>${p.texto}</p></div>`;
-    area.querySelectorAll('[data-ouvir]').forEach(b => b.addEventListener('click', () => ouvirAcorde(b.dataset.ouvir)));
+    ligarSons(area);
   },
   video(area, p) {
     area.innerHTML = `<div class="ps-video">${videoHTML(p.video)}</div>`;
@@ -295,46 +353,77 @@ function concluirLicao(l, u, area, cont, limpar) {
 }
 
 /* ===== 4. Treinos ===== */
-// "1 minuto de trocas" (JustinGuitar): troque entre dois acordes o máximo que puder em 60 s
+/* "1 minuto de trocas" (JustinGuitar): troque entre dois acordes o máximo que puder em 60 s.
+   O microfone ouve cada batida e conta uma troca quando o acorde muda (Em -> D -> Em...).
+   Bater várias vezes no mesmo acorde não conta. Sem microfone, o botão "Troquei" conta na mão. */
 function trocaUmMinuto(area, a, b) {
   const chave = `${a}>${b}`;
-  let n = 0, fim = 0, timer = null, vez = 0;
+  let n = 0, fim = 0, timer = null, vez = 0, ultimo = null, offAtaque = null, comMic = false, lendo = false;
   area.innerHTML = `
     <div class="troca">
       <h3>1 minuto de trocas</h3>
-      <p class="sub">Troque entre <b>${esc(a)}</b> e <b>${esc(b)}</b> o máximo que puder. A cada troca, toque em "Troquei". Recorde: <b>${S.recordes[chave] || 0}</b></p>
+      <p class="sub">Troque entre <b>${esc(a)}</b> e <b>${esc(b)}</b> o máximo que puder. Bata <b>uma vez</b> em cada acorde: o microfone conta as trocas sozinho. Recorde: <b>${S.recordes[chave] || 0}</b></p>
       <div class="troca-par">
         <figure data-i="0">${diagramaAcorde(a, { tam: 'md' })}<figcaption>${esc(a)}</figcaption></figure>
         <figure data-i="1">${diagramaAcorde(b, { tam: 'md' })}<figcaption>${esc(b)}</figcaption></figure>
       </div>
       <div class="troca-num"><span><b id="tr-tempo">60</b>segundos</span><span><b id="tr-n">0</b>trocas</span></div>
+      <p class="troca-ouvi" id="tr-ouvi" aria-live="polite"></p>
       <button class="btn primario largo grande" id="tr-btn">Começar</button>
+      <button class="btn largo" id="tr-mao" hidden>Troquei (contar na mão)</button>
     </div>`;
   const q = s => area.querySelector(s);
   const marcar = () => area.querySelectorAll('.troca-par figure').forEach(f => f.classList.toggle('vez', !!timer && +f.dataset.i === vez));
-  q('#tr-btn').addEventListener('click', () => {
-    if (!timer) {
-      if (fim) { n = 0; vez = 0; q('#tr-n').textContent = 0; }
-      fim = Date.now() + 60000;
-      timer = setInterval(() => {
-        const r = Math.max(0, Math.ceil((fim - Date.now()) / 1000));
-        q('#tr-tempo').textContent = r;
-        if (r === 0) {
-          clearInterval(timer); timer = null; marcar(); ativos.delete('trocas');
-          const rec = S.recordes[chave] || 0;
-          if (n > rec) S.recordes[chave] = n;
-          registrar('trocas', n);
-          q('#tr-btn').textContent = 'De novo';
-          toast(n > rec && rec ? `Novo recorde: ${n} trocas!` : `${n} trocas. ${n >= 30 ? 'Ótimo!' : 'Amanhã o número sobe.'}`);
-        }
-      }, 200);
-      q('#tr-btn').textContent = 'Troquei';
-      ativos.add('trocas'); marcar();
-      return;
-    }
-    n++; vez = 1 - vez; q('#tr-n').textContent = n; vibrar(8); marcar();
+  const contar = () => { n++; q('#tr-n').textContent = n; vibrar(8); };
+  const pararMic = () => { offAtaque?.(); offAtaque = null; };
+
+  // Cada batida: lê as notas que soaram e decide se foi o acorde A, o B ou outro som
+  const aoAtacar = async () => {
+    if (!timer || lendo) return;
+    lendo = true;
+    await new Promise(r => setTimeout(r, 120));          // deixa o acorde "abrir" depois do ataque
+    const r = await Jogo.lerCroma(3, 45);
+    lendo = false;
+    if (!timer || !r) return;
+    const avA = Jogo.avaliarAcorde(r.croma, a, [b], 0), avB = Jogo.avaliarAcorde(r.croma, b, [a], 0);
+    const qual = avA.ok && (!avB.ok || avA.sim >= avB.sim) ? 0 : avB.ok ? 1 : null;
+    const ouvi = q('#tr-ouvi');
+    if (qual === null) { ouvi.className = 'troca-ouvi'; ouvi.textContent = 'Ouvi outro som. Confira os dedos.'; return; }
+    ouvi.className = 'troca-ouvi ok'; ouvi.innerHTML = `Ouvi <b>${esc(qual ? b : a)}</b> ${IC.check}`;
+    if (ultimo !== null && qual !== ultimo) contar();   // mudou de acorde: 1 troca
+    ultimo = qual; vez = 1 - qual; marcar();
+  };
+
+  const terminar = () => {
+    clearInterval(timer); timer = null; pararMic(); marcar(); ativos.delete('trocas');
+    const rec = S.recordes[chave] || 0;
+    if (n > rec) S.recordes[chave] = n;
+    registrar('trocas', n);
+    q('#tr-btn').textContent = 'De novo'; q('#tr-btn').hidden = false; q('#tr-mao').hidden = true;
+    q('#tr-ouvi').className = 'troca-ouvi'; q('#tr-ouvi').textContent = n > rec && rec ? `Novo recorde: ${n} trocas!` : `${n} trocas. ${n >= 30 ? 'Ótimo!' : 'Amanhã o número sobe.'}`;
+  };
+
+  q('#tr-btn').addEventListener('click', async () => {
+    if (timer) { contar(); vez = 1 - vez; ultimo = 1 - vez; marcar(); return; }   // modo sem microfone
+    n = 0; vez = 0; ultimo = null; q('#tr-n').textContent = 0;
+    // liga o microfone (se não der, conta na mão)
+    try { await Detector.ligar(); comMic = true; } catch (e) { comMic = false; q('#tr-ouvi').textContent = msgSemMicrofone(e); }
+    fim = Date.now() + 60000;
+    timer = setInterval(() => {
+      const r = Math.max(0, Math.ceil((fim - Date.now()) / 1000));
+      q('#tr-tempo').textContent = r;
+      if (r === 0) terminar();
+    }, 200);
+    ativos.add('trocas'); marcar();
+    if (comMic) {
+      offAtaque = Detector.aoAtacar(aoAtacar);
+      q('#tr-btn').hidden = true; q('#tr-mao').hidden = false;
+      q('#tr-ouvi').className = 'troca-ouvi'; q('#tr-ouvi').innerHTML = `Ouvindo… comece pelo <b>${esc(a)}</b>`;
+    } else q('#tr-btn').textContent = 'Troquei';
   });
-  return () => { clearInterval(timer); timer = null; ativos.delete('trocas'); };
+  // reserva: se o microfone não estiver reconhecendo, dá para contar na mão
+  q('#tr-mao').addEventListener('click', () => { if (!timer) return; contar(); vez = 1 - vez; ultimo = 1 - vez; marcar(); });
+  return () => { clearInterval(timer); timer = null; pararMic(); ativos.delete('trocas'); };
 }
 
 // Mini afinador para a lição
