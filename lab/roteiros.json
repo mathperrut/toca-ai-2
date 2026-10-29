@@ -1,0 +1,377 @@
+{
+ "partes": [
+  {
+   "v": "titulo",
+   "t": "As partes do violão",
+   "fala": "Vamos conhecer as partes do violão!"
+  },
+  {
+   "v": "partes-cabeca",
+   "fala": "Lá em cima fica a cabeça. As tarraxas esticam ou afrouxam as cordas: é com elas que você afina."
+  },
+  {
+   "v": "partes-braco",
+   "fala": "Depois vem o braço. Esses ferrinhos são os trastes, e o espaço entre dois trastes é a casa."
+  },
+  {
+   "v": "partes-caixa",
+   "fala": "Embaixo fica a caixa. Ela é oca e deixa o som forte. O som sai pela boca."
+  },
+  {
+   "v": "partes-cavalete",
+   "fala": "E as cordas ficam presas no cavalete, apoiadas no rastilho."
+  },
+  {
+   "v": "fim",
+   "t": "Agora é só tocar",
+   "fala": "Pronto! Agora você já sabe o nome de cada parte.",
+   "som": "strum:G"
+  }
+ ],
+ "cordas": [
+  {
+   "v": "titulo",
+   "t": "As 6 cordas",
+   "fala": "O violão tem seis cordas. Vamos conhecer cada uma!"
+  },
+  {
+   "v": "cordas-num",
+   "fala": "A mais grossa é a sexta corda. A mais fina, a primeira."
+  },
+  {
+   "v": "cordas-nomes",
+   "fala": "Da mais grossa para a mais fina: Mi, Lá, Ré, Sol, Si e Mi.",
+   "som": "cordas"
+  },
+  {
+   "v": "cordas-frase",
+   "fala": "Um truque para decorar: Eu Amo Doce de Goiaba, Bem Escuro. E, A, D, G, B, E!"
+  },
+  {
+   "v": "fim",
+   "t": "E A D G B E",
+   "fala": "Essas letras são o nome das cordas na cifra."
+  }
+ ],
+ "afinar": [
+  {
+   "v": "titulo",
+   "t": "Como afinar",
+   "fala": "Violão desafinado deixa até o acorde certo com som errado. Vamos afinar?"
+  },
+  {
+   "v": "afinar-0",
+   "fala": "Abra a aba Afinador e toque uma corda solta.",
+   "som": "nota:40"
+  },
+  {
+   "v": "afinar-grave",
+   "fala": "Ponteiro para a esquerda? A corda está grave. Aperte a tarraxa, devagar."
+  },
+  {
+   "v": "afinar-agudo",
+   "fala": "Ponteiro para a direita? Está aguda. Afrouxe um pouquinho."
+  },
+  {
+   "v": "afinar-ok",
+   "fala": "No centro e verde: afinada! Agora faça isso nas seis cordas."
+  },
+  {
+   "v": "fim",
+   "t": "Chegue subindo",
+   "fala": "Uma dica: chegue na nota sempre subindo. Assim a corda segura a afinação."
+  }
+ ],
+ "postura": [
+  {
+   "v": "titulo",
+   "t": "Postura e mãos",
+   "fala": "Postura e mãos: o jeito certo de segurar o violão."
+  },
+  {
+   "v": "postura-dedos",
+   "fala": "Na mão que aperta as cordas, cada dedo tem um número: indicador um, médio dois, anelar três e mindinho quatro."
+  },
+  {
+   "v": "postura-casa",
+   "fala": "Aperte com a ponta do dedo, logo atrás do traste. Assim o som sai limpo, com pouca força."
+  },
+  {
+   "v": "postura-polegar",
+   "fala": "O polegar fica atrás do braço. E a outra mão bate nas cordas com o pulso solto."
+  },
+  {
+   "v": "fim",
+   "t": "Dor é normal",
+   "fala": "Nas primeiras semanas, a ponta dos dedos dói. É normal! Os calos aparecem em duas ou três semanas."
+  }
+ ],
+ "diagrama": [
+  {
+   "v": "titulo",
+   "t": "Como ler um acorde",
+   "fala": "Vamos aprender a ler o desenho de um acorde."
+  },
+  {
+   "v": "diag-cordas",
+   "fala": "O desenho é o violão de pé, na sua frente. A linha da esquerda é a sexta corda, a mais grossa."
+  },
+  {
+   "v": "diag-trastes",
+   "fala": "As linhas deitadas são os trastes. A linha grossa lá em cima é o começo do braço."
+  },
+  {
+   "v": "diag-em",
+   "fala": "A bolinha mostra onde apertar, e o número diz qual dedo usar. Este é o Mi menor.",
+   "som": "strum:Em"
+  },
+  {
+   "v": "diag-am",
+   "fala": "A bolinha vazia em cima é corda solta, e o xis é corda que não toca. Este é o Lá menor.",
+   "som": "strum:Am"
+  },
+  {
+   "v": "fim",
+   "t": "Bolinha, número, O e X",
+   "fala": "Bolinha, número, bolinha vazia e xis. Com isso, você lê qualquer acorde!"
+  }
+ ],
+ "batida": [
+  {
+   "v": "titulo",
+   "t": "A batida",
+   "fala": "A batida: o que a mão direita faz."
+  },
+  {
+   "v": "batida-4",
+   "fala": "A batida mais simples é para baixo, uma vez em cada tempo. Um, dois, três, quatro.",
+   "som": "batida:quatro"
+  },
+  {
+   "v": "batida-8",
+   "fala": "Agora junte uma batida para cima no e, entre os números. Um e dois e três e quatro e.",
+   "som": "batida:baixocima"
+  },
+  {
+   "v": "batida-pendulo",
+   "fala": "A mão nunca para! Ela vai e volta, como um pêndulo. Nas pausas, só passa sem encostar nas cordas."
+  },
+  {
+   "v": "fim",
+   "t": "Devagar e certo",
+   "fala": "Comece devagar. A velocidade vem com o tempo."
+  }
+ ],
+ "tab": [
+  {
+   "v": "titulo",
+   "t": "Como ler tablatura",
+   "fala": "Vamos aprender a ler tablatura."
+  },
+  {
+   "v": "tab-linhas",
+   "fala": "A tablatura tem seis linhas, uma para cada corda. A linha de cima é a primeira corda, a mais fina."
+  },
+  {
+   "v": "tab-numeros",
+   "fala": "Os números dizem a casa que você aperta. E zero é corda solta."
+  },
+  {
+   "v": "tab-ler",
+   "fala": "Leia da esquerda para a direita, uma nota de cada vez.",
+   "som": "melodia"
+  },
+  {
+   "v": "fim",
+   "t": "Uma tablatura que anda",
+   "fala": "O jogo do Toca Aí é uma tablatura que anda até a linha vermelha!"
+  }
+ ],
+ "jogo": [
+  {
+   "v": "titulo",
+   "t": "Como funciona o jogo",
+   "fala": "Como funciona o jogo do Toca Aí?"
+  },
+  {
+   "v": "jogo-tela",
+   "fala": "As seis cordas ficam deitadas, com a primeira corda em cima. Os acordes vêm da direita e deslizam até a linha vermelha."
+  },
+  {
+   "v": "jogo-bola",
+   "fala": "A bolinha vermelha cai em cima de cada batida, bem na hora de tocar.",
+   "som": "strum:A9"
+  },
+  {
+   "v": "jogo-espera",
+   "fala": "No modo Esperar por mim, a música para em cada acorde até o microfone ouvir você acertar."
+  },
+  {
+   "v": "jogo-tempo",
+   "fala": "No modo No tempo, a música não para. Você ganha pontos pelo tempo e pelo acorde certo."
+  },
+  {
+   "v": "fim",
+   "t": "Três estrelas? Acelere",
+   "fala": "Comece devagar, e suba a velocidade quando ganhar três estrelas!"
+  }
+ ],
+ "samba": [
+  {
+   "v": "titulo",
+   "t": "Ritmos brasileiros",
+   "fala": "Ritmos brasileiros no violão!"
+  },
+  {
+   "v": "ritmo-samba",
+   "fala": "No samba, o polegar faz o surdo, e os dedos fazem o tamborim.",
+   "som": "batida:samba"
+  },
+  {
+   "v": "ritmo-baiao",
+   "fala": "No baião, o polegar imita a zabumba, e os dedos respondem como o triângulo.",
+   "som": "batida:baiao"
+  },
+  {
+   "v": "ritmo-bossa",
+   "fala": "Na bossa nova, o polegar marca o tempo como um relógio, e os dedos entram fora do tempo.",
+   "som": "batida:bossa"
+  },
+  {
+   "v": "ritmo-sambarock",
+   "fala": "E no samba-rock do Jorge Ben Jor, a mão direita é solta e cheia de balanço!",
+   "som": "batida:sambarock"
+  },
+  {
+   "v": "fim",
+   "t": "O violão é uma bateria",
+   "fala": "O polegar é o bumbo, e os dedos são a caixa e o chocalho."
+  }
+ ],
+ "estudar": [
+  {
+   "v": "titulo",
+   "t": "Como estudar",
+   "fala": "Como estudar violão?"
+  },
+  {
+   "v": "estudar-pouco",
+   "fala": "Dez minutos por dia ensinam mais do que duas horas só no domingo."
+  },
+  {
+   "v": "estudar-rotina1",
+   "fala": "Um minuto para afinar. Três minutos para aprender um acorde novo, dedo a dedo."
+  },
+  {
+   "v": "estudar-rotina2",
+   "fala": "Três minutos trocando entre dois acordes. E três minutos tocando uma música."
+  },
+  {
+   "v": "fim",
+   "t": "Devagar e todo dia",
+   "fala": "Toque devagar e certo, todo dia. A velocidade vem sozinha!"
+  }
+ ],
+ "cifra": [
+  {
+   "v": "titulo",
+   "t": "A cifra",
+   "fala": "Por que o acorde de Dó se chama C? Vem comigo!"
+  },
+  {
+   "v": "cifra-letras",
+   "fala": "Na cifra, cada nota vira uma letra: C é Dó, D é Ré, E é Mi, F é Fá, G é Sol, A é Lá e B é Si.",
+   "som": "notas:1/3 2/0 2/2 2/3 3/0 3/2 4/0"
+  },
+  {
+   "v": "cifra-historia",
+   "fala": "Há mais de mil anos, os monges já escreviam as notas com letras, e começavam a contar pelo Lá. Por isso o A é o Lá."
+  },
+  {
+   "v": "cifra-menor",
+   "fala": "Só a letra é acorde maior, de som alegre. Com um m minúsculo, é menor, mais triste. Ouça a diferença.",
+   "som": "acordes:E Em"
+  },
+  {
+   "v": "cifra-numeros",
+   "fala": "Os números somam notas: o sete traz tensão, o sete maior deixa macio, e o nove dá brilho.",
+   "som": "acordes:G7 C7M A9"
+  },
+  {
+   "v": "cifra-barra",
+   "fala": "E a barra mostra a nota mais grave, o baixo: G barra B é o Sol com o Si no baixo.",
+   "som": "acordes:C G/B Am"
+  },
+  {
+   "v": "fim",
+   "t": "A cifra é uma língua",
+   "fala": "Agora você já lê qualquer cifra. Vamos tocar!"
+  }
+ ],
+ "pestana": [
+  {
+   "v": "titulo",
+   "t": "A pestana",
+   "fala": "A pestana assusta no começo, mas tem truque."
+  },
+  {
+   "v": "pestana-dedo",
+   "fala": "Na pestana, o dedo um deita sobre todas as cordas, como um capotraste.",
+   "som": "strum:F"
+  },
+  {
+   "v": "pestana-lateral",
+   "fala": "Use a lateral do dedo, a parte mais dura, bem colada no traste."
+  },
+  {
+   "v": "pestana-braco",
+   "fala": "Deixe o peso do braço ajudar. Não precisa esmagar com o polegar."
+  },
+  {
+   "v": "pestana-corda",
+   "fala": "Toque corda por corda. Se alguma sair abafada, mexa o dedo um pouquinho.",
+   "som": "corda-a-corda:1/0 3/1 3/2 2/3 1/4 1/5"
+  },
+  {
+   "v": "pestana-move",
+   "fala": "E o melhor: o mesmo desenho anda pelo braço. Na casa um é Fá, na três é Sol, e na cinco é Lá.",
+   "som": "formas:133211 355433 577655"
+  },
+  {
+   "v": "fim",
+   "t": "Um minuto por dia",
+   "fala": "Treine um minuto por dia. Em duas ou três semanas, a pestana sai limpa!"
+  }
+ ],
+ "pentatonica": [
+  {
+   "v": "titulo",
+   "t": "A pentatônica",
+   "fala": "Quer improvisar? Comece pela pentatônica."
+  },
+  {
+   "v": "penta-notas",
+   "fala": "Ela tem só cinco notas. A de Lá menor é: Lá, Dó, Ré, Mi e Sol.",
+   "som": "notas:1/0 1/3 2/0 2/2 3/0 3/2"
+  },
+  {
+   "v": "penta-caixa",
+   "fala": "No braço, ela forma uma caixa a partir da casa cinco, com duas notas em cada corda.",
+   "som": "notas:0/5 0/8 1/5 1/7 2/5 2/7 3/5 3/7 4/5 4/8 5/5 5/8"
+  },
+  {
+   "v": "penta-dica",
+   "fala": "Para improvisar, use poucas notas, repita uma ideia e deixe espaço."
+  },
+  {
+   "v": "penta-solo",
+   "fala": "Escute um exemplo em cima de Lá menor.",
+   "som": "frase:2/7@0.4 3/5@0.4 3/7@0.4 4/5@0.8 3/7@0.4 3/5@0.4 2/7@1.0 2/5@0.4 2/7@1.4"
+  },
+  {
+   "v": "fim",
+   "t": "Termine no Lá",
+   "fala": "E termine as frases no Lá, a nota de casa."
+  }
+ ]
+}

@@ -49,7 +49,7 @@ jobs:
           npm init -y >/dev/null && npm i linkedom@0.18.12 --no-audit --no-fund
           pip install numpy scipy soundfile
           if grep -q '^microfone' tarefas.txt; then pip install basic-pitch || true; pip install onnxruntime || true; fi
-          if grep -q 'vozes' tarefas.txt; then pip install kokoro-onnx soundfile || true; fi
+          if grep -q 'vozes' tarefas.txt; then pip install kokoro-onnx soundfile; sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg; fi
 
       - name: Rodar as tarefas
         working-directory: lab
