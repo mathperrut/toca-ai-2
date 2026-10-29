@@ -79,7 +79,10 @@ const Gravador = {
     const blob = new Blob(this.pedacos, { type: rec.mimeType || 'audio/webm' });
     const item = { id: 'rec:' + Date.now(), titulo, data: new Date().toISOString(), duracao: Math.round(duracao) };
     await BancoAudio._tx('readwrite', st => st.put({ blob, nome: titulo, tipo: blob.type }, item.id));
-    S.minhasGravacoes = [item, ...(S.minhasGravacoes || [])].slice(0, 60);
+    // guarda as 60 mais recentes (e apaga o áudio das que saem da lista, para não ocupar espaço à toa)
+    const todas = [item, ...(S.minhasGravacoes || [])];
+    S.minhasGravacoes = todas.slice(0, 60);
+    todas.slice(60).forEach(g => BancoAudio.apagar(g.id).catch(() => {}));
     Store.salvar();
     return item;
   },
@@ -91,15 +94,18 @@ const Gravador = {
 };
 const duracaoTexto = s => `${Math.floor(s / 60)}:${String(Math.round(s % 60)).padStart(2, '0')}`;
 const dataTexto = iso => { try { return new Date(iso).toLocaleDateString('pt-BR', { day: '2-digit', month: 'short' }) + ', ' + new Date(iso).toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' }); } catch (e) { return ''; } };
+// No app Android não dá para baixar um arquivo pela página (o navegador do app não tem "Downloads"):
+// lá a gravação fica no app, e o botão Salvar só aparece no navegador.
+const podeBaixarArquivo = () => !(window.Capacitor && window.Capacitor.isNativePlatform && window.Capacitor.isNativePlatform());
 function abrirGravador() {
   let timer = null, tocador = null, url = null;
   const lista = () => (S.minhasGravacoes || []).map(g => `<li class="grav-item" data-id="${esc(g.id)}">
       <button class="btn-icone" data-acao="tocar" aria-label="Ouvir ${esc(g.titulo)}">${IC.play}</button>
       <span class="grav-txt"><b>${esc(g.titulo)}</b><small>${dataTexto(g.data)}, ${duracaoTexto(g.duracao)}</small></span>
-      <button class="btn mini" data-acao="baixar">Salvar</button>
+      ${podeBaixarArquivo() ? '<button class="btn mini" data-acao="baixar">Salvar</button>' : ''}
       <button class="btn mini sem-borda" data-acao="apagar" aria-label="Apagar ${esc(g.titulo)}">Apagar</button></li>`).join('');
   abrirJanela('Gravar você tocando', `<div class="grav">
-      <p class="sub">Grave um trecho e ouça depois: é o jeito mais rápido de achar o que melhorar. Fica só no seu celular.</p>
+      <p class="sub">Grave um trecho e ouça depois: é o jeito mais rápido de achar o que melhorar. Fica só no seu celular (as 60 mais recentes).</p>
       <div class="grav-painel">
         <b class="grav-tempo" id="gr-tempo" aria-live="off">0:00</b>
         <div class="medidor" aria-hidden="true"><i id="gr-nivel"></i></div>
@@ -180,9 +186,10 @@ function abrirGravador() {
    em batidas: o resultado vira uma música que dá para tocar no jogo. */
 const QUALIDADES_DESCOBRIR = [['', [0, 4, 7]], ['m', [0, 3, 7]], ['7', [0, 4, 7, 10]], ['m7', [0, 3, 7, 10]], ['7M', [0, 4, 7, 11]]];
 const NOMES_DESCOBRIR = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
-// Ajustes escolhidos no laboratório (lab/descobrir): harmônicos (força que sobra a cada harmônico e quantos),
-// peso do baixo, desconto das tétrades (só ganham com sobra) e o "custo de trocar" do Viterbi
-const AJUSTE_DESCOBRIR = { harm: 0.9, nHarm: 4, baixo: 0.05, tetrade: 0.03, troca: 3, forca: 9, tom: 0.6 };
+// Ajustes escolhidos no laboratório (lab/descobrir, 180 gravações reais do GuitarSet): harmônicos (força que
+// sobra a cada harmônico e quantos), peso do baixo, desconto das tétrades (só ganham com sobra), o "custo de
+// trocar" do Viterbi e o bônus dos acordes do tom. Com mais de 3 harmônicos o maior/menor piorava.
+const AJUSTE_DESCOBRIR = { harm: 0.9, nHarm: 3, baixo: 0.1, tetrade: 0.03, troca: 5, forca: 9, tom: 0.6 };
 const Descobrir = {
   _moldes: null,
   moldes() {
@@ -434,21 +441,28 @@ function abrirDescobrir() {
   let parar = null;
   abrirJanela('Descobrir acordes', `<div class="desc">
       <p class="sub">O app ouve a música e mostra os acordes. É um palpite: confira de ouvido e ajuste o que precisar.</p>
-      <div class="modos">
-        <button type="button" class="modo" id="ds-mic"><b>${IC.mic} Ouvir pelo microfone</b><small>Toque o violão (ou ponha a música para tocar perto do celular) e veja o acorde na hora</small></button>
-        <label class="modo" id="ds-arq-rot"><b>${IC.nota} Escolher um MP3</b><small>O app tira os acordes da música inteira e cria uma cifra que você pode jogar, já sincronizada com o áudio</small><input type="file" accept="audio/*" id="ds-arq" hidden></label>
+      <div class="modos" role="radiogroup" aria-label="Como descobrir">
+        <button type="button" class="modo" role="radio" aria-checked="false" id="ds-mic"><b>${IC.mic} Ouvir pelo microfone</b><small>Toque o violão (ou ponha a música para tocar perto do celular) e veja o acorde na hora</small></button>
+        <label class="modo" role="radio" aria-checked="false" tabindex="0" id="ds-arq-rot"><b>${IC.nota} Escolher um MP3</b><small>O app tira os acordes da música inteira e cria uma cifra que você pode jogar, já sincronizada com o áudio</small><input type="file" accept="audio/*" id="ds-arq" hidden></label>
       </div>
       <div id="ds-area" aria-live="polite"></div>
     </div>`, () => parar?.());
   $('#janela').classList.add('cheia');
-  $('#ds-mic').addEventListener('click', async () => { parar?.(); parar = await descobrirAoVivo($('#ds-area')); });
-  $('#ds-arq').addEventListener('change', e => { const arq = e.target.files[0]; if (arq) { parar?.(); parar = null; descobrirArquivo($('#ds-area'), arq); } });
+  const marcar = id => $$('.desc .modo').forEach(m => m.setAttribute('aria-checked', m.id === id));
+  $('#ds-arq-rot').addEventListener('keydown', e => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); $('#ds-arq').click(); } });
+  $('#ds-mic').addEventListener('click', async () => { marcar('ds-mic'); parar?.(); parar = await descobrirAoVivo($('#ds-area')); });
+  $('#ds-arq').addEventListener('change', e => { const arq = e.target.files[0]; if (arq) { marcar('ds-arq-rot'); parar?.(); parar = null; descobrirArquivo($('#ds-area'), arq); } });
 }
-const LIMIAR_AO_VIVO = 0.6;
+/* Ao vivo, o acorde na tela não pode ficar piscando: quando você troca de acorde, as cordas
+   do acorde anterior ainda soam um pouco, e a mistura parece um terceiro acorde por um instante.
+   Por isso: o acorde da tela só sai se outro ganhar com folga (MARGEM), o novo precisa aparecer
+   em 5 leituras seguidas (~0,6 s), e as tétrades (7, m7, 7M) precisam de mais sobra.
+   Testado com gravações de Em parado e de trocas Em-D. */
+const LIMIAR_AO_VIVO = 0.65, MARGEM_AO_VIVO = 0.05, LEITURAS_AO_VIVO = 5, TETRADE_AO_VIVO = 0.03;
 async function descobrirAoVivo(area) {
   area.innerHTML = `<div class="ds-vivo"><b class="ds-acorde" id="ds-ac">…</b><small id="ds-dica">Ouvindo</small><div class="ds-hist" id="ds-hist"></div><button class="btn largo" id="ds-parar">Parar</button></div>`;
   try { await Detector.ligar(); } catch (e) { area.innerHTML = `<p class="sub">${esc(msgSemMicrofone(e))}</p>`; return null; }
-  let media = null, mediaB = null, ultimo = null, contagem = 0, mostrado = null, timer = null;
+  let media = null, mediaB = null, ultimo = null, contagem = 0, mostrado = null, desde = 0, timer = null;
   const hist = [];
   const passo = () => {
     const r = Detector.croma();
@@ -457,15 +471,21 @@ async function descobrirAoVivo(area) {
     media = media ? media.map((v, i) => 0.6 * v + 0.4 * r.croma[i]) : Array.from(r.croma);
     mediaB = mediaB ? mediaB.map((v, i) => 0.6 * v + 0.4 * b[i]) : Array.from(b);
     const s = Descobrir.pontuar(media, mediaB), M = Descobrir.moldes();
+    for (let j = 0; j < s.length; j++) if (M[j].q.length > 1) s[j] -= TETRADE_AO_VIVO;
     let k = 0; for (let j = 1; j < s.length; j++) if (s[j] > s[k]) k = j;
+    const km = mostrado ? M.findIndex(m => m.nome === mostrado) : -1;
+    if (km >= 0 && s[k] - s[km] < MARGEM_AO_VIVO) k = km;
     // parecido de verdade com o molde (sem contar o baixo)? senão, é ruído ou um acorde que o app não conhece
     const c = normalizarCentrado(media); let parecido = 0; for (let i = 0; i < 12; i++) parecido += c[i] * M[k].v[i];
     const nome = parecido > LIMIAR_AO_VIVO ? M[k].nome : null;
     contagem = nome === ultimo ? contagem + 1 : 1; ultimo = nome;
-    if (nome && contagem >= 3 && nome !== mostrado) {             // 3 leituras iguais (~0,4 s) antes de trocar
-      mostrado = nome;
+    if (nome && contagem >= LEITURAS_AO_VIVO && nome !== mostrado) {
+      // o acorde anterior ficou menos de 1 s na tela? era só a passagem de um acorde para o outro: sai do histórico
+      if (mostrado && performance.now() - desde < 1000 && hist.at(-1) === mostrado) hist.pop();
+      mostrado = nome; desde = performance.now();
       $('#ds-ac').textContent = nome;
-      hist.push(nome); if (hist.length > 12) hist.shift();
+      if (hist.at(-1) !== nome) hist.push(nome);
+      if (hist.length > 12) hist.shift();
       $('#ds-hist').innerHTML = hist.map(a => `<span class="chip-acorde">${esc(a)}</span>`).join('');
       vibrar(6);
     }
@@ -474,7 +494,7 @@ async function descobrirAoVivo(area) {
   timer = setInterval(passo, 120);
   ativos.add('descobrir');
   const parar = () => { clearInterval(timer); timer = null; ativos.delete('descobrir'); };
-  area.querySelector('#ds-parar').addEventListener('click', () => { parar(); area.innerHTML = hist.length ? `<p class="sub">Acordes que apareceram: <b>${hist.map(esc).join(', ')}</b></p>` : ''; });
+  area.querySelector('#ds-parar').addEventListener('click', () => { parar(); area.innerHTML = hist.length ? `<p class="sub">Acordes que apareceram: <b>${[...new Set(hist)].map(esc).join(', ')}</b></p>` : ''; });
   return parar;
 }
 async function descobrirArquivo(area, arquivo) {

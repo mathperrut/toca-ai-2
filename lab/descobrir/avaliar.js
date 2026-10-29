@@ -88,11 +88,13 @@ const partes = nome => { const m = nome.match(/^([A-G][#b]?)(.*)$/); return { pc
   }
   const res = { dados: 'GuitarSet comp (CC BY 4.0)', arquivos: arquivos.length, quadros: arquivos.reduce((t, a) => t + a.verdade.filter(Boolean).length, 0), testes: [] };
   // como era antes: molde sem harmônicos (o baixo antigo, pela energia, era ainda pior no banco de testes local)
-  res.antes = avaliar({ nHarm: 1, baixo: 0, tetrade: 0.04 });
+  res.antes = avaliar({ nHarm: 1, baixo: 0, tetrade: 0.04 }, { porJogador: true });
+  res.antes_troca_1_2 = avaliar({ nHarm: 1, baixo: 0, tetrade: 0.04, troca: 1.2 });
   console.log('antes (sem harmônicos, sem baixo):', JSON.stringify(res.antes));
   // 1ª rodada (out/2026): harm 0.6-0.9, nHarm 4 e 8, baixo 0-0.2, tétrade 0.03 e 0.06 -> o melhor foi harm 0.9, nHarm 4, baixo 0.1, troca 3.
-  // 2ª rodada: refino em volta disso, com troca 3 e tom 0.6 fixos
-  for (const harm of [0.8, 0.9, 1.0]) for (const nHarm of [3, 4, 5]) for (const baixo of [0.05, 0.1]) for (const tetrade of [0.03]) {
+  // 2ª rodada: refino em volta disso (harm 0.8-1, nHarm 3-5, troca 3-8) -> harm 0.9, nHarm 3, baixo 0.1; troca 5 (8 ganha só 0,2 ponto
+  // e demora mais para trocar). Esse virou o padrão do app. A grade só roda com GRADE=1; sem isso, mede só o padrão do app.
+  if (process.env.GRADE === '1') for (const harm of [0.8, 0.9, 1.0]) for (const nHarm of [3, 4, 5]) for (const baixo of [0.05, 0.1]) for (const tetrade of [0.03]) {
     const r = avaliar({ harm, nHarm, baixo, tetrade, troca: 3, tom: 0.6 });
     res.testes.push(r);
     console.log(JSON.stringify(r));
@@ -103,9 +105,9 @@ const partes = nome => { const m = nome.match(/^([A-G][#b]?)(.*)$/); return { pc
   res.ajuste_fino = [];
   for (const base of res.testes.slice(0, 3)) for (const troca of [3, 4, 5, 6, 8]) for (const tom of [0.6, 1]) res.ajuste_fino.push(avaliar({ ...base.ajuste, troca, tom }));
   res.ajuste_fino.sort((a, b) => nota(b) - nota(a));
-  res.melhor = avaliar(res.ajuste_fino[0].ajuste, { porJogador: true, confusao: true });
+  if (res.ajuste_fino.length) res.melhor = avaliar(res.ajuste_fino[0].ajuste, { porJogador: true, confusao: true });
   res.padrao_do_app = avaliar({}, { porJogador: true, confusao: true });
-  console.log('MELHOR:', JSON.stringify(res.melhor));
+  if (res.melhor) console.log('MELHOR:', JSON.stringify(res.melhor));
   console.log('PADRÃO DO APP:', JSON.stringify(res.padrao_do_app));
   fs.mkdirSync(SAIDA, { recursive: true });
   fs.writeFileSync(path.join(SAIDA, 'descobrir.json'), JSON.stringify(res, null, 1));
