@@ -74,7 +74,7 @@ function novoEstado() {
     tons: {}, capoFixo: {}, calibracao: {}, facilMusica: {},
     cfg: { bpm: 80, sens: 5, latencia: null, violao: 'classico', modo: 'espera', vel: 60, ritmo: 'acorde', facil: true, temCapo: false,
       metronomo: false, cordaGraveEmCima: false, tema: 'auto', vibrar: true,
-      junto: 'banda', mix: { violao: 0.85, batida: 0.8, baixo: 0.85, teclado: 0.6, gravacao: 1 }, fone: false, repetir: false, fonteTudo: 'youtube', nivel: null }
+      junto: 'banda', mix: { violao: 0.85, batida: 0.8, baixo: 0.85, teclado: 0.6, gravacao: 1 }, fone: false, repetir: false, fonteTudo: 'youtube', nivel: null, voz: 'feminina' }
   };
 }
 let S = novoEstado();
@@ -229,7 +229,7 @@ function abrirJanela(titulo, html, aoFechar) {
 function fecharJanela() {
   if (limparJanela) { const f = limparJanela; limparJanela = null; try { f(); } catch (e) {} }
   Som.pararTudo();
-  $$('#janela video').forEach(v => { try { v.pause(); } catch (e) {} });
+  $$('#janela video, #janela audio').forEach(v => { try { v.pause(); } catch (e) {} });
   $('#janela').hidden = true;
   if (!Jogo.atual) document.body.classList.remove('travado');
 }
@@ -884,6 +884,10 @@ function abrirAjustes() {
         <div class="linha-op"><span>Ensinar o meu violão<small id="aj-calib">${Object.keys(S.calibracao || {}).length ? `${Object.keys(S.calibracao).length} acordes aprendidos` : 'o microfone acerta mais quando conhece o som do seu violão'}</small></span><button class="btn mini" id="aj-calibvio">Ensinar</button></div>
         <p class="sub" id="aj-msg"></p>
       </section>
+      <section class="mu-bloco"><h3>Voz do instrutor</h3>
+        <p class="sub">A voz que explica nos vídeos. Dá para trocar também embaixo de cada vídeo.</p>
+        <div class="modos vozes" role="radiogroup" aria-label="Voz do instrutor">${Object.entries(VOZES_INSTRUTOR).map(([k, v]) => `<div class="voz-op"><button type="button" role="radio" class="modo" aria-checked="${vozAtual() === k}" data-voz-aj="${k}"><b>${esc(v.nome)}</b><small>${esc(v.desc)}</small></button><button type="button" class="btn mini" data-amostra="${k}" aria-label="Ouvir a voz ${esc(v.nome.toLowerCase())}">${IC.som} Ouvir</button></div>`).join('')}</div>
+      </section>
       <section class="mu-bloco"><h3>Aparência</h3>
         <div class="segmentado" id="aj-tema">${[['auto', 'Automático'], ['claro', 'Claro'], ['escuro', 'Escuro']].map(([k, n]) => `<button type="button" aria-pressed="${(S.cfg.tema || 'auto') === k}" data-tema="${k}">${n}</button>`).join('')}</div>
       </section>
@@ -892,7 +896,7 @@ function abrirAjustes() {
         <div class="linha-botoes"><button class="btn mini" id="aj-boas">Refazer as boas-vindas</button></div>
       </section>
       <section class="mu-bloco creditos"><h3>Créditos</h3>
-        <p class="sub">Sons de violão gravados: University of Iowa Electronic Music Studios e Freesound (quartertone), pela coleção tonejs-instruments (CC BY 3.0). Banda: percussão e piano da Versilian Community Sample Library (CC0); baixo (Karoryfer) e harmônio usado como sanfona (Freesound, donyaquick) pela tonejs-instruments (CC BY 3.0). Fonte Jost (OFL). Narração dos vídeos: voz sintética "faber" do Piper (rhasspy/piper-voices). Cifras: Cifra Club (só os acordes, sem letra). Gravações: player oficial do YouTube.</p>
+        <p class="sub">Sons de violão gravados: University of Iowa Electronic Music Studios e Freesound (quartertone), pela coleção tonejs-instruments (CC BY 3.0). Banda: percussão e piano da Versilian Community Sample Library (CC0); baixo (Karoryfer) e harmônio usado como sanfona (Freesound, donyaquick) pela tonejs-instruments (CC BY 3.0). Fonte Jost (OFL). Vozes do instrutor: modelo Kokoro-82M (Apache 2.0, hexgrad), vozes Dora, Alex e Santa, geradas com kokoro-onnx (MIT). Cifras: Cifra Club (só os acordes, sem letra). Gravações: player oficial do YouTube.</p>
       </section>
     </div>`, () => { offNivel?.(); });
   $('#janela').classList.add('cheia');
@@ -910,6 +914,12 @@ function abrirAjustes() {
   $$('#aj-tema [data-tema]').forEach(b => b.addEventListener('click', () => { S.cfg.tema = b.dataset.tema; Store.salvar(); aplicarTema(); $$('#aj-tema [data-tema]').forEach(x => x.setAttribute('aria-pressed', x === b)); }));
   $('#aj-boas').addEventListener('click', () => { S.onb = false; fecharJanela(); verificarBoasVindas(); });
   $('#aj-calibvio').addEventListener('click', () => abrirCalibracao());
+  $$('[data-voz-aj]').forEach(b => b.addEventListener('click', () => {
+    S.cfg.voz = b.dataset.vozAj; Store.salvar();
+    $$('[data-voz-aj]').forEach(x => x.setAttribute('aria-checked', x === b));
+    ouvirAmostraVoz(S.cfg.voz);
+  }));
+  $$('[data-amostra]').forEach(b => b.addEventListener('click', () => ouvirAmostraVoz(b.dataset.amostra)));
   $('#aj-calibrar').addEventListener('click', async () => {
     try { await Detector.ligar(); } catch (e) { $('#aj-msg').textContent = msgSemMicrofone(e); return; }
     if (!offNivel) offNivel = Detector.aoNivel(e => { const n = $('#aj-nivel'); if (n) n.style.transform = `scaleX(${Math.min(1, Math.sqrt(e) * 4)})`; });

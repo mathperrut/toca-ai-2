@@ -436,7 +436,7 @@ const APOSTILAS = [
   },
   /* ===== Iniciante ===== */
   {
-    id: 'cifra', nivel: 'iniciante', titulo: 'A cifra por dentro', resumo: 'Por que cada acorde tem uma letra, e como ler qualquer cifra: m, 7, 7M, 9, #, b, ° e a barra.', min: 8,
+    id: 'cifra', nivel: 'iniciante', titulo: 'A cifra por dentro', resumo: 'Por que cada acorde tem uma letra, e como ler qualquer cifra: m, 7, 7M, 9, #, b, ° e a barra.', video: 'cifra', min: 8,
     secoes: [
       { titulo: 'Sete notas, sete letras', visual: 'letras', html: `<p>A música que ouvimos usa 7 notas naturais: <b>Dó, Ré, Mi, Fá, Sol, Lá, Si</b>. A cifra troca cada nome por uma letra: <b>C D E F G A B</b>.</p>
         <p>A letra do acorde é a sua <b>fundamental</b>, a nota que dá o nome e serve de chão para as outras. O acorde <b>C</b> é construído em cima do Dó; o <b>A</b>, em cima do Lá.</p>` },
@@ -489,7 +489,7 @@ const APOSTILAS = [
     ]
   },
   {
-    id: 'pestana', nivel: 'intermediario', titulo: 'A pestana sem dor', resumo: 'Como fazer o F e o Bm soarem limpos, e como um único desenho vira 12 acordes.', min: 6,
+    id: 'pestana', nivel: 'intermediario', titulo: 'A pestana sem dor', resumo: 'Como fazer o F e o Bm soarem limpos, e como um único desenho vira 12 acordes.', video: 'pestana', min: 6,
     secoes: [
       { titulo: 'O que é a pestana', visual: 'pestanaF', html: `<p>Na pestana o <b>dedo 1 deita</b> sobre várias cordas na mesma casa, como um capotraste feito com o dedo. Os outros dedos montam um desenho conhecido logo à frente: no <b>F</b> é o desenho do <b>E</b>; no <b>Bm</b>, o do <b>Am</b>.</p>` },
       { titulo: 'Passo a passo', html: `<ol><li>Use a <b>lateral</b> do dedo 1, a parte mais dura, e não a parte mole da frente.</li>
@@ -547,7 +547,7 @@ const APOSTILAS = [
   },
   /* ===== Avançado ===== */
   {
-    id: 'escalas', nivel: 'avancado', titulo: 'Escalas e pentatônica', resumo: 'A escala maior, a menor natural e a pentatônica: o mapa para solar e improvisar.', min: 7,
+    id: 'escalas', nivel: 'avancado', titulo: 'Escalas e pentatônica', resumo: 'A escala maior, a menor natural e a pentatônica: o mapa para solar e improvisar.', video: 'pentatonica', min: 7,
     secoes: [
       { titulo: 'A escala maior', visual: 'escalaMaior', html: `<p>A escala maior tem 7 notas separadas por tons (T, 2 casas) e semitons (S, 1 casa) nesta ordem: <b>T T S T T T S</b>. Começando no Dó: C D E F G A B C. Com a mesma fórmula, começando em qualquer nota, você monta a escala maior daquele tom.</p>` },
       { titulo: 'A menor natural', html: `<p>Comece a escala de Dó pelo Lá: A B C D E F G A. É a <b>escala menor natural</b> de Lá, com a fórmula <b>T S T T S T T</b>. Mesmas notas, outro ponto de partida, outro clima.</p>` },
@@ -651,31 +651,109 @@ const APOSTILAS = [
 ];
 
 /* ---------- Mini vídeos ----------
-   Vídeos curtos (30 a 50 s) com narração e legenda, feitos para o app.
-   Ficam na pasta videos/. */
+   Vídeos curtos (30 a 60 s) feitos para o app, na pasta videos/.
+   O vídeo traz as imagens e o violão; a voz do instrutor fica num arquivo
+   separado para cada voz (videos/vozes/<voz>/<vídeo>.webm), alinhado com o
+   vídeo. O app toca os dois juntos, então dá para trocar a voz a qualquer hora. */
 const VIDEOS = {
-  partes: { titulo: 'As partes do violão', arquivo: 'videos/partes.mp4' },
-  cordas: { titulo: 'As 6 cordas', arquivo: 'videos/cordas.mp4' },
-  afinar: { titulo: 'Como afinar', arquivo: 'videos/afinar.mp4' },
-  postura: { titulo: 'Postura e mãos', arquivo: 'videos/postura.mp4' },
-  diagrama: { titulo: 'Como ler um acorde', arquivo: 'videos/diagrama.mp4' },
-  batida: { titulo: 'A batida', arquivo: 'videos/batida.mp4' },
-  tab: { titulo: 'Como ler tablatura', arquivo: 'videos/tab.mp4' },
-  jogo: { titulo: 'Como funciona o jogo', arquivo: 'videos/jogo.mp4' },
-  samba: { titulo: 'Ritmos brasileiros', arquivo: 'videos/samba.mp4' },
-  estudar: { titulo: 'Como estudar', arquivo: 'videos/estudar.mp4' }
+  partes: { titulo: 'As partes do violão', arquivo: 'videos/partes.mp4', nivel: 'iniciante' },
+  cordas: { titulo: 'As 6 cordas', arquivo: 'videos/cordas.mp4', nivel: 'iniciante' },
+  afinar: { titulo: 'Como afinar', arquivo: 'videos/afinar.mp4', nivel: 'iniciante' },
+  postura: { titulo: 'Postura e mãos', arquivo: 'videos/postura.mp4', nivel: 'iniciante' },
+  diagrama: { titulo: 'Como ler um acorde', arquivo: 'videos/diagrama.mp4', nivel: 'iniciante' },
+  batida: { titulo: 'A batida', arquivo: 'videos/batida.mp4', nivel: 'iniciante' },
+  tab: { titulo: 'Como ler tablatura', arquivo: 'videos/tab.mp4', nivel: 'iniciante' },
+  jogo: { titulo: 'Como funciona o jogo', arquivo: 'videos/jogo.mp4', nivel: 'iniciante' },
+  cifra: { titulo: 'A cifra', arquivo: 'videos/cifra.mp4', nivel: 'iniciante' },
+  estudar: { titulo: 'Como estudar', arquivo: 'videos/estudar.mp4', nivel: 'iniciante' },
+  samba: { titulo: 'Ritmos brasileiros', arquivo: 'videos/samba.mp4', nivel: 'intermediario' },
+  pestana: { titulo: 'A pestana', arquivo: 'videos/pestana.mp4', nivel: 'intermediario' },
+  pentatonica: { titulo: 'A pentatônica', arquivo: 'videos/pentatonica.mp4', nivel: 'avancado' }
 };
+
+/* Vozes do instrutor (geradas com o Kokoro, um modelo de voz aberto) */
+const VOZES_INSTRUTOR = {
+  feminina: { nome: 'Feminina', desc: 'Voz de mulher, clara e calma' },
+  masculina: { nome: 'Masculina', desc: 'Voz de homem, tom médio' },
+  grave: { nome: 'Grave', desc: 'Voz de homem bem grave' },
+  fina: { nome: 'Fina', desc: 'Voz de mulher mais aguda' }
+};
+const vozAtual = () => (VOZES_INSTRUTOR[S.cfg.voz] ? S.cfg.voz : 'feminina');
+const arquivoDaVoz = (voz, id) => `videos/vozes/${voz}/${id}.webm`;
+function seletorVoz(classe = '') {
+  return `<div class="segmentado ${classe}" role="group" aria-label="Voz do instrutor">${Object.entries(VOZES_INSTRUTOR).map(([k, v]) => `<button type="button" data-voz="${k}" aria-pressed="${vozAtual() === k}">${v.nome}</button>`).join('')}</div>`;
+}
 
 function videoHTML(id, { auto = false } = {}) {
   const v = VIDEOS[id];
   if (!v) return '';
-  return `<figure class="video"><video src="${v.arquivo}" poster="${v.arquivo.replace('.mp4', '.jpg')}" controls playsinline preload="none" ${auto ? 'autoplay' : ''}></video><figcaption>${esc(v.titulo)}</figcaption></figure>`;
+  return `<figure class="video" data-video-id="${id}"><video src="${v.arquivo}" poster="${v.arquivo.replace('.mp4', '.jpg')}" controls playsinline preload="none" ${auto ? 'autoplay' : ''}></video>
+    <audio preload="none" data-voz-atual="${vozAtual()}" src="${arquivoDaVoz(vozAtual(), id)}"></audio>
+    <figcaption><span>${esc(v.titulo)}</span><span class="vd-voz">Voz: ${seletorVoz('mini')}</span></figcaption></figure>`;
+}
+/* A narração é um arquivo pequeno: o app o carrega inteiro na memória (um "blob").
+   Assim dá para pular para qualquer ponto na hora, mesmo onde o servidor não
+   entrega pedaços do arquivo (é o que permite avançar o vídeo e trocar de voz no meio). */
+const _vozNaMemoria = new Map();
+function carregarVoz(voz, id) {
+  const url = arquivoDaVoz(voz, id);
+  if (!_vozNaMemoria.has(url)) {
+    _vozNaMemoria.set(url, fetch(url).then(r => (r.ok ? r.blob() : Promise.reject(r.status))).then(b => URL.createObjectURL(b)).catch(() => { _vozNaMemoria.delete(url); return url; }));
+  }
+  return _vozNaMemoria.get(url);
+}
+/* Liga a voz ao vídeo: play, pausa, avançar, velocidade e volume do vídeo valem para a voz.
+   A cada atualização do vídeo a voz é conferida e, se escorregar mais de 0,2 s, volta para o lugar. */
+function ligarVideos(raiz) {
+  raiz.querySelectorAll('figure.video:not([data-ligado])').forEach(fig => {
+    fig.dataset.ligado = '1';
+    const v = fig.querySelector('video'), a = fig.querySelector('audio'), id = fig.dataset.videoId;
+    if (!v || !a) return;
+    // troca o arquivo da voz pelo que está na memória (e, se o vídeo já está tocando, continua do mesmo ponto)
+    const usarVoz = voz => {
+      a.dataset.vozAtual = voz;
+      return carregarVoz(voz, id).then(u => {
+        if (a.dataset.vozAtual !== voz || a.src === u) return;
+        const tocando = !v.paused;
+        a.pause(); a.src = u; a.load();
+        if (tocando) tocar(); else irPara(v.currentTime);
+      });
+    };
+    const irPara = t => {
+      if (a.readyState >= 1) { try { a.currentTime = t; } catch (e) {} }
+      else a.addEventListener('loadedmetadata', () => { try { a.currentTime = v.currentTime; } catch (e) {} }, { once: true });
+    };
+    const tocar = () => { a.playbackRate = v.playbackRate; a.volume = v.volume; a.muted = v.muted; if (a.readyState < 1) a.preload = 'auto'; irPara(v.currentTime); a.play().catch(() => {}); };
+    v.addEventListener('play', tocar);
+    v.addEventListener('playing', () => { if (a.paused) tocar(); });
+    v.addEventListener('pause', () => a.pause());
+    v.addEventListener('waiting', () => a.pause());
+    v.addEventListener('ended', () => a.pause());
+    v.addEventListener('seeking', () => irPara(v.currentTime));
+    v.addEventListener('ratechange', () => { a.playbackRate = v.playbackRate; });
+    v.addEventListener('volumechange', () => { a.volume = v.volume; a.muted = v.muted; });
+    v.addEventListener('timeupdate', () => { if (!v.paused && a.readyState >= 1 && Math.abs(a.currentTime - v.currentTime) > 0.2) irPara(v.currentTime); });
+    fig.querySelectorAll('button[data-voz]').forEach(b => b.addEventListener('click', () => {
+      S.cfg.voz = b.dataset.voz; Store.salvar();
+      document.querySelectorAll('button[data-voz]').forEach(x => x.setAttribute('aria-pressed', x.dataset.voz === S.cfg.voz));
+      usarVoz(vozAtual());
+    }));
+    usarVoz(vozAtual());
+  });
+}
+// Amostra de uma voz (nos Ajustes)
+let amostraVoz = null;
+function ouvirAmostraVoz(voz) {
+  try { amostraVoz?.pause(); } catch (e) {}
+  amostraVoz = new Audio(arquivoDaVoz(voz, 'amostra'));
+  amostraVoz.play().catch(() => {});
 }
 function abrirVideo(id) {
   const v = VIDEOS[id];
   if (!v) return;
-  abrirJanela(v.titulo, videoHTML(id, { auto: true }));
+  abrirJanela(v.titulo, videoHTML(id, { auto: true }), () => { $('#janela-corpo')?.querySelectorAll('audio').forEach(a => a.pause()); });
   $('#janela').classList.add('janela-video');
+  ligarVideos($('#janela-corpo'));
 }
 
 /* ---------- Leitor de apostila ---------- */
@@ -698,6 +776,7 @@ function abrirApostila(id) {
   $('#janela').classList.add('cheia');
   const raiz = $('#janela-corpo');
   ligarSons(raiz);
+  ligarVideos(raiz);
   montarQuiz($('#ap-quiz'), a.quiz, acertos => {
     S.apostilas = S.apostilas || {};
     const antes = S.apostilas[a.id] || 0;

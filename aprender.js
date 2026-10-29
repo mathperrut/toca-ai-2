@@ -423,7 +423,8 @@ const PASSOS = {
   },
   video(area, p) {
     area.innerHTML = `<div class="ps-video">${videoHTML(p.video)}</div>`;
-    return () => area.querySelector('video')?.pause();
+    ligarVideos(area);
+    return () => area.querySelectorAll('video, audio').forEach(m => m.pause());
   },
   acorde(area, p, { cont }) {
     ensinarAcorde(area, p.acorde, { aoCompletar: () => { cont.textContent = 'Já sei, continuar'; } });
@@ -701,9 +702,9 @@ function renderApostilas(c) {
   const lista = APOSTILAS.filter(a => (a.nivel || 'iniciante') === nivel);
   const info = id => { const as = APOSTILAS.filter(a => (a.nivel || 'iniciante') === id); const f = as.filter(a => S.apostilas?.[a.id]).length; return `${f} de ${as.length} lidas`; };
   c.innerHTML = `
-    ${nivel === 'iniciante' ? `<section class="secao">
+    ${Object.values(VIDEOS).some(v => v.nivel === nivel) ? `<section class="secao">
       <div class="secao-topo"><h3>Mini vídeos</h3></div>
-      <div class="videos">${Object.entries(VIDEOS).map(([id, v]) => `<button class="video-card" data-video="${id}"><span class="vc-capa"><img src="${v.arquivo.replace('.mp4', '.jpg')}" alt="" loading="lazy"><span class="vc-play" aria-hidden="true">${IC.play}</span></span><b>${esc(v.titulo)}</b></button>`).join('')}</div>
+      <div class="videos">${Object.entries(VIDEOS).filter(([, v]) => v.nivel === nivel).map(([id, v]) => `<button class="video-card" data-video="${id}"><span class="vc-capa"><img src="${v.arquivo.replace('.mp4', '.jpg')}" alt="" loading="lazy"><span class="vc-play" aria-hidden="true">${IC.play}</span></span><b>${esc(v.titulo)}</b></button>`).join('')}</div>
     </section>` : ''}
     ${seletorNivel(nivel, info)}
     <section class="secao">

@@ -374,6 +374,7 @@ const CURSO = [
     id: 'u9', nivel: 'iniciante', titulo: 'A cifra: o nome de cada acorde', resumo: 'Por que cada acorde tem uma letra, e o que querem dizer o m, os números, o # e a barra.', musica: 'chove-chuva',
     licoes: [
       { id: 'u9l1', titulo: 'Por que letras?', min: 4, passos: [
+        { t: 'video', video: 'cifra' },
         { t: 'texto', titulo: 'Sete notas, sete letras', visual: 'letras',
           texto: 'A música usa 7 notas: <b>Dó, Ré, Mi, Fá, Sol, Lá, Si</b>. Na cifra cada uma vira uma letra: <b>C D E F G A B</b>. A letra do acorde é a nota principal dele, a <b>fundamental</b>: o acorde C é construído em cima do Dó. Toque nas letras para ouvir.' },
         { t: 'texto', titulo: 'Por que o A é o Lá?', visual: null,
@@ -417,6 +418,7 @@ const CURSO = [
     id: 'i1', nivel: 'intermediario', titulo: 'A pestana', resumo: 'O dedo 1 deitado: F e Bm soando limpos, e um desenho que vira 12 acordes.', musica: 'anunciacao',
     licoes: [
       { id: 'i1l1', titulo: 'Como fazer a pestana', min: 5, passos: [
+        { t: 'video', video: 'pestana' },
         { t: 'texto', titulo: 'O dedo 1 deitado', visual: 'pestanaF',
           texto: 'Na pestana o <b>dedo 1</b> deita sobre várias cordas na mesma casa, como um capotraste. Use a <b>lateral</b> do dedo (a parte mais dura), bem colada no traste, e deixe o peso do braço ajudar em vez de esmagar com o polegar.' },
         { t: 'texto', titulo: 'Teste corda por corda', visual: null,
@@ -603,6 +605,7 @@ const CURSO = [
         { t: 'quiz', pergunta: 'Qual é a fórmula da escala maior?', opcoes: ['T T S T T T S', 'T S T T S T T', 'T T T S T T S'], certa: 0, explica: 'Tom, tom, semitom, tom, tom, tom, semitom.' }
       ] },
       { id: 'a1l2', titulo: 'A pentatônica', min: 5, passos: [
+        { t: 'video', video: 'pentatonica' },
         { t: 'texto', titulo: 'Cinco notas que não erram', visual: 'penta',
           texto: 'A <b>pentatônica menor</b> tem só 5 notas, e quase nenhuma soa errada sobre os acordes do tom. A de Lá menor: <b>A C D E G</b>. No braço ela forma uma caixa a partir da casa 5, com duas notas em cada corda.' },
         { t: 'notas', melodia: 'penta-am', titulo: 'Pentatônica de Lá menor (posição aberta)' },

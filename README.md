@@ -19,8 +19,15 @@ Segunda versão do [Toca Aí](https://github.com/mathperrut/toca-a-). A base é 
 | 2. Tocar junto e mudar o tom | Violão + batida, violão + batida + banda, tudo (gravação original); volume de cada parte; tom −6 a +6; repetir um trecho | **Pronta** |
 | 3. Microfone mais preciso | Medir a precisão com gravações reais; jeito novo de ouvir as notas; ensinar o app a ouvir o seu violão | **Pronta** |
 | 4. Níveis e conteúdo | Iniciante, Intermediário e Avançado no curso, nas apostilas e nas músicas; cifragem, teoria, técnica, ritmos, treino de ouvido | **Pronta** |
-| 5. Vozes do instrutor | Vozes gravadas no app (feminina, masculina, grave e fina) | Planejada |
+| 5. Vozes do instrutor | Quatro vozes nos vídeos (feminina, masculina, grave e fina) e 3 vídeos novos | **Pronta** |
 | 6. Recursos extras | Repetir trecho com velocidade subindo, descobrir acordes ouvindo, treino de ouvido, gravar você tocando | Planejada |
+
+### O que mudou na Fase 5
+- **Quatro vozes do instrutor:** feminina, masculina, grave e fina. Escolha em **Ajustes** (cada uma tem o botão "Ouvir") ou embaixo de qualquer vídeo, até no meio dele: a voz troca e continua do mesmo ponto.
+- **Três vídeos novos:** *A cifra* (Iniciante), *A pestana* (Intermediário) e *A pentatônica* (Avançado). Eles aparecem nas lições, nas apostilas e na aba Apostilas, cada um no seu nível.
+- **Como as vozes foram feitas:** com o **Kokoro-82M**, um modelo de voz aberto (Apache 2.0) que roda no computador, sem serviço pago. Feminina = voz *Dora*; masculina = *Alex*; grave = *Santa* com o tom 4 semitons abaixo; fina = *Dora* 4 semitons acima. O tom muda com o *rubberband* preservando os **formantes** (o "formato" do som da boca), para a voz não virar robô nem desenho animado. Altura média medida: feminina 180 Hz, masculina 137 Hz, grave 109 Hz, fina 228 Hz.
+- **Dá para entender?** Cada fala foi transcrita por uma IA de reconhecimento de fala (Whisper) e comparada com o roteiro. Erro de palavras: feminina 7,6%, masculina 7,4%, grave 9,1%, fina 8,8%. Quase todos os "erros" são listas de notas ("Mi, Lá, Ré, Sol"), que a IA junta em uma palavra só.
+- **Vídeo e voz separados:** o vídeo tem só o violão, e a voz é um arquivo à parte que toca junto. Pausar, avançar, mudar a velocidade ou o volume do vídeo vale para a voz; se ela escorregar mais de 0,2 s, volta para o lugar. A narração é pequena (cerca de 30 KB por vídeo), então o app a carrega inteira na memória: assim dá para pular para qualquer ponto na hora. Os 13 vídeos com as 4 vozes ocupam 10,5 MB (antes, 10 vídeos com uma voz só ocupavam 6,1 MB).
 
 ### O que mudou na Fase 4
 - **Três níveis** no curso, nas apostilas e nas músicas: **Iniciante** (9 unidades, 35 lições), **Intermediário** (6 unidades, 24 lições) e **Avançado** (6 unidades, 22 lições). A tela de boas-vindas pergunta o seu nível e começa no lugar certo.
@@ -139,7 +146,7 @@ Mais 8 do **Jorge Ben Jor** (Taj Mahal, Mas Que Nada, W/Brasil, País Tropical..
 ### Curso, apostilas e vídeos
 - **Curso em 3 níveis:** 21 unidades e 81 lições curtas (uma ideia por tela). No Iniciante, cada unidade termina numa música que usa só o que você aprendeu: Em → Em e D → Em, C e D → G e baião → Am e batida pop → A, E e tablatura → sétimas e Jorge Ben → a cifra. Depois vêm o Intermediário e o Avançado (veja a Fase 4).
 - **Apostilas (20, por nível):** como o violão funciona, afinar, postura, ler diagrama e tablatura, a cifra por dentro, como os acordes se formam, ritmo e como estudar (Iniciante); notas no braço, ritmos brasileiros, intervalos e tríades, pestana, dedilhados, campo harmônico e transposição (Intermediário); escalas e pentatônica, harmonia, acordes da bossa nova, técnicas, tirar música de ouvido, samba e choro (Avançado). Cada uma tem analogias, "pegadinhas" e um teste.
-- **Mini vídeos (10):** de 25 a 57 segundos, com narração e o som do violão: partes do violão, cordas, afinar, postura, diagrama, batida, tablatura, como jogar, samba e rotina de estudo.
+- **Mini vídeos (13):** de 30 a 60 segundos, com narração e o som do violão: partes do violão, cordas, afinar, postura, diagrama, batida, tablatura, como jogar, a cifra, rotina de estudo, ritmos brasileiros, a pestana e a pentatônica. A voz do instrutor pode ser feminina, masculina, grave ou fina.
 
 ### Som de violão gravado
 - Duas coleções de **notas gravadas de violões reais**: **clássico (náilon)** e **acústico**, escolhidas em Ajustes.
@@ -170,7 +177,7 @@ Afinador corda por corda (marca cada corda afinada) e metrônomo com luzes.
 
 **Som** (`som.js`): para cada nota, pega a gravação mais próxima e muda a velocidade um pouquinho para acertar a afinação exata (assim o capotraste soa certo).
 
-**Vídeos** (`videos/`): os quadros foram desenhados em HTML e fotografados com Playwright; a narração é uma voz sintética (Piper) e o violão vem das mesmas notas gravadas do app; o ffmpeg junta tudo.
+**Vídeos** (`videos/`): os quadros foram desenhados em HTML e fotografados com Playwright, e o violão vem das mesmas notas gravadas do app; o ffmpeg junta tudo. A narração fica separada, uma por voz, em `videos/vozes/` (veja a Fase 5).
 
 ---
 
@@ -209,12 +216,12 @@ python treinar.py
 | `jogo.js` | O jogo: desenho das cordas, modos, pontuação, microfone |
 | `cifras.js` | Busca e leitura de cifras, capotraste inteligente, YouTube |
 | `aprender.js` | Curso, lições (com Voltar), professor de acordes, sons que acompanham as imagens, 1 minuto de trocas |
-| `apostilas.js` | Apostilas, quizzes, mini vídeos e os desenhos que tocam (`ligarSons`) |
+| `apostilas.js` | Apostilas, quizzes, mini vídeos com a voz do instrutor (`ligarVideos`) e os desenhos que tocam (`ligarSons`) |
 | `youtube.js`, `gravacao.js` | Player do YouTube, sincronia e tocar junto |
 | `audio-detect.js`, `ia.js` | Microfone (ataque, cromagrama, afinador) e rede neural |
 | `app.js` | Telas, progresso, ajustes, afinador, integração com o Android |
 | `sw.js`, `manifest.webmanifest` | Funcionar offline e instalar como app |
-| `sons/`, `fontes/`, `videos/`, `icones/`, `assets/` | Notas gravadas, fonte, mini vídeos, ícones e tela de abertura |
+| `sons/`, `fontes/`, `videos/`, `icones/`, `assets/` | Notas gravadas, fonte, mini vídeos (a narração de cada voz fica em `videos/vozes/`), ícones e tela de abertura |
 
 ## 6. Limitações
 - Use **fone de ouvido** no modo No tempo: sem ele o microfone também ouve o violão do app.
@@ -225,5 +232,5 @@ python treinar.py
 ## 7. Créditos e direitos
 - **Sons:** violão da University of Iowa Electronic Music Studios e de *quartertone* (Freesound); baixo da Karoryfer Samples e harmônio de *donyaquick* (Freesound), reunidos pelo projeto [tonejs-instruments](https://github.com/nbrosowsky/tonejs-instruments), licença [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Percussão e piano da [Versilian Community Sample Library](https://github.com/sgossner/VCSL) (CC0). Detalhes em `sons/CREDITOS.txt`.
 - **Fonte:** Jost (SIL Open Font License, `fontes/OFL-Jost.txt`).
-- **Narração dos vídeos:** voz "faber" do [Piper](https://github.com/rhasspy/piper).
+- **Vozes do instrutor:** modelo [Kokoro-82M](https://huggingface.co/hexgrad/Kokoro-82M) (Apache 2.0), vozes Dora, Alex e Santa, geradas com [kokoro-onnx](https://github.com/thewh1teagle/kokoro-onnx) (MIT).
 - **Músicas:** o app não traz letras nem gravações. Guarda só a sequência de acordes; as gravações tocam pelo player oficial do YouTube. As melodias inclusas são de domínio público.
