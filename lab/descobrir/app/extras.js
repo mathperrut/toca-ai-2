@@ -182,7 +182,7 @@ const QUALIDADES_DESCOBRIR = [['', [0, 4, 7]], ['m', [0, 3, 7]], ['7', [0, 4, 7,
 const NOMES_DESCOBRIR = ['C', 'C#', 'D', 'Eb', 'E', 'F', 'F#', 'G', 'Ab', 'A', 'Bb', 'B'];
 // Ajustes escolhidos no laboratório (lab/descobrir): harmônicos (força que sobra a cada harmônico e quantos),
 // peso do baixo, desconto das tétrades (só ganham com sobra) e o "custo de trocar" do Viterbi
-const AJUSTE_DESCOBRIR = { harm: 0.9, nHarm: 8, baixo: 0.2, tetrade: 0.03, troca: 1.2, forca: 9, tom: 0.6 };
+const AJUSTE_DESCOBRIR = { harm: 0.9, nHarm: 4, baixo: 0.05, tetrade: 0.03, troca: 3, forca: 9, tom: 0.6 };
 const Descobrir = {
   _moldes: null,
   moldes() {

@@ -59,7 +59,7 @@ const partes = nome => { const m = nome.match(/^([A-G][#b]?)(.*)$/); return { pc
     Object.assign(AJUSTE_DESCOBRIR, PADRAO, aj); Descobrir._moldes = null;
     const M = Descobrir.moldes();
     const z = () => ({ raiz: 0, mm: 0, nmm: 0, ex: 0, nex: 0, nraiz: 0 });
-    const tot = { quadro: z(), viterbi: z() }, jog = {};
+    const tot = { quadro: z(), viterbi: z(), final: z() }, jog = {};
     const Q = ['', 'm', '7', 'm7', '7M'], mat = Q.map(() => Q.map(() => 0));
     const conta = (acc, v, nome) => {
       if (!v) return;
@@ -69,18 +69,19 @@ const partes = nome => { const m = nome.match(/^([A-G][#b]?)(.*)$/); return { pc
       if (v.q !== null) { acc.nex++; if (p && p.pc === v.pc && p.q === v.q) acc.ex++; }
     };
     for (const a of arquivos) {
-      const { caminho } = Descobrir.decidir(a.notas);
+      const { caminho, trechos } = Descobrir.decidir(a.notas);
+      const final = a.notas.map((_, i) => { const t = (i + 0.5) * Descobrir.PASSO; const tr = trechos.find(x => t >= x.t0 && t < x.t1); return tr ? tr.acorde : null; });
       const j = jog[a.jogador] || (jog[a.jogador] = z());
       a.notas.forEach((n, i) => {
         const v = a.verdade[i]; if (!v) return;
         const s = Descobrir.pontuar(n.croma, n.baixo); let k = 0; for (let q = 1; q < s.length; q++) if (s[q] > s[k]) k = q;
-        conta(tot.quadro, v, M[k].nome); conta(tot.viterbi, v, caminho[i]); conta(j, v, caminho[i]);
+        conta(tot.quadro, v, M[k].nome); conta(tot.viterbi, v, caminho[i]); conta(tot.final, v, final[i]); conta(j, v, final[i]);
         if (confusao && v.q !== null && caminho[i]) { const p = partes(caminho[i]); if (p.pc === v.pc) mat[Q.indexOf(v.q)][Q.indexOf(p.q)]++; }
       });
     }
     const pct = (a, b) => +(100 * a / Math.max(1, b)).toFixed(1);
     const fmt = acc => ({ raiz: pct(acc.raiz, acc.nraiz), maior_menor: pct(acc.mm, acc.nmm), exato: pct(acc.ex, acc.nex) });
-    const r = { ajuste: aj, quadro: fmt(tot.quadro), viterbi: fmt(tot.viterbi) };
+    const r = { ajuste: aj, quadro: fmt(tot.quadro), viterbi: fmt(tot.viterbi), final: fmt(tot.final) };
     if (porJogador) r.por_jogador = Object.fromEntries(Object.entries(jog).map(([k, v]) => [k, fmt(v)]));
     if (confusao) r.confusao_tipos = { linhas_real_colunas_app: Q.map(q => q || 'M'), m: mat };
     return r;
@@ -89,16 +90,18 @@ const partes = nome => { const m = nome.match(/^([A-G][#b]?)(.*)$/); return { pc
   // como era antes: molde sem harmônicos (o baixo antigo, pela energia, era ainda pior no banco de testes local)
   res.antes = avaliar({ nHarm: 1, baixo: 0, tetrade: 0.04 });
   console.log('antes (sem harmônicos, sem baixo):', JSON.stringify(res.antes));
-  for (const harm of (process.env.RAPIDO ? [0.9] : [0.6, 0.75, 0.9])) for (const nHarm of (process.env.RAPIDO ? [8] : [4, 8])) for (const baixo of [0, 0.05, 0.1, 0.2]) for (const tetrade of [0.03, 0.06]) {
-    const r = avaliar({ harm, nHarm, baixo, tetrade });
+  // 1ª rodada (out/2026): harm 0.6-0.9, nHarm 4 e 8, baixo 0-0.2, tétrade 0.03 e 0.06 -> o melhor foi harm 0.9, nHarm 4, baixo 0.1, troca 3.
+  // 2ª rodada: refino em volta disso, com troca 3 e tom 0.6 fixos
+  for (const harm of [0.8, 0.9, 1.0]) for (const nHarm of [3, 4, 5]) for (const baixo of [0.05, 0.1]) for (const tetrade of [0.03]) {
+    const r = avaliar({ harm, nHarm, baixo, tetrade, troca: 3, tom: 0.6 });
     res.testes.push(r);
     console.log(JSON.stringify(r));
   }
-  const nota = r => r.viterbi.maior_menor + 0.5 * r.viterbi.exato;
+  const nota = r => r.final.maior_menor + 0.5 * r.final.exato;
   res.testes.sort((a, b) => nota(b) - nota(a));
   // os 3 melhores: troca e tom
   res.ajuste_fino = [];
-  for (const base of res.testes.slice(0, 3)) for (const troca of [0.6, 1.2, 2, 3]) for (const tom of [0, 0.6]) res.ajuste_fino.push(avaliar({ ...base.ajuste, troca, tom }));
+  for (const base of res.testes.slice(0, 3)) for (const troca of [3, 4, 5, 6, 8]) for (const tom of [0.6, 1]) res.ajuste_fino.push(avaliar({ ...base.ajuste, troca, tom }));
   res.ajuste_fino.sort((a, b) => nota(b) - nota(a));
   res.melhor = avaliar(res.ajuste_fino[0].ajuste, { porJogador: true, confusao: true });
   res.padrao_do_app = avaliar({}, { porJogador: true, confusao: true });
