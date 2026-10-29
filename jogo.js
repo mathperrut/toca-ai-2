@@ -729,11 +729,15 @@ const Jogo = (() => {
       // com vídeo, quem sabe recomeçar (voltar o vídeo, mudar a velocidade) é quem abriu o jogo
       if (this.cfg.refazer) { const f = this.cfg.refazer; this.destruir(); return f(novo); }
       const cfg = { ...this.cfg, ...novo };
+      if (novo.treino && cfg.titulo) cfg.titulo = cfg.titulo.replace(/ \(volta \d+\)$/, '') + ` (volta ${novo.treino.volta})`;
       this.destruir();
+      // "Jogar de novo" com "Gravar enquanto toca": grava a nova rodada também
+      if (cfg.gravar && typeof Gravador !== 'undefined' && !Gravador.gravando) Gravador.iniciar().catch(() => {});
       Jogo.abrir(cfg);
     }
     destruir() {
       this.rodando = false;
+      clearInterval(this.timerTreino);
       cancelAnimationFrame(this.raf);
       this.offAtaque?.(); this.offNivel?.();
       document.removeEventListener('keydown', this.tecla);
@@ -776,7 +780,36 @@ const Jogo = (() => {
       ativos.delete('jogo');
       const r = this.resultado();
       this.cfg.aoFim?.(r);
-      this.mostrarResultado(r);
+      if (this.cfg.treino) this.mostrarTreino(r);
+      else this.mostrarResultado(r);
+    }
+    /* Treino de velocidade: depois de cada volta, sobe a velocidade se você tocou bem
+       (75% ou mais; na Prática sempre sobe) e começa a próxima volta sozinho em 3 s. */
+    mostrarTreino(r) {
+      const t = this.cfg.treino, cam = this.$('#jg-camada');
+      const vel = Math.round(r.bpm / r.bpmBase * 100);
+      const passou = r.pct === null || r.pct >= (t.minimo || 75);
+      const fim = passou && vel >= t.ate;
+      // com o YouTube, a próxima velocidade é a próxima que o player tem (t.taxas)
+      const prox = passou ? (t.taxas ? (t.taxas.find(v => v > vel) ?? t.ate) : Math.min(t.ate, vel + t.passo)) : vel;
+      cam.hidden = false;
+      cam.innerHTML = `<div class="jg-menu jg-fim jg-treino">
+        <p class="jg-volta">Treino de velocidade, volta ${t.volta}</p>
+        <h3>${fim ? 'Treino completo!' : passou ? 'Passou! Subindo a velocidade' : 'Quase: mais uma volta nesta velocidade'}</h3>
+        <p class="jg-pct">${r.pct !== null ? `<b>${r.pct}%</b> a ${vel}% da velocidade` : `Você tocou a <b>${vel}%</b> da velocidade`}</p>
+        ${fim ? '<p class="jg-dica">Você chegou na velocidade da música. Agora jogue no modo No tempo para valer pontos.</p>'
+          : `<p class="jg-dica">Próxima volta a <b>${prox}%</b> em <b id="jg-cont">3</b> s</p>`}
+        ${fim ? '<button class="btn primario largo" data-m="denovo">Treinar de novo</button>' : '<button class="btn primario largo" data-m="ja">Começar agora</button>'}
+        <button class="btn largo" data-m="parar">Parar o treino</button>
+      </div>`;
+      const seguir = () => { clearInterval(this.timerTreino); this.recomecar({ bpm: Math.round(r.bpmBase * prox / 100), treino: { ...t, volta: t.volta + 1 } }); };
+      if (!fim) {
+        let n = 3;
+        this.timerTreino = setInterval(() => { n--; const c = cam.querySelector('#jg-cont'); if (c) c.textContent = n; if (n <= 0) seguir(); }, 1000);
+      }
+      cam.querySelector('[data-m="ja"]')?.addEventListener('click', seguir);
+      cam.querySelector('[data-m="denovo"]')?.addEventListener('click', () => this.recomecar({ bpm: Math.round(r.bpmBase * t.de / 100), treino: { ...t, volta: 1 } }));
+      cam.querySelector('[data-m="parar"]').addEventListener('click', () => { clearInterval(this.timerTreino); this.cfg.treino = null; this.mostrarResultado(r); });
     }
     mostrarResultado(r) {
       const cam = this.$('#jg-camada');
@@ -807,9 +840,11 @@ const Jogo = (() => {
         ${r.modo === 'tempo' && r.pct < 45 ? `<button class="btn largo" data-m="espera">Esperar por mim</button>` : ''}
         ${r.modo === 'espera' ? `<button class="btn largo" data-m="tempo">Jogar no tempo</button>` : ''}
         ${r.fracos.length && !this.melodia ? `<button class="btn largo" data-m="treino">Treinar ${esc(r.fracos[0])}</button>` : ''}
+        ${this.cfg.gravar ? '<button class="btn largo" data-m="gravacao">Ouvir a sua gravação</button>' : ''}
         <button class="btn largo sem-borda" data-m="sair">Voltar</button>
       </div>`;
       const ir = (m, f) => cam.querySelector(`[data-m="${m}"]`)?.addEventListener('click', f);
+      ir('gravacao', () => { this.sair(); setTimeout(() => abrirGravador(), 150); });
       ir('denovo', () => this.recomecar());
       ir('rapido', () => this.recomecar({ bpm: Math.round(r.bpmBase * Math.min(1, pctVel / 100 + 0.2)) }));
       ir('espera', () => this.recomecar({ modo: 'espera' }));

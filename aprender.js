@@ -722,9 +722,13 @@ function renderTreinos(c) {
     <button class="treino-card" data-treino="ritmo">${icone('<path d="M4 12h3l2-6 4 12 2-6h5"/>')}<b>Ritmo</b><span>Samba, pagode, bossa, baião e pop.</span></button>
     <button class="treino-card" data-treino="quiz">${icone('<circle cx="12" cy="12" r="9"/><path d="M9.5 9.5a2.5 2.5 0 1 1 3.5 2.3c-.6.3-1 .9-1 1.6M12 17h.01"/>')}<b>Que acorde é este?</b><span>10 perguntas, corrige na hora.</span></button>
     <button class="treino-card" data-melodia="primeiras">${IC.nota}<b>Notas soltas</b><span>As primeiras casas da 1ª e da 2ª corda.</span></button>
+    <button class="treino-card" data-extra="ouvido">${icone('<path d="M7 9a5 5 0 0 1 10 0c0 3-3 4-3 7a3 3 0 0 1-6 0"/><path d="M10 9.5a2 2 0 0 1 4 0"/>')}<b>Treino de ouvido</b><span>Maior ou menor, intervalos, graus e sétima.</span></button>
+    <button class="treino-card" data-extra="descobrir">${icone('<circle cx="11" cy="11" r="7"/><path d="M21 21l-5-5M8.5 11h5M11 8.5v5"/>')}<b>Descobrir acordes</b><span>O app ouve a música e mostra os acordes.</span></button>
+    <button class="treino-card" data-extra="gravar">${icone('<circle cx="12" cy="12" r="8"/><circle cx="12" cy="12" r="3.5" fill="currentColor"/>')}<b>Gravar você tocando</b><span>Grave, ouça e veja o quanto evoluiu.${(S.minhasGravacoes || []).length ? ` ${(S.minhasGravacoes || []).length} gravações.` : ''}</span></button>
   </div>`;
   $$('[data-treino]', c).forEach(b => b.addEventListener('click', () => JOGOS[b.dataset.treino]()));
   $$('[data-melodia]', c).forEach(b => b.addEventListener('click', () => jogarMelodia(b.dataset.melodia)));
+  $$('[data-extra]', c).forEach(b => b.addEventListener('click', () => ({ ouvido: abrirTreinoOuvido, descobrir: abrirDescobrir, gravar: abrirGravador })[b.dataset.extra]()));
 }
 
 // Acordes: os que você sabe e os grupos para aprender

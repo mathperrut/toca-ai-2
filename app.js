@@ -74,7 +74,8 @@ function novoEstado() {
     tons: {}, capoFixo: {}, calibracao: {}, facilMusica: {},
     cfg: { bpm: 80, sens: 5, latencia: null, violao: 'classico', modo: 'espera', vel: 60, ritmo: 'acorde', facil: true, temCapo: false,
       metronomo: false, cordaGraveEmCima: false, tema: 'auto', vibrar: true,
-      junto: 'banda', mix: { violao: 0.85, batida: 0.8, baixo: 0.85, teclado: 0.6, gravacao: 1 }, fone: false, repetir: false, fonteTudo: 'youtube', nivel: null, voz: 'feminina' }
+      junto: 'banda', mix: { violao: 0.85, batida: 0.8, baixo: 0.85, teclado: 0.6, gravacao: 1 }, fone: false, repetir: false, fonteTudo: 'youtube', nivel: null, voz: 'feminina',
+      treino: { ligado: false, de: 60, passo: 5 }, gravarJogo: false }
   };
 }
 let S = novoEstado();
@@ -363,13 +364,14 @@ function renderMusicas() {
       <div class="lista">${MELODIAS.map(me => `<button class="linha-musica" data-melodia="${me.id}"><span class="capa nota" aria-hidden="true"><b>${esc(me.titulo)}</b><i style="--x:20%;--y:70%"></i></span><span class="lm-txt"><b>${esc(me.titulo)}</b><small>${esc(me.origem)}</small></span><span class="lm-dir">${IC.seta}</span></button>`).join('')}</div>
     </section>
     <section class="secao">
-      <div class="secao-topo"><h3>Minhas músicas</h3><div class="linha-botoes"><button class="btn mini" id="colar-cifra">Colar cifra</button><button class="btn mini" id="nova-musica">${IC.mais} Nova</button></div></div>
+      <div class="secao-topo"><h3>Minhas músicas</h3><div class="linha-botoes"><button class="btn mini" id="descobrir">Descobrir de um MP3</button><button class="btn mini" id="colar-cifra">Colar cifra</button><button class="btn mini" id="nova-musica">${IC.mais} Nova</button></div></div>
       ${S.musicas.length ? `<div class="lista">${S.musicas.map(linhaMusica).join('')}</div>` : `<p class="vazio">Busque uma música lá em cima: ela é salva aqui para você treinar depois.</p>`}
     </section>`;
   ligarLinhas(v);
   $$('[data-melodia]', v).forEach(b => b.addEventListener('click', () => jogarMelodia(b.dataset.melodia)));
   $('#busca-form').addEventListener('submit', e => { e.preventDefault(); $('#busca-termo').blur(); buscar($('#busca-termo').value); });
   $('#colar-cifra').addEventListener('click', () => abrirColarCifra());
+  $('#descobrir').addEventListener('click', () => abrirDescobrir());
   $('#nova-musica').addEventListener('click', () => abrirFormMusica());
 }
 
@@ -519,8 +521,18 @@ function abrirMusica(id) {
         <div class="modos" role="radiogroup" aria-label="Modo de jogo">${MODOS.map(([k, n, d]) => `<button type="button" role="radio" class="modo" aria-checked="${S.cfg.modo === k}" data-modo="${k}"><b>${n}</b><small>${d}</small></button>`).join('')}</div>
         <div class="linha-op"><span>Velocidade</span><div class="segmentado" id="mu-vel">${VELS.map(p => `<button type="button" aria-pressed="${S.cfg.vel === p}" data-vel="${p}">${p}%</button>`).join('')}</div></div>
         <div class="linha-op"><span>Mão direita</span><div class="segmentado" id="mu-ritmo">${[['acorde', '1 por acorde'], ['tempos', '1 por tempo'], ['batida', 'Ritmo']].map(([k, n]) => `<button type="button" aria-pressed="${S.cfg.ritmo === k}" data-ritmo="${k}">${n}</button>`).join('')}</div></div>
-        <div class="linha-op"><span>Parte</span><select id="mu-parte"><option value="">Música inteira (${Math.ceil(duracaoMusica(m, m.bpm * (S.cfg.vel / 100)) / 60)} min)</option>${m.secoes.map((s, i) => `<option value="${i}">${esc(s.nome)}${s.repetir > 1 ? ` (${s.repetir}x)` : ''}</option>`).join('')}</select></div>
+        <div class="linha-op"><span>Parte</span><select id="mu-parte"><option value="">Música inteira (${Math.ceil(duracaoMusica(m, m.bpm * (S.cfg.vel / 100)) / 60)} min)</option>${m.secoes.map((s, i) => `<option value="${i}">${esc(s.nome)}${s.repetir > 1 ? ` (${s.repetir}x)` : ''}</option>`).join('')}${m.secoes.length > 2 ? '<option value="faixa">Um trecho: de… até…</option>' : ''}</select></div>
+        <div class="faixa-op" id="mu-faixa" hidden>
+          <label>De<select id="mu-de">${m.secoes.map((s, i) => `<option value="${i}">${i + 1}. ${esc(s.nome)}</option>`).join('')}</select></label>
+          <label>Até<select id="mu-ate">${m.secoes.map((s, i) => `<option value="${i}" ${i === Math.min(1, m.secoes.length - 1) ? 'selected' : ''}>${i + 1}. ${esc(s.nome)}</option>`).join('')}</select></label>
+        </div>
         <label class="alternar"><input type="checkbox" id="mu-repetir" ${S.cfg.repetir ? 'checked' : ''}><span>Repetir o trecho</span><small>a parte escolhida toca 8 vezes seguidas (a música inteira, 2 vezes)</small></label>
+        <label class="alternar"><input type="checkbox" id="mu-treino" ${S.cfg.treino?.ligado ? 'checked' : ''}><span>Treino de velocidade</span><small>o trecho toca várias vezes: começa devagar e sobe a cada volta bem tocada, até 100%</small></label>
+        <div class="treino-op" id="mu-treino-op" ${S.cfg.treino?.ligado ? '' : 'hidden'}>
+          <div class="linha-op"><span>Começar em</span><div class="segmentado" id="mu-treino-de">${[40, 50, 60, 70].map(p => `<button type="button" aria-pressed="${(S.cfg.treino?.de || 60) === p}" data-tde="${p}">${p}%</button>`).join('')}</div></div>
+          <div class="linha-op"><span>Subir a cada volta</span><div class="segmentado" id="mu-treino-passo">${[5, 10].map(p => `<button type="button" aria-pressed="${(S.cfg.treino?.passo || 5) === p}" data-tpasso="${p}">+${p}%</button>`).join('')}</div></div>
+        </div>
+        <label class="alternar"><input type="checkbox" id="mu-gravar" ${S.cfg.gravarJogo ? 'checked' : ''}><span>Gravar enquanto toca</span><small>o microfone grava você; ouça depois em Treinos, Gravar você tocando</small></label>
       </section>
       <details class="mu-bloco mu-seq"><summary>Sequência de acordes</summary><div id="mu-seq"></div>
         <p class="sub">O número pequeno é quantos tempos o acorde dura.</p>
@@ -596,6 +608,14 @@ function abrirMusica(id) {
   $$('#mu-fonte [data-fonte]').forEach(b => b.addEventListener('click', () => { S.cfg.fonteTudo = b.dataset.fonte; Store.salvar(); atualizarTudo(); }));
   $('#mu-fone').addEventListener('change', e => { S.cfg.fone = e.target.checked; Store.salvar(); });
   $('#mu-repetir').addEventListener('change', e => { S.cfg.repetir = e.target.checked; Store.salvar(); });
+  $('#mu-parte').addEventListener('change', e => { $('#mu-faixa').hidden = e.target.value !== 'faixa'; });
+  $('#mu-de').addEventListener('change', () => { if (+$('#mu-ate').value < +$('#mu-de').value) $('#mu-ate').value = $('#mu-de').value; });
+  $('#mu-ate').addEventListener('change', () => { if (+$('#mu-ate').value < +$('#mu-de').value) $('#mu-de').value = $('#mu-ate').value; });
+  const treinoCfg = () => (S.cfg.treino = S.cfg.treino || { ligado: false, de: 60, passo: 5 });
+  $('#mu-treino').addEventListener('change', e => { treinoCfg().ligado = e.target.checked; $('#mu-treino-op').hidden = !e.target.checked; Store.salvar(); });
+  $$('#mu-treino-de [data-tde]').forEach(b => b.addEventListener('click', () => { treinoCfg().de = +b.dataset.tde; Store.salvar(); $$('#mu-treino-de [data-tde]').forEach(x => x.setAttribute('aria-pressed', x === b)); }));
+  $$('#mu-treino-passo [data-tpasso]').forEach(b => b.addEventListener('click', () => { treinoCfg().passo = +b.dataset.tpasso; Store.salvar(); $$('#mu-treino-passo [data-tpasso]').forEach(x => x.setAttribute('aria-pressed', x === b)); }));
+  $('#mu-gravar').addEventListener('change', e => { S.cfg.gravarJogo = e.target.checked; Store.salvar(); });
 
   $$('[data-modo]').forEach(b => b.addEventListener('click', () => { S.cfg.modo = b.dataset.modo; Store.salvar(); $$('[data-modo]').forEach(x => x.setAttribute('aria-checked', x === b)); }));
   $$('#mu-vel [data-vel]').forEach(b => b.addEventListener('click', () => { S.cfg.vel = +b.dataset.vel; Store.salvar(); $$('#mu-vel [data-vel]').forEach(x => x.setAttribute('aria-pressed', x === b)); }));
@@ -609,11 +629,13 @@ function abrirMusica(id) {
     await Previa.tocar(m, { segundos: 40, bpm: m.bpm * S.cfg.vel / 100, aoFim: () => { b.innerHTML = `${IC.som} Ouvir`; } });
     if (Previa.tocando) b.innerHTML = `${IC.pausa} Parar`;
   });
-  const secao = () => ($('#mu-parte').value === '' ? null : +$('#mu-parte').value);
   $('#mu-jogar').addEventListener('click', () => {
-    if (S.cfg.junto !== 'tudo') return jogarMusica(m, secao());
-    if (S.cfg.fonteTudo === 'mp3') return MP3.jogar(m, secao());
-    if (ytPronto(m)) return jogarComGravacao(m, secao());
+    const parte = escolhaDeParte(), t = S.cfg.treino;
+    // treino de velocidade: começa na velocidade escolhida e cada volta toca o trecho uma vez
+    const op = t && t.ligado ? { vel: t.de, repetir: false, treino: { de: t.de, ate: 100, passo: t.passo || 5, volta: 1 } } : {};
+    if (S.cfg.junto !== 'tudo') return jogarMusica(m, parte, op);
+    if (S.cfg.fonteTudo === 'mp3') return MP3.jogar(m, parte, op);
+    if (ytPronto(m)) return jogarComGravacao(m, parte, op);
     toast('Primeiro sincronize a gravação (logo acima)');
     $('#mu-tudo').scrollIntoView({ behavior: 'smooth', block: 'center' });
   });
@@ -632,38 +654,52 @@ function repetirTrechos(trechos, vezes) {
 }
 
 // Abre o jogo de uma música (do catálogo, da busca ou das suas)
+/* A parte escolhida na página da música: null (inteira), um número (uma parte)
+   ou { de, ate } (um trecho de várias partes seguidas) */
+function escolhaDeParte() {
+  const v = $('#mu-parte')?.value ?? '';
+  if (v === '') return null;
+  if (v === 'faixa') { const de = +$('#mu-de').value, ate = Math.max(de, +$('#mu-ate').value); return de === ate ? de : { de, ate }; }
+  return +v;
+}
+const inicioDaParte = parte => (parte && typeof parte === 'object' ? parte.de : parte);
 function jogarMusica(m, secao = null, extra = {}) {
   Previa.parar();
   const bpmBase = extra.bpmBase || m.bpm || 80;
   const modo = extra.modo || S.cfg.modo || 'espera';
+  const faixa = secao && typeof secao === 'object' ? secao : null;
   // o arranjo no tom escolhido (com o capo que deixa os acordes fáceis)
   const arr = arranjo(m, extra.k !== undefined ? { k: extra.k } : {});
-  let trechos = musicaParaTrechos(arr.musica, secao);
+  let trechos = faixa ? musicaParaTrechos({ ...arr.musica, secoes: arr.musica.secoes.slice(faixa.de, faixa.ate + 1) }, null) : musicaParaTrechos(arr.musica, secao);
+  const nomeParte = faixa ? `, de ${m.secoes[faixa.de].nome} até ${m.secoes[faixa.ate].nome}` : secao !== null ? ', ' + m.secoes[secao].nome : '';
+  const gravar = !extra.treino && (extra.gravar ?? !!S.cfg.gravarJogo);
+  if (gravar && !Gravador.gravando) Gravador.iniciar().catch(() => toast('Não consegui gravar: confira a permissão do microfone'));
   const repetir = extra.repetir ?? (S.cfg.repetir && !extra.gravacao);
   if (repetir) trechos = repetirTrechos(trechos, secao === null ? 2 : 8);
   // quem toca junto: a banda (sem gravação) ou ninguém (com gravação, ela é a banda)
   const junto = extra.gravacao ? null : (JUNTO[S.cfg.junto] && S.cfg.junto !== 'tudo' ? S.cfg.junto : 'banda');
   const banda = junto && modo !== 'espera' ? { estilo: estiloDaMusica(m), partes: JUNTO[junto].partes.filter(p => p !== 'violao') } : null;
   return Jogo.abrir({
-    titulo: m.titulo + (secao !== null ? ', ' + m.secoes[secao].nome : '') + (repetir ? ' (repetindo)' : ''),
+    titulo: m.titulo + nomeParte + (repetir ? ' (repetindo)' : '') + (extra.treino ? ` (volta ${extra.treino.volta})` : ''),
     trechos, padrao: patternById(m.padrao), ritmo: extra.ritmo || S.cfg.ritmo || 'acorde',
     bpm: extra.bpm || Math.round(bpmBase * (extra.vel || S.cfg.vel) / 100), bpmBase, capo: arr.capo, temCapo: arr.capo > 0,
     modo, entrada: modo === 'pratica' ? 'nenhuma' : 'mic', facil: extra.facil ?? facilPara(m), metronomo: S.cfg.metronomo,
     gravacao: extra.gravacao || null, container: extra.container || null,
     guia: !extra.gravacao && (!junto || JUNTO[junto].partes.includes('violao')),
-    banda, fone: !!S.cfg.fone, mix: { ...S.cfg.mix }, refazer: extra.refazer || null,
+    banda, fone: !!S.cfg.fone, mix: { ...S.cfg.mix }, refazer: extra.refazer || null, treino: extra.treino || null, gravar,
     aoFim: r => {
+      if (gravar && Gravador.gravando) Gravador.parar(`${m.titulo}${nomeParte}, ${Math.round(r.bpm / r.bpmBase * 100)}%`).then(g => { if (g) toast('Gravação guardada em Treinos'); });
       S.recordesMusica[m.id] = S.recordesMusica[m.id] || {};
       if (r.pct !== null) {
-        const chave = `${r.modo}:${Math.round(r.bpm / r.bpmBase * 100)}${secao !== null ? ':' + secao : ''}`;
+        const chave = `${r.modo}:${Math.round(r.bpm / r.bpmBase * 100)}${faixa ? `:${faixa.de}-${faixa.ate}` : secao !== null ? ':' + secao : ''}`;
         S.recordesMusica[m.id][chave] = Math.max(S.recordesMusica[m.id][chave] || 0, r.pct);
         if (r.modo === 'tempo') registrar('batida', r.pct, 'max');
       }
-      if (secao === null) registrar('musicas', 1);
+      if (secao === null) registrar('musicas', 1);   // só a música inteira conta
       ganharXP(10 + Math.round((r.pct ?? 60) / 5), m.titulo, true);
       extra.aoFim?.(r);
     },
-    aoSair: extra.aoSair
+    aoSair: () => { if (gravar && Gravador.gravando) Gravador.parar(`${m.titulo}${nomeParte}`); extra.aoSair?.(); }
   });
 }
 function jogarMelodia(id, extra = {}) {

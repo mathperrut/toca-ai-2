@@ -225,7 +225,7 @@ function painelYouTube(caixa, m) {
     abrirSincronia(q('#yt-sinc-area'), m, meta, tc, () => { q('#yt-sinc-area').innerHTML = ''; status(textoStatus()); q('#yt-sinc').textContent = 'Sincronizar de novo'; q('#yt-junto').hidden = false; });
     q('#yt-sinc-area').scrollIntoView({ block: 'nearest', behavior: 'smooth' });
   });
-  q('#yt-junto').addEventListener('click', () => jogarComGravacao(m, $('#mu-parte')?.value === '' ? null : +($('#mu-parte')?.value)));
+  q('#yt-junto').addEventListener('click', () => jogarComGravacao(m, escolhaDeParte()));
 }
 
 /* Jogo com o vídeo: o vídeo é o relógio-mestre e fica visível em cima do jogo
@@ -234,18 +234,20 @@ async function jogarComGravacao(m, secao = null, opcoes = {}) {
   if (!ytPronto(m)) return toast('Sincronize o vídeo primeiro');
   const meta = S.youtube[m.id], tc = painelYT.tocador;
   const taxa = await tc.definirTaxa(Math.max(0.5, Math.min(1, (opcoes.vel || S.cfg.vel) / 100)));
-  const pos0 = posicaoNaGravacao(meta, temposAteSecao(m, secao));
+  // treino de velocidade: o YouTube só toca em algumas velocidades (50%, 75%, 100%...), então as voltas sobem por elas
+  const treino = opcoes.treino ? { ...opcoes.treino, taxas: (tc.player?.getAvailablePlaybackRates?.() || [0.5, 0.75, 1]).filter(r => r >= 0.5 && r <= 1).map(r => Math.round(r * 100)).sort((a, b) => a - b) } : null;
+  const pos0 = posicaoNaGravacao(meta, temposAteSecao(m, inicioDaParte(secao)));
   const moldura = document.querySelector('#yt-moldura');
   moldura?.classList.add('no-jogo');
   // com o vídeo a música não pode parar, então "esperar por mim" vira "praticar"
   const pedido = opcoes.modo || S.cfg.modo;
   const modo = pedido === 'tempo' ? 'tempo' : 'pratica';
   jogarMusica(m, secao, {
-    k: 0, modo, bpm: meta.bpm * taxa, bpmBase: meta.bpm, gravacao: { tocador: tc, pos0, taxa, mestre: true, video: true }, container: $('#janela'),
+    k: 0, modo, bpm: meta.bpm * taxa, bpmBase: meta.bpm, gravacao: { tocador: tc, pos0, taxa, mestre: true, video: true }, container: $('#janela'), treino,
     // "Jogar de novo", "Recomeçar" e troca de velocidade: volta o vídeo junto
     refazer: novo => jogarComGravacao(m, secao, {
       vel: novo.bpm ? Math.round(novo.bpm / meta.bpm * 100) : Math.round(taxa * 100),
-      modo: novo.modo || modo
+      modo: novo.modo || modo, treino: novo.treino ?? opcoes.treino
     }),
     aoSair: () => { moldura?.classList.remove('no-jogo'); tc.parar(); },
     aoFim: () => { moldura?.classList.remove('no-jogo'); }

@@ -1,6 +1,6 @@
 # Toca Aí 2 — violão com música brasileira
 
-Segunda versão do [Toca Aí](https://github.com/mathperrut/toca-a-). A base é a mesma (o design, o jogo no estilo Yousician, o curso, as apostilas e o violão gravado), e as novidades entram **em fases**: cada fase termina com um APK para testar, e a próxima só começa depois de aprovada.
+Segunda versão do [Toca Aí](https://github.com/mathperrut/toca-a-). A base é a mesma (o design, o jogo no estilo Yousician, o curso, as apostilas e o violão gravado), e as novidades entraram **em fases**: cada fase terminou com um APK para testar.
 
 | Parte | Linguagem | O que faz |
 |---|---|---|
@@ -20,7 +20,24 @@ Segunda versão do [Toca Aí](https://github.com/mathperrut/toca-a-). A base é 
 | 3. Microfone mais preciso | Medir a precisão com gravações reais; jeito novo de ouvir as notas; ensinar o app a ouvir o seu violão | **Pronta** |
 | 4. Níveis e conteúdo | Iniciante, Intermediário e Avançado no curso, nas apostilas e nas músicas; cifragem, teoria, técnica, ritmos, treino de ouvido | **Pronta** |
 | 5. Vozes do instrutor | Quatro vozes nos vídeos (feminina, masculina, grave e fina) e 3 vídeos novos | **Pronta** |
-| 6. Recursos extras | Repetir trecho com velocidade subindo, descobrir acordes ouvindo, treino de ouvido, gravar você tocando | Planejada |
+| 6. Recursos extras | Treino de velocidade num trecho, descobrir acordes ouvindo (microfone ou MP3), treino de ouvido, gravar você tocando | **Pronta** |
+
+### O que mudou na Fase 6
+- **Treino de velocidade** (página da música): ligue "Treino de velocidade", escolha onde começar (40% a 70%) e quanto subir a cada volta (+5% ou +10%). O trecho toca uma vez; se você acertar 75% ou mais (no modo Praticar, sempre), a próxima volta começa sozinha em 3 s, mais rápida, até chegar a 100%. Se não, repete na mesma velocidade. Funciona com a banda, com o seu MP3 e com o YouTube (no YouTube as voltas sobem pelas velocidades que o player tem: 50%, 75% e 100%).
+- **Um trecho: de… até…**: escolha a parte onde começar e a parte onde terminar (por exemplo, da Primeira Parte até a Segunda Parte) para treinar só aquele pedaço, com o "Repetir" ou com o treino de velocidade.
+- **Treino de ouvido** (Aprender, Treinos): rodadas de 10 perguntas de 4 tipos: maior ou menor, intervalos, graus da família (I, IV, V, vi) e "tem sétima?". O app guarda o seu recorde em cada tipo.
+- **Gravar você tocando** (Aprender, Treinos): grava pelo microfone, mostra o volume enquanto grava e guarda no celular (as 60 mais recentes). Também dá para ligar **Gravar enquanto toca** na página da música: o jogo grava a rodada e, no fim, mostra o botão "Ouvir a sua gravação".
+- **Descobrir acordes** (Aprender, Treinos, e o botão "Descobrir de um MP3" em Músicas):
+  - **pelo microfone:** toque o violão (ou ponha uma música para tocar perto do celular) e o acorde aparece na hora, em letras grandes, com os últimos acordes embaixo;
+  - **de um MP3:** o app tira os acordes da música inteira, acha o andamento (BPM) e o tom, e salva em "Minhas músicas" uma cifra **já sincronizada com o áudio**: é só apertar Jogar. O áudio fica só no seu celular.
+- **Medido com gravações reais:** nas 180 gravações de acompanhamento do GuitarSet (6 violonistas, 54.420 instantes; veja `lab/descobrir` na branch `laboratorio`), comparando o acorde que o app mostra com o acorde tocado:
+
+| Método | Raiz certa | Maior/menor certo | Nome exato (C, Cm, C7, Cm7, C7M) |
+|---|---|---|---|
+| Primeira versão (molde só com as notas do acorde) | 68,2% | 66,9% | 60,9% |
+| **Versão final (molde com harmônicos, nota do baixo e Viterbi ajustado)** | **77,3%** | **76,3%** | **70,5%** |
+
+  O acerto muda bastante de um violonista para outro: maior/menor certo vai de 68,0% a 86,4%. É um palpite bom para começar a tirar uma música, não uma cifra pronta: confira de ouvido.
 
 ### O que mudou na Fase 5
 - **Quatro vozes do instrutor:** feminina, masculina, grave e fina. Escolha em **Ajustes** (cada uma tem o botão "Ouvir") ou embaixo de qualquer vídeo, até no meio dele: a voz troca e continua do mesmo ponto.
@@ -118,6 +135,7 @@ O progresso do Toca Aí 2 começa do zero (é outro app). O Toca Aí continua in
 | **Praticar** | Para ouvir e acompanhar | Sem pontos, com o violão do app tocando junto |
 
 - **Velocidade:** 40%, 60% (padrão), 80% ou 100%, inclusive no meio do jogo (botão de pausa).
+- **Treino de velocidade:** o trecho toca várias vezes, começando devagar e subindo a cada volta bem tocada, até 100%. Dá para escolher **um trecho: de… até…** (várias partes seguidas) e **gravar enquanto toca**.
 - **Resultado:** porcentagem, até 3 estrelas (45%, 70% e 90%), o acorde que mais deu trabalho e um botão para treiná-lo.
 
 ### Buscar qualquer música (no .apk)
@@ -167,6 +185,14 @@ Afinador corda por corda (marca cada corda afinada) e metrônomo com luzes.
 5. Notas soltas usam o **método MPM** (o mesmo do afinador) para achar a frequência.
 6. O atraso do microfone é medido sozinho durante o jogo (ou em Ajustes → Calibrar).
 
+**Descobrir acordes** (`extras.js`)
+1. A cada 0,1 s o som vira um **cromagrama** (os mesmos 12 números do jogo) e o app acha a **nota do baixo**: a nota mais grave que tem harmônicos por cima (a corda grossa do violão tem a nota fraca e os harmônicos fortes, então "a mais forte" engana).
+2. Cada um dos 60 acordes (maior, menor, 7, m7 e 7M nos 12 tons) tem um **molde com harmônicos**: a nota Dó também acende o Sol (3º harmônico). Sem isso, Dó maior parece C7M e Lá menor parece Am7. Mais de 3 harmônicos piorou o maior/menor nas gravações reais.
+3. O **algoritmo de Viterbi** escolhe a sequência de acordes mais provável: trocar de acorde tem um "custo", então um instante confuso não vira um acorde novo.
+4. O app estima o **tom** e passa de novo, dando um bônus aos acordes da família do tom.
+5. O **andamento** vem da autocorrelação dos ataques (de 60 a 180 BPM), e os acordes são encaixados nos tempos. O resultado vira uma cifra com a gravação já sincronizada.
+6. Ao vivo, o acorde da tela só troca se o novo ganhar com folga em 5 leituras seguidas (~0,6 s): quando você troca de acorde, as cordas do anterior ainda soam, e a mistura parece um terceiro acorde por um instante.
+
 **Busca automática** (`cifras.js`)
 - No .apk, o plugin `CapacitorHttp` faz o pedido pelo Android, sem a regra de **CORS** que impede um site de ler outro. É por isso que no navegador não funciona.
 - A página da cifra é lida como HTML: cada acorde está num `<b>`; o app guarda **só os acordes**, nunca a letra.
@@ -213,7 +239,8 @@ python treinar.py
 | `banda.js` | A banda: ritmos, baixo e teclado seguindo os acordes |
 | `tom.js` | Mudar o tom, descobrir o tom da música, escolher o capotraste |
 | `mp3.js` | MP3 seu: guardar, sincronizar, mudar tom e velocidade (phase vocoder) |
-| `jogo.js` | O jogo: desenho das cordas, modos, pontuação, microfone |
+| `jogo.js` | O jogo: desenho das cordas, modos, pontuação, microfone, treino de velocidade |
+| `extras.js` | Treino de ouvido, gravar você tocando e descobrir acordes (cromagrama, moldes com harmônicos, baixo, Viterbi, andamento) |
 | `cifras.js` | Busca e leitura de cifras, capotraste inteligente, YouTube |
 | `aprender.js` | Curso, lições (com Voltar), professor de acordes, sons que acompanham as imagens, 1 minuto de trocas |
 | `apostilas.js` | Apostilas, quizzes, mini vídeos com a voz do instrutor (`ligarVideos`) e os desenhos que tocam (`ligarSons`) |
@@ -228,6 +255,8 @@ python treinar.py
 - Lugar barulhento atrapalha: ajuste a **Sensibilidade** em Ajustes.
 - A duração dos acordes de músicas buscadas é estimada. Com a gravação sincronizada, o jogo fica bem mais fiel.
 - A busca depende do formato das páginas do Cifra Club; se ele mudar, a busca pode parar e o app avisa (dá para colar a cifra).
+- **Descobrir acordes** é um palpite: conhece só maior, menor, 7, m7 e 7M (os outros viram o mais parecido) e erra mais em música com voz, bateria e muitos instrumentos.
+- No **app Android**, as gravações ficam dentro do app (o botão Salvar, para baixar o arquivo, só aparece no navegador).
 
 ## 7. Créditos e direitos
 - **Sons:** violão da University of Iowa Electronic Music Studios e de *quartertone* (Freesound); baixo da Karoryfer Samples e harmônio de *donyaquick* (Freesound), reunidos pelo projeto [tonejs-instruments](https://github.com/nbrosowsky/tonejs-instruments), licença [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Percussão e piano da [Versilian Community Sample Library](https://github.com/sgossner/VCSL) (CC0). Detalhes em `sons/CREDITOS.txt`.

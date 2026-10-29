@@ -253,13 +253,13 @@ const MP3 = {
     this.parar();
     const tc = new TocadorProcessado(buf, v);
     this.tocador = tc;
-    const pos0 = posicaoNaGravacao(meta, temposAteSecao(m, secao));
+    const pos0 = posicaoNaGravacao(meta, temposAteSecao(m, inicioDaParte(secao)));
     const pedido = opcoes.modo || S.cfg.modo;
     const modo = pedido === 'tempo' ? 'tempo' : 'pratica';     // com a gravação a música não para
     jogarMusica(m, secao, {
-      k: arr.k, modo, bpm: meta.bpm * v, bpmBase: meta.bpm, repetir: false,
+      k: arr.k, modo, bpm: meta.bpm * v, bpmBase: meta.bpm, repetir: false, treino: opcoes.treino || null,
       gravacao: { tocador: tc, pos0, taxa: v, mestre: true },
-      refazer: novo => this.jogar(m, secao, { k: arr.k, vel: novo.bpm ? Math.round(novo.bpm / meta.bpm * 100) : Math.round(v * 100), modo: novo.modo || modo }),
+      refazer: novo => this.jogar(m, secao, { k: arr.k, vel: novo.bpm ? Math.round(novo.bpm / meta.bpm * 100) : Math.round(v * 100), modo: novo.modo || modo, treino: novo.treino ?? opcoes.treino }),
       aoSair: () => tc.parar()
     });
     aplicarMix();

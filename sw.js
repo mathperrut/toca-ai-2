@@ -6,12 +6,12 @@
    - Quando há internet, busca a versão nova em segundo plano.
    Ao mudar qualquer arquivo do app, aumente o número da VERSAO.
    ========================================================= */
-const VERSAO = 'toca-ai-2-v5';
+const VERSAO = 'toca-ai-2-v6';
 const CLASSICO = [35, 38, 40, 42, 44, 45, 47, 49, 50, 52, 54, 55, 57, 59, 61, 63, 64, 66, 68, 69, 71, 73, 74, 76, 78, 79, 80, 81, 82];
 const ARQUIVOS = [
   './', './index.html', './tema.css', './fontes/Jost.woff', './manifest.webmanifest',
   './data.js', './acordes.js', './som.js', './banda.js', './modelo-acordes.js', './ia.js', './audio-detect.js', './cifras.js', './tom.js',
-  './gravacao.js', './youtube.js', './mp3.js', './apostilas.js', './aprender.js', './jogo.js', './app.js',
+  './gravacao.js', './youtube.js', './mp3.js', './apostilas.js', './aprender.js', './jogo.js', './extras.js', './app.js',
   // o violão clássico (padrão) fica guardado; o acústico é guardado quando você escolhe
   ...CLASSICO.map(n => `./sons/classico/${n}.mp3`),
   // a banda (percussão, baixo, piano, sanfona)

@@ -850,3 +850,36 @@ body.em-jogo .nav, body.em-jogo .topo { visibility: hidden; }
 .segmentado.mini button { padding: 4px 10px; font-size: var(--fs-xs); min-height: 32px; }
 .janela-video .video figcaption { padding: 0 var(--e4); }
 .vozes .voz-op { display: grid; grid-template-columns: 1fr auto; gap: var(--e2); align-items: center; }
+
+/* ---------- Trecho, treino de velocidade e gravação (página da música) ---------- */
+.faixa-op { display: grid; grid-template-columns: 1fr 1fr; gap: var(--e2); }
+.faixa-op label { display: flex; flex-direction: column; gap: 4px; font-size: var(--fs-sm); font-weight: 600; min-width: 0; }
+.faixa-op select { width: 100%; min-width: 0; }
+.treino-op { display: flex; flex-direction: column; gap: var(--e2); padding: var(--e3); border-radius: var(--r2); background: var(--papel-2); }
+.jg-treino .jg-volta { font-size: var(--fs-sm); font-weight: 600; opacity: .75; margin: 0; }
+
+/* ---------- Treino de ouvido, gravador e descobrir acordes ---------- */
+.ouvido-tela, .grav, .desc { display: flex; flex-direction: column; gap: var(--e4); max-width: 640px; margin: 0 auto; }
+.grav-painel { display: flex; flex-direction: column; align-items: center; gap: var(--e3); padding: var(--e5) var(--e4); border-radius: var(--r2); background: var(--papel-2); }
+.grav-tempo { font-size: var(--fs-3xl); font-weight: 700; font-variant-numeric: tabular-nums; letter-spacing: -0.03em; }
+.grav-painel .medidor { width: 100%; max-width: 320px; }
+.btn.gravando { background: var(--bolinha); border-color: var(--bolinha); color: #fff; }
+.grav h3 { font-size: var(--fs-md); margin-bottom: var(--e2); }
+.grav-lista { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; }
+.grav-item { display: grid; grid-template-columns: auto 1fr auto auto; gap: var(--e2); align-items: center; padding: var(--e2) 0; border-bottom: 1px solid var(--linha); }
+.grav-txt { display: flex; flex-direction: column; min-width: 0; }
+.grav-txt b { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.grav-txt small { color: var(--tinta-3); font-size: var(--fs-xs); }
+.grav-lista .vazio { color: var(--tinta-3); padding: var(--e3) 0; }
+.desc .modo b { display: flex; align-items: center; gap: 8px; }
+.desc .modo .ic { width: 20px; height: 20px; }
+label.modo { cursor: pointer; }
+.ds-vivo { display: flex; flex-direction: column; align-items: center; gap: var(--e3); padding: var(--e5) var(--e4); border-radius: var(--r2); background: #000; color: #fff; }
+.ds-acorde { font-size: 5.5rem; font-weight: 700; line-height: 1; letter-spacing: -0.04em; min-height: 1em; }
+.ds-vivo small { color: #B9B9B3; }
+.ds-vivo .btn { background: #fff; color: #000; border-color: #fff; }
+.ds-hist { display: flex; flex-wrap: wrap; gap: 6px; justify-content: center; }
+.ds-vivo .chip-acorde { border-color: rgba(255,255,255,.5); color: #fff; }
+.ds-prog, .ds-res { display: flex; flex-direction: column; gap: var(--e3); }
+.ds-res .faixa input { width: 100%; }
+@media (max-width: 380px) { .grav-item { grid-template-columns: auto 1fr; } .grav-item .btn { justify-self: start; } }
