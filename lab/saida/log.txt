@@ -1,0 +1,12 @@
+arquivos de anotação (comp): 180
+metadados dos acordes (1º arquivo): ['{"curator": {"name": "", "email": ""}, "annotator": {}, "version": "", "corpus": "", "annotation_tools": "", "annotation_rules": "", "validation": "", "data_sou', '{"curator": {"name": "", "email": ""}, "annotator": {}, "version": 0.9, "corpus": "", "annotation_tools": "", "annotation_rules": "Chord sheet-informed symbolic']
+áudios (mic): 360
+batidas analisadas: 8438 em 21 s
+A (atual) afinado {"regra_do_app": {"identifica": 0.7192462668878882, "aceita_certo": 0.6359326854704906, "aceita_errado": 0.04340544944328777, "n": 8438}, "melhor_limiar": {"limiar": 0.36, "folga": 0.0, "identifica": 0.7192462668878882, "aceita_certo": 0.6865370940981275, "aceita_errado": 0.049538336199873266, "n": 8438}}
+B (novo) afinado {"regra_do_app": {"identifica": 0.7642806352216165, "aceita_certo": 0.7653472386821522, "aceita_errado": 0.05087354032769078, "n": 8438}, "melhor_limiar": {"limiar": 0.2, "folga": 0.0, "identifica": 0.7642806352216165, "aceita_certo": 0.7647546812040767, "aceita_errado": 0.0485878519054947, "n": 8438}}
+A (atual) desafinado +35c {"regra_do_app": {"identifica": 0.663545863948803, "aceita_certo": 0.35671960180137474, "aceita_errado": 0.03000814700823753, "n": 8438}, "melhor_limiar": {"limiar": 0.36, "folga": 0.0, "identifica": 0.663545863948803, "aceita_certo": 0.5305759658686893, "aceita_errado": 0.04761473703267856, "n": 8438}}
+B (novo) desafinado +35c {"regra_do_app": {"identifica": 0.7263569566247926, "aceita_certo": 0.7164019909931263, "aceita_errado": 0.04901783289580882, "n": 8438}, "melhor_limiar": {"limiar": 0.2, "folga": 0.0, "identifica": 0.7263569566247926, "aceita_certo": 0.7194832898791182, "aceita_errado": 0.049877794876437044, "n": 8438}}
+C {"regra_do_app": {"identifica": 0.7870348423797109, "aceita_certo": 0.7928419056648495, "aceita_errado": 0.04537430976735765, "n": 8438}, "melhor_limiar": {"limiar": 0.34, "folga": 0.04, "identifica": 0.7870348423797109, "aceita_certo": 0.8088409575728845, "aceita_errado": 0.04990042545487463, "n": 8438}}
+afinação medida (cents): {'afinado_mediana': 6.810770051648824, 'desafinado_mediana': 41.05460003746656}
+Basic Pitch falhou: ValueError("File /opt/hostedtoolcache/Python/3.10.22/x64/lib/python3.10/site-packages/basic_pitch/saved_models/icassp_2022/nmp.tflite cannot be loaded into either TensorFlow, CoreML, TFLite or ONNX. Please check if it is a supported and valid serialized model and that one of these packages are insta
+fim
