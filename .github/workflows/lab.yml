@@ -4,6 +4,7 @@
 # Roda as tarefas listadas em lab/tarefas.txt e guarda os resultados em lab/saida.
 # Não mexe no app: o APK continua sendo gerado só pela branch main.
 #   microfone    avalia o reconhecimento de acordes com o GuitarSet (CC BY 4.0)
+#   descobrir    avalia o "Descobrir acordes" (60 acordes, sem saber a música) com o GuitarSet
 #   *.mjs        script Node (ex.: musicas.mjs busca acordes no Cifra Club, sem letra)
 #   *.py         script Python (ex.: vozes.py gera a narração; ouvir.py confere se ela dá para entender)
 # =========================================================
@@ -51,6 +52,7 @@ jobs:
           if grep -q '^microfone' tarefas.txt; then pip install basic-pitch || true; pip install onnxruntime || true; fi
           if grep -q 'vozes' tarefas.txt; then pip install kokoro-onnx soundfile; sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg; fi
           if grep -q 'ouvir' tarefas.txt; then pip install faster-whisper; fi
+          if grep -q '^descobrir' tarefas.txt; then sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg; fi
 
       - name: Rodar as tarefas
         working-directory: lab
@@ -64,6 +66,15 @@ jobs:
                 curl -sSL --retry 3 -o mic.zip "https://zenodo.org/records/3371780/files/audio_mono-mic.zip?download=1"
                 unzip -q -o anot.zip -d anot && unzip -q -o mic.zip -d mic
                 cd ../lab && python3 avaliar.py ../dados saida ;;
+              descobrir)
+                if [ ! -d ../dados/mic ]; then
+                  mkdir -p ../dados && cd ../dados
+                  curl -sSL --retry 3 -o anot.zip "https://zenodo.org/records/3371780/files/annotation.zip?download=1"
+                  curl -sSL --retry 3 -o mic.zip "https://zenodo.org/records/3371780/files/audio_mono-mic.zip?download=1"
+                  unzip -q -o anot.zip -d anot && unzip -q -o mic.zip -d mic
+                  cd ../lab
+                fi
+                node descobrir/avaliar.js ../dados saida 2>&1 | tee saida/descobrir.log ;;
               *.py) python3 "$s" 2>&1 | tee "saida/$(basename $s .py).log" ;;
               *.mjs) node "$s" 2>&1 | tee "saida/$(basename $s .mjs).log" ;;
             esac
