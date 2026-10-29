@@ -1,0 +1,218 @@
+{
+ "feminina": {
+  "erro_palavras": 0.0763,
+  "erro_letras": 0.0183,
+  "piores": [
+   {
+    "id": "cifra-1",
+    "erro": 0.517,
+    "roteiro": "Na cifra, cada nota vira uma letra: C é Dó, D é Ré, E é Mi, F é Fá, G é Sol, A é Lá e B é Si.",
+    "ouvido": "Na cifra, cada nota vira uma letra.  C, C, D, D, E, E, E, F, F, G, G, A, I, B, E, C."
+   },
+   {
+    "id": "cordas-2",
+    "erro": 0.5,
+    "roteiro": "Da mais grossa para a mais fina: Mi, Lá, Ré, Sol, Si e Mi.",
+    "ouvido": "da mais grossa para a mais fina, Mila Resol Simi."
+   },
+   {
+    "id": "cifra-0",
+    "erro": 0.455,
+    "roteiro": "Por que o acorde de Dó se chama C? Vem comigo!",
+    "ouvido": "Porque o Acorde de Doce chama ser, vem comigo."
+   },
+   {
+    "id": "cordas-3",
+    "erro": 0.353,
+    "roteiro": "Um truque para decorar: Eu Amo Doce de Goiaba, Bem Escuro. E, A, D, G, B, E!",
+    "ouvido": "Um truque pra decorar, eu amo doce de goiaba bem escuro, e ADGB é."
+   },
+   {
+    "id": "cifra-3",
+    "erro": 0.3,
+    "roteiro": "Só a letra é acorde maior, de som alegre. Com um m minúsculo, é menor, mais triste. Ouça a diferença.",
+    "ouvido": "Só a letra é a cor de maior de som alegre, com o M minúsculo M menor mais triste, ouça  diferença."
+   },
+   {
+    "id": "jogo-0",
+    "erro": 0.286,
+    "roteiro": "Como funciona o jogo do Toca Aí?",
+    "ouvido": "Como funciona o jogo do Tocaí?"
+   },
+   {
+    "id": "batida-0",
+    "erro": 0.25,
+    "roteiro": "A batida: o que a mão direita faz.",
+    "ouvido": "Abatida o que a mão direita faz."
+   },
+   {
+    "id": "afinar-5",
+    "erro": 0.231,
+    "roteiro": "Uma dica: chegue na nota sempre subindo. Assim a corda segura a afinação.",
+    "ouvido": "Uma dica chegue na nota sempre subindo, assim acorda a segura afinação."
+   }
+  ]
+ },
+ "masculina": {
+  "erro_palavras": 0.0744,
+  "erro_letras": 0.018,
+  "piores": [
+   {
+    "id": "cifra-1",
+    "erro": 0.586,
+    "roteiro": "Na cifra, cada nota vira uma letra: C é Dó, D é Ré, E é Mi, F é Fá, G é Sol, A é Lá e B é Si.",
+    "ouvido": "Na cifra, cada nota vira uma letra, C-D-D-R-I-M-I-F-F-G-S-O-I-L-I-B-S."
+   },
+   {
+    "id": "cifra-0",
+    "erro": 0.455,
+    "roteiro": "Por que o acorde de Dó se chama C? Vem comigo!",
+    "ouvido": "Porque o Acorde de Doce chama-se, vem comigo."
+   },
+   {
+    "id": "pentatonica-1",
+    "erro": 0.312,
+    "roteiro": "Ela tem só cinco notas. A de Lá menor é: Lá, Dó, Ré, Mi e Sol.",
+    "ouvido": "Ela tem só cinco notas, a de lá menor é lá do remissor."
+   },
+   {
+    "id": "cordas-3",
+    "erro": 0.294,
+    "roteiro": "Um truque para decorar: Eu Amo Doce de Goiaba, Bem Escuro. E, A, D, G, B, E!",
+    "ouvido": "Um truque para decorar, eu amo doce de goiaba bem escuro, e ADGB é."
+   },
+   {
+    "id": "cordas-2",
+    "erro": 0.286,
+    "roteiro": "Da mais grossa para a mais fina: Mi, Lá, Ré, Sol, Si e Mi.",
+    "ouvido": "Da mais grossa para a mais fina, Mila re-sol si-mi."
+   },
+   {
+    "id": "jogo-0",
+    "erro": 0.286,
+    "roteiro": "Como funciona o jogo do Toca Aí?",
+    "ouvido": "como funciona o jogo do Tokai."
+   },
+   {
+    "id": "batida-0",
+    "erro": 0.25,
+    "roteiro": "A batida: o que a mão direita faz.",
+    "ouvido": "Abatida o que a mão direita faz."
+   },
+   {
+    "id": "samba-0",
+    "erro": 0.25,
+    "roteiro": "Ritmos brasileiros no violão!",
+    "ouvido": "Quítimos brasileiros no violão."
+   }
+  ]
+ },
+ "grave": {
+  "erro_palavras": 0.0908,
+  "erro_letras": 0.0241,
+  "piores": [
+   {
+    "id": "cordas-2",
+    "erro": 0.643,
+    "roteiro": "Da mais grossa para a mais fina: Mi, Lá, Ré, Sol, Si e Mi.",
+    "ouvido": "Tá mais grossa para mais fina.  Milá, ressolci-me."
+   },
+   {
+    "id": "pentatonica-0",
+    "erro": 0.6,
+    "roteiro": "Quer improvisar? Comece pela pentatônica.",
+    "ouvido": "Quero improvisar, comece pela penta tônica."
+   },
+   {
+    "id": "cifra-1",
+    "erro": 0.517,
+    "roteiro": "Na cifra, cada nota vira uma letra: C é Dó, D é Ré, E é Mi, F é Fá, G é Sol, A é Lá e B é Si.",
+    "ouvido": "Na cifra cada nota vira uma letra C-D-D-R-I-M-I-F-F-G-SOL-A-L-I-B-S"
+   },
+   {
+    "id": "cifra-0",
+    "erro": 0.455,
+    "roteiro": "Por que o acorde de Dó se chama C? Vem comigo!",
+    "ouvido": "Porque o Acorde de Doce chama-se, vem comigo."
+   },
+   {
+    "id": "pestana-0",
+    "erro": 0.375,
+    "roteiro": "A pestana assusta no começo, mas tem truque.",
+    "ouvido": "Apestando a susta no começo mas tem truque."
+   },
+   {
+    "id": "pentatonica-1",
+    "erro": 0.312,
+    "roteiro": "Ela tem só cinco notas. A de Lá menor é: Lá, Dó, Ré, Mi e Sol.",
+    "ouvido": "Ela tem só cinco notas, a de lá menor é lá do remissor."
+   },
+   {
+    "id": "pestana-5",
+    "erro": 0.304,
+    "roteiro": "E o melhor: o mesmo desenho anda pelo braço. Na casa um é Fá, na três é Sol, e na cinco é Lá.",
+    "ouvido": "E o melhor, o mesmo desenho anda pelo braço, na casa 1F, na 3E sol e na 5E lá."
+   },
+   {
+    "id": "jogo-0",
+    "erro": 0.286,
+    "roteiro": "Como funciona o jogo do Toca Aí?",
+    "ouvido": "Como funciona o jogo do Tokai?"
+   }
+  ]
+ },
+ "fina": {
+  "erro_palavras": 0.0879,
+  "erro_letras": 0.0221,
+  "piores": [
+   {
+    "id": "cifra-1",
+    "erro": 0.586,
+    "roteiro": "Na cifra, cada nota vira uma letra: C é Dó, D é Ré, E é Mi, F é Fá, G é Sol, A é Lá e B é Si.",
+    "ouvido": "A cifra cada nota vira uma letra.  C, D, D, E, E, E, F, F, G, G, I, L, I, B, S."
+   },
+   {
+    "id": "cordas-2",
+    "erro": 0.571,
+    "roteiro": "Da mais grossa para a mais fina: Mi, Lá, Ré, Sol, Si e Mi.",
+    "ouvido": "da mais grossa para mais fina, Mila Ressol Simi."
+   },
+   {
+    "id": "cifra-0",
+    "erro": 0.455,
+    "roteiro": "Por que o acorde de Dó se chama C? Vem comigo!",
+    "ouvido": "Porque o Acorde de Doce chama ser, vem comigo."
+   },
+   {
+    "id": "jogo-0",
+    "erro": 0.286,
+    "roteiro": "Como funciona o jogo do Toca Aí?",
+    "ouvido": "Como funciona o jogo do Tocaí?"
+   },
+   {
+    "id": "batida-0",
+    "erro": 0.25,
+    "roteiro": "A batida: o que a mão direita faz.",
+    "ouvido": "Abatida o que a mão direita faz."
+   },
+   {
+    "id": "cordas-3",
+    "erro": 0.235,
+    "roteiro": "Um truque para decorar: Eu Amo Doce de Goiaba, Bem Escuro. E, A, D, G, B, E!",
+    "ouvido": "Um truque para decorar. Eu amo doce de goiaba bem escuro e a DGBE."
+   },
+   {
+    "id": "afinar-5",
+    "erro": 0.231,
+    "roteiro": "Uma dica: chegue na nota sempre subindo. Assim a corda segura a afinação.",
+    "ouvido": "Uma dica, chegue na nota sempre subindo, assim acorda a segurar a afinação."
+   },
+   {
+    "id": "cifra-2",
+    "erro": 0.231,
+    "roteiro": "Há mais de mil anos, os monges já escreviam as notas com letras, e começavam a contar pelo Lá. Por isso o A é o Lá.",
+    "ouvido": "A mais de mil anos, os Mondes já escreviam as notas com letras e começavam a contar pelo lá, por isso o Aeolá."
+   }
+  ]
+ }
+}
