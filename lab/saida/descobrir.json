@@ -6,886 +6,103 @@
   {
    "ajuste": {
     "harm": 0.9,
-    "nHarm": 4,
+    "nHarm": 3,
     "baixo": 0.1,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 64.5,
-    "maior_menor": 58.7,
-    "exato": 50.8
-   },
-   "viterbi": {
-    "raiz": 66.5,
-    "maior_menor": 64.1,
-    "exato": 59.7
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.1,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 64.3,
-    "maior_menor": 58.6,
-    "exato": 51.3
-   },
-   "viterbi": {
-    "raiz": 66.3,
-    "maior_menor": 64,
-    "exato": 59.5
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.05,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 64.4,
-    "maior_menor": 58.7,
-    "exato": 50.8
-   },
-   "viterbi": {
-    "raiz": 66.2,
-    "maior_menor": 63.8,
-    "exato": 59.5
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.2,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 63.6,
-    "maior_menor": 57.8,
-    "exato": 50
-   },
-   "viterbi": {
-    "raiz": 66.2,
-    "maior_menor": 63.8,
-    "exato": 59.4
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.75,
-    "nHarm": 4,
-    "baixo": 0.1,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 64.2,
-    "maior_menor": 58.4,
-    "exato": 50.4
-   },
-   "viterbi": {
-    "raiz": 66.2,
-    "maior_menor": 63.8,
-    "exato": 59.3
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 63.9,
-    "maior_menor": 58.4,
-    "exato": 50.6
-   },
-   "viterbi": {
-    "raiz": 65.9,
-    "maior_menor": 63.7,
-    "exato": 59.4
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.2,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 63.6,
-    "maior_menor": 57.8,
-    "exato": 50.5
-   },
-   "viterbi": {
-    "raiz": 66.1,
-    "maior_menor": 63.8,
-    "exato": 59.2
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.75,
-    "nHarm": 4,
-    "baixo": 0.05,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 64.2,
-    "maior_menor": 58.6,
-    "exato": 50.5
-   },
-   "viterbi": {
-    "raiz": 66.1,
-    "maior_menor": 63.7,
-    "exato": 59.2
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.05,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 64.1,
-    "maior_menor": 58.5,
-    "exato": 51.2
-   },
-   "viterbi": {
-    "raiz": 66,
-    "maior_menor": 63.7,
-    "exato": 59.2
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.75,
-    "nHarm": 4,
-    "baixo": 0.1,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 64,
-    "maior_menor": 58.3,
-    "exato": 51
-   },
-   "viterbi": {
-    "raiz": 66,
-    "maior_menor": 63.7,
-    "exato": 59.1
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.75,
-    "nHarm": 4,
-    "baixo": 0.2,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 63.4,
-    "maior_menor": 57.6,
-    "exato": 49.6
-   },
-   "viterbi": {
-    "raiz": 66.1,
-    "maior_menor": 63.7,
-    "exato": 59
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.75,
-    "nHarm": 4,
-    "baixo": 0.2,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 63.3,
-    "maior_menor": 57.6,
-    "exato": 50.3
-   },
-   "viterbi": {
-    "raiz": 65.9,
-    "maior_menor": 63.6,
-    "exato": 59
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.75,
-    "nHarm": 4,
-    "baixo": 0.05,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 63.9,
-    "maior_menor": 58.3,
-    "exato": 51
-   },
-   "viterbi": {
-    "raiz": 65.8,
-    "maior_menor": 63.5,
-    "exato": 59
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 63.7,
-    "maior_menor": 58.2,
-    "exato": 51
-   },
-   "viterbi": {
-    "raiz": 65.5,
-    "maior_menor": 63.4,
-    "exato": 59
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.75,
-    "nHarm": 4,
-    "baixo": 0,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 63.6,
-    "maior_menor": 58.1,
-    "exato": 50.1
-   },
-   "viterbi": {
-    "raiz": 65.6,
-    "maior_menor": 63.3,
-    "exato": 59
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.6,
-    "nHarm": 4,
-    "baixo": 0.1,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 63.7,
-    "maior_menor": 58.1,
-    "exato": 49.6
-   },
-   "viterbi": {
-    "raiz": 65.7,
-    "maior_menor": 63.4,
-    "exato": 58.5
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.6,
-    "nHarm": 4,
-    "baixo": 0.1,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 63.6,
-    "maior_menor": 57.9,
-    "exato": 50.6
-   },
-   "viterbi": {
-    "raiz": 65.5,
-    "maior_menor": 63.2,
-    "exato": 58.8
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.6,
-    "nHarm": 4,
-    "baixo": 0.05,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 63.7,
-    "maior_menor": 58.1,
-    "exato": 49.7
-   },
-   "viterbi": {
-    "raiz": 65.6,
-    "maior_menor": 63.3,
-    "exato": 58.5
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.75,
-    "nHarm": 4,
-    "baixo": 0,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 63.4,
-    "maior_menor": 57.9,
-    "exato": 50.7
-   },
-   "viterbi": {
-    "raiz": 65.3,
-    "maior_menor": 63.1,
-    "exato": 58.7
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.6,
-    "nHarm": 4,
-    "baixo": 0.2,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 62.9,
-    "maior_menor": 57.2,
-    "exato": 49.9
-   },
-   "viterbi": {
-    "raiz": 65.4,
-    "maior_menor": 63.1,
-    "exato": 58.6
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.6,
-    "nHarm": 4,
-    "baixo": 0.05,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 63.5,
-    "maior_menor": 57.9,
-    "exato": 50.6
-   },
-   "viterbi": {
-    "raiz": 65.3,
-    "maior_menor": 63,
-    "exato": 58.6
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.6,
-    "nHarm": 4,
-    "baixo": 0.2,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 63,
-    "maior_menor": 57.3,
-    "exato": 48.9
-   },
-   "viterbi": {
-    "raiz": 65.6,
-    "maior_menor": 63.1,
-    "exato": 58.1
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.6,
-    "nHarm": 4,
-    "baixo": 0,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 63.2,
-    "maior_menor": 57.8,
-    "exato": 49.4
-   },
-   "viterbi": {
-    "raiz": 65.1,
-    "maior_menor": 62.9,
-    "exato": 58.1
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.6,
-    "nHarm": 4,
-    "baixo": 0,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 63,
-    "maior_menor": 57.5,
-    "exato": 50.3
-   },
-   "viterbi": {
-    "raiz": 64.9,
-    "maior_menor": 62.7,
-    "exato": 58.4
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.75,
-    "nHarm": 8,
-    "baixo": 0.1,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 65.1,
-    "maior_menor": 56,
-    "exato": 49
-   },
-   "viterbi": {
-    "raiz": 67.3,
-    "maior_menor": 62.7,
-    "exato": 58.2
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.75,
-    "nHarm": 8,
-    "baixo": 0.1,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 65,
-    "maior_menor": 56,
-    "exato": 49.3
-   },
-   "viterbi": {
-    "raiz": 67.1,
-    "maior_menor": 62.6,
-    "exato": 57.8
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.75,
-    "nHarm": 8,
-    "baixo": 0.05,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 64.9,
-    "maior_menor": 55.9,
-    "exato": 49
-   },
-   "viterbi": {
-    "raiz": 67,
-    "maior_menor": 62.4,
-    "exato": 57.9
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.75,
-    "nHarm": 8,
-    "baixo": 0.2,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 64.3,
-    "maior_menor": 55.1,
-    "exato": 48.2
-   },
-   "viterbi": {
-    "raiz": 67.1,
-    "maior_menor": 62.3,
-    "exato": 57.7
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.75,
-    "nHarm": 8,
-    "baixo": 0.2,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 64.3,
-    "maior_menor": 55.3,
-    "exato": 48.6
-   },
-   "viterbi": {
-    "raiz": 67,
-    "maior_menor": 62.4,
-    "exato": 57.5
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.6,
-    "nHarm": 8,
-    "baixo": 0.1,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 64.3,
-    "maior_menor": 56.3,
-    "exato": 48.6
-   },
-   "viterbi": {
-    "raiz": 66.4,
-    "maior_menor": 62.3,
-    "exato": 57.6
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.75,
-    "nHarm": 8,
-    "baixo": 0.05,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 64.8,
-    "maior_menor": 55.9,
-    "exato": 49.3
-   },
-   "viterbi": {
-    "raiz": 66.7,
-    "maior_menor": 62.3,
-    "exato": 57.5
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.6,
-    "nHarm": 8,
-    "baixo": 0.05,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 64.3,
-    "maior_menor": 56.4,
-    "exato": 48.7
-   },
-   "viterbi": {
-    "raiz": 66.3,
-    "maior_menor": 62.2,
-    "exato": 57.6
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.6,
-    "nHarm": 8,
-    "baixo": 0.1,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 64.2,
-    "maior_menor": 56.2,
-    "exato": 49.1
-   },
-   "viterbi": {
-    "raiz": 66.2,
-    "maior_menor": 62.2,
-    "exato": 57.5
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.75,
-    "nHarm": 8,
-    "baixo": 0,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 64.4,
-    "maior_menor": 55.6,
-    "exato": 48.7
-   },
-   "viterbi": {
-    "raiz": 66.4,
-    "maior_menor": 62,
-    "exato": 57.7
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.6,
-    "nHarm": 8,
-    "baixo": 0.2,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 63.5,
-    "maior_menor": 55.6,
-    "exato": 47.9
-   },
-   "viterbi": {
-    "raiz": 66.2,
-    "maior_menor": 62.1,
-    "exato": 57.3
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.6,
-    "nHarm": 8,
-    "baixo": 0.05,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 64.1,
-    "maior_menor": 56.2,
-    "exato": 49.1
-   },
-   "viterbi": {
-    "raiz": 66,
-    "maior_menor": 62,
-    "exato": 57.4
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.75,
-    "nHarm": 8,
-    "baixo": 0,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 64.2,
-    "maior_menor": 55.5,
-    "exato": 49
-   },
-   "viterbi": {
-    "raiz": 66.3,
-    "maior_menor": 62,
-    "exato": 57.3
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 8,
-    "baixo": 0.1,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 64.8,
-    "maior_menor": 54.9,
-    "exato": 48.8
-   },
-   "viterbi": {
-    "raiz": 67.4,
-    "maior_menor": 62,
-    "exato": 57.3
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.6,
-    "nHarm": 8,
-    "baixo": 0.2,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 63.5,
-    "maior_menor": 55.6,
-    "exato": 48.5
-   },
-   "viterbi": {
-    "raiz": 66.1,
-    "maior_menor": 62,
-    "exato": 57.2
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.6,
-    "nHarm": 8,
-    "baixo": 0,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 63.9,
-    "maior_menor": 56.1,
-    "exato": 48.5
-   },
-   "viterbi": {
-    "raiz": 65.8,
-    "maior_menor": 61.8,
-    "exato": 57.3
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 8,
-    "baixo": 0.05,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 64.5,
-    "maior_menor": 54.8,
-    "exato": 48.8
-   },
-   "viterbi": {
-    "raiz": 66.9,
-    "maior_menor": 61.8,
-    "exato": 57.3
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 8,
-    "baixo": 0.1,
-    "tetrade": 0.06
+    "tetrade": 0.03,
+    "troca": 3,
+    "tom": 0.6
    },
    "quadro": {
     "raiz": 64.7,
-    "maior_menor": 54.9,
-    "exato": 48.9
+    "maior_menor": 58.9,
+    "exato": 51.1
    },
    "viterbi": {
-    "raiz": 67.2,
-    "maior_menor": 62,
-    "exato": 56.8
+    "raiz": 70.2,
+    "maior_menor": 68.7,
+    "exato": 64
+   },
+   "final": {
+    "raiz": 76.8,
+    "maior_menor": 75.6,
+    "exato": 70.3
    }
   },
   {
    "ajuste": {
-    "harm": 0.9,
-    "nHarm": 8,
-    "baixo": 0.2,
-    "tetrade": 0.03
+    "harm": 1,
+    "nHarm": 4,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 3,
+    "tom": 0.6
    },
    "quadro": {
-    "raiz": 64.4,
-    "maior_menor": 54.4,
-    "exato": 48.2
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 50.9
    },
    "viterbi": {
-    "raiz": 67.3,
-    "maior_menor": 61.8,
-    "exato": 57.1
+    "raiz": 69.9,
+    "maior_menor": 68.4,
+    "exato": 63.8
+   },
+   "final": {
+    "raiz": 76.5,
+    "maior_menor": 75.2,
+    "exato": 70
    }
   },
   {
    "ajuste": {
-    "harm": 0.6,
-    "nHarm": 8,
-    "baixo": 0,
-    "tetrade": 0.06
+    "harm": 0.8,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 3,
+    "tom": 0.6
    },
    "quadro": {
-    "raiz": 63.7,
-    "maior_menor": 55.9,
-    "exato": 48.9
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 51
    },
    "viterbi": {
-    "raiz": 65.5,
-    "maior_menor": 61.6,
-    "exato": 57.2
+    "raiz": 69.9,
+    "maior_menor": 68.4,
+    "exato": 63.6
+   },
+   "final": {
+    "raiz": 76.5,
+    "maior_menor": 75.2,
+    "exato": 69.8
    }
   },
   {
    "ajuste": {
-    "harm": 0.9,
-    "nHarm": 8,
-    "baixo": 0.2,
-    "tetrade": 0.06
+    "harm": 1,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 3,
+    "tom": 0.6
    },
    "quadro": {
-    "raiz": 64.4,
-    "maior_menor": 54.5,
-    "exato": 48.4
+    "raiz": 64.6,
+    "maior_menor": 58.7,
+    "exato": 50.9
    },
    "viterbi": {
-    "raiz": 67.2,
-    "maior_menor": 61.8,
-    "exato": 56.5
+    "raiz": 70.1,
+    "maior_menor": 68.5,
+    "exato": 63.7
+   },
+   "final": {
+    "raiz": 76.5,
+    "maior_menor": 75,
+    "exato": 69.8
    }
   },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 8,
-    "baixo": 0.05,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 64.3,
-    "maior_menor": 54.7,
-    "exato": 48.9
-   },
-   "viterbi": {
-    "raiz": 66.8,
-    "maior_menor": 61.6,
-    "exato": 56.5
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 8,
-    "baixo": 0,
-    "tetrade": 0.03
-   },
-   "quadro": {
-    "raiz": 63.4,
-    "maior_menor": 54,
-    "exato": 48.3
-   },
-   "viterbi": {
-    "raiz": 66,
-    "maior_menor": 61,
-    "exato": 56.8
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 8,
-    "baixo": 0,
-    "tetrade": 0.06
-   },
-   "quadro": {
-    "raiz": 63.2,
-    "maior_menor": 53.9,
-    "exato": 48.3
-   },
-   "viterbi": {
-    "raiz": 65.9,
-    "maior_menor": 60.9,
-    "exato": 56.1
-   }
-  }
- ],
- "antes": {
-  "ajuste": {
-   "nHarm": 1,
-   "baixo": 0,
-   "tetrade": 0.04
-  },
-  "quadro": {
-   "raiz": 60.7,
-   "maior_menor": 55.6,
-   "exato": 46.1
-  },
-  "viterbi": {
-   "raiz": 62.7,
-   "maior_menor": 60.5,
-   "exato": 54.1
-  }
- },
- "ajuste_fino": [
   {
    "ajuste": {
     "harm": 0.9,
@@ -904,6 +121,86 @@
     "raiz": 69.6,
     "maior_menor": 68.2,
     "exato": 63.6
+   },
+   "final": {
+    "raiz": 76.3,
+    "maior_menor": 75,
+    "exato": 69.7
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.9,
+    "nHarm": 3,
+    "baixo": 0.05,
+    "tetrade": 0.03,
+    "troca": 3,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.5,
+    "maior_menor": 58.8,
+    "exato": 51
+   },
+   "viterbi": {
+    "raiz": 69.7,
+    "maior_menor": 68.4,
+    "exato": 63.7
+   },
+   "final": {
+    "raiz": 76,
+    "maior_menor": 74.9,
+    "exato": 69.7
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.8,
+    "nHarm": 3,
+    "baixo": 0.05,
+    "tetrade": 0.03,
+    "troca": 3,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.5,
+    "maior_menor": 58.8,
+    "exato": 51
+   },
+   "viterbi": {
+    "raiz": 69.5,
+    "maior_menor": 68.3,
+    "exato": 63.6
+   },
+   "final": {
+    "raiz": 76,
+    "maior_menor": 74.9,
+    "exato": 69.6
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 1,
+    "nHarm": 4,
+    "baixo": 0.05,
+    "tetrade": 0.03,
+    "troca": 3,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.5,
+    "maior_menor": 58.8,
+    "exato": 50.9
+   },
+   "viterbi": {
+    "raiz": 69.5,
+    "maior_menor": 68.1,
+    "exato": 63.7
+   },
+   "final": {
+    "raiz": 75.9,
+    "maior_menor": 74.8,
+    "exato": 69.6
    }
   },
   {
@@ -924,498 +221,1067 @@
     "raiz": 69.3,
     "maior_menor": 67.9,
     "exato": 63.4
+   },
+   "final": {
+    "raiz": 75.8,
+    "maior_menor": 74.7,
+    "exato": 69.5
    }
   },
   {
    "ajuste": {
-    "harm": 0.9,
+    "harm": 0.8,
     "nHarm": 4,
-    "baixo": 0.1,
-    "tetrade": 0.06,
+    "baixo": 0.05,
+    "tetrade": 0.03,
     "troca": 3,
     "tom": 0.6
    },
    "quadro": {
     "raiz": 64.3,
     "maior_menor": 58.6,
-    "exato": 51.3
+    "exato": 50.6
+   },
+   "viterbi": {
+    "raiz": 69.1,
+    "maior_menor": 67.7,
+    "exato": 63.2
+   },
+   "final": {
+    "raiz": 75.8,
+    "maior_menor": 74.5,
+    "exato": 69.3
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 1,
+    "nHarm": 3,
+    "baixo": 0.05,
+    "tetrade": 0.03,
+    "troca": 3,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.1,
+    "maior_menor": 58.5,
+    "exato": 50.8
+   },
+   "viterbi": {
+    "raiz": 69.6,
+    "maior_menor": 68.1,
+    "exato": 63.4
+   },
+   "final": {
+    "raiz": 75.8,
+    "maior_menor": 74.5,
+    "exato": 69.3
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.8,
+    "nHarm": 4,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 3,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.3,
+    "maior_menor": 58.5,
+    "exato": 50.5
    },
    "viterbi": {
     "raiz": 69.3,
     "maior_menor": 67.8,
-    "exato": 63
+    "exato": 63.2
+   },
+   "final": {
+    "raiz": 76,
+    "maior_menor": 74.4,
+    "exato": 69.2
    }
   },
   {
    "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
+    "harm": 0.8,
+    "nHarm": 5,
     "baixo": 0.1,
     "tetrade": 0.03,
     "troca": 3,
-    "tom": 0
+    "tom": 0.6
    },
    "quadro": {
-    "raiz": 64.5,
-    "maior_menor": 58.7,
-    "exato": 50.8
+    "raiz": 64.8,
+    "maior_menor": 54.4,
+    "exato": 46.3
    },
    "viterbi": {
-    "raiz": 69.3,
-    "maior_menor": 66.4,
-    "exato": 61.5
+    "raiz": 70.3,
+    "maior_menor": 65.6,
+    "exato": 60.5
+   },
+   "final": {
+    "raiz": 76.8,
+    "maior_menor": 71.8,
+    "exato": 66.1
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.8,
+    "nHarm": 5,
+    "baixo": 0.05,
+    "tetrade": 0.03,
+    "troca": 3,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.7,
+    "maior_menor": 54.3,
+    "exato": 46.3
+   },
+   "viterbi": {
+    "raiz": 70,
+    "maior_menor": 65.5,
+    "exato": 60.4
+   },
+   "final": {
+    "raiz": 76.4,
+    "maior_menor": 71.5,
+    "exato": 65.8
    }
   },
   {
    "ajuste": {
     "harm": 0.9,
-    "nHarm": 4,
+    "nHarm": 5,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 3,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 65,
+    "maior_menor": 52.7,
+    "exato": 44.6
+   },
+   "viterbi": {
+    "raiz": 70.5,
+    "maior_menor": 64.5,
+    "exato": 59.4
+   },
+   "final": {
+    "raiz": 77,
+    "maior_menor": 70.5,
+    "exato": 64.9
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.9,
+    "nHarm": 5,
     "baixo": 0.05,
     "tetrade": 0.03,
     "troca": 3,
-    "tom": 0
+    "tom": 0.6
    },
    "quadro": {
-    "raiz": 64.4,
-    "maior_menor": 58.7,
-    "exato": 50.8
+    "raiz": 64.8,
+    "maior_menor": 52.6,
+    "exato": 44.5
    },
    "viterbi": {
-    "raiz": 69,
-    "maior_menor": 66.2,
+    "raiz": 70.3,
+    "maior_menor": 64.4,
+    "exato": 59.1
+   },
+   "final": {
+    "raiz": 76.7,
+    "maior_menor": 70.2,
+    "exato": 64.3
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 1,
+    "nHarm": 5,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 3,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.9,
+    "maior_menor": 50.4,
+    "exato": 42.2
+   },
+   "viterbi": {
+    "raiz": 70.6,
+    "maior_menor": 61.9,
+    "exato": 56.8
+   },
+   "final": {
+    "raiz": 76.9,
+    "maior_menor": 67.4,
+    "exato": 61.7
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 1,
+    "nHarm": 5,
+    "baixo": 0.05,
+    "tetrade": 0.03,
+    "troca": 3,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.5,
+    "maior_menor": 50.2,
+    "exato": 42
+   },
+   "viterbi": {
+    "raiz": 70.1,
+    "maior_menor": 61.7,
+    "exato": 56.4
+   },
+   "final": {
+    "raiz": 76.4,
+    "maior_menor": 67.2,
     "exato": 61.3
    }
+  }
+ ],
+ "antes": {
+  "ajuste": {
+   "nHarm": 1,
+   "baixo": 0,
+   "tetrade": 0.04
+  },
+  "quadro": {
+   "raiz": 60.7,
+   "maior_menor": 55.6,
+   "exato": 46.1
+  },
+  "viterbi": {
+   "raiz": 65.4,
+   "maior_menor": 63.3,
+   "exato": 56.7
+  },
+  "final": {
+   "raiz": 71.8,
+   "maior_menor": 69.5,
+   "exato": 62.2
+  }
+ },
+ "ajuste_fino": [
+  {
+   "ajuste": {
+    "harm": 0.9,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 8,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.7,
+    "maior_menor": 58.9,
+    "exato": 51.1
+   },
+   "viterbi": {
+    "raiz": 74.4,
+    "maior_menor": 73.6,
+    "exato": 68.2
+   },
+   "final": {
+    "raiz": 77.3,
+    "maior_menor": 76.5,
+    "exato": 70.6
+   }
   },
   {
    "ajuste": {
     "harm": 0.9,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 6,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.7,
+    "maior_menor": 58.9,
+    "exato": 51.1
+   },
+   "viterbi": {
+    "raiz": 73.4,
+    "maior_menor": 72.4,
+    "exato": 67.1
+   },
+   "final": {
+    "raiz": 77.4,
+    "maior_menor": 76.4,
+    "exato": 70.5
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.9,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 5,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.7,
+    "maior_menor": 58.9,
+    "exato": 51.1
+   },
+   "viterbi": {
+    "raiz": 72.6,
+    "maior_menor": 71.6,
+    "exato": 66.5
+   },
+   "final": {
+    "raiz": 77.3,
+    "maior_menor": 76.3,
+    "exato": 70.5
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 1,
     "nHarm": 4,
     "baixo": 0.1,
-    "tetrade": 0.06,
+    "tetrade": 0.03,
+    "troca": 6,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 50.9
+   },
+   "viterbi": {
+    "raiz": 73,
+    "maior_menor": 72.2,
+    "exato": 66.9
+   },
+   "final": {
+    "raiz": 76.9,
+    "maior_menor": 76.2,
+    "exato": 70.4
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.8,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 6,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 51
+   },
+   "viterbi": {
+    "raiz": 73,
+    "maior_menor": 72.2,
+    "exato": 66.9
+   },
+   "final": {
+    "raiz": 76.9,
+    "maior_menor": 76.2,
+    "exato": 70.3
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.9,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 4,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.7,
+    "maior_menor": 58.9,
+    "exato": 51.1
+   },
+   "viterbi": {
+    "raiz": 71.5,
+    "maior_menor": 70.2,
+    "exato": 65.1
+   },
+   "final": {
+    "raiz": 77.3,
+    "maior_menor": 76.1,
+    "exato": 70.4
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.8,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 8,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 51
+   },
+   "viterbi": {
+    "raiz": 74.3,
+    "maior_menor": 73.3,
+    "exato": 67.8
+   },
+   "final": {
+    "raiz": 77.2,
+    "maior_menor": 76.2,
+    "exato": 70.1
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 1,
+    "nHarm": 4,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 8,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 50.9
+   },
+   "viterbi": {
+    "raiz": 74.2,
+    "maior_menor": 73.3,
+    "exato": 67.6
+   },
+   "final": {
+    "raiz": 77.1,
+    "maior_menor": 76.2,
+    "exato": 69.9
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 1,
+    "nHarm": 4,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 5,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 50.9
+   },
+   "viterbi": {
+    "raiz": 72.4,
+    "maior_menor": 71.3,
+    "exato": 66.4
+   },
+   "final": {
+    "raiz": 77,
+    "maior_menor": 75.9,
+    "exato": 70.4
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.8,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 5,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 51
+   },
+   "viterbi": {
+    "raiz": 72.5,
+    "maior_menor": 71.4,
+    "exato": 66.3
+   },
+   "final": {
+    "raiz": 77,
+    "maior_menor": 76,
+    "exato": 70.2
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 1,
+    "nHarm": 4,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 6,
+    "tom": 1
+   },
+   "quadro": {
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 50.9
+   },
+   "viterbi": {
+    "raiz": 73.3,
+    "maior_menor": 72.4,
+    "exato": 66.7
+   },
+   "final": {
+    "raiz": 77,
+    "maior_menor": 76.1,
+    "exato": 69.8
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 1,
+    "nHarm": 4,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 4,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 50.9
+   },
+   "viterbi": {
+    "raiz": 71.3,
+    "maior_menor": 69.9,
+    "exato": 65.1
+   },
+   "final": {
+    "raiz": 76.9,
+    "maior_menor": 75.8,
+    "exato": 70.3
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.9,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 5,
+    "tom": 1
+   },
+   "quadro": {
+    "raiz": 64.7,
+    "maior_menor": 58.9,
+    "exato": 51.1
+   },
+   "viterbi": {
+    "raiz": 72.8,
+    "maior_menor": 71.6,
+    "exato": 66
+   },
+   "final": {
+    "raiz": 77.2,
+    "maior_menor": 76,
+    "exato": 69.8
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.8,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 4,
+    "tom": 0.6
+   },
+   "quadro": {
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 51
+   },
+   "viterbi": {
+    "raiz": 71.3,
+    "maior_menor": 69.9,
+    "exato": 65.1
+   },
+   "final": {
+    "raiz": 76.9,
+    "maior_menor": 75.8,
+    "exato": 70.2
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.8,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 6,
+    "tom": 1
+   },
+   "quadro": {
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 51
+   },
+   "viterbi": {
+    "raiz": 73.3,
+    "maior_menor": 72.4,
+    "exato": 66.5
+   },
+   "final": {
+    "raiz": 77.1,
+    "maior_menor": 76.1,
+    "exato": 69.6
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.9,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
     "troca": 3,
-    "tom": 0
-   },
-   "quadro": {
-    "raiz": 64.3,
-    "maior_menor": 58.6,
-    "exato": 51.3
-   },
-   "viterbi": {
-    "raiz": 68.9,
-    "maior_menor": 66.1,
-    "exato": 61
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.1,
-    "tetrade": 0.03,
-    "troca": 2,
     "tom": 0.6
    },
    "quadro": {
-    "raiz": 64.5,
-    "maior_menor": 58.7,
-    "exato": 50.8
+    "raiz": 64.7,
+    "maior_menor": 58.9,
+    "exato": 51.1
    },
    "viterbi": {
-    "raiz": 67.7,
-    "maior_menor": 65.7,
-    "exato": 61.3
+    "raiz": 70.2,
+    "maior_menor": 68.7,
+    "exato": 64
+   },
+   "final": {
+    "raiz": 76.8,
+    "maior_menor": 75.6,
+    "exato": 70.3
    }
   },
   {
    "ajuste": {
     "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.05,
+    "nHarm": 3,
+    "baixo": 0.1,
     "tetrade": 0.03,
-    "troca": 2,
+    "troca": 8,
+    "tom": 1
+   },
+   "quadro": {
+    "raiz": 64.7,
+    "maior_menor": 58.9,
+    "exato": 51.1
+   },
+   "viterbi": {
+    "raiz": 74.3,
+    "maior_menor": 73.3,
+    "exato": 67.2
+   },
+   "final": {
+    "raiz": 77.2,
+    "maior_menor": 76,
+    "exato": 69.5
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.9,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 4,
+    "tom": 1
+   },
+   "quadro": {
+    "raiz": 64.7,
+    "maior_menor": 58.9,
+    "exato": 51.1
+   },
+   "viterbi": {
+    "raiz": 71.6,
+    "maior_menor": 70.3,
+    "exato": 64.9
+   },
+   "final": {
+    "raiz": 77,
+    "maior_menor": 75.8,
+    "exato": 69.7
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 1,
+    "nHarm": 4,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 5,
+    "tom": 1
+   },
+   "quadro": {
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 50.9
+   },
+   "viterbi": {
+    "raiz": 72.5,
+    "maior_menor": 71.5,
+    "exato": 66
+   },
+   "final": {
+    "raiz": 76.9,
+    "maior_menor": 75.8,
+    "exato": 69.7
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.8,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 5,
+    "tom": 1
+   },
+   "quadro": {
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 51
+   },
+   "viterbi": {
+    "raiz": 72.6,
+    "maior_menor": 71.5,
+    "exato": 66
+   },
+   "final": {
+    "raiz": 76.9,
+    "maior_menor": 75.8,
+    "exato": 69.7
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.9,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 6,
+    "tom": 1
+   },
+   "quadro": {
+    "raiz": 64.7,
+    "maior_menor": 58.9,
+    "exato": 51.1
+   },
+   "viterbi": {
+    "raiz": 73.3,
+    "maior_menor": 72.2,
+    "exato": 66.4
+   },
+   "final": {
+    "raiz": 77,
+    "maior_menor": 75.8,
+    "exato": 69.5
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 1,
+    "nHarm": 4,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 8,
+    "tom": 1
+   },
+   "quadro": {
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 50.9
+   },
+   "viterbi": {
+    "raiz": 74.2,
+    "maior_menor": 73.1,
+    "exato": 67
+   },
+   "final": {
+    "raiz": 77,
+    "maior_menor": 75.9,
+    "exato": 69.2
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.8,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 8,
+    "tom": 1
+   },
+   "quadro": {
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 51
+   },
+   "viterbi": {
+    "raiz": 74.3,
+    "maior_menor": 73.1,
+    "exato": 67.1
+   },
+   "final": {
+    "raiz": 77.1,
+    "maior_menor": 75.8,
+    "exato": 69.2
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.9,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 3,
+    "tom": 1
+   },
+   "quadro": {
+    "raiz": 64.7,
+    "maior_menor": 58.9,
+    "exato": 51.1
+   },
+   "viterbi": {
+    "raiz": 70.3,
+    "maior_menor": 68.9,
+    "exato": 64
+   },
+   "final": {
+    "raiz": 76.5,
+    "maior_menor": 75.4,
+    "exato": 69.9
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 1,
+    "nHarm": 4,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 4,
+    "tom": 1
+   },
+   "quadro": {
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 50.9
+   },
+   "viterbi": {
+    "raiz": 71.4,
+    "maior_menor": 70,
+    "exato": 64.9
+   },
+   "final": {
+    "raiz": 76.8,
+    "maior_menor": 75.5,
+    "exato": 69.7
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 0.8,
+    "nHarm": 3,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 4,
+    "tom": 1
+   },
+   "quadro": {
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 51
+   },
+   "viterbi": {
+    "raiz": 71.4,
+    "maior_menor": 70,
+    "exato": 64.9
+   },
+   "final": {
+    "raiz": 76.8,
+    "maior_menor": 75.5,
+    "exato": 69.7
+   }
+  },
+  {
+   "ajuste": {
+    "harm": 1,
+    "nHarm": 4,
+    "baixo": 0.1,
+    "tetrade": 0.03,
+    "troca": 3,
     "tom": 0.6
    },
    "quadro": {
-    "raiz": 64.4,
-    "maior_menor": 58.7,
-    "exato": 50.8
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 50.9
    },
    "viterbi": {
-    "raiz": 67.6,
-    "maior_menor": 65.6,
-    "exato": 61.2
+    "raiz": 69.9,
+    "maior_menor": 68.4,
+    "exato": 63.8
+   },
+   "final": {
+    "raiz": 76.5,
+    "maior_menor": 75.2,
+    "exato": 70
    }
   },
   {
    "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
+    "harm": 0.8,
+    "nHarm": 3,
     "baixo": 0.1,
-    "tetrade": 0.06,
-    "troca": 2,
+    "tetrade": 0.03,
+    "troca": 3,
     "tom": 0.6
    },
    "quadro": {
-    "raiz": 64.3,
-    "maior_menor": 58.6,
-    "exato": 51.3
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 51
    },
    "viterbi": {
-    "raiz": 67.5,
-    "maior_menor": 65.6,
-    "exato": 61
+    "raiz": 69.9,
+    "maior_menor": 68.4,
+    "exato": 63.6
+   },
+   "final": {
+    "raiz": 76.5,
+    "maior_menor": 75.2,
+    "exato": 69.8
    }
   },
   {
    "ajuste": {
-    "harm": 0.9,
+    "harm": 1,
     "nHarm": 4,
     "baixo": 0.1,
     "tetrade": 0.03,
-    "troca": 1.2,
-    "tom": 0.6
+    "troca": 3,
+    "tom": 1
    },
    "quadro": {
-    "raiz": 64.5,
-    "maior_menor": 58.7,
-    "exato": 50.8
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 50.9
    },
    "viterbi": {
-    "raiz": 66.5,
-    "maior_menor": 64.1,
-    "exato": 59.7
+    "raiz": 70,
+    "maior_menor": 68.6,
+    "exato": 63.8
+   },
+   "final": {
+    "raiz": 76.3,
+    "maior_menor": 75,
+    "exato": 69.7
    }
   },
   {
    "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
+    "harm": 0.8,
+    "nHarm": 3,
     "baixo": 0.1,
     "tetrade": 0.03,
-    "troca": 2,
-    "tom": 0
+    "troca": 3,
+    "tom": 1
    },
    "quadro": {
-    "raiz": 64.5,
-    "maior_menor": 58.7,
-    "exato": 50.8
+    "raiz": 64.6,
+    "maior_menor": 58.8,
+    "exato": 51
    },
    "viterbi": {
-    "raiz": 67.5,
-    "maior_menor": 64.1,
-    "exato": 59.3
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.1,
-    "tetrade": 0.06,
-    "troca": 1.2,
-    "tom": 0.6
+    "raiz": 70,
+    "maior_menor": 68.6,
+    "exato": 63.7
    },
-   "quadro": {
-    "raiz": 64.3,
-    "maior_menor": 58.6,
-    "exato": 51.3
-   },
-   "viterbi": {
-    "raiz": 66.3,
-    "maior_menor": 64,
-    "exato": 59.5
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.05,
-    "tetrade": 0.03,
-    "troca": 1.2,
-    "tom": 0.6
-   },
-   "quadro": {
-    "raiz": 64.4,
-    "maior_menor": 58.7,
-    "exato": 50.8
-   },
-   "viterbi": {
-    "raiz": 66.2,
-    "maior_menor": 63.8,
-    "exato": 59.5
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.05,
-    "tetrade": 0.03,
-    "troca": 2,
-    "tom": 0
-   },
-   "quadro": {
-    "raiz": 64.4,
-    "maior_menor": 58.7,
-    "exato": 50.8
-   },
-   "viterbi": {
-    "raiz": 67.2,
-    "maior_menor": 63.9,
-    "exato": 59.3
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.1,
-    "tetrade": 0.06,
-    "troca": 2,
-    "tom": 0
-   },
-   "quadro": {
-    "raiz": 64.3,
-    "maior_menor": 58.6,
-    "exato": 51.3
-   },
-   "viterbi": {
-    "raiz": 67.2,
-    "maior_menor": 63.9,
-    "exato": 59
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.1,
-    "tetrade": 0.03,
-    "troca": 0.6,
-    "tom": 0.6
-   },
-   "quadro": {
-    "raiz": 64.5,
-    "maior_menor": 58.7,
-    "exato": 50.8
-   },
-   "viterbi": {
-    "raiz": 65.4,
-    "maior_menor": 62.6,
-    "exato": 57.9
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.05,
-    "tetrade": 0.03,
-    "troca": 0.6,
-    "tom": 0.6
-   },
-   "quadro": {
-    "raiz": 64.4,
-    "maior_menor": 58.7,
-    "exato": 50.8
-   },
-   "viterbi": {
-    "raiz": 65.1,
-    "maior_menor": 62.5,
-    "exato": 57.9
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.1,
-    "tetrade": 0.06,
-    "troca": 0.6,
-    "tom": 0.6
-   },
-   "quadro": {
-    "raiz": 64.3,
-    "maior_menor": 58.6,
-    "exato": 51.3
-   },
-   "viterbi": {
-    "raiz": 65.2,
-    "maior_menor": 62.5,
-    "exato": 57.8
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.1,
-    "tetrade": 0.03,
-    "troca": 1.2,
-    "tom": 0
-   },
-   "quadro": {
-    "raiz": 64.5,
-    "maior_menor": 58.7,
-    "exato": 50.8
-   },
-   "viterbi": {
-    "raiz": 66.3,
-    "maior_menor": 62.3,
-    "exato": 57.5
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.05,
-    "tetrade": 0.03,
-    "troca": 1.2,
-    "tom": 0
-   },
-   "quadro": {
-    "raiz": 64.4,
-    "maior_menor": 58.7,
-    "exato": 50.8
-   },
-   "viterbi": {
-    "raiz": 65.9,
-    "maior_menor": 62,
-    "exato": 57.2
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.1,
-    "tetrade": 0.06,
-    "troca": 1.2,
-    "tom": 0
-   },
-   "quadro": {
-    "raiz": 64.3,
-    "maior_menor": 58.6,
-    "exato": 51.3
-   },
-   "viterbi": {
-    "raiz": 66,
-    "maior_menor": 62,
-    "exato": 57.1
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.1,
-    "tetrade": 0.03,
-    "troca": 0.6,
-    "tom": 0
-   },
-   "quadro": {
-    "raiz": 64.5,
-    "maior_menor": 58.7,
-    "exato": 50.8
-   },
-   "viterbi": {
-    "raiz": 65.1,
-    "maior_menor": 60.5,
-    "exato": 55.4
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.05,
-    "tetrade": 0.03,
-    "troca": 0.6,
-    "tom": 0
-   },
-   "quadro": {
-    "raiz": 64.4,
-    "maior_menor": 58.7,
-    "exato": 50.8
-   },
-   "viterbi": {
-    "raiz": 64.9,
-    "maior_menor": 60.4,
-    "exato": 55.3
-   }
-  },
-  {
-   "ajuste": {
-    "harm": 0.9,
-    "nHarm": 4,
-    "baixo": 0.1,
-    "tetrade": 0.06,
-    "troca": 0.6,
-    "tom": 0
-   },
-   "quadro": {
-    "raiz": 64.3,
-    "maior_menor": 58.6,
-    "exato": 51.3
-   },
-   "viterbi": {
-    "raiz": 64.9,
-    "maior_menor": 60.3,
-    "exato": 55.2
+   "final": {
+    "raiz": 76.3,
+    "maior_menor": 75,
+    "exato": 69.7
    }
   }
  ],
  "melhor": {
   "ajuste": {
    "harm": 0.9,
-   "nHarm": 4,
+   "nHarm": 3,
    "baixo": 0.1,
    "tetrade": 0.03,
-   "troca": 3,
+   "troca": 8,
    "tom": 0.6
   },
   "quadro": {
-   "raiz": 64.5,
-   "maior_menor": 58.7,
-   "exato": 50.8
+   "raiz": 64.7,
+   "maior_menor": 58.9,
+   "exato": 51.1
   },
   "viterbi": {
-   "raiz": 69.6,
-   "maior_menor": 68.2,
-   "exato": 63.6
+   "raiz": 74.4,
+   "maior_menor": 73.6,
+   "exato": 68.2
+  },
+  "final": {
+   "raiz": 77.3,
+   "maior_menor": 76.5,
+   "exato": 70.6
   },
   "por_jogador": {
    "00": {
-    "raiz": 71.6,
-    "maior_menor": 71.9,
-    "exato": 63.6
+    "raiz": 78.9,
+    "maior_menor": 79.9,
+    "exato": 68.9
    },
    "01": {
-    "raiz": 79.3,
-    "maior_menor": 77,
-    "exato": 71.9
+    "raiz": 89.2,
+    "maior_menor": 87.4,
+    "exato": 82.3
    },
    "02": {
-    "raiz": 83.9,
-    "maior_menor": 76.2,
-    "exato": 73.5
+    "raiz": 92.1,
+    "maior_menor": 84.3,
+    "exato": 81.7
    },
    "03": {
-    "raiz": 59.4,
-    "maior_menor": 58.6,
-    "exato": 48.3
+    "raiz": 68.7,
+    "maior_menor": 68.1,
+    "exato": 55.3
    },
    "04": {
-    "raiz": 63.2,
-    "maior_menor": 64.1,
-    "exato": 59.3
+    "raiz": 69.1,
+    "maior_menor": 71.5,
+    "exato": 64.1
    },
    "05": {
-    "raiz": 60.3,
-    "maior_menor": 60.3,
-    "exato": 61.9
+    "raiz": 65.7,
+    "maior_menor": 66.9,
+    "exato": 67.2
    }
   },
   "confusao_tipos": {
@@ -1428,39 +1294,39 @@
    ],
    "m": [
     [
-     20483,
-     638,
-     451,
-     54,
-     540
+     21995,
+     527,
+     524,
+     17,
+     450
     ],
     [
-     573,
-     4732,
-     6,
-     56,
-     5
+     520,
+     5146,
+     3,
+     14,
+     3
     ],
     [
-     710,
-     64,
-     2653,
-     80,
-     24
-    ],
-    [
-     100,
-     474,
-     109,
-     1091,
+     782,
+     48,
+     2856,
+     105,
      0
     ],
     [
-     967,
-     4,
-     60,
+     61,
+     788,
+     81,
+     1079,
+     0
+    ],
+    [
+     1147,
      0,
-     1050
+     31,
+     0,
+     1093
     ]
    ]
   }
@@ -1469,44 +1335,49 @@
   "ajuste": {},
   "quadro": {
    "raiz": 64.4,
-   "maior_menor": 54.4,
-   "exato": 48.2
+   "maior_menor": 58.7,
+   "exato": 50.8
   },
   "viterbi": {
-   "raiz": 67.3,
-   "maior_menor": 61.8,
-   "exato": 57.1
+   "raiz": 69.3,
+   "maior_menor": 67.9,
+   "exato": 63.4
+  },
+  "final": {
+   "raiz": 75.8,
+   "maior_menor": 74.7,
+   "exato": 69.5
   },
   "por_jogador": {
    "00": {
-    "raiz": 72,
-    "maior_menor": 71.3,
-    "exato": 62.3
+    "raiz": 74.5,
+    "maior_menor": 75.9,
+    "exato": 67.3
    },
    "01": {
-    "raiz": 73.9,
-    "maior_menor": 68.1,
-    "exato": 65.5
+    "raiz": 85.1,
+    "maior_menor": 83.4,
+    "exato": 78.3
    },
    "02": {
-    "raiz": 79.4,
-    "maior_menor": 58.1,
-    "exato": 55.4
+    "raiz": 93,
+    "maior_menor": 84.6,
+    "exato": 81.5
    },
    "03": {
-    "raiz": 57.8,
-    "maior_menor": 54.5,
-    "exato": 43.9
+    "raiz": 67.6,
+    "maior_menor": 67.3,
+    "exato": 56
    },
    "04": {
-    "raiz": 61.3,
-    "maior_menor": 58.5,
-    "exato": 53
+    "raiz": 69.4,
+    "maior_menor": 69.6,
+    "exato": 63.5
    },
    "05": {
-    "raiz": 59.3,
-    "maior_menor": 59.7,
-    "exato": 60.5
+    "raiz": 65.5,
+    "maior_menor": 66.5,
+    "exato": 67.2
    }
   },
   "confusao_tipos": {
@@ -1519,39 +1390,39 @@
    ],
    "m": [
     [
-     17979,
-     2625,
-     260,
-     79,
-     295
+     20478,
+     638,
+     463,
+     37,
+     551
     ],
     [
-     354,
-     4735,
-     7,
-     28,
-     18
-    ],
-    [
-     881,
-     139,
-     2275,
-     185,
-     40
-    ],
-    [
-     94,
-     624,
-     77,
-     922,
+     576,
+     4745,
+     5,
+     56,
      8
     ],
     [
-     1008,
-     29,
-     31,
-     11,
-     1018
+     674,
+     59,
+     2644,
+     82,
+     23
+    ],
+    [
+     97,
+     471,
+     109,
+     1092,
+     0
+    ],
+    [
+     964,
+     9,
+     63,
+     0,
+     979
     ]
    ]
   }
