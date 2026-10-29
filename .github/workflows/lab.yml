@@ -1,0 +1,53 @@
+# =========================================================
+# Laboratório do Toca Aí 2: experimentos que precisam baixar dados
+# grandes da internet (o ambiente de desenvolvimento não acessa esses sites).
+# Roda a cada envio para a branch "laboratorio" e guarda os resultados em lab/saida.
+# Não mexe no app: o APK continua sendo gerado só pela branch main.
+# =========================================================
+name: Laboratorio
+
+on:
+  push:
+    branches: [laboratorio]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  lab:
+    runs-on: ubuntu-latest
+    timeout-minutes: 150
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.10'
+
+      - name: Instalar bibliotecas
+        run: |
+          pip install numpy scipy soundfile
+          pip install basic-pitch || echo "basic-pitch não instalou"
+          pip install onnxruntime || true
+
+      - name: Baixar o GuitarSet (licença CC BY 4.0)
+        run: |
+          mkdir -p dados && cd dados
+          curl -sSL --retry 3 -o anot.zip "https://zenodo.org/records/3371780/files/annotation.zip?download=1"
+          curl -sSL --retry 3 -o mic.zip "https://zenodo.org/records/3371780/files/audio_mono-mic.zip?download=1"
+          ls -la
+          unzip -q anot.zip -d anot && unzip -q mic.zip -d mic
+          find anot -name '*.jams' | wc -l; find mic -name '*.wav' | wc -l
+
+      - name: Avaliar o microfone
+        run: python lab/avaliar.py dados lab/saida
+
+      - name: Guardar os resultados
+        if: always()
+        run: |
+          git config user.name "Claude"
+          git config user.email "noreply@anthropic.com"
+          git add lab/saida || true
+          git commit -m "Laboratório: resultados da avaliação do microfone" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>" -m "Claude-Session: https://claude.ai/code/session_014TkUTkW8waQiCU4jaKRQKK" || echo "nada novo"
+          git push || true
