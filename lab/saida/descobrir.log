@@ -1,0 +1,54 @@
+comp: 180 áudios: 360
+quadros extraídos em 77 s; anotação usada: 1
+antes (sem harmônicos, sem baixo): {"ajuste":{"nHarm":1,"baixo":0,"tetrade":0.04},"quadro":{"raiz":60.7,"maior_menor":55.6,"exato":46.1},"viterbi":{"raiz":62.7,"maior_menor":60.5,"exato":54.1}}
+{"ajuste":{"harm":0.6,"nHarm":4,"baixo":0,"tetrade":0.03},"quadro":{"raiz":63.2,"maior_menor":57.8,"exato":49.4},"viterbi":{"raiz":65.1,"maior_menor":62.9,"exato":58.1}}
+{"ajuste":{"harm":0.6,"nHarm":4,"baixo":0,"tetrade":0.06},"quadro":{"raiz":63,"maior_menor":57.5,"exato":50.3},"viterbi":{"raiz":64.9,"maior_menor":62.7,"exato":58.4}}
+{"ajuste":{"harm":0.6,"nHarm":4,"baixo":0.05,"tetrade":0.03},"quadro":{"raiz":63.7,"maior_menor":58.1,"exato":49.7},"viterbi":{"raiz":65.6,"maior_menor":63.3,"exato":58.5}}
+{"ajuste":{"harm":0.6,"nHarm":4,"baixo":0.05,"tetrade":0.06},"quadro":{"raiz":63.5,"maior_menor":57.9,"exato":50.6},"viterbi":{"raiz":65.3,"maior_menor":63,"exato":58.6}}
+{"ajuste":{"harm":0.6,"nHarm":4,"baixo":0.1,"tetrade":0.03},"quadro":{"raiz":63.7,"maior_menor":58.1,"exato":49.6},"viterbi":{"raiz":65.7,"maior_menor":63.4,"exato":58.5}}
+{"ajuste":{"harm":0.6,"nHarm":4,"baixo":0.1,"tetrade":0.06},"quadro":{"raiz":63.6,"maior_menor":57.9,"exato":50.6},"viterbi":{"raiz":65.5,"maior_menor":63.2,"exato":58.8}}
+{"ajuste":{"harm":0.6,"nHarm":4,"baixo":0.2,"tetrade":0.03},"quadro":{"raiz":63,"maior_menor":57.3,"exato":48.9},"viterbi":{"raiz":65.6,"maior_menor":63.1,"exato":58.1}}
+{"ajuste":{"harm":0.6,"nHarm":4,"baixo":0.2,"tetrade":0.06},"quadro":{"raiz":62.9,"maior_menor":57.2,"exato":49.9},"viterbi":{"raiz":65.4,"maior_menor":63.1,"exato":58.6}}
+{"ajuste":{"harm":0.6,"nHarm":8,"baixo":0,"tetrade":0.03},"quadro":{"raiz":63.9,"maior_menor":56.1,"exato":48.5},"viterbi":{"raiz":65.8,"maior_menor":61.8,"exato":57.3}}
+{"ajuste":{"harm":0.6,"nHarm":8,"baixo":0,"tetrade":0.06},"quadro":{"raiz":63.7,"maior_menor":55.9,"exato":48.9},"viterbi":{"raiz":65.5,"maior_menor":61.6,"exato":57.2}}
+{"ajuste":{"harm":0.6,"nHarm":8,"baixo":0.05,"tetrade":0.03},"quadro":{"raiz":64.3,"maior_menor":56.4,"exato":48.7},"viterbi":{"raiz":66.3,"maior_menor":62.2,"exato":57.6}}
+{"ajuste":{"harm":0.6,"nHarm":8,"baixo":0.05,"tetrade":0.06},"quadro":{"raiz":64.1,"maior_menor":56.2,"exato":49.1},"viterbi":{"raiz":66,"maior_menor":62,"exato":57.4}}
+{"ajuste":{"harm":0.6,"nHarm":8,"baixo":0.1,"tetrade":0.03},"quadro":{"raiz":64.3,"maior_menor":56.3,"exato":48.6},"viterbi":{"raiz":66.4,"maior_menor":62.3,"exato":57.6}}
+{"ajuste":{"harm":0.6,"nHarm":8,"baixo":0.1,"tetrade":0.06},"quadro":{"raiz":64.2,"maior_menor":56.2,"exato":49.1},"viterbi":{"raiz":66.2,"maior_menor":62.2,"exato":57.5}}
+{"ajuste":{"harm":0.6,"nHarm":8,"baixo":0.2,"tetrade":0.03},"quadro":{"raiz":63.5,"maior_menor":55.6,"exato":47.9},"viterbi":{"raiz":66.2,"maior_menor":62.1,"exato":57.3}}
+{"ajuste":{"harm":0.6,"nHarm":8,"baixo":0.2,"tetrade":0.06},"quadro":{"raiz":63.5,"maior_menor":55.6,"exato":48.5},"viterbi":{"raiz":66.1,"maior_menor":62,"exato":57.2}}
+{"ajuste":{"harm":0.75,"nHarm":4,"baixo":0,"tetrade":0.03},"quadro":{"raiz":63.6,"maior_menor":58.1,"exato":50.1},"viterbi":{"raiz":65.6,"maior_menor":63.3,"exato":59}}
+{"ajuste":{"harm":0.75,"nHarm":4,"baixo":0,"tetrade":0.06},"quadro":{"raiz":63.4,"maior_menor":57.9,"exato":50.7},"viterbi":{"raiz":65.3,"maior_menor":63.1,"exato":58.7}}
+{"ajuste":{"harm":0.75,"nHarm":4,"baixo":0.05,"tetrade":0.03},"quadro":{"raiz":64.2,"maior_menor":58.6,"exato":50.5},"viterbi":{"raiz":66.1,"maior_menor":63.7,"exato":59.2}}
+{"ajuste":{"harm":0.75,"nHarm":4,"baixo":0.05,"tetrade":0.06},"quadro":{"raiz":63.9,"maior_menor":58.3,"exato":51},"viterbi":{"raiz":65.8,"maior_menor":63.5,"exato":59}}
+{"ajuste":{"harm":0.75,"nHarm":4,"baixo":0.1,"tetrade":0.03},"quadro":{"raiz":64.2,"maior_menor":58.4,"exato":50.4},"viterbi":{"raiz":66.2,"maior_menor":63.8,"exato":59.3}}
+{"ajuste":{"harm":0.75,"nHarm":4,"baixo":0.1,"tetrade":0.06},"quadro":{"raiz":64,"maior_menor":58.3,"exato":51},"viterbi":{"raiz":66,"maior_menor":63.7,"exato":59.1}}
+{"ajuste":{"harm":0.75,"nHarm":4,"baixo":0.2,"tetrade":0.03},"quadro":{"raiz":63.4,"maior_menor":57.6,"exato":49.6},"viterbi":{"raiz":66.1,"maior_menor":63.7,"exato":59}}
+{"ajuste":{"harm":0.75,"nHarm":4,"baixo":0.2,"tetrade":0.06},"quadro":{"raiz":63.3,"maior_menor":57.6,"exato":50.3},"viterbi":{"raiz":65.9,"maior_menor":63.6,"exato":59}}
+{"ajuste":{"harm":0.75,"nHarm":8,"baixo":0,"tetrade":0.03},"quadro":{"raiz":64.4,"maior_menor":55.6,"exato":48.7},"viterbi":{"raiz":66.4,"maior_menor":62,"exato":57.7}}
+{"ajuste":{"harm":0.75,"nHarm":8,"baixo":0,"tetrade":0.06},"quadro":{"raiz":64.2,"maior_menor":55.5,"exato":49},"viterbi":{"raiz":66.3,"maior_menor":62,"exato":57.3}}
+{"ajuste":{"harm":0.75,"nHarm":8,"baixo":0.05,"tetrade":0.03},"quadro":{"raiz":64.9,"maior_menor":55.9,"exato":49},"viterbi":{"raiz":67,"maior_menor":62.4,"exato":57.9}}
+{"ajuste":{"harm":0.75,"nHarm":8,"baixo":0.05,"tetrade":0.06},"quadro":{"raiz":64.8,"maior_menor":55.9,"exato":49.3},"viterbi":{"raiz":66.7,"maior_menor":62.3,"exato":57.5}}
+{"ajuste":{"harm":0.75,"nHarm":8,"baixo":0.1,"tetrade":0.03},"quadro":{"raiz":65.1,"maior_menor":56,"exato":49},"viterbi":{"raiz":67.3,"maior_menor":62.7,"exato":58.2}}
+{"ajuste":{"harm":0.75,"nHarm":8,"baixo":0.1,"tetrade":0.06},"quadro":{"raiz":65,"maior_menor":56,"exato":49.3},"viterbi":{"raiz":67.1,"maior_menor":62.6,"exato":57.8}}
+{"ajuste":{"harm":0.75,"nHarm":8,"baixo":0.2,"tetrade":0.03},"quadro":{"raiz":64.3,"maior_menor":55.1,"exato":48.2},"viterbi":{"raiz":67.1,"maior_menor":62.3,"exato":57.7}}
+{"ajuste":{"harm":0.75,"nHarm":8,"baixo":0.2,"tetrade":0.06},"quadro":{"raiz":64.3,"maior_menor":55.3,"exato":48.6},"viterbi":{"raiz":67,"maior_menor":62.4,"exato":57.5}}
+{"ajuste":{"harm":0.9,"nHarm":4,"baixo":0,"tetrade":0.03},"quadro":{"raiz":63.9,"maior_menor":58.4,"exato":50.6},"viterbi":{"raiz":65.9,"maior_menor":63.7,"exato":59.4}}
+{"ajuste":{"harm":0.9,"nHarm":4,"baixo":0,"tetrade":0.06},"quadro":{"raiz":63.7,"maior_menor":58.2,"exato":51},"viterbi":{"raiz":65.5,"maior_menor":63.4,"exato":59}}
+{"ajuste":{"harm":0.9,"nHarm":4,"baixo":0.05,"tetrade":0.03},"quadro":{"raiz":64.4,"maior_menor":58.7,"exato":50.8},"viterbi":{"raiz":66.2,"maior_menor":63.8,"exato":59.5}}
+{"ajuste":{"harm":0.9,"nHarm":4,"baixo":0.05,"tetrade":0.06},"quadro":{"raiz":64.1,"maior_menor":58.5,"exato":51.2},"viterbi":{"raiz":66,"maior_menor":63.7,"exato":59.2}}
+{"ajuste":{"harm":0.9,"nHarm":4,"baixo":0.1,"tetrade":0.03},"quadro":{"raiz":64.5,"maior_menor":58.7,"exato":50.8},"viterbi":{"raiz":66.5,"maior_menor":64.1,"exato":59.7}}
+{"ajuste":{"harm":0.9,"nHarm":4,"baixo":0.1,"tetrade":0.06},"quadro":{"raiz":64.3,"maior_menor":58.6,"exato":51.3},"viterbi":{"raiz":66.3,"maior_menor":64,"exato":59.5}}
+{"ajuste":{"harm":0.9,"nHarm":4,"baixo":0.2,"tetrade":0.03},"quadro":{"raiz":63.6,"maior_menor":57.8,"exato":50},"viterbi":{"raiz":66.2,"maior_menor":63.8,"exato":59.4}}
+{"ajuste":{"harm":0.9,"nHarm":4,"baixo":0.2,"tetrade":0.06},"quadro":{"raiz":63.6,"maior_menor":57.8,"exato":50.5},"viterbi":{"raiz":66.1,"maior_menor":63.8,"exato":59.2}}
+{"ajuste":{"harm":0.9,"nHarm":8,"baixo":0,"tetrade":0.03},"quadro":{"raiz":63.4,"maior_menor":54,"exato":48.3},"viterbi":{"raiz":66,"maior_menor":61,"exato":56.8}}
+{"ajuste":{"harm":0.9,"nHarm":8,"baixo":0,"tetrade":0.06},"quadro":{"raiz":63.2,"maior_menor":53.9,"exato":48.3},"viterbi":{"raiz":65.9,"maior_menor":60.9,"exato":56.1}}
+{"ajuste":{"harm":0.9,"nHarm":8,"baixo":0.05,"tetrade":0.03},"quadro":{"raiz":64.5,"maior_menor":54.8,"exato":48.8},"viterbi":{"raiz":66.9,"maior_menor":61.8,"exato":57.3}}
+{"ajuste":{"harm":0.9,"nHarm":8,"baixo":0.05,"tetrade":0.06},"quadro":{"raiz":64.3,"maior_menor":54.7,"exato":48.9},"viterbi":{"raiz":66.8,"maior_menor":61.6,"exato":56.5}}
+{"ajuste":{"harm":0.9,"nHarm":8,"baixo":0.1,"tetrade":0.03},"quadro":{"raiz":64.8,"maior_menor":54.9,"exato":48.8},"viterbi":{"raiz":67.4,"maior_menor":62,"exato":57.3}}
+{"ajuste":{"harm":0.9,"nHarm":8,"baixo":0.1,"tetrade":0.06},"quadro":{"raiz":64.7,"maior_menor":54.9,"exato":48.9},"viterbi":{"raiz":67.2,"maior_menor":62,"exato":56.8}}
+{"ajuste":{"harm":0.9,"nHarm":8,"baixo":0.2,"tetrade":0.03},"quadro":{"raiz":64.4,"maior_menor":54.4,"exato":48.2},"viterbi":{"raiz":67.3,"maior_menor":61.8,"exato":57.1}}
+{"ajuste":{"harm":0.9,"nHarm":8,"baixo":0.2,"tetrade":0.06},"quadro":{"raiz":64.4,"maior_menor":54.5,"exato":48.4},"viterbi":{"raiz":67.2,"maior_menor":61.8,"exato":56.5}}
+MELHOR: {"ajuste":{"harm":0.9,"nHarm":4,"baixo":0.1,"tetrade":0.03,"troca":3,"tom":0.6},"quadro":{"raiz":64.5,"maior_menor":58.7,"exato":50.8},"viterbi":{"raiz":69.6,"maior_menor":68.2,"exato":63.6},"por_jogador":{"00":{"raiz":71.6,"maior_menor":71.9,"exato":63.6},"01":{"raiz":79.3,"maior_menor":77,"exato":71.9},"02":{"raiz":83.9,"maior_menor":76.2,"exato":73.5},"03":{"raiz":59.4,"maior_menor":58.6,"exato":48.3},"04":{"raiz":63.2,"maior_menor":64.1,"exato":59.3},"05":{"raiz":60.3,"maior_menor":60.3,"exato":61.9}},"confusao_tipos":{"linhas_real_colunas_app":["M","m","7","m7","7M"],"m":[[20483,638,451,54,540],[573,4732,6,56,5],[710,64,2653,80,24],[100,474,109,1091,0],[967,4,60,0,1050]]}}
+PADRÃO DO APP: {"ajuste":{},"quadro":{"raiz":64.4,"maior_menor":54.4,"exato":48.2},"viterbi":{"raiz":67.3,"maior_menor":61.8,"exato":57.1},"por_jogador":{"00":{"raiz":72,"maior_menor":71.3,"exato":62.3},"01":{"raiz":73.9,"maior_menor":68.1,"exato":65.5},"02":{"raiz":79.4,"maior_menor":58.1,"exato":55.4},"03":{"raiz":57.8,"maior_menor":54.5,"exato":43.9},"04":{"raiz":61.3,"maior_menor":58.5,"exato":53},"05":{"raiz":59.3,"maior_menor":59.7,"exato":60.5}},"confusao_tipos":{"linhas_real_colunas_app":["M","m","7","m7","7M"],"m":[[17979,2625,260,79,295],[354,4735,7,28,18],[881,139,2275,185,40],[94,624,77,922,8],[1008,29,31,11,1018]]}}
+FIM
