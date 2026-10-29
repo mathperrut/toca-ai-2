@@ -15,12 +15,29 @@ Segunda versão do [Toca Aí](https://github.com/mathperrut/toca-a-). A base é 
 
 | Fase | O que entra | Situação |
 |---|---|---|
-| 1. Base e correções | Botão Voltar nas lições, botão "Consegui", trocas com microfone, som certo para cada imagem, nome e ícone novos | **Pronta (esta versão)** |
-| 2. Tocar junto e mudar o tom | Violão + batida, violão + batida + banda, tudo (gravação original); volume de cada parte; tom −6 a +6; repetir um trecho | Planejada |
+| 1. Base e correções | Botão Voltar nas lições, botão "Consegui", trocas com microfone, som certo para cada imagem, nome e ícone novos | **Pronta** |
+| 2. Tocar junto e mudar o tom | Violão + batida, violão + batida + banda, tudo (gravação original); volume de cada parte; tom −6 a +6; repetir um trecho | **Pronta** |
 | 3. Microfone mais preciso | Medir a precisão atual com gravações reais; calibração com o seu violão; testar a IA de notas Basic Pitch | Planejada |
 | 4. Níveis e conteúdo | Iniciante, Intermediário e Avançado; cifragem, teoria, técnica, ritmos, treino de ouvido | Planejada |
 | 5. Vozes do instrutor | Vozes gravadas no app (feminina, masculina, grave e fina) | Planejada |
 | 6. Recursos extras | Repetir trecho com velocidade subindo, descobrir acordes ouvindo, treino de ouvido, gravar você tocando | Planejada |
+
+### O que mudou na Fase 2
+- **Tocar junto**, na página da música, com 3 opções:
+  - **Violão e batida:** o violão do app e a percussão.
+  - **Violão, batida e banda:** com baixo e piano (sanfona no baião).
+  - **Tudo: voz e instrumentos:** a gravação original, pelo vídeo oficial do YouTube ou por um MP3 seu.
+- **Volume de cada parte** (violão do app, batida, baixo, piano/sanfona, gravação).
+- **8 ritmos da banda**, escolhidos pelo ritmo da música: pop acústico, rock, balada, baião (zabumba, triângulo e sanfona), samba e pagode (surdo, pandeiro, tamborim/tantã), bossa nova (aro e baixo) e samba-rock.
+- **Tom:** botões − e + mudam meio tom por vez, até 3 tons para cima ou para baixo, e o app mostra o nome do tom quando tem certeza (ex.: "Si maior, o tom da gravação").
+- **Capotraste:** com "Tenho capotraste", o app testa as casas 0 a 7 e escolhe a que deixa os acordes mais fáceis, preferindo os desenhos que você já treinou.
+- **MP3 seu:** fica guardado só no celular; depois de sincronizar, toca no tom e na velocidade que você escolher. O YouTube não deixa mudar o tom, então com o vídeo o jogo usa o tom original.
+- **Repetir o trecho:** a parte escolhida toca 8 vezes seguidas.
+- **Fone de ouvido:** sem fone, no modo No tempo, a banda toca baixinho para o microfone ouvir só você.
+
+**Como a banda funciona (para estudar):** cada ritmo é uma receita escrita em semicolcheias (16 passos por compasso de 4 tempos). O baixo segue graus do acorde: **R** (fundamental), **5** (quinta), **8** (oitava) e **A** (aproximação: meio tom antes do próximo acorde). O piano monta as notas do acorde numa oitava só. Um agendador olha 0,35 tempo à frente e marca cada som no relógio de áudio, igual a um metrônomo.
+
+**Como o tom muda num MP3 (para estudar):** primeiro um *phase vocoder* estica o tempo sem mudar o tom (FFT em pedaços de 46 ms, com a fase de cada frequência corrigida e "travada" nos picos do espectro); depois o áudio é lido mais rápido, o que volta ao tamanho original e sobe o tom. +2 semitons = esticar 12% e ler 12% mais rápido. Arquivo: `mp3.js`.
 
 ### O que mudou na Fase 1
 - **Voltar nas lições:** um botão só. Volta uma tela; na primeira tela de uma lição, abre a lição anterior na última tela. Da tela "Lição concluída", volta para a última tela.
@@ -156,7 +173,10 @@ python treinar.py
 | `tema.css` | Visual (preto, branco e vermelho, fonte Jost), tema claro e escuro |
 | `data.js` | Acordes, ritmos, curso, melodias e as músicas do catálogo |
 | `acordes.js` | Nomes e desenhos de acordes, versões fáceis, sequências |
-| `som.js` | Violão gravado, batidas, metrônomo |
+| `som.js` | Violão gravado, batidas, metrônomo, mixer (volume de cada parte) |
+| `banda.js` | A banda: ritmos, baixo e teclado seguindo os acordes |
+| `tom.js` | Mudar o tom, descobrir o tom da música, escolher o capotraste |
+| `mp3.js` | MP3 seu: guardar, sincronizar, mudar tom e velocidade (phase vocoder) |
 | `jogo.js` | O jogo: desenho das cordas, modos, pontuação, microfone |
 | `cifras.js` | Busca e leitura de cifras, capotraste inteligente, YouTube |
 | `aprender.js` | Curso, lições (com Voltar), professor de acordes, sons que acompanham as imagens, 1 minuto de trocas |
@@ -174,7 +194,7 @@ python treinar.py
 - A busca depende do formato das páginas do Cifra Club; se ele mudar, a busca pode parar e o app avisa (dá para colar a cifra).
 
 ## 7. Créditos e direitos
-- **Sons:** notas gravadas da University of Iowa Electronic Music Studios e de *quartertone* (Freesound), reunidas pelo projeto [tonejs-instruments](https://github.com/nbrosowsky/tonejs-instruments), licença [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Detalhes em `sons/CREDITOS.txt`.
+- **Sons:** violão da University of Iowa Electronic Music Studios e de *quartertone* (Freesound); baixo da Karoryfer Samples e harmônio de *donyaquick* (Freesound), reunidos pelo projeto [tonejs-instruments](https://github.com/nbrosowsky/tonejs-instruments), licença [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/). Percussão e piano da [Versilian Community Sample Library](https://github.com/sgossner/VCSL) (CC0). Detalhes em `sons/CREDITOS.txt`.
 - **Fonte:** Jost (SIL Open Font License, `fontes/OFL-Jost.txt`).
 - **Narração dos vídeos:** voz "faber" do [Piper](https://github.com/rhasspy/piper).
 - **Músicas:** o app não traz letras nem gravações. Guarda só a sequência de acordes; as gravações tocam pelo player oficial do YouTube. As melodias inclusas são de domínio público.

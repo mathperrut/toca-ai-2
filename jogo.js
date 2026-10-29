@@ -152,7 +152,7 @@ const Jogo = (() => {
     montar() {
       const c = this.cfg;
       const el = document.createElement('div');
-      el.className = 'jogo' + (c.gravacao ? ' com-video' : '');
+      el.className = 'jogo' + (c.gravacao && c.gravacao.video ? ' com-video' : '');   // com o vídeo do YouTube, o jogo fica embaixo dele
       el.setAttribute('role', 'dialog');
       el.setAttribute('aria-label', 'Jogo: ' + c.titulo);
       el.innerHTML = `
@@ -241,7 +241,18 @@ const Jogo = (() => {
           toast(msgSemMicrofone(e));
         }
       }
-      if (this.modo === 'tempo' && this.entrada === 'mic' && !this.cfg.gravacao) this.mostrarAviso('Dica: com fone de ouvido o microfone escuta só o seu violão', 2600);
+      // A banda (percussão, baixo, teclado) toca nos modos No tempo e Prática
+      this.acomp = null;
+      if (this.cfg.banda && this.modo !== 'espera' && !this.melodia) {
+        await Banda.carregar();
+        let partes = this.cfg.banda.partes;
+        const mix = { ...(this.cfg.mix || MIX_PADRAO) };
+        // sem fone, no modo No tempo, o microfone ouviria a banda: só uma percussão baixinha
+        if (this.modo === 'tempo' && this.entrada === 'mic' && !this.cfg.fone) { partes = partes.filter(p => p === 'batida'); mix.batida = Math.min(mix.batida, 0.3); this.semGuia = true; }
+        if (partes.length) this.acomp = new Acompanhamento({ trechos: this.trechos, estilo: this.cfg.banda.estilo, desloc: this.capo, partes });
+        aplicarMix(mix);
+      } else if (typeof aplicarMix === 'function') aplicarMix();
+      if (this.modo === 'tempo' && this.entrada === 'mic' && !this.cfg.gravacao && !this.cfg.fone) this.mostrarAviso('Dica: com fone de ouvido o microfone escuta só o seu violão e a banda toca inteira', 2800);
       ativos.add('jogo');
       this.rodando = true;
       const seg = 60 / this.bpm;
@@ -283,19 +294,21 @@ const Jogo = (() => {
     passoTempo() {
       const agora = Som.agora, seg = 60 / this.bpm;
       if (this.cfg.gravacao?.mestre) this.seguirVideo(agora);
-      // sons agendados um pouco à frente (violão guia e metrônomo, só na prática)
-      if (this.modo === 'pratica') {
+      if (this.acomp) this.acomp.agendar(this.beatAgora() + 0.35 * this.bpm / 60, b => this.tempoBeat(b));
+      // sons agendados um pouco à frente: violão guia (na prática, ou no tempo com fone) e metrônomo
+      const guiaNoTempo = this.modo === 'tempo' && this.cfg.fone && !this.semGuia && this.cfg.guia !== false && !this.cfg.gravacao;
+      if (this.modo === 'pratica' || guiaNoTempo) {
         while (this.agendados < this.eventos.length && this.eventos[this.agendados].t < agora + 0.3) {
           const e = this.eventos[this.agendados++];
           if (e.t > agora - 0.02 && this.cfg.guia !== false) {
-            if (e.tipo === 'golpe') Som.golpe(e.acorde, e.t, e.tok, e.primeiro ? 0.32 : 0.26, this.capo);
-            else Som.nota(440 * Math.pow(2, (e.midi - 69) / 12), e.t, 0.45, e.corda);
+            if (e.tipo === 'golpe') Som.golpe(e.acorde, e.t, e.tok, e.primeiro ? 0.32 : 0.26, this.capo, { destino: Som.trilha('violao') });
+            else Som.nota(440 * Math.pow(2, (e.midi - 69) / 12), e.t, 0.45, e.corda, { destino: Som.trilha('violao') });
           }
         }
         const totalTempos = Math.ceil(this.totalBeats);
         while (this.proxClique < totalTempos && this.tempoBeat(this.proxClique) < agora + 0.3) {
           const b = this.proxClique++, t = this.tempoBeat(b);
-          if (t > agora - 0.02 && this.cfg.metronomo !== false && !this.cfg.gravacao) Som.click(t, b % this.beatsPorCompasso === 0, 0.22);
+          if (t > agora - 0.02 && this.cfg.metronomo && !this.cfg.gravacao) Som.click(t, b % this.beatsPorCompasso === 0, 0.22);
         }
       } else if (this.cfg.metronomo && !this.cfg.gravacao) {
         const totalTempos = Math.ceil(this.totalBeats);
@@ -664,6 +677,7 @@ const Jogo = (() => {
       if (!this.rodando || this.pausado) return;
       this.pausado = true;
       this.pausaEm = Som.agora;
+      this.beatPausa = this.beatAgora();
       this.cfg.gravacao?.tocador?.pausar?.();
       Som.pararTudo();
       const cam = this.$('#jg-camada');
@@ -691,6 +705,7 @@ const Jogo = (() => {
         this.agendados = this.eventos.findIndex(e => e.t > Som.agora + 3 * seg);
         if (this.agendados < 0) this.agendados = this.eventos.length;
         this.proxClique = Math.max(0, Math.ceil(this.beatAgora() + 3));
+        this.acomp?.irPara(Math.max(0, this.beatPausa ?? 0));
         if (this.cfg.gravacao?.mestre) this.cfg.gravacao.tocador.continuar?.();
       }
       this.ultimoQuadro = performance.now();

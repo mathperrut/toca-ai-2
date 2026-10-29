@@ -241,7 +241,7 @@ async function jogarComGravacao(m, secao = null, opcoes = {}) {
   const pedido = opcoes.modo || S.cfg.modo;
   const modo = pedido === 'tempo' ? 'tempo' : 'pratica';
   jogarMusica(m, secao, {
-    modo, bpm: meta.bpm * taxa, bpmBase: meta.bpm, gravacao: { tocador: tc, pos0, taxa, mestre: true }, container: $('#janela'),
+    k: 0, modo, bpm: meta.bpm * taxa, bpmBase: meta.bpm, gravacao: { tocador: tc, pos0, taxa, mestre: true, video: true }, container: $('#janela'),
     // "Jogar de novo", "Recomeçar" e troca de velocidade: volta o vídeo junto
     refazer: novo => jogarComGravacao(m, secao, {
       vel: novo.bpm ? Math.round(novo.bpm / meta.bpm * 100) : Math.round(taxa * 100),

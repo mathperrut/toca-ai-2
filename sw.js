@@ -6,14 +6,16 @@
    - Quando há internet, busca a versão nova em segundo plano.
    Ao mudar qualquer arquivo do app, aumente o número da VERSAO.
    ========================================================= */
-const VERSAO = 'toca-ai-2-v1';
+const VERSAO = 'toca-ai-2-v2';
 const CLASSICO = [35, 38, 40, 42, 44, 45, 47, 49, 50, 52, 54, 55, 57, 59, 61, 63, 64, 66, 68, 69, 71, 73, 74, 76, 78, 79, 80, 81, 82];
 const ARQUIVOS = [
   './', './index.html', './tema.css', './fontes/Jost.woff', './manifest.webmanifest',
-  './data.js', './acordes.js', './som.js', './modelo-acordes.js', './ia.js', './audio-detect.js', './cifras.js',
-  './gravacao.js', './youtube.js', './apostilas.js', './aprender.js', './jogo.js', './app.js',
+  './data.js', './acordes.js', './som.js', './banda.js', './modelo-acordes.js', './ia.js', './audio-detect.js', './cifras.js', './tom.js',
+  './gravacao.js', './youtube.js', './mp3.js', './apostilas.js', './aprender.js', './jogo.js', './app.js',
   // o violão clássico (padrão) fica guardado; o acústico é guardado quando você escolhe
   ...CLASSICO.map(n => `./sons/classico/${n}.mp3`),
+  // a banda (percussão, baixo, piano, sanfona)
+  ...['agogo-agudo', 'agogo-grave', 'aro', 'bacalhau', 'baixo-31', 'baixo-34', 'baixo-37', 'baixo-40', 'baixo-43', 'baixo-46', 'baixo-49', 'baixo-52', 'bumbo', 'caixa', 'cajon-leve', 'cajon-tapa', 'chimbal', 'chimbal-aberto', 'claves', 'ganza', 'palmas', 'pandeiro-grave', 'pandeiro-ponta', 'pandeiro-tapa', 'piano-55', 'piano-60', 'piano-67', 'piano-72', 'piano-79', 'platinela', 'sanfona-55', 'sanfona-58', 'sanfona-61', 'sanfona-64', 'sanfona-67', 'sanfona-70', 'sanfona-73', 'shaker-ida', 'shaker-volta', 'surdo', 'surdo-abafado', 'tamborim', 'tanta', 'triangulo', 'triangulo-preso', 'zabumba'].map(n => `./sons/banda/${n}.mp3`),
   './icones/icone-192.png', './icones/icone-512.png', './icones/icone-mascaravel-512.png', './icones/apple-touch-icon.png'
 ];
 

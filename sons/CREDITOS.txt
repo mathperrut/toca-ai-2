@@ -1,5 +1,8 @@
-Sons de violão do Toca Aí
-=========================
+Sons do Toca Aí 2
+=================
+
+VIOLÃO (pastas classico e acustico)
+-----------------------------------
 Todas as notas são GRAVAÇÕES REAIS de violões (uma nota por arquivo).
 O nome do arquivo é o número MIDI da nota (40.mp3 = Mi2, a 6ª corda solta).
 
@@ -23,3 +26,24 @@ volume igualado entre as notas e conversão para MP3 mono de 96 kbps.
 A "batida" (as cordas entrando uma depois da outra, a força e a afinação
 variando um pouco em cada nota, o eco curto de sala) é feita pelo app em
 tempo real, a partir dessas notas (ver som.js).
+
+
+BANDA (pasta banda): percussão, baixo, piano e sanfona
+------------------------------------------------------
+Percussão e piano: Versilian Community Sample Library (VCSL), de Versilian
+Studios (https://github.com/sgossner/VCSL), licença Creative Commons Zero
+(CC0, domínio público). Instrumentos usados: cajón, shaker, pandeirola
+(tambourine), tambor de moldura (frame drum), bumbo sinfônico (usado como
+surdo e zabumba), triângulo, agogô, claves, palmas, chimbal, caixa, bongô
+(usado como tamborim), conga (usada como tantã), cabasa (ganzá), woodblock
+(bacalhau) e o piano de armário "Upright Piano, Yamaha".
+O "pandeiro" do app é a mistura do tambor de moldura com a pandeirola.
+
+Baixo elétrico (Karoryfer Samples) e harmônio (Freesound, pacote 330410 de
+donyaquick), usado como sanfona: pela coleção tonejs-instruments de
+Nicholaus P. Brosowsky, licença CC BY 3.0
+(https://creativecommons.org/licenses/by/3.0/).
+
+Alterações: silêncio inicial cortado, duração limitada com final suave,
+volume igualado, conversão para MP3 mono. O nome dos arquivos de notas é o
+número MIDI da nota (piano-60.mp3 = Dó central).

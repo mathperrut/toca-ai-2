@@ -184,7 +184,7 @@ const Som = {
     const tom = c.createBiquadFilter();
     tom.type = 'lowpass'; tom.Q.value = 0.5;
     tom.frequency.value = 2200 + 5200 * Math.min(1, forca * (op.brilho ?? 0.8));
-    tom.connect(this.master);
+    tom.connect(op.destino || this.master);
     const jitter = () => (Math.random() - 0.5) * 0.003;
     const toca = (cordas, espaco, v) => cordas.forEach((corda, i) => {
       const f = this.freqDe(a, corda);
@@ -244,6 +244,16 @@ const Som = {
     const g = c.createGain(); g.gain.setValueAtTime(vol * 1.6, t); g.gain.exponentialRampToValueAtTime(0.001, t + 0.09);
     s.connect(f).connect(g).connect(this.master); s.start(t); this.fontes.push(s);
   },
+
+  /* Mixer: cada parte da música tem o seu volume
+     (violao, batida, baixo, teclado, gravacao). Todas passam pela mesma sala. */
+  trilhas: {},
+  trilha(nome) {
+    if (!this.ctx) this.init();
+    if (!this.trilhas[nome]) { const g = this.ctx.createGain(); g.gain.value = 1; g.connect(this.master); this.trilhas[nome] = g; }
+    return this.trilhas[nome];
+  },
+  volume(nome, v) { const g = this.trilha(nome); g.gain.setTargetAtTime(Math.max(0, v), this.ctx.currentTime, 0.03); },
 
   pararTudo() {
     for (const f of this.fontes) { try { f.stop(); } catch (e) {} }

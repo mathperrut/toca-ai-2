@@ -296,6 +296,32 @@ input[type="range"] { width: 100%; accent-color: var(--tinta); }
 
 /* YouTube */
 .yt-painel, .yt-vazio { display: flex; flex-direction: column; gap: var(--e3); }
+
+/* Tom: − Lá maior + */
+.tom-ctrl { display: grid; grid-template-columns: 52px 1fr 52px; align-items: center; gap: var(--e3); }
+.tom-btn { width: 52px; height: 52px; border-radius: 50%; border: 1.5px solid var(--tinta); background: transparent; color: var(--tinta); font: 500 1.6rem/1 var(--fonte); display: grid; place-items: center; cursor: pointer; }
+.tom-btn:active { transform: scale(.95); }
+.tom-btn:disabled { opacity: .3; cursor: default; }
+.tom-txt { display: flex; flex-direction: column; align-items: center; text-align: center; min-height: 52px; justify-content: center; }
+.tom-txt b { font-size: var(--fs-md); font-weight: 700; letter-spacing: -0.01em; }
+.tom-txt small { color: var(--tinta-2); font-size: var(--fs-sm); }
+.tom-capo { text-align: center; margin: 0; }
+.tom-capo:empty { display: none; }
+.mu-tom .linha-botoes { justify-content: center; }
+
+/* Tocar junto */
+.mu-tudo { display: flex; flex-direction: column; gap: var(--e3); padding: var(--e3); border-radius: var(--r2); background: var(--papel-2); }
+.mu-tudo .segmentado { background: var(--papel); align-self: flex-start; }
+.mu-tudo .sub:empty { display: none; }
+.mu-mix summary { cursor: pointer; font-weight: 500; padding: var(--e2) 0; }
+.mix-lista { display: flex; flex-direction: column; gap: var(--e3); padding: var(--e2) 0 var(--e3); }
+.mix-lista .faixa { display: grid; grid-template-columns: 1fr auto; align-items: center; gap: 6px var(--e3); }
+.mix-lista .faixa b { font-variant-numeric: tabular-nums; font-weight: 600; }
+.mix-lista .faixa input { grid-column: 1 / -1; }
+.mp3 { display: flex; flex-direction: column; gap: var(--e3); }
+.mp3-arq { display: flex; align-items: center; gap: var(--e2); margin: 0; }
+.mp3-arq .ic { width: 18px; height: 18px; color: var(--bolinha); }
+.mp3 label.btn { align-self: flex-start; cursor: pointer; }
 .yt-moldura { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: var(--r1); overflow: hidden; }
 .yt-player, .yt-iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
 .yt-moldura.no-jogo { position: fixed; z-index: 12; top: env(safe-area-inset-top); left: 0; right: 0; width: 100vw; height: min(56.25vw, 34vh); aspect-ratio: auto; border-radius: 0; }

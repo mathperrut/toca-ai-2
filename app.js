@@ -71,8 +71,10 @@ const LS_KEY = 'tocaai2:v1';
 function novoEstado() {
   return {
     v: 4, updatedAt: 0, xp: 0, licoes: {}, musicas: [], log: {}, recordes: {}, recordesMusica: {}, gravacoes: {}, apostilas: {},
+    tons: {}, capoFixo: {},
     cfg: { bpm: 80, sens: 5, latencia: null, violao: 'classico', modo: 'espera', vel: 60, ritmo: 'acorde', facil: true, temCapo: false,
-      metronomo: false, cordaGraveEmCima: false, tema: 'auto', vibrar: true }
+      metronomo: false, cordaGraveEmCima: false, tema: 'auto', vibrar: true,
+      junto: 'banda', mix: { violao: 0.85, batida: 0.8, baixo: 0.85, teclado: 0.6, gravacao: 1 }, fone: false, repetir: false, fonteTudo: 'youtube' }
   };
 }
 let S = novoEstado();
@@ -95,6 +97,8 @@ const Store = {
         if (typeof S.cfg.vel !== 'number') S.cfg.vel = 60;                 // versões antigas usavam 'lento'/'medio'
         if (!['acorde', 'tempos', 'batida'].includes(S.cfg.ritmo)) S.cfg.ritmo = 'acorde';
         if (!(S.cfg.violao in BANCOS)) S.cfg.violao = 'classico';
+        S.cfg.mix = Object.assign(novoEstado().cfg.mix, (salvo.cfg && salvo.cfg.mix) || {});
+        if (!JUNTO[S.cfg.junto]) S.cfg.junto = 'banda';
       }
       migrarMusicas();
     } catch (e) { /* aparelho sem armazenamento: segue com estado novo */ }
@@ -458,9 +462,10 @@ function abrirMusica(id) {
   const m = acharMusica(id);
   if (!m) return;
   Previa.parar();
-  const acs = [...new Set(acordesUnicos(m).map(a => (S.cfg.facil !== false ? simplificar(a) : a)))];
   const minha = S.musicas.some(x => x.id === m.id);
   const rec = melhorRecorde(m);
+  const est = ESTILOS[estiloDaMusica(m)];
+  const nomeTeclado = est.instrumento === 'sanfona' ? 'Sanfona' : 'Piano';
   abrirJanela(m.titulo, `
     <div class="musica">
       <header class="mu-topo">${capaHTML(m, 'grande')}
@@ -468,19 +473,39 @@ function abrirMusica(id) {
           <p class="mu-chips"><span class="nivel ${dificuldade(m) === 'Fácil' ? 'facil' : dificuldade(m) === 'Médio' ? 'medio' : 'dificil'}">${dificuldade(m)}</span><span class="chip">${esc(patternById(m.padrao).genero)}</span>${rec !== null ? `<span class="chip">Recorde ${rec}%</span>` : ''}</p></div>
       </header>
       ${m.nota ? `<p class="mu-nota">${esc(m.nota)}</p>` : ''}
+      <section class="mu-bloco mu-tom"><h3>Tom</h3>
+        <div class="tom-ctrl">
+          <button type="button" class="tom-btn" id="tom-menos" aria-label="Meio tom abaixo">−</button>
+          <div class="tom-txt" aria-live="polite"><b id="tom-nome"></b><small id="tom-desvio"></small></div>
+          <button type="button" class="tom-btn" id="tom-mais" aria-label="Meio tom acima">+</button>
+        </div>
+        <p class="sub tom-capo" id="tom-capo"></p>
+        <div class="linha-botoes"><button class="btn mini" id="tom-reset" hidden>Voltar ao tom da gravação</button></div>
+        <label class="alternar"><input type="checkbox" id="mu-temcapo" ${S.cfg.temCapo ? 'checked' : ''}><span>Tenho capotraste</span><small>o app escolhe a casa que deixa os acordes mais fáceis</small></label>
+      </section>
       <section class="mu-bloco"><h3>Acordes</h3><div class="mu-acordes" id="mu-acs"></div>
         <label class="alternar"><input type="checkbox" id="mu-facil" ${S.cfg.facil !== false ? 'checked' : ''}><span>Acordes fáceis</span><small>troca os difíceis por versões sem pestana</small></label>
-        ${m.capo ? `<label class="alternar"><input type="checkbox" id="mu-capo" ${S.cfg.temCapo ? 'checked' : ''}><span>Vou usar capotraste na ${m.capo}ª casa</span><small>para soar igual à gravação (sem capo também dá)</small></label>` : ''}
+      </section>
+      <section class="mu-bloco mu-junto"><h3>Tocar junto</h3>
+        <div class="modos" role="radiogroup" aria-label="Quem toca junto com você">${Object.entries(JUNTO).map(([k, j]) => `<button type="button" role="radio" class="modo" aria-checked="${S.cfg.junto === k}" data-junto="${k}"><b>${esc(j.nome)}</b><small>${k === 'banda' ? (est.instrumento ? `Com baixo e ${nomeTeclado.toLowerCase()}` : 'Com baixo') : esc(j.desc)}</small></button>`).join('')}</div>
+        <div class="mu-tudo" id="mu-tudo" hidden>
+          <div class="segmentado" id="mu-fonte"><button type="button" data-fonte="youtube" aria-pressed="${S.cfg.fonteTudo !== 'mp3'}">YouTube</button><button type="button" data-fonte="mp3" aria-pressed="${S.cfg.fonteTudo === 'mp3'}">Um MP3 meu</button></div>
+          <p class="sub" id="mu-tudo-dica"></p>
+          <div id="mu-yt"></div>
+          <div id="mu-mp3"></div>
+        </div>
+        <details class="mu-mix" id="mu-mix"><summary>Volume de cada parte</summary><div class="mix-lista" id="mix-lista"></div></details>
+        <label class="alternar"><input type="checkbox" id="mu-fone" ${S.cfg.fone ? 'checked' : ''}><span>Estou de fone de ouvido</span><small>sem fone, no modo No tempo a banda toca baixinho para o microfone ouvir só você</small></label>
+        <p class="sub">A banda toca nos modos No tempo e Prática. No Esperar por mim a música para em cada acorde, então só o seu violão soa.</p>
       </section>
       <section class="mu-bloco"><h3>Como jogar</h3>
         <div class="modos" role="radiogroup" aria-label="Modo de jogo">${MODOS.map(([k, n, d]) => `<button type="button" role="radio" class="modo" aria-checked="${S.cfg.modo === k}" data-modo="${k}"><b>${n}</b><small>${d}</small></button>`).join('')}</div>
         <div class="linha-op"><span>Velocidade</span><div class="segmentado" id="mu-vel">${VELS.map(p => `<button type="button" aria-pressed="${S.cfg.vel === p}" data-vel="${p}">${p}%</button>`).join('')}</div></div>
         <div class="linha-op"><span>Mão direita</span><div class="segmentado" id="mu-ritmo">${[['acorde', '1 por acorde'], ['tempos', '1 por tempo'], ['batida', 'Ritmo']].map(([k, n]) => `<button type="button" aria-pressed="${S.cfg.ritmo === k}" data-ritmo="${k}">${n}</button>`).join('')}</div></div>
         <div class="linha-op"><span>Parte</span><select id="mu-parte"><option value="">Música inteira (${Math.ceil(duracaoMusica(m, m.bpm * (S.cfg.vel / 100)) / 60)} min)</option>${m.secoes.map((s, i) => `<option value="${i}">${esc(s.nome)}${s.repetir > 1 ? ` (${s.repetir}x)` : ''}</option>`).join('')}</select></div>
+        <label class="alternar"><input type="checkbox" id="mu-repetir" ${S.cfg.repetir ? 'checked' : ''}><span>Repetir o trecho</span><small>a parte escolhida toca 8 vezes seguidas (a música inteira, 2 vezes)</small></label>
       </section>
-      <section class="mu-bloco" id="mu-grav"><h3>Gravação original</h3><div id="mu-yt"></div></section>
-      <details class="mu-bloco mu-seq"><summary>Sequência de acordes</summary>
-        ${m.secoes.map(s => `<div class="mu-secao"><b>${esc(s.nome)}${s.repetir > 1 ? ` <small>${s.repetir}x</small>` : ''}</b><div class="mu-chips-seq">${lerSequencia(s.seq).map(x => `<span class="chip-acorde">${esc(S.cfg.facil !== false ? simplificar(x.acorde) : x.acorde)}<small>${x.tempos}</small></span>`).join('')}</div></div>`).join('')}
+      <details class="mu-bloco mu-seq"><summary>Sequência de acordes</summary><div id="mu-seq"></div>
         <p class="sub">O número pequeno é quantos tempos o acorde dura.</p>
       </details>
       <div class="mu-mais">
@@ -491,29 +516,102 @@ function abrirMusica(id) {
         <button class="btn" id="mu-ouvir">${IC.som} Ouvir</button>
         <button class="btn primario grande" id="mu-jogar">${IC.play} Jogar</button>
       </div>
-    </div>`, () => { Previa.parar(); painelYT.tocador?.destruir(); painelYT.tocador = null; });
+    </div>`, () => { Previa.parar(); painelYT.tocador?.destruir(); painelYT.tocador = null; MP3.parar(); });
   $('#janela').classList.add('cheia');
-  const desenharAcordes = () => {
-    const lista = [...new Set(acordesUnicos(m).map(a => (S.cfg.facil !== false ? simplificar(a) : a)))];
+
+  // Tom, capotraste e os acordes que você vai tocar
+  const nomeAc = a => (S.cfg.facil !== false ? simplificar(a) : a);
+  const atualizar = () => {
+    const arr = arranjo(m);
+    $('#tom-nome').textContent = arr.nomeAtual || (arr.k === 0 ? 'Tom da gravação' : descreverDesvio(arr.k).replace(' da gravação', ''));
+    $('#tom-desvio').textContent = arr.nomeAtual ? (arr.k === 0 ? 'o tom da gravação' : descreverDesvio(arr.k)) : (arr.k === 0 ? '' : 'em relação à gravação');
+    $('#tom-menos').disabled = arr.k <= -6; $('#tom-mais').disabled = arr.k >= 6;
+    $('#tom-reset').hidden = arr.k === 0;
+    $('#tom-capo').innerHTML = arr.temCapo
+      ? (arr.capo ? `Coloque o capotraste na <b>${arr.capo}ª casa</b>.` : 'Sem capotraste neste tom.')
+      : (m.capo && arr.k === 0 ? `Sem capotraste o tom da gravação pede outros acordes. Com capotraste na ${m.capo}ª casa ficam mais fáceis.` : '');
+    const lista = [...new Set(acordesUnicos(arr.musica).map(nomeAc))];
     $('#mu-acs').innerHTML = lista.map(a => `<button class="mu-ac ${seiAcorde(a) ? 'sei' : ''}" data-acorde="${esc(a)}">${diagramaAcorde(a, { tam: 'sm', rotulos: false })}<b>${esc(a)}</b><small>${seiAcorde(a) ? 'Você sabe' : 'Aprender'}</small></button>`).join('');
     $$('#mu-acs [data-acorde]').forEach(b => b.addEventListener('click', () => abrirAcordeSobre(b.dataset.acorde)));
+    $('#mu-seq').innerHTML = arr.musica.secoes.map(s => `<div class="mu-secao"><b>${esc(s.nome)}${s.repetir > 1 ? ` <small>${s.repetir}x</small>` : ''}</b><div class="mu-chips-seq">${lerSequencia(s.seq).map(x => `<span class="chip-acorde">${esc(nomeAc(x.acorde))}<small>${x.tempos}</small></span>`).join('')}</div></div>`).join('');
+    atualizarTudo();
   };
-  desenharAcordes();
-  $('#mu-facil').addEventListener('change', e => { S.cfg.facil = e.target.checked; Store.salvar(); desenharAcordes(); });
-  $('#mu-capo')?.addEventListener('change', e => { S.cfg.temCapo = e.target.checked; Store.salvar(); });
+  const mudarTom = d => { const arr = arranjo(m); S.tons[m.id] = Math.max(-6, Math.min(6, arr.k + d)); Store.salvar(); Previa.parar(); $('#mu-ouvir').innerHTML = `${IC.som} Ouvir`; atualizar(); };
+  $('#tom-menos').addEventListener('click', () => mudarTom(-1));
+  $('#tom-mais').addEventListener('click', () => mudarTom(1));
+  $('#tom-reset').addEventListener('click', () => { S.tons[m.id] = 0; Store.salvar(); atualizar(); });
+  $('#mu-temcapo').addEventListener('change', e => {
+    // ao trocar, mantém o som que você ouvia: sem capo os desenhos fáceis ficam mais graves
+    S.cfg.temCapo = e.target.checked; delete S.tons[m.id]; Store.salvar(); atualizar();
+  });
+  $('#mu-facil').addEventListener('change', e => { S.cfg.facil = e.target.checked; Store.salvar(); atualizar(); });
+
+  // Tocar junto: quem toca, volumes, fone
+  const partesVisiveis = () => JUNTO[S.cfg.junto].partes;
+  const NOMES_PARTE = { violao: 'Violão do app', batida: 'Batida', baixo: 'Baixo', teclado: nomeTeclado, gravacao: 'Gravação' };
+  const desenharMix = () => {
+    $('#mix-lista').innerHTML = partesVisiveis().filter(p => p !== 'teclado' || est.instrumento).map(p => `<label class="faixa">${NOMES_PARTE[p]} <b id="mx-${p}-v">${Math.round(S.cfg.mix[p] * 100)}%</b><input type="range" min="0" max="100" step="5" value="${Math.round(S.cfg.mix[p] * 100)}" data-mix="${p}"></label>`).join('')
+;
+    $$('#mix-lista [data-mix]').forEach(r => r.addEventListener('input', () => {
+      const p = r.dataset.mix; S.cfg.mix[p] = +r.value / 100; $(`#mx-${p}-v`).textContent = r.value + '%'; aplicarMix(); Store.salvar();
+    }));
+  };
+  const atualizarTudo = () => {
+    const tudo = S.cfg.junto === 'tudo';
+    $('#mu-tudo').hidden = !tudo;
+    if (!tudo) return;
+    const mp3 = S.cfg.fonteTudo === 'mp3';
+    $$('#mu-fonte [data-fonte]').forEach(x => x.setAttribute('aria-pressed', (x.dataset.fonte === 'mp3') === mp3));
+    $('#mu-yt').hidden = mp3; $('#mu-mp3').hidden = !mp3;
+    const arr = arranjo(m);
+    $('#mu-tudo-dica').textContent = mp3
+      ? 'Com um MP3 seu dá para mudar o tom e a velocidade da gravação.'
+      : (arr.k !== 0 ? 'O YouTube não deixa mudar o tom: com o vídeo, o jogo usa o tom da gravação. Para tocar em outro tom, use um MP3 seu.' : 'O vídeo oficial toca junto com o jogo. O tom é o da gravação.')
+        + (!arr.temCapo && m.capo ? ` Dica: com capotraste na ${m.capo}ª casa os acordes ficam fáceis.` : '');
+    if (mp3 && !$('#mu-mp3').dataset.montado) { $('#mu-mp3').dataset.montado = '1'; MP3.painel($('#mu-mp3'), m); }
+    if (!mp3 && !$('#mu-yt').dataset.montado) { $('#mu-yt').dataset.montado = '1'; painelYouTube($('#mu-yt'), m); }
+  };
+  $$('[data-junto]').forEach(b => b.addEventListener('click', () => {
+    S.cfg.junto = b.dataset.junto; Store.salvar();
+    $$('[data-junto]').forEach(x => x.setAttribute('aria-checked', x === b));
+    desenharMix(); atualizarTudo();
+  }));
+  $$('#mu-fonte [data-fonte]').forEach(b => b.addEventListener('click', () => { S.cfg.fonteTudo = b.dataset.fonte; Store.salvar(); atualizarTudo(); }));
+  $('#mu-fone').addEventListener('change', e => { S.cfg.fone = e.target.checked; Store.salvar(); });
+  $('#mu-repetir').addEventListener('change', e => { S.cfg.repetir = e.target.checked; Store.salvar(); });
+
   $$('[data-modo]').forEach(b => b.addEventListener('click', () => { S.cfg.modo = b.dataset.modo; Store.salvar(); $$('[data-modo]').forEach(x => x.setAttribute('aria-checked', x === b)); }));
   $$('#mu-vel [data-vel]').forEach(b => b.addEventListener('click', () => { S.cfg.vel = +b.dataset.vel; Store.salvar(); $$('#mu-vel [data-vel]').forEach(x => x.setAttribute('aria-pressed', x === b)); }));
   $$('#mu-ritmo [data-ritmo]').forEach(b => b.addEventListener('click', () => { S.cfg.ritmo = b.dataset.ritmo; Store.salvar(); $$('#mu-ritmo [data-ritmo]').forEach(x => x.setAttribute('aria-pressed', x === b)); }));
-  painelYouTube($('#mu-yt'), m);
   $('#mu-editar')?.addEventListener('click', () => abrirFormMusica(m));
   $('#mu-copiar')?.addEventListener('click', () => abrirFormMusica({ ...JSON.parse(JSON.stringify(m)), id: 'm' + Date.now().toString(36), origem: 'minha', titulo: m.titulo + ' (minha versão)' }, true));
-  $('#mu-ouvir').addEventListener('click', e => {
+  $('#mu-ouvir').addEventListener('click', async e => {
     const b = e.currentTarget;
     if (Previa.tocando) { Previa.parar(); b.innerHTML = `${IC.som} Ouvir`; return; }
-    b.innerHTML = `${IC.pausa} Parar`;
-    Previa.tocar(m, { segundos: 40, bpm: m.bpm * S.cfg.vel / 100, capo: S.cfg.temCapo ? m.capo : 0, aoFim: () => { b.innerHTML = `${IC.som} Ouvir`; } });
+    b.innerHTML = '<span class="spinner" aria-hidden="true"></span> Carregando';
+    await Previa.tocar(m, { segundos: 40, bpm: m.bpm * S.cfg.vel / 100, aoFim: () => { b.innerHTML = `${IC.som} Ouvir`; } });
+    if (Previa.tocando) b.innerHTML = `${IC.pausa} Parar`;
   });
-  $('#mu-jogar').addEventListener('click', () => jogarMusica(m, $('#mu-parte').value === '' ? null : +$('#mu-parte').value));
+  const secao = () => ($('#mu-parte').value === '' ? null : +$('#mu-parte').value);
+  $('#mu-jogar').addEventListener('click', () => {
+    if (S.cfg.junto !== 'tudo') return jogarMusica(m, secao());
+    if (S.cfg.fonteTudo === 'mp3') return MP3.jogar(m, secao());
+    if (ytPronto(m)) return jogarComGravacao(m, secao());
+    toast('Primeiro sincronize a gravação (logo acima)');
+    $('#mu-tudo').scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+  desenharMix();
+  atualizar();
+}
+
+// Volumes das partes no mixer do som
+function aplicarMix(mix = S.cfg.mix) { for (const p of ['violao', 'batida', 'baixo', 'teclado', 'gravacao']) Som.volume(p, mix[p] ?? 1); }
+// Repete os trechos (para treinar uma parte sem parar)
+function repetirTrechos(trechos, vezes) {
+  if (!trechos.length) return trechos;
+  const total = trechos.at(-1).inicio + trechos.at(-1).tempos, out = [];
+  for (let r = 0; r < vezes; r++) trechos.forEach(t => out.push({ ...t, inicio: t.inicio + r * total }));
+  return out;
 }
 
 // Abre o jogo de uma música (do catálogo, da busca ou das suas)
@@ -521,12 +619,22 @@ function jogarMusica(m, secao = null, extra = {}) {
   Previa.parar();
   const bpmBase = extra.bpmBase || m.bpm || 80;
   const modo = extra.modo || S.cfg.modo || 'espera';
+  // o arranjo no tom escolhido (com o capo que deixa os acordes fáceis)
+  const arr = arranjo(m, extra.k !== undefined ? { k: extra.k } : {});
+  let trechos = musicaParaTrechos(arr.musica, secao);
+  const repetir = extra.repetir ?? (S.cfg.repetir && !extra.gravacao);
+  if (repetir) trechos = repetirTrechos(trechos, secao === null ? 2 : 8);
+  // quem toca junto: a banda (sem gravação) ou ninguém (com gravação, ela é a banda)
+  const junto = extra.gravacao ? null : (JUNTO[S.cfg.junto] && S.cfg.junto !== 'tudo' ? S.cfg.junto : 'banda');
+  const banda = junto && modo !== 'espera' ? { estilo: estiloDaMusica(m), partes: JUNTO[junto].partes.filter(p => p !== 'violao') } : null;
   return Jogo.abrir({
-    titulo: m.titulo + (secao !== null ? ', ' + m.secoes[secao].nome : ''),
-    trechos: musicaParaTrechos(m, secao), padrao: patternById(m.padrao), ritmo: extra.ritmo || S.cfg.ritmo || 'acorde',
-    bpm: extra.bpm || Math.round(bpmBase * (extra.vel || S.cfg.vel) / 100), bpmBase, capo: m.capo || 0, temCapo: !!S.cfg.temCapo || !!extra.gravacao,
+    titulo: m.titulo + (secao !== null ? ', ' + m.secoes[secao].nome : '') + (repetir ? ' (repetindo)' : ''),
+    trechos, padrao: patternById(m.padrao), ritmo: extra.ritmo || S.cfg.ritmo || 'acorde',
+    bpm: extra.bpm || Math.round(bpmBase * (extra.vel || S.cfg.vel) / 100), bpmBase, capo: arr.capo, temCapo: arr.capo > 0,
     modo, entrada: modo === 'pratica' ? 'nenhuma' : 'mic', facil: S.cfg.facil !== false, metronomo: S.cfg.metronomo,
-    gravacao: extra.gravacao || null, container: extra.container || null, guia: !extra.gravacao, refazer: extra.refazer || null,
+    gravacao: extra.gravacao || null, container: extra.container || null,
+    guia: !extra.gravacao && (!junto || JUNTO[junto].partes.includes('violao')),
+    banda, fone: !!S.cfg.fone, mix: { ...S.cfg.mix }, refazer: extra.refazer || null,
     aoFim: r => {
       S.recordesMusica[m.id] = S.recordesMusica[m.id] || {};
       if (r.pct !== null) {
@@ -567,34 +675,33 @@ function abrirAcordeSobre(nome) {
 /* ----- Prévia: violão (gravado) + percussão leve ----- */
 const Previa = {
   tocando: null, timer: null,
-  baixo(acorde, t, capo) {
-    const p = partesAcorde(acorde);
-    if (!p) return;
-    const pc = p.baixo ? RAIZ_PC[p.baixo] : p.pc;
-    const midi = 40 + ((pc - 4 + 12) % 12) + (capo || 0);
-    Som.nota(440 * Math.pow(2, (midi - 69) / 12), t, 0.42, 0);
-  },
-  tocar(musica, { segundos = 30, bpm = musica.bpm, capo = 0, aoAcorde, aoFim } = {}) {
+  async tocar(musica, { segundos = 40, bpm = musica.bpm, aoFim } = {}) {
     this.parar();
     Som.init();
-    const padrao = patternById(musica.padrao), seg = 60 / bpm, passo = seg / padrao.sub;
-    const trechos = musicaParaTrechos(musica).map(t => ({ ...t, acorde: S.cfg.facil !== false ? simplificar(t.acorde) : t.acorde }));
-    const t0 = Som.agora + 0.15;
-    const total = Math.min(segundos, trechos.length ? (trechos.at(-1).inicio + trechos.at(-1).tempos) * seg : 0);
-    let k = 0, iTr = 0;
-    const estado = { musica, fim: t0 + total };
+    const estado = { musica };
     this.tocando = estado;
+    await Banda.carregar();
+    if (this.tocando !== estado) return estado;
+    const arr = arranjo(musica);
+    const padrao = patternById(musica.padrao), seg = 60 / bpm, passo = seg / padrao.sub;
+    const trechos = musicaParaTrechos(arr.musica).map(t => ({ ...t, acorde: S.cfg.facil !== false ? simplificar(t.acorde) : t.acorde }));
+    const junto = S.cfg.junto === 'tudo' ? 'banda' : (S.cfg.junto || 'banda');
+    const comViolao = JUNTO[junto].partes.includes('violao');
+    const acomp = new Acompanhamento({ trechos, estilo: estiloDaMusica(musica), desloc: arr.capo, partes: JUNTO[junto].partes.filter(p => p !== 'violao') });
+    aplicarMix();
+    const t0 = Som.agora + 0.2, tempoDe = b => t0 + b * seg;
+    const total = Math.min(segundos, trechos.length ? (trechos.at(-1).inicio + trechos.at(-1).tempos) * seg : 0);
+    estado.fim = t0 + total;
+    let k = 0, iTr = 0;
     const agendar = () => {
       if (this.tocando !== estado) return;
-      while (t0 + k * passo < Som.agora + 0.25) {
+      acomp.agendar(Math.min((Som.agora + 0.3 - t0) / seg, total / seg), tempoDe);
+      while (t0 + k * passo < Som.agora + 0.3) {
         const t = t0 + k * passo, tempo = k / padrao.sub;
-        if (t > estado.fim) { setTimeout(() => { if (this.tocando === estado) { this.parar(); aoFim?.(); } }, (estado.fim - Som.agora + 0.4) * 1000); clearInterval(this.timer); return; }
+        if (t >= estado.fim) { setTimeout(() => { if (this.tocando === estado) { this.parar(); aoFim?.(); } }, (estado.fim - Som.agora + 0.6) * 1000); clearInterval(this.timer); return; }
         while (iTr < trechos.length - 1 && trechos[iTr + 1].inicio <= tempo + 1e-6) iTr++;
-        const tr = trechos[iTr];
-        if (Math.abs(tempo - tr.inicio) < 1e-6) quandoTocar(t, () => { if (this.tocando === estado) aoAcorde?.(tr); });
         const tok = padrao.passos[k % padrao.passos.length];
-        if (tok !== '-') Som.golpe(tr.acorde, t, tok, k % padrao.sub === 0 ? 0.3 : 0.24, capo);
-        if (k % padrao.sub === 0) Som.ganza(t, 0.05);
+        if (comViolao && tok !== '-') Som.golpe(trechos[iTr].acorde, t, tok, k % padrao.sub === 0 ? 0.3 : 0.24, arr.capo, { destino: Som.trilha('violao') });
         k++;
       }
     };
@@ -767,7 +874,7 @@ function abrirAjustes() {
         <div class="linha-botoes"><button class="btn mini" id="aj-boas">Refazer as boas-vindas</button></div>
       </section>
       <section class="mu-bloco creditos"><h3>Créditos</h3>
-        <p class="sub">Sons de violão gravados: University of Iowa Electronic Music Studios e Freesound (quartertone), pela coleção tonejs-instruments (CC BY 3.0). Fonte Jost (OFL). Narração dos vídeos: voz sintética "faber" do Piper (rhasspy/piper-voices). Cifras: Cifra Club (só os acordes, sem letra). Gravações: player oficial do YouTube.</p>
+        <p class="sub">Sons de violão gravados: University of Iowa Electronic Music Studios e Freesound (quartertone), pela coleção tonejs-instruments (CC BY 3.0). Banda: percussão e piano da Versilian Community Sample Library (CC0); baixo (Karoryfer) e harmônio usado como sanfona (Freesound, donyaquick) pela tonejs-instruments (CC BY 3.0). Fonte Jost (OFL). Narração dos vídeos: voz sintética "faber" do Piper (rhasspy/piper-voices). Cifras: Cifra Club (só os acordes, sem letra). Gravações: player oficial do YouTube.</p>
       </section>
     </div>`, () => { offNivel?.(); });
   $('#janela').classList.add('cheia');

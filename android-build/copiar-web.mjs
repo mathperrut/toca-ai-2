@@ -5,8 +5,8 @@ import { cpSync, mkdirSync, rmSync, readFileSync, writeFileSync, existsSync } fr
 
 const ARQUIVOS = [
   'index.html', 'tema.css', 'manifest.webmanifest',
-  'data.js', 'acordes.js', 'som.js', 'modelo-acordes.js', 'modelo-acordes.json', 'ia.js', 'audio-detect.js',
-  'cifras.js', 'gravacao.js', 'youtube.js', 'apostilas.js', 'aprender.js', 'jogo.js', 'app.js'
+  'data.js', 'acordes.js', 'som.js', 'banda.js', 'modelo-acordes.js', 'modelo-acordes.json', 'ia.js', 'audio-detect.js',
+  'cifras.js', 'tom.js', 'gravacao.js', 'youtube.js', 'mp3.js', 'apostilas.js', 'aprender.js', 'jogo.js', 'app.js'
 ];
 const PASTAS = ['icones', 'sons', 'fontes', 'videos'];
 
