@@ -16,7 +16,7 @@ writeFileSync(manifestoCaminho, man);
 
 const gradleCaminho = 'android/app/build.gradle';
 let gradle = readFileSync(gradleCaminho, 'utf8');
-gradle = gradle.replace(/versionCode\s+\d+/, `versionCode ${versao}`).replace(/versionName\s+"[^"]*"/, `versionName "1.0.${versao}"`);
+gradle = gradle.replace(/versionCode\s+\d+/, `versionCode ${versao}`).replace(/versionName\s+"[^"]*"/, `versionName "2.0.${versao}"`);
 writeFileSync(gradleCaminho, gradle);
 
-console.log(`Android configurado: microfone, tela que gira, versão 1.0.${versao} (código ${versao})`);
+console.log(`Android configurado: microfone, tela que gira, versão 2.0.${versao} (código ${versao})`);

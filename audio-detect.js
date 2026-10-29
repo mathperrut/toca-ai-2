@@ -330,7 +330,7 @@ function mediana(arr) { const s = [...arr].sort((a, b) => a - b); return s.lengt
 function msgSemMicrofone(err) {
   if (err && (err.name === 'NotAllowedError' || err.name === 'SecurityError'))
     return window.Capacitor
-      ? 'O microfone está bloqueado. Abra as configurações do Android, Apps, Toca Aí, Permissões, e permita o microfone.'
+      ? 'O microfone está bloqueado. Abra as configurações do Android, Apps, Toca Aí 2, Permissões, e permita o microfone.'
       : 'O microfone está bloqueado. Toque no cadeado da barra de endereço e permita o microfone.';
   if (err && err.name === 'NotFoundError') return 'Nenhum microfone encontrado neste aparelho.';
   return 'O microfone não está disponível aqui. No celular, use o app instalado (APK).';

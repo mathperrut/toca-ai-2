@@ -67,7 +67,7 @@ const IC = {
 /* ===== 2. Estado e armazenamento =====
    Todo o progresso fica num único objeto "S", salvo no aparelho
    (localStorage). Quando o app roda publicado no Claude, também na sua conta. */
-const LS_KEY = 'tocaai:v1';
+const LS_KEY = 'tocaai2:v1';
 function novoEstado() {
   return {
     v: 4, updatedAt: 0, xp: 0, licoes: {}, musicas: [], log: {}, recordes: {}, recordesMusica: {}, gravacoes: {}, apostilas: {},
@@ -113,7 +113,7 @@ const Store = {
       const [db, user] = await Promise.all([window.claude.use('db'), window.claude.use('user')]);
       const uid = user ? await user.id() : null;
       if (!db || !uid) return;
-      this.ref = db.doc('data/users/' + uid + '/toca-ai');
+      this.ref = db.doc('data/users/' + uid + '/toca-ai-2');
       const snap = await this.ref.get();
       if (snap.exists) {
         const remoto = JSON.parse(snap.data().json || '{}');
@@ -1027,7 +1027,7 @@ function configurarPWA() {
     if (outcome === 'accepted') btn.hidden = true;
     pedidoInstalar = null;
   });
-  window.addEventListener('appinstalled', () => { btn.hidden = true; toast('Toca Aí instalado'); });
+  window.addEventListener('appinstalled', () => { btn.hidden = true; toast('Toca Aí 2 instalado'); });
 }
 
 iniciarApp();

@@ -1,8 +1,8 @@
 {
-  "name": "toca-ai",
-  "version": "1.0.0",
+  "name": "toca-ai-2",
+  "version": "2.0.0",
   "private": true,
-  "description": "Toca Aí: app de violão com música brasileira (versão Android via Capacitor)",
+  "description": "Toca Aí 2: app de violão com música brasileira (versão Android via Capacitor)",
   "scripts": {
     "copiar-web": "node android-build/copiar-web.mjs",
     "android": "npm run copiar-web && npx cap sync android"

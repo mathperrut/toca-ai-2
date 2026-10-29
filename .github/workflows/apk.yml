@@ -66,23 +66,23 @@ jobs:
           ./gradlew assembleDebug --no-daemon
 
       - name: Dar nome ao arquivo
-        run: cp android/app/build/outputs/apk/debug/app-debug.apk TocaAi.apk
+        run: cp android/app/build/outputs/apk/debug/app-debug.apk TocaAi2.apk
 
       - name: Guardar o APK nesta execução
         uses: actions/upload-artifact@v4
         with:
-          name: TocaAi-apk
-          path: TocaAi.apk
+          name: TocaAi2-apk
+          path: TocaAi2.apk
 
       - name: Publicar em Releases (link fixo para baixar no celular)
         uses: softprops/action-gh-release@v2
         with:
-          tag_name: v1.0.${{ github.run_number }}
-          name: Toca Aí 1.0.${{ github.run_number }}
+          tag_name: v2.0.${{ github.run_number }}
+          name: Toca Aí 2 (versão 2.0.${{ github.run_number }})
           make_latest: true
-          files: TocaAi.apk
+          files: TocaAi2.apk
           body: |
-            **Para instalar no Android:** abra esta página no celular, toque em **TocaAi.apk**,
+            **Para instalar no Android:** abra esta página no celular, toque em **TocaAi2.apk**,
             e depois em **Abrir**. Se o Android pedir, permita "instalar apps desconhecidos" para o navegador.
 
             Para atualizar, baixe o APK mais novo e instale por cima: o seu progresso continua.

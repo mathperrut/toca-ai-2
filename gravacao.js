@@ -18,7 +18,7 @@ const BancoAudio = {
   _db: null,
   abrir() {
     if (!this._db) this._db = new Promise((ok, erro) => {
-      const r = indexedDB.open('tocaai-audios', 1);
+      const r = indexedDB.open('tocaai2-audios', 1);
       r.onupgradeneeded = () => r.result.createObjectStore('gravacoes');
       r.onsuccess = () => ok(r.result);
       r.onerror = () => erro(r.error);
