@@ -1,0 +1,2744 @@
+[
+ {
+  "nivel": "intermediario",
+  "busca": "deixa a vida me levar",
+  "slugArtista": "zeca-pagodinho",
+  "slugMusica": "deixa-vida-me-levar",
+  "titulo": "Deixa a Vida Me Levar",
+  "artista": "Zeca Pagodinho",
+  "genero": "Samba",
+  "tom": "E",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "A:4 B7:4 C#m7:4 C#7:4 F#m7:4 G#m7:4 A:4 B7:4 E:4 B7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "E:4 B7:4 E:4 F#m7:4 B7:4 E:2 B7:4 E:4 B7:2 E:4 C#7:4 F#m7:4 B7:4 E:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "A7M:4 E/G#:4 G°:2 F#m7:4 B7:2 E:4 B7:4 E:4 E7:2 A:4 B7:4 E:4 C#7:2 F#m7:2 B7:2 E:2 B7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "E:4 B/D#:2 E:4 B7:4 E/G#:4 G#m7:2 G°:2 F#m7:2 F°:4 F#m:4 F#m7M:4 F#m7:4 F#m6:2 F#m/C#:4 G°:4 E:2 B7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "E:4 B/D#:4 E:4 E7:2 C#7(b13)/G#:4 F°:4 F#m7:4 Am/C:4 E:4 C#7:4 F#m7:4 B7:4 E:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "A7M:4 E/G#:4 G°:2 F#m7:4 B7:2 E:4 B7:4 E:4 E7:2 A:4 B7:4 E:4 C#7:2 F#m7:2 B7:2 E:2 B7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "E:4 B7:4 E:4 F#m7:4 B7:4 E:2 B7:4 E:4 B7:2 E:4 C#7:4 F#m7:4 B7:4 E:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "A7M:4 E/G#:4 G°:2 F#m7:4 B7:2 E:4 B7:4 E:4 E7:2 A:4 B7:4 E:4 C#7:2 F#m7:2 B7:2 E:2 B7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "E:4 B/D#:2 E:4 B7:4 E/G#:4 G#m7:2 G°:2 F#m7:2 F°:4 F#m:4 F#m7M:4 F#m7:4 F#m6:2 F#m/C#:4 G°:4 E:2 B7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "E:4 B/D#:4 E:4 E7:2 C#7(b13)/G#:4 F°:4 F#m7:4 Am/C:4 E:4 C#7:4 F#m7:4 B7:4 E:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "A7M:4 E/G#:4 G°:2 F#m7:4 B7:2 E:4 B7:4 E:4 E7:2 A:4 B7:4 E:4 C#7:2 F#m7:2 B7:2 E:2 B7:4 A7M:4 E/G#:4 G°:2 F#m7:4 B7:2 E:4 B7:4 E:4 E7:2 A:4 B7:4 E:4 C#7:2 F#m7:2 B7:2 E:2 B7:4 A7M:4 E/G#:4 G°:2 F#m7:4 B7:2 E:4 B7:4 E:4 E7:2 A:4 B7:4 E:4 C#7:2 F#m7:2 B7:2 E:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "A:4 B7:4 C#m7:4 F#m7:4 G#m7:4 A:4 B7:4 E:4 B7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "E:4 B7:4 E:4 F#m7:4 B7:4 E:2 B7:4 E:4 B7:2 E:4 C#7:4 F#m7:4 B7:4 E:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "A:4 E:4 F#m7:4 B7:2 E:4 E7:2 A:4 B7:4 E:4 B7:4 E:2 B7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "E:4 B7:2 E:4 F#m7:2 C#7:4 F#m7:4 B7:4 E:4 B7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "E:4 B7:4 E:4 B7:4 E:4 E7:2 A:2 C#7:4 F#m7:4 Am:4 G#m7:4 C#7:4 F#m7:4 B7:4 E:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "A:4 E:4 F#m7:4 B7:2 E:4 E7:2 A:4 B7:4 E:4 B7:4 E:2 B7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "E:4 B7:4 E:4 F#m7:4 B7:4 E:2 B7:4 E:4 B7:2 E:4 C#7:4 F#m7:4 B7:4 E:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "A:4 E:4 F#m7:4 B7:2 E:4 E7:2 A:4 B7:4 E:4 B7:4 E:2 B7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "E:4 B7:2 E:4 F#m7:2 C#7:4 F#m7:4 B7:4 E:4 B7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "E:4 B7:4 E:4 B7:4 E:4 E7:2 A:2 C#7:4 F#m7:4 Am:4 G#m7:4 C#7:4 F#m7:4 B7:4 E:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "A:4 E:4 F#m7:4 B7:2 E:4 E7:2 A:4 B7:4 E:4 B7:4 E:2 B7:4 A:4 E:4 F#m7:4 B7:2 E:4 E7:2 A:4 B7:4 E:4 B7:4 E:2 B7:4 A:4 E:4 F#m7:4 B7:2 E:4 E7:2 A:4 B7:4 E:4 B7:4 E:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "E",
+  "bpm": null,
+  "youtube": [
+   {
+    "id": "1YowxWyEJnE",
+    "titulo": "Zeca Pagodinho 40 anos Ao Vivo -  “Deixa a vida me levar” - (CLIPE OFICIAL)",
+    "canal": "Zeca Pagodinho",
+    "pontos": 8,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "oTREAvZbmME",
+    "titulo": "Zeca Pagodinho - Deixa A Vida Me Levar",
+    "canal": "Zeca Pagodinho",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "MW2obG-ybn8",
+    "titulo": "Deixa A Vida Me Levar (Ao Vivo)",
+    "canal": "Zeca Pagodinho",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "l2f-dxn8vfo",
+    "titulo": "Deixa A Vida Me Levar (Ao Vivo No Rio De Janeiro / 2003)",
+    "canal": "Zeca Pagodinho",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "intermediario",
+  "busca": "trem das onze",
+  "slugArtista": "adoniran-barbosa",
+  "slugMusica": "trem-das-onze",
+  "titulo": "Trem das Onze",
+  "artista": "Adoniran Barbosa",
+  "genero": "Samba",
+  "tom": "Am",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "Dm:4 Bm7(b5):4 Am/E:4 Am:4 Am/G:4 F#°:4 F7:4 E7:4 E7/B:4 Am:4 A7:4 Dm:4 Bm7(b5):4 Am/E:4 Am:4 Am/G:4 F#°:4 F7:4 E7:4 E7/B:4 Am:4 E7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Violão 1",
+    "seq": "Dm:4 Bm7(b5):4 Am/E:4 Am:4 Am/G:4 F#°:4 F7:4 E7:4 E7/B:4 Am:4 A7:4 Dm:4 Bm7(b5):4 Am/E:4 Am:4 Am/G:4 F#°:4 F7:4 E7:4 E7/B:4 Am:4 E7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Am:4 Am/C:2 Am:4 E7:2 A7:4 Dm:2 Bm7(b5):2 Am:4 F7:4 E7:4 E7/D:4 E7/G#:4 Am:4 E:4 Am/C:4 E7:2 A7:4 Dm:2 Bm7(b5):2 Am:4 F7:4 E7:4 E7/D:2 E7/G#:2 Am:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "A/C#:4 A7:4 Dm:4 D#°:4 A°:4 E7:4 Dm:2 Bm7(b5):2 Am/E:2 Am:2 Am/G:4 F#°:2 F7:2 E7:2 E7/B:2 Am:4 E7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Am:4 E7:2 A7:4 Dm:2 Bm7(b5):2 Am:4 F7:4 E7:4 D°:4 E7/G#:2 E7:2 Am:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "A/C#:4 A7:4 Dm:4 D#°:4 A°:4 E7:4 Dm:2 Bm7(b5):2 Am/E:2 Am:2 Am/G:4 F#°:2 F7:2 E7:2 E7/B:2 Am:4 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "Dm:4 Bm7(b5):4 Am/E:4 Am:4 Am/G:4 F#°:4 F7:4 E7:4 E7/B:4 Am:4 A7:4 Dm:4 Bm7(b5):4 Am/E:4 Am:4 Am/G:4 F#°:4 F7:4 E7:4 E7/B:4 Am:4 E7:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "Dm:4 Am:4 F:4 E:4 Am:4 A7:4 Dm:4 Am:4 F:4 E:4 Am:4 E:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Am:4 E:2 A7:4 Dm:4 Am:4 F:4 E:4 Am:4 E:2 A7:4 Dm:4 Am:4 F:4 E:4 Am:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "A7:4 Dm:4 D7:4 E:2 A7:4 Dm:2 Am:4 F:4 E:4 Am:4 E:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Am:4 E:2 A7:4 Dm:4 Am:4 F:4 E:4 Am:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "A7:4 Dm:4 D7:4 E:2 A7:4 Dm:2 Am:4 F:4 E:4 Am:4 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "Dm:4 Am:4 F:4 E:4 Am:4 A7:4 Dm:4 Am:4 F:4 E:4 Am:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "Am",
+  "bpm": 91,
+  "youtube": [
+   {
+    "id": "RkkGVgOqPuM",
+    "titulo": "Adoniran Barbosa   O trem das onze",
+    "canal": "Adoniran Barbosa",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "4FjaTeZ-3hQ",
+    "titulo": "Adoniran Barbosa - Trem Das Onze",
+    "canal": "Brazilian Music",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "tNes9s_VTsQ",
+    "titulo": "Adoniran Barbosa- O trem das onze (Español) #Lunesretro 🇪🇸🇧🇷",
+    "canal": "P o l y M u s i c",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "IgIdKSv6pl8",
+    "titulo": "Trem das onze [feat. Demônios da Garoa] - Fundo de Quintal - Ao vivo convida",
+    "canal": "Indie Records",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "intermediario",
+  "busca": "o que é o que é",
+  "slugArtista": "gonzaguinha",
+  "slugMusica": "o-que-e-que-e",
+  "titulo": "O Que É, O Que É",
+  "artista": "Gonzaguinha",
+  "genero": "MPB",
+  "tom": "A",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Refrão",
+    "seq": "A:2 C#7/G#:2 F#m:4 F#m/E:2 Bm/D:2 E7:4 Bm7:4 E7:4 A:4 E7:4 A:4 A/G:4 D:4 Dm/F:4 A:2 F#7:4 Bm:4 E7:4 A:2 E7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Am:4 Dm:4 Dm/C:4 Bm7(b5):4 E7:4 Bm7(b5):4 E7:2 Am:4 E7:4 Am:4 A7/G:2 Dm/F:4 Dm/C:4 Bm7(b5):2 E7:4 Bm7(b5):4 E7:4 Am:2 Ab7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "G7:4 G7/B:4 C:4 Bm7(b5):4 E7:4 Em7(b5)/Bb:4 A7:4 Dm:4 Dm/C:4 Am:2 Am/G:4 F:4 F7:4 E7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "Bm7(b5):4 E7:4 Am:4 E7:4 E7/G#:4 Bb7:4 A7:4 Dm:4 Dm/C:4 Am:4 Am/G:4 F7:4 E7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Quarta Parte",
+    "seq": "Bm7(b5):2 E7:2 Am:2 Ab7:4 G7:4 G7/F:2 C/E:4 Bm7(b5):2 E7:2 Am:4 B7/F#:4 E7:2 E7/B:4 Bm7(b5):2 E7:2 Am:2 Ab7:4 G7:4 C:2 A7/C#:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Pré-Refrão",
+    "seq": "Dm:4 E7:4 Am:4 Am/G:4 F7:4 E7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "A:2 C#7/G#:2 F#m:4 F#m/E:2 Bm:4 E7:4 A:4 E7:4 A:4 A7/G:4 D:4 Dm/F:4 A:2 F#7:4 Bm:4 E7:4 A:4 E7:4 A:2 C#7/G#:2 F#m:4 F#m/E:2 Bm:4 E7:4 A:4 E7:4 A:4 A7/G:4 D:4 Dm/F:4 A:2 F#7:4 Bm:4 E7:4 A:2 E7:4 A:2 C#7/G#:2 F#m:4 F#m/E:2 Bm:4 E7:4 A:4 E7:4 A:4 A7:4 D:4 Dm/F:4 A:2 F#7:4 Bm:4 E7:4 A:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Refrão",
+    "seq": "A:2 C#7:2 F#m7:4 Bm7:2 E7:4 Bm7:4 E7:4 A:4 E7:4 A:4 A7:4 D:4 Dm:4 A:2 F#7:4 Bm7:4 E7:4 A:2 E7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Am:4 Dm:4 E7:4 Am:4 E7:4 Am:4 A7:2 Dm:4 E7:4 Am:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "G7:4 C:4 E7:4 A7:4 Dm:4 Am:4 F7:4 E7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "Am:4 E7:4 Bb7:4 A7:4 Dm:4 Am:4 F7:4 E7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Quarta Parte",
+    "seq": "Am:4 G7:4 C:4 E7:4 Am:4 B7:4 E7:4 Am:4 G7:4 C:2 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Pré-Refrão",
+    "seq": "Dm:4 E7:4 Am:4 F7:4 E7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "A:2 C#7:2 F#m7:4 Bm7:2 E7:4 Bm7:4 E7:4 A:4 E7:4 A:4 A7:4 D:4 Dm:4 A:2 F#7:4 Bm7:4 E7:4 A:4 E7:4 A:2 C#7:2 F#m7:4 Bm7:2 E7:4 Bm7:4 E7:4 A:4 E7:4 A:4 A7:4 D:4 Dm:4 A:2 F#7:4 Bm7:4 E7:4 A:2 E7:4 A:2 C#7:2 F#m7:4 Bm7:2 E7:4 Bm7:4 E7:4 A:4 E7:4 A:4 A7:4 D:4 Dm:4 A:2 F#7:4 Bm7:4 E7:4 A:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "A",
+  "bpm": null,
+  "youtube": [
+   {
+    "id": "IYZcsb706q8",
+    "titulo": "O Que É O Que É?",
+    "canal": "Gonzaguinha - Topic",
+    "pontos": 13,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "wZL7EnZtBss",
+    "titulo": "Gonzaguinha - \"O que é, o que é\" (1982)",
+    "canal": "calulinho",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "LRJfob6miNw",
+    "titulo": "GONZAGUINHA - O QUE É, O QUE É (1982)",
+    "canal": "MÚSICAS DOS ANOS 80 - Brasil",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "kssK9_ZZNo0",
+    "titulo": "Gonzaguinha - O Que É, O Que É (1989, Ao Vivo)",
+    "canal": "Tonico Manoel",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "intermediario",
+  "busca": "aquarela",
+  "slugArtista": "toquinho",
+  "slugMusica": "aquarela",
+  "titulo": "Aquarela",
+  "artista": "Toquinho",
+  "genero": "MPB",
+  "tom": "G",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "G:4 G/B:4 C:4 C/D:4 G:4 G/B:4 C:4 C/D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Dedilhado - Intro",
+    "seq": "G:4 G/B:4 C:4 C/D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Dedilhado - Primeira Parte",
+    "seq": "G:4 G/B:4 C:2 C/D:4 G:4 G/B:4 C:4 C/D:4 G:4 G/B:4 C:4 C/D:4 G:4 G/B:4 C:4 C/D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Dedilhado - Pré-Refrão",
+    "seq": "Em:4 Em/D:4 C:4 F7M:4 G:4 G/B:4 C:4 C/D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Dedilhado - Refrão",
+    "seq": "G:4 D/F#:4 C/E:4 C/D:4 G:4 D/F#:4 C/E:4 C/D:4 G:4 B7:4 Em:4 A7:4 C/D:4 G:4 D/F#:4 C/E:4 C/D:4 G:4 D/F#:4 C/E:4 C/D:4 G:4 B7:4 Em:4 A7:4 C/D:4 G:4 G/B:4 C:4 C/D:4 G:4 G/B:4 C:4 C/D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "G:4 G/B:4 C:4 C/D:4 G:4 G/B:4 C:4 C/D:4 G:4 G/B:4 C:4 C/D:4 G:4 G/B:4 C:4 C/D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Pré-Refrão 2",
+    "seq": "Em:4 Em/D:4 C:4 F7M:4 G:4 G/B:4 C:4 C/D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão 2",
+    "seq": "G:2 D/F#:4 C/E:4 C/D:4 G:4 D/F#:4 C/E:4 C/D:4 G:4 B7:4 Em:4 A7:4 C/D:4 G:4 D/F#:4 C/E:4 C/D:4 G:4 D/F#:4 C/E:4 C/D:4 G:4 B7:4 Em:4 A7:4 C/D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "G:4 G/B:4 C:2 C/D:4 G:4 G/B:4 C:4 C/D:4 G:4 G/B:4 C:4 C/D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "G:4 G/B:4 C:4 C/D:4 G:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "G:4 G/B:4 C:4 D:4 G:4 G/B:4 C:4 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "G:4 G/B:4 C:2 D:4 G:4 G/B:4 C:4 D:4 G:4 G/B:4 C:4 D:4 G:4 G/B:4 C:4 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Pré-Refrão 1",
+    "seq": "Em:4 Em/D:4 C:4 F7M:4 G:4 G/B:4 C:4 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão 1",
+    "seq": "G:4 D/F#:4 C:4 D:4 G:4 D/F#:4 C:4 D:4 G:4 B7:4 Em:4 A7:4 D:4 G:4 D/F#:4 C:4 D:4 G:4 D/F#:4 C:4 D:4 G:4 B7:4 Em:4 A7:4 D:4 G:4 G/B:4 C:4 D:4 G:4 G/B:4 C:4 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "G:4 G/B:4 C:4 D:4 G:4 G/B:4 C:4 D:4 G:4 G/B:4 C:4 D:4 G:4 G/B:4 C:4 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Pré-Refrão 2",
+    "seq": "Em:4 Em/D:4 C:4 F7M:4 G:4 G/B:4 C:4 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão 2",
+    "seq": "G:2 D/F#:4 C:4 D:4 G:4 D/F#:4 C:4 D:4 G:4 B7:4 Em:4 A7:4 D:4 G:4 D/F#:4 C:4 D:4 G:4 D/F#:4 C:4 D:4 G:4 B7:4 Em:4 A7:4 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "G:4 G/B:4 C:2 D:4 G:4 G/B:4 C:4 D:4 G:4 G/B:4 C:4 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "G:4 G/B:4 C:4 D:4 G:4 G/B:4 C:4 D:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "G",
+  "bpm": 153,
+  "youtube": [
+   {
+    "id": "2YkZmzAgfuA",
+    "titulo": "Aquarela",
+    "canal": "Toquinho Oficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "sSm9wrw95FY",
+    "titulo": "Aquarela",
+    "canal": "Toquinho Oficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "mZ4wQas3oq4",
+    "titulo": "Toquinho Aquarela  \"clipe Oficial\"original",
+    "canal": "PROJETO AMAR",
+    "pontos": 5,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "PT3azbKHJZU",
+    "titulo": "MÚSICA AQUARELA ORIGINAL TOQUINHO",
+    "canal": "JPL BRASIL (JPL BRASIL)",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "intermediario",
+  "busca": "leãozinho",
+  "slugArtista": "caetano-veloso",
+  "slugMusica": "o-leaozinho",
+  "titulo": "O Leãozinho",
+  "artista": "Caetano Veloso",
+  "genero": "MPB",
+  "tom": "C",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "C:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Dedilhado - Primeira Parte",
+    "seq": "C:4 G7:4 Am:4 Em:4 F:4 Bb:4 C:4 G7:4 Am:4 Em:4 F:4 Bb:4 C:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Dedilhado - Segunda Parte",
+    "seq": "Am:4 Am/G#:4 Am/G:2 Am/F#:4 Am/F:4 Am/E:4 Dm7:2 G7:4 Am:4 Am/G#:4 Am/G:2 Am/F#:4 Am/F:4 Am/E:4 Dm:2 G7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "C:4 G7:4 Am:4 Em:4 F:4 Bb:4 C:4 G7:4 Am:4 Em:4 F:4 Bb:4 C:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Am:4 Am/G#:4 Am/G:2 Am/F#:4 Am/F:4 Am/E:4 Dm7:2 G7:4 Am:4 Am/G#:4 Am/G:2 Am/F#:4 Am/F:4 Am/E:4 Dm:2 G7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "C:4 G7:4 Am:4 Em:4 F:4 Bb:4 C:4 G7:4 Am:4 Em:4 F:4 Bb:4 C:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "C:4 G:4 Am:4 Em:4 F:4 Bb:4 C:4 G:4 Am:4 Em:4 F:4 Bb:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão 1",
+    "seq": "C:4 G:4 Am:4 Em:4 F:4 Bb:4 C:4 G7:4 Am:4 Em:4 F:4 Bb:4 C:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Am:4 Em:4 Am7:2 D7:4 F:4 Am:4 Dm:2 G:4 Am:4 Em:4 Am7:2 D7:4 F:4 Am:2 Dm:2 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão 2",
+    "seq": "C:4 G:4 Am:4 Em:4 F:4 Bb:4 C:4 G:4 Am:4 Em:4 F:4 Bb:4 C:4 Am:4 Em:4 C:4 D7:4 F:4 Am:4 Dm:4 G:4 Am:4 Em:4 C:4 D7:4 F:4 Am:4 Dm:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão 2",
+    "seq": "C:4 G:4 Am:4 Em:4 F:4 Bb:4 C:4 G:4 Am:4 Em:4 F:4 Bb:4 C:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "C",
+  "bpm": 140,
+  "youtube": [
+   {
+    "id": "A1WDI3vmbVI",
+    "titulo": "Caetano Veloso, Maria Gadú - O Leãozinho",
+    "canal": "Caetano Veloso",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "wJ2prEKx3_Y",
+    "titulo": "O Leaozinho",
+    "canal": "Caetano Veloso",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "g2tzDqi1INk",
+    "titulo": "Caetano Veloso, Moreno Veloso - O Leãozinho (Ao Vivo)",
+    "canal": "Caetano Veloso",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "x5Bk-0-5zIY",
+    "titulo": "O Leãozinho (Ao Vivo)",
+    "canal": "Caetano Veloso",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "intermediario",
+  "busca": "azul da cor do mar",
+  "slugArtista": "tim-maia",
+  "slugMusica": "azul-da-cor-do-mar",
+  "titulo": "Azul da Cor do Mar",
+  "artista": "Tim Maia",
+  "genero": "Soul",
+  "tom": "A",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Primeira Parte",
+    "seq": "A7M:2 Bm7:4 C#m7:4 Bm7:4 E7(4/9):4 A7M:2 E7(4/9):4 A7M:2 Bm7:4 C#m7:4 Bm7:4 E7(4/9):4 A7M:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Solo 1",
+    "seq": "Bm7:4 C#m7:4 Bm7:4 D7M:4 E7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "A7M:2 Bm7:4 C#m7:4 Bm7:4 E7(4/9):4 A7M:2 E7(4/9):4 A7M:2 Bm7:4 C#m7:4 Bm7:4 E7(4/9):4 A7M:2 E7(4/9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Solo 2",
+    "seq": "A7M:4 Bm7:4 C#m7:4 Bm7:4 E7(4/9):4 A7M:4 E7(4/9):4 A7M:4 Bm7:4 C#m7:4 Bm7:4 E7(4/9):4 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Solo 1",
+    "seq": "Bm7:4 C#m7:4 Bm7:4 D7M:4 E7:4 A7M:2 Bm7:4 C#m7:4 Bm7:4 E7(4/9):4 A7M:2 E7(4/9):4 A7M:2 Bm7:4 C#m7:4 Bm7:4 E7(4/9):4 A7M:2 E7(4/9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "A7M:4 Bm7:4 C#m7:4 Bm7:4 E7(4/9):4 A7M:4 E7(4/9):4 A7M:4 Bm7:4 C#m7:4 Bm7:4 E7(4/9):4 A7M:4 E7(4/9):4 A7M:4 Bm7:4 C#m7:4 Bm7:4 E7(4/9):4 A7M:4 E7(4/9):4 A7M:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Primeira Parte",
+    "seq": "G:2 Am:4 Bm:4 Am:4 D7:4 G:2 D7:4 G:2 Am:4 Bm:4 Am:4 D7:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Solo 1",
+    "seq": "Am:4 Bm:4 Am:4 C:4 D7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "G:2 Am:4 Bm:4 Am:4 D7:4 G:2 D7:4 G:2 Am:4 Bm:4 Am:4 D7:4 G:2 D7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Solo 2",
+    "seq": "G:4 Am:4 Bm:4 Am:4 D7:4 G:4 D7:4 G:4 Am:4 Bm:4 Am:4 D7:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Solo 1",
+    "seq": "Am:4 Bm:4 Am:4 C:4 D7:4 G:2 Am:4 Bm:4 Am:4 D7:4 G:2 D7:4 G:2 Am:4 Bm:4 Am:4 D7:4 G:2 D7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "G:4 Am:4 Bm:4 Am:4 D7:4 G:4 D7:4 G:4 Am:4 Bm:4 Am:4 D7:4 G:4 D7:4 G:4 Am:4 Bm:4 Am:4 D7:4 G:4 D7:4 G:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 2,
+  "tomSimp": "A",
+  "bpm": 85,
+  "youtube": [
+   {
+    "id": "A9kTV-wpiWk",
+    "titulo": "Azul Da Cor Do Mar",
+    "canal": "Tim Maia",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "D6i1Tb3MeWg",
+    "titulo": "Azul da Cor do Mar",
+    "canal": "Tim Maia",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "ovf7P0LnnEY",
+    "titulo": "Azul da cor do mar",
+    "canal": "Tim Maia",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "W5e4KY19TDs",
+    "titulo": "Azul da Cor do Mar (Ao Vivo II)",
+    "canal": "Tim Maia",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "intermediario",
+  "busca": "gostava tanto de você",
+  "slugArtista": "tim-maia",
+  "slugMusica": "gostava-tanto-de-voce",
+  "titulo": "Gostava Tanto de Você",
+  "artista": "Tim Maia",
+  "genero": "Soul",
+  "tom": "A",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "A7M:4 E7(4/9):4 A7M:4 E7(4/9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "A7M:8 Bm7:4 C#m7:4 Bm7:4 A7M:4 Bm7:4 C#m7:4 Bm7:4 A7M:4 E7(4/9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "A7M:4 E7(4/9):8 A7M:4 E7(4/9):8 C#m7:2 Bm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "A7M:4 Bm7:4 C#m7:4 Bm7:4 C#m7:4 Bm7:4 A7M:4 E7(4/9):4 A7M:2 E7(4/9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "A7M:4 E7(4/9):8 A7M:4 E7(4/9):8 C#m7:2 Bm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "C#m7:8 Bm7:4 A7M:4 Bm7:4 C#m7:4 Bm7:4 A7M:4 Bm7:4 C#m7:4 E7(4/9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "C#m7:4 Bm7:4 A7M:2 E7(4/9):4 A7M:2 E7(4/9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "A7M:4 E7(4/9):4 A7M:4 E7(4/9):4 A7M:4 E7(4/9):4 A7M:4 E7(4/9):4 A7M:2 E7(4/9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "A7M:4 E7(4/9):8 A7M:4 E7(4/9):8 C#m7:2 Bm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "E7(4/9):4 A7M:4 E7(4/9):4 A7M:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "A7M:4 Bm7:4 A7M:4 Bm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "A7M:8 Bm7:4 C#m7:4 Bm7:4 A7M:4 Bm7:4 C#m7:4 Bm7:4 A7M:4 Bm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "A7M:4 Bm7:4 A7M:4 Bm7:4 A7M:2 Bm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "A7M:4 Bm7:4 C#m7:4 Bm7:4 A7M:4 Bm7:4 C#m7:4 Bm7:4 A7M:2 Bm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "A7M:4 Bm7:4 A7M:4 Bm7:4 A7M:2 Bm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "A7M:8 Bm7:4 C#m7:4 Bm7:4 A7M:4 Bm7:4 C#m7:4 Bm7:4 A7M:4 Bm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "A7M:4 Bm7:4 A7M:4 Bm7:4 A7M:2 Bm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "A7M:4 Bm7:4 C#m7:4 Bm7:4 A7M:4 Bm7:4 C#m7:4 Bm7:4 A7M:2 Bm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "A7M:4 Bm7:4 A7M:4 Bm7:4 A7M:2 Bm7:2 A7M:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "A7M:4 Bm7:4 A7M:4 Bm7:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "A",
+  "bpm": 90,
+  "youtube": [
+   {
+    "id": "cxSzri346W0",
+    "titulo": "Gostava Tanto De Você",
+    "canal": "Tim Maia",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "AH6D2gBhFSw",
+    "titulo": "Gostava Tanto de Você",
+    "canal": "Tim Maia",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "MYk1vpmLyoY",
+    "titulo": "Tim Maia - Gostava Tanto de Você (1997)",
+    "canal": "Brasilidades",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "TZQsoLACMW0",
+    "titulo": "TIM MAIA - GOSTAVA TANTO DE VOCE",
+    "canal": "Limu013",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "intermediario",
+  "busca": "pais e filhos",
+  "slugArtista": "legiao-urbana",
+  "slugMusica": "pais-filhos",
+  "titulo": "Pais e Filhos",
+  "artista": "Legião Urbana",
+  "genero": "Pop Rock",
+  "tom": "G",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Dedilhado - Segunda Parte",
+    "seq": "F9:4 Em:2 C:4 Bm:2 Am7:4 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "C:2 D:2 G:4 C:2 D:2 G:4 C:2 D:2 G:4 C:4 D:2 G:4 C:4 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Dedilhado - Segunda Parte",
+    "seq": "F9:2 Em:4 C:4 Bm:4 Am7:4 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "G:2 C:4 Em:4 C:4 G:2 C:4 Em:4 C:2 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Quinta Parte",
+    "seq": "G:8 C:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão Final",
+    "seq": "G:2 C:4 Em:4 C:4 G:2 C:4 Em:4 C:4 G:4 C:4 Em:4 C:4 G:4 C:4 Em:4 C:4 G:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "C:4 D:4 G:4 C:4 D:4 G:4 C:4 D:4 G:4 C:4 D:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "C:2 D:4 G:4 C:4 D:4 G:4 C:4 D:2 G:4 C:2 D:4 G:2 C:2 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "F:4 Em:2 C:2 Bm:2 Am:4 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "C:2 D:4 G:4 C:2 D:4 G:4 C:4 D:4 G:4 C:4 D:4 G:4 C:2 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "F:2 Em:4 C:4 Bm:4 Am:4 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "G:2 C:4 Em:4 C:4 G:2 C:4 Em:4 C:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "C:2 D:2 G:4 C:2 D:2 G:4 C:2 D:2 G:4 C:4 D:4 G:4 C:4 D:2 G:4 C:4 D:4 G:4 C:4 D:4 G:4 C:4 D:4 G:4 C:4 D:2 G:4 C:4 D:2 G:4 C:4 D:4 G:4 C:4 D:2 F:2 Em:4 C:2 Bm:2 Am:2 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "G:2 C:4 Em:4 C:4 G:2 C:4 Em:4 C:4 G:4 C:4 Em:4 C:4 G:4 C:4 Em:4 C:4 C:4 D:2 G:4 C:4 D:2 G:4 C:2 D:2 G:4 C:2 D:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "C:4 D:4 G:4 C:4 D:4 G:4 C:4 D:4 G:4 C:4 D:4 G:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "G",
+  "bpm": null,
+  "youtube": [
+   {
+    "id": "DEwLqT669Do",
+    "titulo": "Pais E Filhos",
+    "canal": "Legião Urbana",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "z5ns00J5EaA",
+    "titulo": "Pais E Filhos",
+    "canal": "Legião Urbana",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "iApyBcSg-WA",
+    "titulo": "Pais E Filhos",
+    "canal": "Legião Urbana",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "52MixjzpOO4",
+    "titulo": "Pais e Filhos (Ao Vivo)",
+    "canal": "Legião Urbana",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "intermediario",
+  "busca": "malandragem",
+  "slugArtista": "cassia-eller",
+  "slugMusica": "malandragem",
+  "titulo": "Malandragem",
+  "artista": "Cássia Eller",
+  "genero": "Pop Rock",
+  "tom": "Dm",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "Dm:4 Bb:4 C:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Dm:4 C:4 Gm:4 Dm:4 C:4 Gm:4 Dm:4 C:4 Bb:4 Dm:4 C:4 Gm:4 Dm:4 C:4 Bb:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Dm:4 C:4 F:2 G:4 Dm:4 C:4 F:4 G:4 Bb:4 C:4 Dm:4 Bb:4 C:4 Dm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "C:4 Gm:4 Dm:4 G:4 F:4 C:4 Dm:4 Bb:4 Dm:4 G:4 F:4 C:4 Dm:4 Bb:8 Dm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Dm:4 C:4 F:2 G:4 Dm:4 C:4 F:4 G:4 Bb:4 C:4 Dm:4 Bb:4 C:4 Dm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Solo",
+    "seq": "C:4 Gm:4 Dm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "G:4 F:4 C:4 Dm:4 Bb:4 Dm:4 G:4 F:4 C:4 Dm:4 Bb:8 Dm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Dm:4 C:4 F:2 G:4 Dm:4 C:4 F:4 G:4 Bb:4 C:4 Dm:4 Bb:4 C:4 Dm:4 Dm:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "Dm:4 Bb5(9):4 C:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Dm:4 C:4 Gm:4 Dm:4 C:4 Gm:4 Dm:4 C:4 Bb5(9):4 Dm:4 C:4 Gm:4 Dm:4 C:4 Bb5(9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Dm:4 C:4 F:2 G:4 Dm:4 C:4 F:4 G:4 Bb5(9):4 C:4 Dm:4 Bb5(9):4 C:4 Dm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "C:4 Gm:4 Dm:4 G:4 F:4 C:4 Dm:4 Bb5(9):8 Dm:4 G:4 F:4 C:4 Dm:4 Bb5(9):8 Dm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Dm:4 C:4 F:2 G:4 Dm:4 C:4 F:4 G:4 Bb5(9):4 C:4 Dm:4 Bb5(9):4 C:4 Dm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Solo",
+    "seq": "C:4 Gm:4 Dm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "G:4 F:4 C:4 Dm:4 Bb5(9):8 Dm:4 G:4 F:4 C:4 Dm:4 Bb5(9):8 Dm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Dm:4 C:4 F:2 G:4 Dm:4 C:4 F:4 G:4 Bb5(9):4 C:4 Dm:4 Bb5(9):4 C:4 Dm:4 Dm:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "Dm",
+  "bpm": 133,
+  "youtube": [
+   {
+    "id": "kjR_jfCHLQc",
+    "titulo": "Cassia Eller - Malandragem (Lyric)",
+    "canal": "Cássia Eller",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "TlGZai-wge4",
+    "titulo": "Cássia Eller - Malandragem",
+    "canal": "Cássia Eller",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "33sxFZhYCfo",
+    "titulo": "Cássia Eller - Malandragem (Extended)",
+    "canal": "Cássia Eller",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "nU1XBt54DLM",
+    "titulo": "Cássia Eller - Malandragem (Versão Acústica) [Raridade]",
+    "canal": "Brasilidades",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "intermediario",
+  "busca": "disritmia",
+  "slugArtista": "martinho-da-vila",
+  "slugMusica": "disritimia",
+  "titulo": "Disritmia",
+  "artista": "Martinho da Vila",
+  "genero": "Samba",
+  "tom": "Gm",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "Gm7:4 C7(9):4 Gm7:4 C7(9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Gm7:4 C7(9):4 Gm7:4 C7(9):4 Gm7:2 C7(9):2 Gm7:4 C7(9):4 Dm7(b5):4 G7:4 Dm7(b5):4 G7:2 Dm7(b5):4 G7:4 Cm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Pré-Refrão",
+    "seq": "Cm7:4 Cm7/Bb:2 Am7(b5):4 Cm7/G:4 F#°:4 Gm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Cm7:2 F7/A:4 Bb6:4 Eb7:2 Am7(b5):4 D7:2 G7(4):2 G7:4 Cm7:2 F7/A:4 Bb6:4 Eb7:2 Am7(b5):4 D7:2 Gm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Gm7:2 C7(9):4 Gm7:4 C7(9):2 Gm7:4 C7(9):2 Gm7:2 C7(9):4 Dm7(b5):4 G7:2 Dm7(b5):4 G7:4 Dm7(b5):2 G7:4 Cm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Pré-Refrão",
+    "seq": "Cm7:2 Cm7/Bb:2 Am7(b5):4 Cm7/G:2 F#°:4 Gm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Cm7:4 F7/A:2 Bb6:4 Eb7:2 Am7(b5):4 D7:4 G7(4):2 G7:4 Cm7:4 F7/A:2 Bb6:4 Eb7:2 Am7(b5):4 D7:2 Gm7:4 Cm7:4 F7/A:2 Bb6:4 Eb7:2 Am7(b5):4 D7:4 G7(4):2 G7:4 Cm7:4 F7/A:2 Bb6:4 Eb7:2 Am7(b5):4 D7:2 Gm7:4 Cm7:4 F7/A:2 Bb6:4 Eb7:2 Am7(b5):4 D7:4 G7(4):2 G7:4 Cm7:4 F7/A:2 Bb6:4 Eb7:2 Am7(b5):4 Gm7:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "Gm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Gm7:4 Dm7(b5):4 G7:4 Cm7:4 D7:4 Gm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Cm7:4 Gm7:4 D7:4 Gm7:4 Cm7:4 Gm7:4 D7:4 Gm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Gm7:4 Dm7(b5):4 G7:4 Cm7:4 D7:4 Gm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Cm7:4 Gm7:4 D7:4 Gm7:4 Cm7:4 Gm7:4 D7:4 Gm7:4 Cm7:4 Gm7:4 D7:4 Gm7:4 Cm7:4 Gm7:4 D7:4 Gm7:4 Cm7:4 Gm7:4 D7:4 Gm7:4 Cm7:4 Gm7:4 D7:4 Gm7:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "Gm",
+  "bpm": null,
+  "youtube": [
+   {
+    "id": "9y7P1af3NAM",
+    "titulo": "Martinho Da Vila - Disritmia (Áudio Oficial)",
+    "canal": "Martinho Da Vila",
+    "pontos": 8,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "7nEEvgYbfVY",
+    "titulo": "Martinho Da Vila - Disritmia / Ex-Amor (Ao Vivo) (Áudio Oficial)",
+    "canal": "Martinho Da Vila",
+    "pontos": 8,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "LMEAAcJBf2k",
+    "titulo": "casuarinaoficial - Casuarina - Disritmia (DVD MTV Apresenta: Casuarina)",
+    "canal": "casuarinaoficial",
+    "pontos": 5,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "EGRLhZpSqXY",
+    "titulo": "Roberta Sá - Me faz um dengo / Disritmia - part Martinho da Vila (Delírio no Circo) [Vídeo Oficial]",
+    "canal": "Roberta Sá Oficial",
+    "pontos": 5,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "intermediario",
+  "busca": "andança",
+  "slugArtista": "beth-carvalho",
+  "slugMusica": "andanca",
+  "titulo": "Andança",
+  "artista": "Beth Carvalho",
+  "genero": "Samba",
+  "tom": "D",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "D7M:4 Bb7M:4 Eb7M:4 Em7(b5):4 A7(13):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "D7M:4 Bb7M:4 Eb7M:4 Em7(b5):2 A7(13):4 D7M:4 Bb7M:4 Eb7M:4 Em7(b5):2 A7(13):4 Am7(11):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "D:8 D7M:4 E/D:4 E/G#:4 A7:4 A:2 A/C#:2 A:2 G:2 A/C#:2 A:2 D:4 D7M:4 E/D:4 E/G#:4 A7:4 A:2 A/C#:2 A:2 G:2 A/C#:2 A:2 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "D7M:4 Bb7M:4 Eb7M:4 Em7(b5):2 A7(13):4 D7M:4 Bb7M:4 Eb7M:4 Em7(b5):2 A7(13):4 Am7(11):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão Final",
+    "seq": "D:8 D7M:4 E/D:4 E/G#:8 A7:4 A:2 A/C#:2 A:2 G:2 A/C#:2 A:2 D:4 D7M:4 E/D:4 A7:4 A:2 A/C#:2 A:2 G:2 A/C#:2 A:2 D:4 D7M:4 E/D:2 E/G#:4 A7:4 A:2 A/C#:2 A:2 G:2 A/C#:2 A:2 D:4 D7M:4 E/D:2 E/G#:4 A7:4 A:2 A/C#:2 A:2 G:2 A/C#:2 A:2 D:4 D7M:4 E/D:2 E/G#:4 A7:4 A:2 A/C#:2 A:2 G:2 A/C#:2 A:2 D:4 D7M:4 E/D:2 E/G#:4 A7:4 A:2 A/C#:2 A:2 G:2 A/C#:2 A:2 D:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "D:4 Bb:4 Eb:4 Em7(b5):4 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "D:4 Bb:4 Eb:4 Em7(b5):2 A7:4 D:4 Bb:4 Eb:4 Em7(b5):2 A7:4 D7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "D:8 E:4 A7:4 A:4 G:2 A:2 D:4 E:4 A7:4 A:4 G:2 A:2 D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "D:4 Bb:4 Eb:4 Em7(b5):2 A7:4 D:4 Bb:4 Eb7M:4 Em7(b5):2 A7:4 D7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão Final",
+    "seq": "D:8 D:4 E:4 A7:4 A:4 G:2 A:2 D:4 D:4 E:4 A7:4 A:4 G:2 A:2 D:4 D:4 E:4 A7:4 A:4 G:2 A:2 D:4 D:4 E:4 A7:4 A:4 G:2 A:2 D:4 D:4 E:4 A7:4 A:4 G:2 A:2 D:4 D:4 E:4 A7:4 A:4 G:2 A:2 D:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "D",
+  "bpm": 129,
+  "youtube": [
+   {
+    "id": "XAU4p_a4F1Y",
+    "titulo": "Beth Carvalho - Andança (Pseudo Vídeo)",
+    "canal": "Beth Carvalho",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "SmEgIJNgMmo",
+    "titulo": "Beth Carvalho - Andança (Pseudo Video)",
+    "canal": "Beth Carvalho",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "JUCJR0v9aFQ",
+    "titulo": "1980 -BETH CARVALHO:ANDANÇA, AO VIVO",
+    "canal": "CANAL GRANDES NOMES BETH CARVALHO",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "f99Z_layVaU",
+    "titulo": "BETH CARVALHO-ANDANÇA",
+    "canal": "CANAL GRANDES NOMES BETH CARVALHO",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "intermediario",
+  "busca": "coisinha do pai",
+  "slugArtista": "beth-carvalho",
+  "slugMusica": "coisinha-do-pai",
+  "titulo": "Coisinha do Pai",
+  "artista": "Beth Carvalho",
+  "genero": "Samba",
+  "tom": "A",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "Gm:4 Am7/5-:4 D7:4 Gm:4 Gm:2 Am7/5-:4 D7:2 Gm:4 Gm:2 Am7/5-:4 D7:2 Gm:4 Gm:2 Am7/5-:4 D7:2 Gm:4 Gm:2 Am7/5-:4 D7:2 Gm:4 Gm:2 Am7/5-:4 D7:2 Gm:4 Gm:2 Am7/5-:4 D7:2 Gm:4 Gm:2 Am7/5-:4 D7:2 Gm:4 Gm:2 Am7/5-:4 D7:2 Gm:4 Cm:2 F7:4 Bb7M:4 Eb7:4 Ab7:2 D7:4 G7:4 Cm:4 F7:4 Bb7M:4 Eb7:4 A7:4 D7:2 G7:4 Gm:4 F7:4 Eb7:4 D7:4 Cm:2 F7:2 Bb7M:2 Eb7:4 A7:8 D7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Em:4 Am7:4 D7:4 Eb°:4 Em:4 F#m7(b5):4 B7:2 Em:4 B7:4 Em7:4 Am7:4 D7:4 Eb°:4 Em:4 F#m7(b5):4 B7:2 Em:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "E:4 G#m7:4 Bm7:2 C#7:4 F#m7:4 Am7:4 E:4 C#m7:4 C7:4 B7:4 Em:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "E7:2 Am7:2 D7:2 G7M:4 C7:2 F#m7(b5):4 B7:2 Em:4 E7:2 Am7:2 D7:2 G7M:4 C7:2 F#m7(b5):4 B7:2 Em:4 B7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Em:4 Am7:4 D7:4 Eb°:4 Em:4 F#m7(b5):4 B7:2 Em:4 B7:4 Em:4 Am7:4 D7:4 Eb°:4 Em:4 F#m7(b5):4 B7:2 Em:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "E:4 G#m7:4 Bm7:2 C#7:4 F#m7:4 Am7:4 E:4 C#m7:4 C7:4 B7:4 Em:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "E7:2 Am7:2 D7:2 G7M:4 C7:2 F#m7(b5):4 B7:2 Em:4 E7:2 Am7:2 D7:2 G7M:4 C7:2 F#m7(b5):4 B7:2 Em:4 E:4 G#m7:4 Bm7:4 C#7:4 F#m7:4 Am7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "E:4 C#m7:4 C7:4 B7:4 Em:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "E7:2 Am7:2 D7:2 G7M:4 C7:2 F#m7(b5):4 B7:2 Em:4 E7:2 Am7:2 D7:2 G7M:4 C7:2 F#m7(b5):4 B7:2 Em:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Início",
+    "seq": "Em:8 Am:4 B7:2 Em:4 Am:4 B7:4 Em:4 Am:4 B7:4 Em:4 Am:4 B7:4 Em:4 D:4 G:4 B7:4 E7:4 Am:4 Em:4 C:4 B7:4 Am:4 B7:2 Em:4 Am:4 B7:4 Em:4 Am:4 B7:4 Em:4 Am:4 B7:4 Em:4 D:4 C:4 B7:4 Am:4 Em:4 C:4 B7:4 Am:4 B7:2 Em:4 Am:4 B7:4 Em:4 Am:4 B7:4 Em:4 Am:4 B7:4 Em:4 Am:4 B7:2 Em:4 Am:4 B7:4 Em:4 Am:4 B7:4 Em:4 Am:4 B7:4 Em:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "Em",
+  "bpm": 136,
+  "youtube": [
+   {
+    "id": "C8eGSxv0W6k",
+    "titulo": "Beth Carvalho - Coisinha do Pai (Pseudo Vídeo)",
+    "canal": "Beth Carvalho",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "mT5so_80jE0",
+    "titulo": "Beth Carvalho - Coisinha do Pai (Pseudo Video)",
+    "canal": "Beth Carvalho",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "0dCaHxd-fis",
+    "titulo": "Beth Carvalho-Coisinha do Pai-Os Trapalhões 1979 HD",
+    "canal": "CANAL GRANDES NOMES BETH CARVALHO",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "2hrdqL2QSuM",
+    "titulo": "Pot-Pourri: Coisinha do pai / Vou festejar (Ao vivo)",
+    "canal": "Beth Carvalho",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "intermediario",
+  "busca": "tá escrito",
+  "slugArtista": "revelacao",
+  "slugMusica": "ta-escrito",
+  "titulo": "Tá Escrito",
+  "artista": "Grupo Revelação",
+  "genero": "Pagode",
+  "tom": "F",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "F:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "F:8 C:4 Bb:4 F:4 Dm:4 Gm:4 C7:4 F:8 C:4 Bb:4 F:4 Dm:4 Gm:4 C7:2 F:2 F7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Bb:8 F:4 F/C:4 Am:4 Gm:4 C7:4 F:4 F7M:4 Cm:4 F7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Pré-Refrão",
+    "seq": "Bb:8 F:4 F/C:4 Am:2 D7(b9):4 Gm:4 C7:4 F:4 D7:4 Gm:4 C7:4 F:2 F7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Bb:4 C7:4 F:2 F7M:2 F6:4 C:4 Bb:4 C:4 F:4 F7:4 Bb:4 C7:4 F:2 F7M:2 F6:4 C:4 Bb:4 C:4 F:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "F:8 C:4 Bb:4 F:4 Dm:4 Gm:4 C7:4 F:8 C:4 Bb:4 F:4 Dm:4 Gm:4 C7:4 F:2 F7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Bb:8 F:4 F/C:4 Am:4 Gm:4 C7:4 F:4 F7M:4 Cm:4 F7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Pré-Refrão",
+    "seq": "Bb:8 F:4 F/C:4 Am:2 D7(b9):4 Gm:4 C7:4 F:4 D7:4 Gm:4 C7:4 F:2 F7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão Final",
+    "seq": "Bb:4 C7:4 F:2 F7M:2 F6:4 C:4 Bb:4 C:4 F:4 F7:4 Bb:4 C7:4 F:2 F7M:2 F6:4 C:4 Bb:4 C:4 F:2 F7:4 Bb:4 C7:4 F:2 F7M:2 F6:4 C:4 Bb:4 C:4 F:4 F7:4 Bb:4 C7:4 F:2 F7M:2 F6:4 C:4 Bb:4 C:4 F:2 F7:4 Bb:4 C7:4 F:2 F7M:2 F6:4 C:4 Bb:4 C:4 F:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "G:4 G:8 D:4 C:4 G:4 Em:4 Am:4 D:4 G:8 D:4 C:4 G:4 Em:4 Am:4 D:2 G:2 G:4 C:8 G:4 D:4 E:4 Am:8 D:4 G:4 Dm:4 G:4 C:8 G:8 Em:4 Am:4 D:2 G:4 E:4 Am:4 D:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "C:4 G:2 Em:4 D:4 C:4 D:4 G:2 G:4 C:4 G:2 Em:4 D:4 C:4 D:4 G:4 G:8 D:4 C:4 G:4 Em:4 Am:4 D:4 G:8 D:4 C:4 G:4 Em:4 Am:4 D:2 G:2 G:4 C:8 G:4 D:4 E:4 Am:8 D:4 G:4 Dm:4 G:4 C:8 G:8 Em:4 Am:4 D:2 G:4 E:4 Am:4 D:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "C:4 G:2 Em:4 D:4 C:4 D:4 G:2 G:4 C:4 G:2 Em:4 D:4 C:4 D:4 G:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "G",
+  "bpm": null,
+  "youtube": [
+   {
+    "id": "7mrpqHl_6qw",
+    "titulo": "Grupo Revelação - Tá Escrito I Revelação 30 Anos",
+    "canal": "Grupo Revelação",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "Muc60xHD-fA",
+    "titulo": "Grupo Revelação - Tá Escrito #RSB",
+    "canal": "Grupo Revelação",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "IzfIUQJzuGA",
+    "titulo": "Grupo Revelação - Tá Escrito (Pagode do Revela edição Portugal / Ao Vivo",
+    "canal": "Grupo Revelação",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "09_s_Kh8sls",
+    "titulo": "Grupo Revelação - Tá Escrito (Ao Vivo no Morro)",
+    "canal": "Deck",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "intermediario",
+  "busca": "o sol nascerá",
+  "slugArtista": "cartola",
+  "slugMusica": "o-sol-nascera",
+  "titulo": "O Sol Nascerá",
+  "artista": "Cartola",
+  "genero": "Samba",
+  "tom": "C",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "Gm7:4 C7(9):4 F7M:4 Fm6:4 F7M:4 Fm6:4 C7M:4 G7:4 C6(9):2 C7(9):2 F7M:4 D7:2 A7:2 Dm7(9):2 G7:4 C6(9):2 C7(9):2 F7M:4 Dm7(9):2 G7(13):4 C7M(9):4 G7(#5):4 Gm7:4 C7(9):4 F7M:4 Fm6:4 C7M(9):4 Dm7:4 G7:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Início",
+    "seq": "C:2 C7:2 F:4 D7:2 G7:4 C:2 C7:2 F:4 G7:4 C:4 C7:4 F:4 D7:4 G7:4 C:2 C7:2 F:4 D7:2 G7:4 C:2 C7:2 F:4 G7:4 C:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "D",
+  "bpm": null,
+  "youtube": [
+   {
+    "id": "qIGN9fDhrEU",
+    "titulo": "Cartola - O Sol Nascerá (Programa Ensaio)",
+    "canal": "Cartola",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "zc8L7N1Tecg",
+    "titulo": "Cartola - O Sol Nascerá",
+    "canal": "Socartola",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "UDmjhNnfnGo",
+    "titulo": "O Sol Nascerá (A Sorrir)",
+    "canal": "Cartola",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "TUXUqVMcA3E",
+    "titulo": "O Sol Nascerá (2023 Remastered)",
+    "canal": "Cartola",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "avancado",
+  "busca": "garota de ipanema",
+  "slugArtista": "tom-jobim",
+  "slugMusica": "garota-de-ipanema",
+  "titulo": "Garota de Ipanema",
+  "artista": "Tom Jobim",
+  "genero": "Bossa Nova",
+  "tom": "F",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Ritmo Padrão",
+    "seq": "F7M:4 G7(13):4 Gm7:4 C7(b9):4 Am7(11):4 Ab7(#11):4 Gm7(11):4 Gb7(#11):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Passagem",
+    "seq": "F7M:8 G7(13):4 Gm7:4 C7(b9):4 F7M:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "F#7M:4 B7(9):4 F#m7:8 D7(9):4 Gm7:4 Eb7(9):4 Am7:4 D7(b9):4 Gm7:4 C7(b9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "F7M:8 G7(13):4 Gm7:4 C7(b9):4 F7M:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "C7(b9):4 F7M:4 C7(b9):4 F7M:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Primeira Parte",
+    "seq": "F7M:4 G:4 Gm7:4 C:4 Am:4 Ab:4 Gm:4 Gb:4 F7M:8 G:4 Gm7:4 C:4 F7M:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "F#7M:4 B7:4 F#m7:8 D7:4 Gm7:4 Eb7:4 Am:4 D7:4 Gm7:4 C:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "F7M:8 G:4 Gm7:4 C:4 F7M:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "C:4 F7M:4 C:4 F7M:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "F",
+  "bpm": null,
+  "youtube": [
+   {
+    "id": "3o6j4Gw79yo",
+    "titulo": "Garota de Ipanema",
+    "canal": "Dick Farney - Topic",
+    "pontos": 10,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "uW5acE-5280",
+    "titulo": "Garota De Ipanema",
+    "canal": "Tom Jobim Oficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "rOAGNjCYprY",
+    "titulo": "Antônio Carlos Jobim, Vinicius de Moraes - Garota de Ipanema | RSI Musica",
+    "canal": "RSI Musica",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "8mcsaEqrbfU",
+    "titulo": "Tom Jobim | Garota de Ipanema | Inédito",
+    "canal": "Biscoito Fino",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "avancado",
+  "busca": "corcovado",
+  "slugArtista": "tom-jobim",
+  "slugMusica": "corcovado",
+  "titulo": "Corcovado",
+  "artista": "Tom Jobim",
+  "genero": "Bossa Nova",
+  "tom": "Am",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "Am6:4 E9-/G#:4 Gm7:4 C7(b9):4 F#7:4 F7M:4 E7(#9):4 C9:4 C6(9):4 Am6(11):4 G#°:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Am6:4 E9-/G#:8 Gm7:4 C7(9):2 Gm6:4 F#7(#11):4 F7M:4 Fm7:4 Fm6:4 E6:4 E6-:2 A7(4/9):2 A7(b9):4 A7(9-/13-):4 D7(9/13):4 Dm7:4 Dm7(b5):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Am6:8 E9-/G#:8 Gm7:4 Gm6:4 F#7(#11):4 F7M:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Fm7:4 Fm6:4 Em7(9):4 Em7:2 Am7:4 Dm7:4 G7(4/9):4 G7(b9):2 E6:2 E6-:2 A7(4/9):2 C#°:4 Dm7(9):4 G7(4/9-):4 Cm6:4 G/B:4 A#m:4 A#m7M:4 A#m7:4 D#7(4):4 A7(#11):4 G#7M:4 G#m7:4 C#7(9):4 G7(13):4 G7(b13):4 C7(4/9):4 C7(b9):4 F7(13):4 G#6/B:4 A#7(9):4 Am6:4 E9-/G#:4 Gm7:4 F#7(#11):4 C7:4 F7M:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão Final",
+    "seq": "Fm7:4 Em7(9):4 Em7:2 Am7:4 Dm7:4 G7(4/9):4 E6:4 E6-:4 A7(4/9):4 C#°:4 Dm7(9):4 Dm7(b5):4 Am6:4 G#m6:4 Am6(9):4 G#m6:4 Am6:8 G#m6:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "Am:4 E7:4 Gm:4 C7:4 F7M:4 E7:4 C9:4 Am:4 G#°:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Am:4 E7:4 Gm:4 C7:4 F7M:4 Fm:4 E7:4 A7:4 D7:8 Dm7:4 G7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Am:8 E7:4 Gm:8 F7M:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "Fm:4 Em7:4 Am7:4 Dm7:4 G7:4 Bb7:2 A7:4 Dm7:4 G7:4 Am:4 E7:4 Gm:4 C7:4 F7M:4 E7:4 C9:4 Am:4 G#°:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão Final",
+    "seq": "Fm7:4 Em7:4 Am7:4 Dm7:4 G7:4 Bb7:2 A7:4 Dm7:4 G7:4 Am6:4 G#°:2 Am:2 G#°:4 Am:4 G#°:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "Am",
+  "bpm": null,
+  "youtube": [
+   {
+    "id": "wilIgoJ294M",
+    "titulo": "Corcovado",
+    "canal": "Tom Jobim Oficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "9vRELD9ehtc",
+    "titulo": "Corcovado (Remastered)",
+    "canal": "Tom Jobim Oficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "V1roh3iUnLY",
+    "titulo": "Tom Jobim - Corcovado (Tom, Toquinho, Vinícius e Miúcha) [Áudio Oficial]",
+    "canal": "MPB :: As Melhores!",
+    "pontos": 5,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "6QnnJq4I6ek",
+    "titulo": "Antonio Carlos Jobim - Corcovado [MPB Raridade] (Musicalidade)",
+    "canal": "Brasilidades",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "avancado",
+  "busca": "wave",
+  "slugArtista": "tom-jobim",
+  "slugMusica": "wave",
+  "titulo": "Wave",
+  "artista": "Tom Jobim",
+  "genero": "Bossa Nova",
+  "tom": "Dm",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "Dm7:4 G/D:4 Dm7:4 G/D:4 Dm7:4 G/D:4 Dm7:4 Dm7:4 G/D:4 Dm7:4 G/D:4 Dm7:4 G/D:4 Dm7:4 Dm7:4 G/D:4 Dm7:4 G/D:4 Dm7:4 G/D:4 Dm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "D7M(9):4 Bb°:4 Am7:2 D7(b9):4 G7M:2 Gm6:4 F#7(13):2 F#7(b13):4 B7(9):4 B7(b9):2 E7(9):4 Bb7(13):4 A7(b13):4 Dm7:2 G/D:2 Dm7:2 G/D:4 D7M(9):4 Bb°:4 Am7:2 D7(b9):4 G7M:4 Gm6:4 F#7(13):2 F#7(b13):4 B7(9):4 B7(b9):4 E7(9):4 Bb7(13):4 A7(b13):4 Dm7:2 G/D:2 Dm7:2 G/D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Gm7:4 C/Bb:4 Am7:4 Ab/Bb:4 Bb/Ab:4 Gm7:2 A7(b13):2 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "A7:4 D7M(9):4 Bb°:4 Am7:2 D7(b9):4 G7M:4 Gm6:4 F#7(13):2 F#7(b13):4 B7(9):4 B7(b9):2 E7(9):4 Bb7(13):4 A7(b13):4 Dm7:2 G/D:2 Dm7:2 G/D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Solo",
+    "seq": "D7M:4 Bb°:4 Am7:4 D7(b9):4 G7M:4 Gm6:4 F#7(13):4 F#7(b13):4 B7(9):4 B7(b9):4 E7(9):4 Bb7(13):4 A7(b13):4 Dm7:4 G/D:4 Dm7:4 G/D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Gm7:4 C/Bb:4 Am7:4 Ab/Bb:4 Bb/Ab:4 Gm7:2 A7(b13):2 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "A7:4 D7M(9):4 Bb°:4 Am7:2 D7(b9):4 G7M:4 Gm6:4 F#7(13):2 F#7(b13):4 B7(9):4 B7(b9):2 E7(9):4 Bb7(13):4 A7(b13):4 Dm7:2 G/D:2 Dm7:2 G/D:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Repete Intro",
+    "seq": "Dm7:4 G/D:4 Dm7:4 G/D:4 Dm7:4 G/D:4 Dm7:4 Dm7:4 G/D:4 Dm7:4 G/D:4 Dm7:4 G/D:4 Dm7:4 Dm7:4 G/D:4 Dm7:4 G/D:4 Dm7:4 G/D:4 Dm7:4 D7M(9):4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "Dm7:4 G:4 Dm7:4 G:4 Dm7:4 G:4 Dm7:4 G:4 Dm7:4 G:4 Dm7:4 G:4 Dm7:4 G:4 Dm7:4 G:4 D7M:4 Bb°:4 Am7:2 D7:4 G7M:4 Gm7:2 F#m:4 B:4 E7(9):4 A7:4 Dm7:4 G/D:4 Dm7:4 G/D:4 D7M:4 Bb°:4 Am7:2 D7:4 G7M:4 Gm7:4 F#m7:2 B7:4 E7(9):4 A7:4 Dm7:4 G/D:4 Dm7:4 Gm7:4 C:2 Am7:4 Fm:4 Gm7:4 A7:4 D7M:4 Bb°:4 Am7:4 D7:4 G7M:4 Gm7:4 F#m7:2 B7:4 B7:4 E7(9):4 A7:4 Dm7:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "G",
+  "bpm": null,
+  "youtube": [
+   {
+    "id": "4Bag7nmDDwQ",
+    "titulo": "Wave",
+    "canal": "Tom Jobim Oficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "JGqzKmp_5Bg",
+    "titulo": "Wave",
+    "canal": "Tom Jobim Oficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "Fjp04Ax_MiA",
+    "titulo": "Tom Jobim - Wave (Lofi version. GabrielMzero remix)",
+    "canal": "GabrielMzero",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "w73hEZKnDeA",
+    "titulo": "Wave - Tom Jobim",
+    "canal": "darci severo",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "avancado",
+  "busca": "chega de saudade",
+  "slugArtista": "tom-jobim",
+  "slugMusica": "chega-de-saudade",
+  "titulo": "Chega de Saudade",
+  "artista": "Tom Jobim",
+  "genero": "Bossa Nova",
+  "tom": "Dm",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "Gm7:4 A7(b13):4 Dm:4 Cm6:4 Bm7(#11):4 Bb7(13):4 A7(b13):4 Dm7:4 Eb7(9/11):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Dm:4 B°:4 Bbm6:4 A7(b13):4 Dm7:4 Eb7(9):2 Dm7:4 E7:2 Am7:4 Bb6:4 A7:4 A7(b13):2 Dm:4 B°:4 Bbm6:4 A7(b13):2 D7M:4 D7(b9):4 Gm7:4 A7(b13):4 Dm:4 Dm/C:4 E7/B:4 A7(b13):4 Bbm6:2 Dm7:4 Em7:4 A7(13):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "D7M(9):2 B7:2 E7(9):4 G/A:2 A7(9):4 D°:4 D6:4 D7M:4 D°:4 Em7:4 E7(9):4 Gm6:2 A7(b9):2 D7M(9):2 Bm7:4 E7(9):4 F#7:4 Bm7:2 Bbm7:4 Am7:4 D7(b9):2 G7M:4 Gm7:4 F#m7:4 B7(13):4 E7(9):4 A7:4 F#13:4 B7:4 E7(9):4 A7(13):4 D:4 Dm:4 Dm/C:4 E7/B:4 Bbm6:4 A7(b13):4 Dm7:4 Eb7(9):4 Dm7:4 E7:4 Am7:4 Bb6:4 A7:4 A7(b13):4 Dm:4 Dm/C:4 E7/B:4 Bbm6:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "A7(b13):2 D7M:4 D7(b9):4 Gm7:4 A7(b13):4 Dm:4 Am/C:4 E7/B:4 A7(b13):4 Bbm6:2 Dm7:4 Em7:4 A7(13):4 D7M(9):4 B7:4 E7(9):4 G/A:4 A7(9):4 D°:4 D6:4 D7M:4 D°:4 Em7:4 E7(9):4 Gm6:4 A7(b9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "D7M(9):2 Bm7:4 E7(9):4 F#7:4 Bm7:2 Bbm7:4 Am7:4 D7(b9):2 G7M:4 Gm7:4 F#m7:4 B7(13):4 E7(9):4 A7:4 F#13:4 B7:4 E7(9):4 A7(13):4 D:4 B7:4 E7(9):4 A7(13):4 D:4 B7:4 E7(9):4 A7(13):4 D:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "Gm:4 A7:4 Dm:4 C:4 E7:4 Eb:4 A7:4 Dm:4 E7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Dm:2 C:2 E7:2 Bbm6:2 A7:4 Dm:4 E7:2 Dm7:4 Dm:2 E7:2 A7:4 Bb6:4 A7:4 A7:2 Dm:2 C:2 E7:4 Bbm6:4 A7:2 D7M:4 D7:4 Gm:4 A7:2 Dm:4 Am:4 E7:4 A7:4 Bbm6:2 Dm:4 Em7:4 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "D7M:2 B7:2 E7:4 G:2 A7:4 D:2 D6:4 D7M:4 D:4 Em7:4 E7:4 Gm:2 A7:2 D7M:2 Bm:2 E:4 F#m:4 Bm:2 Bbm7:4 Am:4 D7:2 G7M:4 Gm:4 F#m:4 B7:2 E7:4 A7:4 F#m:4 B7:4 E7:4 A7:4 D:4 Dm:4 C:4 E7:4 Bbm6:4 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "A7:2 D7M:4 D7:4 Gm:4 A7:2 Dm:4 Am:4 E7:4 A7:4 Bbm6:2 Dm:4 Em7:4 A7:4 D7M:4 B7:4 E7:4 G:4 A7:4 D:4 D6:4 D7M:4 D:4 Em7:4 E7:4 Gm:4 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "D7M:2 Bm:2 E7:4 F#m:4 Bm:2 Bbm:4 Am:4 D7:2 G7M:4 Gm:4 F#m:4 B7:2 E7:2 A7:4 F#m:4 B7:4 E7:4 A7:4 D:4 B7:4 E7:4 A7:4 D:4 B7:4 E7:4 A7:4 D:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "Dm",
+  "bpm": null,
+  "youtube": [
+   {
+    "id": "Y0a0QuLEC8A",
+    "titulo": "Chega de Saudade",
+    "canal": "João Gilberto - Topic",
+    "pontos": 10,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "PpP9QNnkIWU",
+    "titulo": "Chega De Saudade",
+    "canal": "Tom Jobim Oficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "hOrK_pKQzIw",
+    "titulo": "Chega de Saudade (Remastered)",
+    "canal": "Tom Jobim Oficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "5LfaYKdqfnY",
+    "titulo": "Tom Jobim - Chega de saudade (Ao Vivo em Montreal)",
+    "canal": "Biscoito Fino",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "avancado",
+  "busca": "samba de uma nota só",
+  "slugArtista": "tom-jobim",
+  "slugMusica": "samba-de-uma-nota-so",
+  "titulo": "Samba de Uma Nota Só",
+  "artista": "Tom Jobim",
+  "genero": "Bossa Nova",
+  "tom": "G",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "Bm7:4 Bb7:4 Am7:4 G#7(#11):4 Bm7:4 Bb7:4 Am7(11):4 G#7(#11):4 Bm7:2 Bb7:4 Am7(11):4 G#7(#11):4 Dm7(11):4 Db7(#11):4 C6:4 Cm6:4 Bm7:4 Bb7:4 Am7(11):4 G7M:4 Cm7:4 F7(9):4 Bb7M:2 Eb7(9):4 Bb7M:2 Eb7(9):4 A#m7:4 Eb7(9):4 G#7M:4 Cm7:2 D7:4 Bm7:4 Bb7:4 Am7(11):4 G#7(#11):4 Bm7:4 Bb7:4 Am7(11):4 G#7(#11):4 Dm7(11):4 Db7(#11):4 C6:4 Cm6:4 Dm7(11):4 Db7(#11):4 G#7M:4 G7M:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "Bm7:4 Bb7:4 Am7:4 G#7(#11):4 Bm7:4 Bb7:4 Am7(11):4 G#7(#11):4 Bm7:2 Bb7:4 Am7(11):4 G#7(#11):4 Dm7(11):4 Db7(#11):4 C6:4 Cm6:4 Bm7:4 Bb7:4 Am7(11):4 G7M:4 Cm7:4 F7(9):4 Bb7M:2 Eb7(9):4 Bb7M:2 Eb7(9):4 A#m7:4 Eb7(9):4 G#7M:4 Cm7:2 D7:4 Bm7:4 Bb7:4 Am7(11):4 G#7(#11):4 Bm7:4 Bb7:4 Am7(11):4 G#7(#11):4 Dm7(11):4 Db7(#11):4 C6:4 Cm6:4 Dm7(11):4 Db7(#11):4 G#7M:4 G7M:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "G",
+  "bpm": null,
+  "youtube": [
+   {
+    "id": "nIpx3z1ELqI",
+    "titulo": "Samba De Uma Nota Só",
+    "canal": "Nara Leão - Topic",
+    "pontos": 10,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "nwerSLDhqZo",
+    "titulo": "Samba de uma Nota Só (One Note Samba) (Remastered)",
+    "canal": "Tom Jobim Oficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "_8_iQn9YgKs",
+    "titulo": "One Note Samba (Samba de Uma Nota So) (Album Version)",
+    "canal": "Tom Jobim Oficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "naeq6fFmDpI",
+    "titulo": "Tom Jobim - Ao Vivo em Montreal - Samba de uma nota só",
+    "canal": "Biscoito Fino",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "avancado",
+  "busca": "águas de março",
+  "slugArtista": "tom-jobim",
+  "slugMusica": "aguas-de-marco",
+  "titulo": "Águas de Março",
+  "artista": "Tom Jobim",
+  "genero": "Bossa Nova",
+  "tom": "B",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "B/A:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "G#m6:4 Em6/G:4 B7M(9)/F#:4 F7(#11):4 E7M(13):4 Em6:4 B7M(9):4 F#m7:4 B7:2 B6(9)/F:4 Em6:4 B6(9):4 F#m7:4 B7(9):2 B6(9)/F:4 Em6:4 B6(9):4 F#m7:4 B7(9):2 B6(9)/F:4 Em6:4 B6(9):4 F#m7:4 B7:2 B6(9)/F:4 Em6:4 B7M(9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "B/A:4 G#m6:4 Em6/G:4 B6(9):4 F#m7:4 B7(9):2 B6(9)/F:4 Em6:4 B6(9):4 F#m7:4 B7:2 B6(9)/F:4 Em6:4 B6(9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "B/A:4 G#m6:4 Em6/G:4 B7M(9)/F#:4 F#m7:4 B7(9):4 B6(9)/F:4 Em6:4 B6(9):4 F#m7:4 B7:2 B6(9)/F:4 Em6:4 B6(9):4 F#m7:4 B7(9):2 B6(9)/F:4 Em6:4 B6(9):4 B/A:4 G#m6:4 Em6/G:4 B7M(9)/F#:4 F#m7:4 B7(9):4 B6(9)/F:4 Em6:4 B6(9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Solo",
+    "seq": "F/D#:4 D/C:4 B/A:4 G#m6:4 Em6/G:4 B7M(9)/F#:4 F7(#11):4 E7M(13):4 Em6:4 B6:4 F#m7:4 B7(9):4 Bb9/F:4 Em6:4 B6(9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Quarta Parte",
+    "seq": "B7(13):4 B6(9)/F:4 Em6:4 B6(9):4 B7(9):4 B7(9):4 B6(9)/F:4 Em6:4 B6(9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Quinta Parte",
+    "seq": "B/A:4 G#m6:4 Em6/G:4 B7M(9)/F#:4 Bm7:4 D#/B:4 C/B:4 B:4 Bm7:4 D#/B:4 C/B:4 B:4 B/A:4 G#m6:4 Em6/G:4 B7M(9)/F#:4 F#m7:2 B7(9):2 B6(9)/F:4 Em6:4 B6(9):4 F#m7:4 B7(9):4 B6(9)/F:4 Em6:4 B6(9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "B/A:4 G#m6:4 Em6/G:4 B7M(9)/F#:4 F#m7:4 B7(9):4 B6(9)/F:4 Em6:4 B6(9):4 Bm7:4 D#/B:4 C/B:4 B:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "B/A:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "G#m6:4 Em6/G:4 B7M(9)/F#:4 F7(#11):4 E7M(13):4 Em6:4 B7M(9):4 F#m7:4 B7:4 B6(9)/F:4 Em6:4 B6(9):4 F#m7:4 B7(9):2 B6(9)/F:4 Em6:4 B6(9):4 F#m7:4 B7(9):4 B6(9)/F:4 Em6:4 B6(9):4 F#m7:4 B7:4 B6(9)/F:4 Em6:4 B7M(9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "B/A:4 G#m6:4 Em6/G:4 B6(9):4 F#m7:4 B7(9):2 B6(9)/F:4 Em6:4 B6(9):4 F#m7:4 B7:2 B6(9)/F:4 Em6:4 B6(9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "B/A:4 G#m6:4 Em6/G:4 B7M(9)/F#:4 F#m7:4 B7(9):4 B6(9)/F:4 Em6:4 B6(9):4 F#m7:2 B7:4 B6(9)/F:4 Em6:4 B6(9):4 F#m7:4 B7(9):4 B6(9)/F:4 Em6:4 B6(9):4 B/A:4 G#m6:4 Em6/G:4 B7M(9)/F#:4 F#m7:2 B7(9):4 B6(9)/F:4 Em6:4 B6(9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Solo",
+    "seq": "F/D#:4 D/C:4 B/A:4 G#m6:4 Em6/G:4 B7M(9)/F#:4 F7(#11):4 E7M(13):4 Em6:4 B6:4 F#m7:4 B7(9):4 Bb(9)/F:4 Em6:4 B6(9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Quarta Parte",
+    "seq": "B7(13):4 B6(9)/F:4 Em6:4 B6(9):4 B7(9):4 B7(9):4 B6(9)/F:4 Em6:4 B6(9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Quinta Parte",
+    "seq": "B/A:4 G#m6:4 Em6(G):4 B7M(9)/F#:4 Bm7:4 D#/B:4 C/B:4 B:4 Bm7:4 D#/B:4 C/B:4 B:4 B/A:4 G#m6:4 Em6/G:4 B7M(9)/F#:4 F#m7:2 B7(9):2 B6(9)/F:4 Em6:4 B6(9):4 F#m7:2 B7(9):4 B6(9)/F:4 Em6:4 B6(9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Vocalização Final",
+    "seq": "B/A:4 G#m6:4 Em6/G:4 B7M(9)/F#:4 F#m7:4 B7(9):4 B6(9)/F:4 Em6:4 B6(9):4 Bm7:4 D#/B:4 C/B:4 B:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "B",
+  "bpm": null,
+  "youtube": [
+   {
+    "id": "g2P_OupxkB8",
+    "titulo": "Águas de Março",
+    "canal": "Tom Jobim Oficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "E1tOV7y94DY",
+    "titulo": "Elis Regina & Tom Jobim -  \"Aguas de Março\" - 1974",
+    "canal": "Federico Mocciaro",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "aKvwnHiJSdk",
+    "titulo": "Águas de Março - Elis Regina e Tom Jobim (Áudio Perfeito)",
+    "canal": "SuperSucata",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "9rCsgegyfLo",
+    "titulo": "Elis Regina & Tom Jobim - Aguas de Março (subtítulos castellano y portugués)",
+    "canal": "Jordi Asturies",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "avancado",
+  "busca": "o barquinho",
+  "slugArtista": "roberto-menescal",
+  "slugMusica": "o-barquinho",
+  "titulo": "O Barquinho",
+  "artista": "Roberto Menescal",
+  "genero": "Bossa Nova",
+  "tom": "A",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "C7M(9):4 Eb7M(9):4 Dm7(9):4 G6:4 C7M(9):4 C7M(9):4 F#m11:4 B7:4 Bb7M(9):8 Bm7(9):4 E7(b13):4 Ab7M:8 Dm7:4 G7/5b:4 Em7:2 A7(9)b:4 Dm7:2 G7/13b:4 C7M(9):8 F#m11:4 B7:4 Bb7M(9):8 Bm7(9):4 E7(13b):4 Ab7M:8 Dm7(9):4 G7(13b):4 Em7:2 A7(9)b:4 Dm7:2 G7(13b):4 Em7:2 A7(9)b:2 Dm7:2 G7(13b):4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "C7M(9):4 Eb7M(9):4 Dm7(9):4 G6:4 C7M(9):4 C7M(9):4 F#m11:4 B7:4 Bb7M(9):8 Bm7(9):4 E7(b13):4 Ab7M:8 Dm7:4 G7/5b:4 Em7:2 A7(9)b:4 Dm7:2 G7/13b:4 C7M(9):8 F#m11:4 B7:4 Bb7M(9):8 Bm7(9):4 E7(13b):4 Ab7M:8 Dm7(9):4 G7(13b):4 Em7:2 A7(9)b:4 Dm7:2 G7(13b):4 Em7:2 A7(9)b:2 Dm7:2 G7(13b):4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "A",
+  "bpm": null,
+  "youtube": [
+   {
+    "id": "Ku2D-Wj9uww",
+    "titulo": "O Barquinho - AnaLu Sampaio e Roberto Menescal",
+    "canal": "Roberto Menescal Oficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "F5eYpjYWy2s",
+    "titulo": "O Barquinho",
+    "canal": "Roberto Menescal Oficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "EXnqPbYq5xs",
+    "titulo": "O Barquinho - Maysa",
+    "canal": "Roberto Menescal Oficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "uj_fNjtLOek",
+    "titulo": "Roberto Menescal, Diogo Monzo, Ricardo Bacelar - O Barquinho",
+    "canal": "RicardoBacelarVEVO",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "avancado",
+  "busca": "carinhoso",
+  "slugArtista": "pixinguinha",
+  "slugMusica": "carinhoso",
+  "titulo": "Carinhoso",
+  "artista": "Pixinguinha",
+  "genero": "Samba",
+  "tom": "G",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "G:4 G5+:4 G6:4 G5+:4 G:4 G5+:4 G6:4 G5+:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "G:2 G5+:2 G6:4 G5+:4 G:2 G5+:2 G6:4 G7:2 Bm:2 Bm5+:2 Bm6:4 Bm5+:4 Bm:2 Bm5+:2 Bm6:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "B7:4 Em7:2 A7(13):2 D6(9):4 G7(13):2 C6(9):2 E7:4 Am7:4 A7(13):2 D/C:2 G/B:2 Eb7:4 D7:2 G6(9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "Bm7:4 Em:4 F#7:4 Bm7:4 Bb7:2 D/A:2 Bm7:4 E7/G#:4 A/G:4 D/F#:4 Fm7:2 Am/E:2 D7:2 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Quarta Parte",
+    "seq": "F#:2 F#/E:4 F#7/C#:2 A#°:2 Am7:4 D7:2 G6(9):2 B7/F#:4 Em:2 B7/F#:2 Em/G:4 G7/B:2 C:2 E/D:2 Am/E:4 Eb7:2 G:2 E7:4 Am7:2 D7:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "G:4 G7:4 C/G:4 Cm/G:4 G:4 Bbm6:4 Am7:4 Ab7M:4 G7M(6):4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "G:4 G7:2 Bm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "B7:4 Em7:2 A7:2 D:4 G7:2 C:2 E7:4 Am7:4 A:2 A7:2 D:2 G:2 D7:2 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "Bm7:4 Em:4 F#7:4 Bm7:4 D:4 Bm7:4 E7:4 A:4 D:4 Fm7:2 Am:2 D7:2 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Quarta Parte",
+    "seq": "F#:4 Am7:4 D7:4 G:4 B7:4 Em:2 B7:2 Em:4 E:4 Am:2 E:2 Am:4 Cm:2 G:2 E7:4 Am7:2 D7:4 G:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "G7:4 C:4 Cm:4 G:4 Bbm:4 Am7:4 Ab7M:4 G:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "G",
+  "bpm": 93,
+  "youtube": [
+   {
+    "id": "Jy5Dl8GwC1w",
+    "titulo": "Carinhoso",
+    "canal": "Pixinguinha - Topic",
+    "pontos": 13,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "YOFB-yxsy7E",
+    "titulo": "Carinhoso",
+    "canal": "Pixinguinha - Topic",
+    "pontos": 13,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "5Z0IEmi56zE",
+    "titulo": "Marisa Monte e Paulinho da Viola - Carinhoso (Pixinguinha)",
+    "canal": "Brasilidades",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "EGWg4YpS1ls",
+    "titulo": "Pixinguinha Carinhoso",
+    "canal": "Antonio Mendes Ribeiro",
+    "pontos": 4,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "avancado",
+  "busca": "flor de lis",
+  "slugArtista": "djavan",
+  "slugMusica": "flor-de-lis",
+  "titulo": "Flor de Lis",
+  "artista": "Djavan",
+  "genero": "MPB",
+  "tom": "C",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "C7M(9):4 Fm6:4 C7M(9):4 Fm6:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "C7M(9):4 Bm7(b5):4 E7(b13):4 Am7(9):2 D7(13):4 Gm7:4 C7(9):4 F#m7(b5):4 B7(b9):4 Bb7M:4 A7(b13):4 F#m7(b5):4 B7(b9):4 Em7(9):4 A7(b13):4 D7(9):4 G7(4/9):2 G7(b9):4 C7M(9):4 Bm7(b5):4 E7(b13):4 Am7(9):2 D7(13):4 Gm7:4 C7(9):4 F#m7(b5):4 B7(b9):4 Bb7M:4 A7(b13):4 F#m7(b5):4 B7(b9):4 Em7(9):4 A7(b13):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Pré-Refrão",
+    "seq": "Am6:4 Fm6:2 C7M(9):2 E7(#9):4 Am7(9):4 E/G#:2 Gm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "C7(9):4 F7M:4 Bb7(9):2 Em7(9):4 A7(b13):4 D7(9):4 G7(4/9):2 G7(b9):2 Gm7:4 C7(9):4 F7M:4 Bb7(9):2 Em7(9):4 A7(b13):4 D7(9):4 G7(4/9):2 G7(b9):2 C6(9):2 G7(b13):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Interlúdio",
+    "seq": "C7M(9):4 Fm6:4 C7M(9):4 Fm6:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "C7M(9):4 Bm7(b5):4 E7(b13):4 Am7(9):2 D7(13):4 Gm7:4 C7(9):4 F#m7(b5):4 B7(b9):4 Bb7M:4 A7(b13):4 F#m7(b5):4 B7(b9):4 Em7(9):4 A7(b13):4 D7(9):4 G7(4/9):2 G7(b9):4 C7M(9):4 Bm7(b5):4 E7(b13):4 Am7(9):2 D7(13):4 Gm7:4 C7(9):4 F#m7(b5):4 B7(b9):4 Bb7M:4 A7(b13):4 F#m7(b5):4 B7(b9):4 Em7(9):4 A7(b13):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Pré-Refrão",
+    "seq": "Am6:4 Fm6:2 C7M(9):2 E7(#9):4 Am7(9):4 E/G#:2 Gm7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "C7(9):4 F7M:4 Bb7(9):2 Em7(9):4 A7(b13):4 D7(9):4 G7(4/9):2 G7(b9):2 Gm7:4 C7(9):4 F7M:4 Bb7(9):2 Em7(9):4 A7(b13):4 D7(9):4 G7(4/9):2 G7(b9):2 Gm7:4 C7(9):4 F7M:4 Bb7(9):2 Em7(9):4 A7(b13):4 D7(9):4 G7(4/9):2 G7(b9):2 Gm7:4 C7(9):4 F7M:4 Bb7(9):2 Em7(9):4 A7(b13):4 D7(9):4 G7(4/9):2 G7(b9):2 C7M(9):4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "C7M(9):4 Fm6:4 C7M(9):4 Fm6:4 C6(9):4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Intro",
+    "seq": "C:4 Fm:4 C:4 Fm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "C:4 Bm7(b5):4 E7:4 Am:2 D7:4 Gm:4 C7:4 F:4 B7:4 Bb:4 A7:4 F7:4 B7:4 Em:4 A7:4 D7:4 G7:4 C:4 Bm7(b5):2 E7:4 Am:2 D7:4 Gm:4 C7:4 F7:2 B7:4 Bb:4 A7:4 D7:2 B7:4 Em:4 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Pré-Refrão",
+    "seq": "F:4 Fm:4 C:2 E7:4 Am:4 Am7M:4 Gm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "C7:4 F7:4 Bb:2 Em:4 A7:4 D7:4 G7:4 C:4 C7:4 F7:4 Bb:2 Em:4 A7:4 D7:4 G7:4 C:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Interlúdio",
+    "seq": "C:4 Fm:4 C:4 Fm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "C:4 Bm7(b5):4 E7:4 Am:2 D7:4 Gm:4 C7:4 F:4 B7:4 Bb:4 A7:4 F7:4 B7:4 Em:4 A7:4 D7:4 G7:4 C:4 Bm7(b5):2 E7:4 Am:2 D7:4 Gm:4 C7:4 F7:2 B7:4 Bb:4 A7:4 D7:2 B7:4 Em:4 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Pré-Refrão",
+    "seq": "F:4 Fm:4 C:2 E7:4 Am:4 Am7M:4 Gm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Refrão",
+    "seq": "C7:4 F7:4 Bb:2 Em:4 A7:4 D7:4 G7:4 C:4 C7:4 F7:4 Bb:2 Em:4 A7:4 D7:4 G7:4 C:4 C7:4 F7:4 Bb:2 Em:4 A7:4 D7:4 G7:4 C:4 C7:4 F7:4 Bb:2 Em:4 A7:4 D7:4 G7:4 C:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "C:4 Fm:4 C:4 Fm:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "C",
+  "bpm": 86,
+  "youtube": [
+   {
+    "id": "k55L6LGS_Ns",
+    "titulo": "Djavan - Flor de Lis (Áudio Oficial)",
+    "canal": "DjavanOficial",
+    "pontos": 8,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "peR8eOcGA3M",
+    "titulo": "Djavan - Flor de Lis (Ao Vivo)",
+    "canal": "DjavanOficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "ivA6ncCdIgM",
+    "titulo": "Djavan - Flor de Lis (Remasterizada 2026) (Edição Especial de 50 Anos)",
+    "canal": "DjavanOficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "L7goYWREVuA",
+    "titulo": "Djavan - Flor de Lis (Ao Vivo)",
+    "canal": "DjavanOficial",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ },
+ {
+  "nivel": "avancado",
+  "busca": "as rosas não falam",
+  "slugArtista": "cartola",
+  "slugMusica": "as-rosas-nao-falam",
+  "titulo": "As Rosas Não Falam",
+  "artista": "Cartola",
+  "genero": "Samba",
+  "tom": "Dm",
+  "formaTom": "",
+  "capo": 0,
+  "secoes": [
+   {
+    "nome": "Intro",
+    "seq": "Dm:4 Dm/C:4 B°:4 Gm/Bb:4 E7:4 A7:4 Dm:4 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Dm:4 Dm/C:4 Gm/Bb:4 Gm/F:4 E7:4 A7/C#:4 A7:2 Dm:2 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Dm:4 Dm/C:2 Dm/A:4 E7/G#:4 E7/D:4 Gm/Bb:4 A7:4 A7/E:2 Dm:2 D7/F#:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "Gm:4 Gm/F:4 Dm:4 Dm/C:4 E7/B:4 E7/D:4 E7/B:2 A7:2 A7/E:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Quarta Parte",
+    "seq": "Dm:4 Dm/C:4 Gm/Bb:4 Gm/F:4 E7:4 E7/B:2 A7/C#:4 A7:2 Dm:2 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Dm:4 Dm/C:4 Gm/Bb:4 Gm/F:4 E7:4 A7/C#:4 A7:2 Dm:2 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Dm:4 Dm/C:2 Dm/A:4 E7/G#:4 E7/D:4 Gm/Bb:4 A7:4 A7/E:2 Dm:2 D7/F#:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "Gm:4 Gm/F:4 Dm:4 Dm/C:4 E7/B:4 E7/D:4 E7/B:2 A7:2 A7/E:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Quarta Parte",
+    "seq": "Dm:4 Dm/C:4 Gm/Bb:4 Gm/F:4 E7:4 E7/B:2 A7/C#:4 A7:2 Dm:2 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Dedilhado",
+    "seq": "Dm:4 Dm/C:4 Gm/Bb:4 Gm/F:4 E7:4 E7/B:2 A7:4 A7/E:4 Dm:2 Dm9:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Final",
+    "seq": "Dm9:4",
+    "repetir": 1
+   }
+  ],
+  "secoesSimp": [
+   {
+    "nome": "Primeira Parte",
+    "seq": "Dm:4 Gm:4 E7:4 A7:2 Dm:2 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Dm:4 E7:4 Gm:4 A7:4 Dm:2 D7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "Gm:8 Dm:4 E7:4 Gm:4 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte - Variação",
+    "seq": "Dm:4 Gm:4 E7:4 A7:4 Dm:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Primeira Parte",
+    "seq": "Dm:4 Gm:4 E7:4 A7:2 Dm:2 A7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Segunda Parte",
+    "seq": "Dm:4 E7:4 Gm:4 A7:4 Dm:2 D7:4",
+    "repetir": 1
+   },
+   {
+    "nome": "Terceira Parte",
+    "seq": "Gm:8 Dm:4 E7:4 Gm:4 A7:4 Dm:4 Gm:4 E7:4 A7:4 Dm:4 Dm:4 Gm:4 E7:4 A7:4 Dm:4",
+    "repetir": 1
+   }
+  ],
+  "capoSimp": 0,
+  "tomSimp": "Dm",
+  "bpm": 112,
+  "youtube": [
+   {
+    "id": "pBWg7LGETL0",
+    "titulo": "Cartola - As Rosas Não Falam",
+    "canal": "Cartola",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "oH9S5F90mhw",
+    "titulo": "Cartola - As Rosas Não Falam (2023 Remastered)",
+    "canal": "Cartola",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "jeq-LMKBdUY",
+    "titulo": "As Rosas Não Falam",
+    "canal": "Cartola",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   },
+   {
+    "id": "vbcwwt1cALs",
+    "titulo": "As Rosas Não Falam - Rosas Na Cartola.",
+    "canal": "Rosas Na Cartola",
+    "pontos": 7,
+    "embed": 200,
+    "duracao": ""
+   }
+  ]
+ }
+]
