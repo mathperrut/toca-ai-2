@@ -61,6 +61,12 @@ function estimarTom(itens) {
   melhor.seguro = melhor.pts - segundo.pts >= Math.max(1.5, total * 0.08);
   return melhor;
 }
+// Tom escrito na cifra (ex.: "Dm", "F#"), quando a música traz essa informação e não usa capotraste
+function tomDaCifra(m) {
+  const r = String((m && m.tom) || '').match(/^([A-G](?:#|b)?)(m?)$/);
+  if (!r || (m.capo || 0) > 0 || RAIZ_PC[r[1]] === undefined) return null;
+  return { pc: RAIZ_PC[r[1]], modo: r[2] ? 'menor' : 'maior', pts: 99, seguro: true, daCifra: true };
+}
 function nomeDoTom(t, desloc = 0) {
   if (!t || !t.seguro) return '';
   const pc = ((t.pc + desloc) % 12 + 12) % 12;
@@ -103,7 +109,7 @@ function arranjo(m, { k = null, temCapo = !!S.cfg.temCapo } = {}) {
   const unicos = acordesUnicos(m);
   // tom da gravação, a partir dos acordes que soam (desenhos + capo original)
   const itens = musicaParaTrechos(m).map(t => ({ acorde: Cifras.transpor(t.acorde, capoOrig), tempos: t.tempos }));
-  const original = estimarTom(itens);
+  const original = tomDaCifra(m) || estimarTom(itens);
   const bemol = original ? usaBemol(original, k) : false;
   let capo = 0;
   if (temCapo) {

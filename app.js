@@ -71,10 +71,10 @@ const LS_KEY = 'tocaai2:v1';
 function novoEstado() {
   return {
     v: 4, updatedAt: 0, xp: 0, licoes: {}, musicas: [], log: {}, recordes: {}, recordesMusica: {}, gravacoes: {}, apostilas: {},
-    tons: {}, capoFixo: {}, calibracao: {},
+    tons: {}, capoFixo: {}, calibracao: {}, facilMusica: {},
     cfg: { bpm: 80, sens: 5, latencia: null, violao: 'classico', modo: 'espera', vel: 60, ritmo: 'acorde', facil: true, temCapo: false,
       metronomo: false, cordaGraveEmCima: false, tema: 'auto', vibrar: true,
-      junto: 'banda', mix: { violao: 0.85, batida: 0.8, baixo: 0.85, teclado: 0.6, gravacao: 1 }, fone: false, repetir: false, fonteTudo: 'youtube' }
+      junto: 'banda', mix: { violao: 0.85, batida: 0.8, baixo: 0.85, teclado: 0.6, gravacao: 1 }, fone: false, repetir: false, fonteTudo: 'youtube', nivel: null }
   };
 }
 let S = novoEstado();
@@ -237,6 +237,13 @@ function fecharJanela() {
 /* ===== 5. Início ===== */
 function saudacao() { const h = new Date().getHours(); return h < 5 ? 'Boa noite' : h < 12 ? 'Bom dia' : h < 18 ? 'Boa tarde' : 'Boa noite'; }
 const META_MIN = 10;
+/* Acordes fáceis: cada música guarda a sua escolha. Sem escolha, as músicas do
+   Intermediário e do Avançado mostram os acordes como na cifra; as outras seguem o padrão (ligado). */
+function facilPara(m) {
+  const escolha = S.facilMusica && m && S.facilMusica[m.id];
+  if (typeof escolha === 'boolean') return escolha;
+  return m && ['intermediario', 'avancado'].includes(m.grupo) ? false : S.cfg.facil !== false;
+}
 function musicasQueDaPraTocar() { return todasMusicas().filter(m => acordesUnicos(m).every(a => seiAcorde(simplificar(a)))); }
 
 function renderHoje() {
@@ -244,7 +251,8 @@ function renderHoje() {
   const min = Math.floor(d.seg / 60), pct = Math.min(1, min / META_MIN);
   const feitas = u ? u.licoes.filter(l => S.licoes[l.id]).length : 0;
   const daPra = musicasQueDaPraTocar();
-  const sugestoes = (daPra.length ? daPra : CATALOGO.filter(m => m.grupo === 'iniciante')).slice(0, 3);
+  const doNivel = CATALOGO.filter(m => m.grupo === (['intermediario', 'avancado'].includes(S.cfg.nivel) ? S.cfg.nivel : 'iniciante'));
+  const sugestoes = (daPra.length ? daPra : doNivel).slice(0, 3);
   const comecou = Object.keys(S.licoes).length > 0;
   const missoes = missoesDoDia();
   $('#view-hoje').innerHTML = `
@@ -309,7 +317,7 @@ function melhorRecorde(m) {
   return rec ? Math.max(...Object.values(rec).map(x => (typeof x === 'number' ? x : x.pct || 0))) : null;
 }
 function linhaMusica(m) {
-  const acs = [...new Set(acordesUnicos(m).map(a => (S.cfg.facil !== false ? simplificar(a) : a)))];
+  const acs = [...new Set(acordesUnicos(m).map(a => (facilPara(m) ? simplificar(a) : a)))];
   const rec = melhorRecorde(m);
   return `<button class="linha-musica" data-musica="${esc(m.id)}">
     ${capaHTML(m)}
@@ -326,6 +334,7 @@ function renderMusicas() {
   const v = $('#view-musicas');
   const ini = CATALOGO.filter(m => m.grupo === 'iniciante');
   const jorge = CATALOGO.filter(m => m.grupo === 'jorge');
+  const inter = CATALOGO.filter(m => m.grupo === 'intermediario'), avan = CATALOGO.filter(m => m.grupo === 'avancado');
   v.innerHTML = `
     <header class="pagina-topo"><h2 class="titulo-grande">Músicas</h2></header>
     <form class="busca" id="busca-form" role="search">
@@ -337,6 +346,14 @@ function renderMusicas() {
       <div class="secao-topo"><h3>Para começar</h3><span class="sub">2 a 5 acordes, sem pestana</span></div>
       <div class="lista">${ini.map(linhaMusica).join('')}</div>
     </section>
+    ${inter.length ? `<section class="secao">
+      <div class="secao-topo"><h3>Intermediário</h3><span class="sub">pestana, sétimas e samba</span></div>
+      <div class="lista">${inter.map(linhaMusica).join('')}</div>
+    </section>` : ''}
+    ${avan.length ? `<section class="secao">
+      <div class="secao-topo"><h3>Avançado</h3><span class="sub">bossa nova e harmonia rica</span></div>
+      <div class="lista">${avan.map(linhaMusica).join('')}</div>
+    </section>` : ''}
     <section class="secao">
       <div class="secao-topo"><h3>Jorge Ben Jor</h3></div>
       <div class="lista">${jorge.map(linhaMusica).join('')}</div>
@@ -484,7 +501,7 @@ function abrirMusica(id) {
         <label class="alternar"><input type="checkbox" id="mu-temcapo" ${S.cfg.temCapo ? 'checked' : ''}><span>Tenho capotraste</span><small>o app escolhe a casa que deixa os acordes mais fáceis</small></label>
       </section>
       <section class="mu-bloco"><h3>Acordes</h3><div class="mu-acordes" id="mu-acs"></div>
-        <label class="alternar"><input type="checkbox" id="mu-facil" ${S.cfg.facil !== false ? 'checked' : ''}><span>Acordes fáceis</span><small>troca os difíceis por versões sem pestana</small></label>
+        <label class="alternar"><input type="checkbox" id="mu-facil" ${facilPara(m) ? 'checked' : ''}><span>Acordes fáceis</span><small>${['intermediario', 'avancado'].includes(m.grupo) ? 'nesta música começa desligado: os acordes ficam como na cifra' : 'troca os difíceis por versões sem pestana'}</small></label>
       </section>
       <section class="mu-bloco mu-junto"><h3>Tocar junto</h3>
         <div class="modos" role="radiogroup" aria-label="Quem toca junto com você">${Object.entries(JUNTO).map(([k, j]) => `<button type="button" role="radio" class="modo" aria-checked="${S.cfg.junto === k}" data-junto="${k}"><b>${esc(j.nome)}</b><small>${k === 'banda' ? (est.instrumento ? `Com baixo e ${nomeTeclado.toLowerCase()}` : 'Com baixo') : esc(j.desc)}</small></button>`).join('')}</div>
@@ -520,7 +537,7 @@ function abrirMusica(id) {
   $('#janela').classList.add('cheia');
 
   // Tom, capotraste e os acordes que você vai tocar
-  const nomeAc = a => (S.cfg.facil !== false ? simplificar(a) : a);
+  const nomeAc = a => (facilPara(m) ? simplificar(a) : a);
   const atualizar = () => {
     const arr = arranjo(m);
     $('#tom-nome').textContent = arr.nomeAtual || (arr.k === 0 ? 'Tom da gravação' : descreverDesvio(arr.k).replace(' da gravação', ''));
@@ -544,7 +561,7 @@ function abrirMusica(id) {
     // ao trocar, mantém o som que você ouvia: sem capo os desenhos fáceis ficam mais graves
     S.cfg.temCapo = e.target.checked; delete S.tons[m.id]; Store.salvar(); atualizar();
   });
-  $('#mu-facil').addEventListener('change', e => { S.cfg.facil = e.target.checked; Store.salvar(); atualizar(); });
+  $('#mu-facil').addEventListener('change', e => { S.facilMusica = S.facilMusica || {}; S.facilMusica[m.id] = e.target.checked; Store.salvar(); atualizar(); });
 
   // Tocar junto: quem toca, volumes, fone
   const partesVisiveis = () => JUNTO[S.cfg.junto].partes;
@@ -631,7 +648,7 @@ function jogarMusica(m, secao = null, extra = {}) {
     titulo: m.titulo + (secao !== null ? ', ' + m.secoes[secao].nome : '') + (repetir ? ' (repetindo)' : ''),
     trechos, padrao: patternById(m.padrao), ritmo: extra.ritmo || S.cfg.ritmo || 'acorde',
     bpm: extra.bpm || Math.round(bpmBase * (extra.vel || S.cfg.vel) / 100), bpmBase, capo: arr.capo, temCapo: arr.capo > 0,
-    modo, entrada: modo === 'pratica' ? 'nenhuma' : 'mic', facil: S.cfg.facil !== false, metronomo: S.cfg.metronomo,
+    modo, entrada: modo === 'pratica' ? 'nenhuma' : 'mic', facil: extra.facil ?? facilPara(m), metronomo: S.cfg.metronomo,
     gravacao: extra.gravacao || null, container: extra.container || null,
     guia: !extra.gravacao && (!junto || JUNTO[junto].partes.includes('violao')),
     banda, fone: !!S.cfg.fone, mix: { ...S.cfg.mix }, refazer: extra.refazer || null,
@@ -684,7 +701,7 @@ const Previa = {
     if (this.tocando !== estado) return estado;
     const arr = arranjo(musica);
     const padrao = patternById(musica.padrao), seg = 60 / bpm, passo = seg / padrao.sub;
-    const trechos = musicaParaTrechos(arr.musica).map(t => ({ ...t, acorde: S.cfg.facil !== false ? simplificar(t.acorde) : t.acorde }));
+    const trechos = musicaParaTrechos(arr.musica).map(t => ({ ...t, acorde: facilPara(musica) ? simplificar(t.acorde) : t.acorde }));
     const junto = S.cfg.junto === 'tudo' ? 'banda' : (S.cfg.junto || 'banda');
     const comViolao = JUNTO[junto].partes.includes('violao');
     const acomp = new Acompanhamento({ trechos, estilo: estiloDaMusica(musica), desloc: arr.capo, partes: JUNTO[junto].partes.filter(p => p !== 'violao') });

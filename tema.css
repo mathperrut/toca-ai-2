@@ -764,3 +764,82 @@ body.em-jogo .nav, body.em-jogo .topo { visibility: hidden; }
 .calib-area { display: flex; flex-direction: column; align-items: center; gap: var(--e3); padding: var(--e4); border-radius: var(--r2); background: var(--papel-2); }
 .calib-area .medidor { width: 100%; max-width: 280px; }
 .calib-pede { font-size: var(--fs-md); margin: 0; }
+
+/* ---------- Níveis (Iniciante, Intermediário, Avançado) ---------- */
+.niveis { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--e2); margin: var(--e4) 0 var(--e2); }
+.niveis button { display: flex; flex-direction: column; align-items: flex-start; gap: 2px; padding: var(--e3) var(--e2); border-radius: var(--r2); border: 1.5px solid var(--linha); background: var(--papel); color: var(--tinta); font: inherit; text-align: left; cursor: pointer; transition: background var(--t), color var(--t), border-color var(--t); min-width: 0; }
+.niveis button b { font-size: .8125rem; font-weight: 700; letter-spacing: -0.01em; white-space: nowrap; }
+@media (max-width: 359px) {
+  .niveis { grid-template-columns: 1fr; }
+  .niveis button { flex-direction: row; justify-content: space-between; align-items: baseline; }
+}
+.niveis button small { font-size: var(--fs-xs); color: var(--tinta-3); }
+.niveis button[aria-checked="true"] { background: var(--tinta); border-color: var(--tinta); color: var(--papel); }
+.niveis button[aria-checked="true"] small { color: var(--papel); opacity: .75; }
+.niveis button:focus-visible { outline: 2px solid var(--bolinha); outline-offset: 2px; }
+.nivel-resumo { margin-bottom: var(--e3); }
+.ps-nivel { padding: var(--e3) var(--e4); border-radius: var(--r2); background: var(--papel-2); line-height: 1.5; text-align: left; }
+
+/* ---------- Desenhos novos das apostilas ---------- */
+.ap-letras, .ap-contar, .ap-pima, .ap-intervalos { display: grid; gap: 6px; width: 100%; max-width: 380px; }
+.ap-letras { grid-template-columns: repeat(7, 1fr); }
+.ap-letras.tres { grid-template-columns: repeat(3, 1fr); }
+.ap-contar { grid-template-columns: repeat(8, 1fr); }
+.ap-pima { grid-template-columns: repeat(4, 1fr); }
+.ap-intervalos { grid-template-columns: repeat(4, 1fr); }
+.ap-letras button, .ap-contar button, .ap-pima button, .ap-intervalos button, .ap-seq button, .ap-anatomia button, .ap-escala button {
+  display: flex; flex-direction: column; align-items: center; gap: 2px; padding: var(--e2) 2px; border-radius: var(--r2);
+  border: 1.5px solid var(--linha); background: var(--papel); color: var(--tinta); font: inherit; cursor: pointer; min-width: 0;
+  transition: background var(--t), color var(--t), border-color var(--t); }
+.ap-letras b, .ap-contar b, .ap-pima b, .ap-seq b { font-size: var(--fs-md); }
+.ap-letras small, .ap-contar small, .ap-pima small, .ap-intervalos small, .ap-seq small, .ap-anatomia small { font-size: .7rem; color: var(--tinta-3); text-align: center; line-height: 1.2; }
+.ap-pima span { font-size: var(--fs-xs); }
+.ap-intervalos b { font-size: var(--fs-sm); white-space: nowrap; }
+.ap-intervalos button.forte, .ap-contar button.base { border-color: var(--tinta); }
+.ap-contar button.sete { border-color: var(--bolinha); }
+.ap-contar button.sete b { color: var(--bolinha); }
+.ap-legenda { font-size: var(--fs-sm); text-align: center; }
+.ap-legenda span { font-weight: 700; padding: 0 6px; border-radius: 6px; border: 1.5px solid var(--tinta); }
+.ap-legenda span.sete { border-color: var(--bolinha); color: var(--bolinha); }
+.ap-anatomia { display: flex; gap: 6px; justify-content: center; flex-wrap: wrap; }
+.ap-anatomia { gap: 4px; }
+.ap-anatomia button { width: 60px; padding: var(--e2) 2px; }
+.ap-anatomia b { font-size: var(--fs-xl); line-height: 1.1; }
+.ap-seq { display: flex; gap: 6px; flex-wrap: wrap; justify-content: center; }
+.ap-seq button { min-width: 56px; padding: var(--e2) var(--e2); }
+.ap-escala { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 2px; }
+.ap-escala button { width: 34px; padding: 6px 0; font-weight: 700; }
+.ap-passo { font-size: .7rem; font-weight: 700; color: var(--tinta-3); width: 14px; text-align: center; }
+.ap-passo.semi { color: var(--bolinha); }
+.ap-campo.sete button { width: auto; min-width: 52px; padding: var(--e2) var(--e2); }
+.ap-nota.raiz { fill: var(--bolinha-suave); stroke: var(--bolinha); }
+.ap-bloco { display: flex; flex-direction: column; align-items: center; gap: var(--e3); width: 100%; }
+.ap-par.muitos { display: grid; grid-template-columns: repeat(var(--n, 2), minmax(0, 1fr)); gap: var(--e4) var(--e2); width: 100%; }
+.ap-par.muitos figure { min-width: 0; }
+.ap-par.muitos figcaption { text-align: center; }
+.ap-triades { display: flex; flex-direction: column; gap: var(--e2); width: 100%; }
+.ap-triade { display: grid; grid-template-columns: 5.5em 1fr; grid-template-areas: "n n2" "f b"; align-items: center; gap: 4px var(--e3); padding: var(--e3); border-radius: var(--r2); background: var(--papel); }
+.ap-triade b { grid-area: n; }
+.ap-triade span { grid-area: n2; font-weight: 600; }
+.ap-triade small { grid-area: f; color: var(--tinta-3); font-size: var(--fs-xs); }
+.ap-triade .linha-botoes { grid-area: b; }
+.ap-golpes { font-weight: 700; letter-spacing: .08em; }
+.ap-tabela { border-collapse: collapse; width: 100%; max-width: 380px; font-size: var(--fs-sm); }
+.ap-tabela th, .ap-tabela td { padding: 6px 4px; text-align: center; border-bottom: 1px solid var(--linha); }
+.ap-tabela thead th { color: var(--tinta-3); font-weight: 600; font-size: var(--fs-xs); }
+.ap-tabela tbody th { font-weight: 800; }
+.ap-tecs { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: var(--e3); width: 100%; }
+.ap-tec { display: flex; flex-direction: column; align-items: center; gap: 6px; padding: var(--e2); border-radius: var(--r2); background: var(--papel); }
+.ap-tec .ap-svg { max-width: 200px; }
+.ap-caixa.curiosidade { background: var(--papel-2); border-left: 3px solid var(--tinta); }
+.ap-letras button.tocando, .ap-contar button.tocando, .ap-pima button.tocando, .ap-seq button.tocando, .ap-anatomia button.tocando, .ap-escala button.tocando { background: var(--bolinha); border-color: var(--bolinha); color: #fff; }
+.ap-letras button.tocando small, .ap-contar button.tocando small, .ap-contar button.tocando b, .ap-pima button.tocando small, .ap-seq button.tocando small, .ap-anatomia button.tocando small { color: #fff; }
+.ap-letras button:focus-visible, .ap-contar button:focus-visible, .ap-pima button:focus-visible, .ap-intervalos button:focus-visible, .ap-seq button:focus-visible, .ap-anatomia button:focus-visible, .ap-escala button:focus-visible { outline: 2px solid var(--bolinha); outline-offset: 2px; }
+@media (max-width: 380px) {
+  .ap-intervalos { grid-template-columns: repeat(2, 1fr); }
+  .ap-contar { grid-template-columns: repeat(4, 1fr); }
+}
+
+/* ---------- Treino de ouvido ---------- */
+.ouvido { display: flex; flex-direction: column; gap: var(--e3); }
+.ouvido .qz-opcoes { margin-top: var(--e2); }

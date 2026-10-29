@@ -126,7 +126,7 @@ const Som = {
 
   /* Uma nota. freq em Hz. corda (0 = 6ª, a mais grossa) faz a nota anterior
      daquela corda parar, como num violão de verdade.
-     op: { brilho (0..1), pan (-1..1), destino (nó de áudio), humano (bool) } */
+     op: { brilho (0..1), pan (-1..1), destino (nó de áudio), humano (bool), ligado (bool) } */
   nota(freq, t, vol = 0.35, corda = null, op = {}) {
     const c = this.ctx, t0 = Math.max(t, this.agora);
     const humano = op.humano !== false;
@@ -146,9 +146,12 @@ const Som = {
     if (op.pan !== undefined && c.createStereoPanner) {
       const p = c.createStereoPanner(); p.pan.value = op.pan; g.connect(p); saida = p;
     }
+    // ligado (hammer-on, pull-off): a nota nasce sem o ataque da mão direita
+    let pula = 0;
+    if (op.ligado) { const alvo = g.gain.value; pula = 0.03; g.gain.setValueAtTime(0, t0); g.gain.linearRampToValueAtTime(alvo, t0 + 0.012); }
     s.connect(g);
     saida.connect(op.destino || this.master);
-    s.start(t0, am ? am.ini : 0);
+    s.start(t0, (am ? am.ini : 0) + pula);
     if (corda !== null) {
       const ant = this.vozes[corda];
       if (ant && ant.t0 <= t0) { ant.g.gain.setTargetAtTime(0, t0, 0.018); try { ant.s.stop(t0 + 0.2); } catch (e) {} }

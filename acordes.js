@@ -17,6 +17,9 @@ const ENARMONICO = { 'C#': 'Db', Db: 'C#', 'D#': 'Eb', Eb: 'D#', 'F#': 'Gb', Gb:
 function normalizarAcorde(nome) {
   let s = String(nome || '').trim().replace(/\s+/g, '').replace(/♯/g, '#').replace(/♭/g, 'b');
   s = s.replace(/maj7|M7|7\+|Δ7?/g, '7M').replace(/º|dim/g, '°').replace(/7\/9/g, '7(9)').replace(/m7\/9/g, 'm7(9)');
+  // grafias antigas: A7(9)b -> A7(b9), E7(13b) -> E7(b13), G7/5b -> G7(b5), G7/13b -> G7(b13), E9- -> E7(b9)
+  s = s.replace(/\((\d+)\)b$/, '(b$1)').replace(/\((\d+)([b#])\)/g, '($2$1)').replace(/\((\d+)-\)/g, '(b$1)')
+       .replace(/7\/(5|9|11|13)([b#])$/, '7($2$1)').replace(/^([A-G][#b]?)9-/, '$17(b9)');
   return s;
 }
 function partesAcorde(nome) {
@@ -37,30 +40,149 @@ const SIMPLIFICACOES = [
 ];
 // Moldes de pestana. r = casa da pestana. [casas relativas], [dedos]. null = não toca
 const MOLDES = {
+  // fundamental na 6ª corda (desenho do E)
   E: { base: 4, formas: {
     '': [[0, 2, 2, 1, 0, 0], [1, 3, 4, 2, 1, 1]], m: [[0, 2, 2, 0, 0, 0], [1, 3, 4, 1, 1, 1]],
     '7': [[0, 2, 0, 1, 0, 0], [1, 3, 1, 2, 1, 1]], m7: [[0, 2, 0, 0, 0, 0], [1, 3, 1, 1, 1, 1]],
-    '7M': [[0, null, 1, 1, 0, null], [1, 0, 3, 4, 2, 0]] } },
+    '7M': [[0, null, 1, 1, 0, null], [1, 0, 3, 4, 2, 0]],
+    'm7(b5)': [[0, null, 0, 0, -1, null], [2, 0, 3, 4, 1, 0]],
+    sus4: [[0, 2, 2, 2, 0, 0], [1, 2, 3, 4, 1, 1]],
+    '6': [[0, 2, 2, 1, 2, 0], [1, 2, 3, 1, 4, 1]],
+    '7(9)': [[0, 2, 0, 1, 0, 2], [1, 3, 1, 2, 1, 4]],
+    '7(13)': [[0, null, 0, 1, 2, null], [1, 0, 2, 3, 4, 0]],
+    'm7(9)': [[0, null, 0, 0, 0, 2], [1, 0, 1, 1, 1, 3]],
+    '7(b9)': [[0, null, 0, 1, 0, 1], [1, 0, 1, 2, 1, 3]],
+    '7(b13)': [[0, null, 0, 1, 1, null], [1, 0, 1, 2, 3, 0]],
+    '7(4/9)': [[0, null, 0, 2, 0, 2], [1, 0, 1, 3, 1, 4]],
+    '7(4)': [[0, 2, 0, 2, 0, 0], [1, 3, 1, 4, 1, 1]],
+    '6(9)': [[0, -1, -1, -1, 0, 0], [2, 1, 1, 1, 3, 4]],
+    'm7M': [[0, 2, 1, 0, 0, 0], [1, 4, 2, 1, 1, 1]],
+    '+': [[0, null, 2, 1, 1, 0], [1, 0, 4, 2, 3, 1]],
+    '7(#11)': [[0, null, 0, 1, -1, null], [2, 0, 3, 4, 1, 0]],
+    'm7(11)': [[0, null, 0, 0, -2, null], [2, 0, 3, 4, 1, 0]] } },
+  // fundamental na 5ª corda (desenho do A)
   A: { base: 9, formas: {
     '': [[null, 0, 2, 2, 2, 0], [0, 1, 2, 3, 4, 1]], m: [[null, 0, 2, 2, 1, 0], [0, 1, 3, 4, 2, 1]],
     '7': [[null, 0, 2, 0, 2, 0], [0, 1, 3, 1, 4, 1]], m7: [[null, 0, 2, 0, 1, 0], [0, 1, 3, 1, 2, 1]],
-    '7M': [[null, 0, 2, 1, 2, 0], [0, 1, 3, 2, 4, 1]], '°': [[null, 0, 1, 2, 1, null], [0, 1, 2, 4, 3, 0]] } },
+    '7M': [[null, 0, 2, 1, 2, 0], [0, 1, 3, 2, 4, 1]],
+    '°': [[null, 0, 1, -1, 1, null], [0, 2, 3, 1, 4, 0]],                 // diminuto com sétima (o "°" da cifra)
+    'm7(b5)': [[null, 0, 1, 0, 1, null], [0, 1, 3, 2, 4, 0]],
+    sus4: [[null, 0, 2, 2, 3, 0], [0, 1, 2, 3, 4, 1]],
+    '6': [[null, 0, 2, 2, 2, 2], [0, 1, 3, 3, 3, 3]],
+    m6: [[null, 0, 2, 2, 1, 2], [0, 1, 3, 4, 2, 4]],
+    '7(13)': [[null, 0, 2, 0, 2, 2], [0, 1, 2, 1, 3, 4]],
+    '7(9)': [[null, 0, -1, 0, 0, null], [0, 2, 1, 3, 4, 0]],
+    '7M(9)': [[null, 0, -1, 1, 0, null], [0, 2, 1, 4, 3, 0]],
+    'm7(9)': [[null, 0, -2, 0, 0, null], [0, 2, 1, 3, 4, 0]],
+    '7(b9)': [[null, 0, 2, 3, 2, 3], [0, 1, 2, 4, 3, 4]],
+    '7(#9)': [[null, 0, -1, 0, 1, null], [0, 2, 1, 3, 4, 0]],
+    '7(#11)': [[null, 0, 1, 0, 2, null], [0, 1, 3, 2, 4, 0]],
+    '7(4/9)': [[null, 0, 0, 0, 0, 0], [0, 1, 1, 1, 1, 1]],
+    '7(4)': [[null, 0, 2, 0, 3, 0], [0, 1, 3, 1, 4, 1]],
+    'm7(11)': [[null, 0, 0, 0, 1, null], [0, 1, 1, 1, 2, 0]],
+    '6(9)': [[null, 0, -1, -1, 0, 0], [0, 2, 1, 1, 3, 4]],
+    'm7M': [[null, 0, 2, 1, 1, 0], [0, 1, 4, 2, 3, 1]],
+    '+': [[null, 0, -1, -2, -2, null], [0, 4, 3, 1, 2, 0]] } },
+  // fundamental na 4ª corda (desenho do D)
+  D: { base: 2, formas: {
+    '°': [[null, null, 0, 1, 0, 1], [0, 0, 1, 3, 2, 4]],
+    'm7(b5)': [[null, null, 0, 1, 1, 1], [0, 0, 1, 2, 2, 2]],
+    sus4: [[null, null, 0, 2, 3, 3], [0, 0, 0, 1, 2, 3]],
+    m6: [[null, null, 0, 2, 0, 1], [0, 0, 0, 2, 0, 1]] } }
 };
+// Nomes diferentes para o mesmo acorde
+const QUAL_ALIAS = { '5+': '+', '(#5)': '+', aug: '+', '#5': '+', '7(#5)': '7(b13)', '7(5+)': '7(b13)', 'm11': 'm7(11)', 'm9': 'm7(9)',
+  '6/9': '6(9)', '69': '6(9)', '7(9/4)': '7(4/9)', '9sus4': '7(4/9)', '7sus4(9)': '7(4/9)', '7sus4': '7(4)', '11': '7(4/9)', 'm(7M)': 'm7M', 'm7M(9)': 'm7M', '7(b5)': '7(#11)' };
 function gerarForma(pc, qual) {
   let melhor = null;
   for (const molde of Object.values(MOLDES)) {
     const f = molde.formas[qual];
     if (!f) continue;
-    const r = (pc - molde.base + 12) % 12;
+    let r = (pc - molde.base + 12) % 12;
+    if (f[0].some(x => x !== null && x + r < 0)) r += 12;       // o desenho não cabe tão perto da cabeça: uma oitava acima
     if (!melhor || r < melhor.r) melhor = { r, f };
   }
   if (!melhor) return null;
   const { r, f } = melhor;
   const frets = f[0].map(x => x === null ? -1 : x + r);
   // na casa 0 não há pestana: o dedo é o número da casa (formas pequenas)
-  const fingers = r === 0 ? frets.map(x => (x > 0 ? Math.min(4, x) : 0)) : f[1].slice();
+  if (r === 0) { const dd = dedilhar(frets, 1); return dd && { frets, fingers: dd.fingers, barre: dd.barre }; }
+  let fingers = f[1].slice();
+  // corda solta no molde que virou casa presa (desenhos do D), ou casa presa que virou corda solta: refaz os dedos
+  if (r > 0 && frets.some((x, i) => (x > 0 && !fingers[i]) || (x === 0 && fingers[i]))) {
+    const dd = dedilhar(frets);
+    if (!dd) return null;
+    return { frets, fingers: dd.fingers, barre: dd.barre };
+  }
   const umas = fingers.filter(d => d === 1).length;
-  return { frets, fingers, barre: umas > 1 && r > 0 ? r : undefined };
+  return { frets, fingers, barre: umas > 1 && r > 0 && frets.filter(x => x === r).length > 1 ? r : undefined };
+}
+
+/* Dedos para um desenho: um dedo por casa, a partir do 1 na casa mais baixa;
+   empate na mesma casa: a corda mais grave leva o dedo menor (como no E: 2 e 3).
+   Mais de 4 notas presas: pestana com o dedo 1 na casa mais baixa. */
+function dedilhar(frets, casaDoDedo1 = null) {
+  const notas = frets.map((f, i) => ({ f, i })).filter(x => x.f > 0);
+  const fingers = frets.map(() => 0);
+  if (!notas.length) return { fingers, barre: undefined };
+  const menor = casaDoDedo1 ?? Math.min(...notas.map(x => x.f));     // 1ª posição: dedo 1 na casa 1, dedo 2 na casa 2...
+  let resto = notas, barre, dedo = 1;
+  const maisBaixa = Math.min(...notas.map(x => x.f));
+  const naCasa = notas.filter(x => x.f === maisBaixa);
+  const de = Math.min(...naCasa.map(x => x.i)), ate = Math.max(...naCasa.map(x => x.i));
+  if (notas.length > 4) {
+    if (naCasa.length < 2 || frets.slice(de).some(f => f === 0)) return null;   // pestana não pode passar por corda solta
+    barre = maisBaixa; naCasa.forEach(x => { fingers[x.i] = 1; });
+    resto = notas.filter(x => x.f !== maisBaixa); dedo = 2;
+  } else if (notas.length === 4 && naCasa.length >= 2 && ate === Math.max(...notas.map(x => x.i))
+             && frets.slice(de, ate + 1).every(f => f === maisBaixa)) {
+    // meia pestana nas cordas de cima (como no F/A: x03211) economiza um dedo
+    naCasa.forEach(x => { fingers[x.i] = 1; });
+    resto = notas.filter(x => x.f !== maisBaixa); dedo = 2;
+  }
+  resto.sort((a, b) => a.f - b.f || a.i - b.i);
+  if (resto.length + dedo - 1 > 4) return null;
+  resto.forEach((x, k) => {
+    const sobra = resto.length - k - 1;                      // dedos que ainda faltam depois deste
+    dedo = Math.min(4 - sobra, Math.max(dedo, 1 + x.f - menor));
+    fingers[x.i] = dedo++;
+  });
+  return { fingers, barre };
+}
+
+/* Acorde com baixo diferente (C/E, G/B, D/F#, Bb/D): põe a nota do baixo numa
+   das três cordas mais graves (até a casa 5), abafa as de baixo dela e confere
+   se o resto ainda tem as notas que fazem o acorde (a quinta pode faltar). */
+const CORDAS_MIDI_AC = [40, 45, 50, 55, 59, 64];
+function comBaixo(forma, pcBaixo, pcRaiz) {
+  const tocadas = forma.frets.map((x, i) => (x >= 0 ? i : -1)).filter(i => i >= 0);
+  if (!tocadas.length) return null;
+  const nota = (fr, i) => (CORDAS_MIDI_AC[i] + fr[i]) % 12;
+  if (nota(forma.frets, tocadas[0]) === pcBaixo) return { ...forma };          // já está no baixo
+  const doAcorde = new Set(tocadas.map(i => nota(forma.frets, i)));
+  const essenciais = [...doAcorde].filter(pc => pc !== (pcRaiz + 7) % 12 && pc !== pcBaixo);
+  let melhor = null;
+  for (const corda of [0, 1, 2]) {
+    if (corda > tocadas[0] + 2) break;
+    const casa = ((pcBaixo - CORDAS_MIDI_AC[corda]) % 12 + 12) % 12;
+    if (casa > 5) continue;
+    for (const abafaVizinha of [false, true]) {                 // como no F/G: 3x3211
+      const fr = forma.frets.map((x, i) => (i < corda ? -1 : i === corda ? casa : x));
+      if (abafaVizinha) { if (corda === 5 || fr[corda + 1] < 0) continue; fr[corda + 1] = -1; }
+      const resto = new Set(fr.map((x, i) => (x >= 0 && i > corda ? nota(fr, i) : -1)).filter(x => x >= 0));
+      if (!essenciais.every(pc => resto.has(pc))) continue;
+      const presas = fr.filter(x => x > 0);
+      const vao = presas.length ? Math.max(...presas) - Math.min(...presas) : 0;
+      if (vao > 3) continue;
+      const dd = dedilhar(fr);
+      if (!dd) continue;
+      const primeira = fr.findIndex((x, i) => i > corda && x >= 0);
+      const meio = fr.slice(corda + 1, primeira).length;          // cordas abafadas no meio (como no D/F#)
+      const custo = corda * 0.3 + meio + (casa > 0 ? 0.5 : 0) + Math.max(0, vao - 2) * 0.6;
+      if (!melhor || custo < melhor.custo) melhor = { custo, frets: fr, fingers: dd.fingers, barre: dd.barre };
+    }
+  }
+  return melhor && { ...forma, frets: melhor.frets, fingers: melhor.fingers, barre: melhor.barre };
 }
 
 const _cacheAcordes = new Map();
@@ -74,7 +196,7 @@ function acordePorNome(nome) {
     const p = partesAcorde(nome);
     if (p) {
       const raizes = [p.raiz, ENARMONICO[p.raiz]].filter(Boolean);
-      const qual = p.qual;
+      const qual = QUAL_ALIAS[p.qual] || p.qual;
       const tentativas = [qual];
       for (const [re, troca] of SIMPLIFICACOES) if (re.test(qual)) { tentativas.push(troca); break; }
       const familia = qual.startsWith('m') && !qual.startsWith('7M') ? 'm' : '';
@@ -84,6 +206,12 @@ function acordePorNome(nome) {
         if (r) break;
         const g = gerarForma(p.pc, q);
         if (g) { r = { ...g, id: nome, aproximado: q !== qual || p.baixo ? p.raiz + q : null, gerado: true }; break; }
+      }
+      // baixo diferente: tenta colocar a nota do baixo no desenho
+      if (r && p.baixo && RAIZ_PC[p.baixo] !== undefined) {
+        const b = comBaixo(r, RAIZ_PC[p.baixo], p.pc);
+        // se o desenho só era "aproximado" por causa do baixo, agora ele é exato
+        if (b) r = { ...b, id: nome, aproximado: r.aproximado && r.aproximado !== p.raiz + p.qual ? r.aproximado : null };
       }
     }
   }

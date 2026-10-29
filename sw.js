@@ -6,7 +6,7 @@
    - Quando há internet, busca a versão nova em segundo plano.
    Ao mudar qualquer arquivo do app, aumente o número da VERSAO.
    ========================================================= */
-const VERSAO = 'toca-ai-2-v2';
+const VERSAO = 'toca-ai-2-v4';
 const CLASSICO = [35, 38, 40, 42, 44, 45, 47, 49, 50, 52, 54, 55, 57, 59, 61, 63, 64, 66, 68, 69, 71, 73, 74, 76, 78, 79, 80, 81, 82];
 const ARQUIVOS = [
   './', './index.html', './tema.css', './fontes/Jost.woff', './manifest.webmanifest',

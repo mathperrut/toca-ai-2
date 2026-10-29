@@ -128,6 +128,93 @@ function notasDoPasso(p) {
 }
 
 /* Acordes aprendidos (pelas lições concluídas ou marcados à mão) */
+/* Técnicas de mão esquerda, para ouvir: h hammer-on, p pull-off, s slide,
+   b bend (sobe e volta), v vibrato. O slide e o bend mudam a velocidade da
+   gravação da nota enquanto ela soa, como o dedo mudando o tamanho da corda. */
+function ouvirTecnica(corda, de, para, tipo) {
+  Som.init();
+  const t = Som.agora + 0.05, f = c => freqDaCasa(corda, c);
+  if (tipo === 'h' || tipo === 'p') {
+    Som.nota(f(de), t, 0.46, corda, { humano: false });
+    Som.nota(f(para), t + 0.45, tipo === 'h' ? 0.32 : 0.28, corda, { humano: false, ligado: true });   // sem a mão direita
+    return;
+  }
+  const s = Som.nota(f(de), t, 0.46, corda, { humano: false });
+  const pr = s && s.playbackRate;
+  if (!pr) return;
+  const r0 = pr.value, r1 = r0 * Math.pow(2, (para - de) / 12);
+  if (tipo === 's') { pr.setValueAtTime(r0, t + 0.45); pr.linearRampToValueAtTime(r1, t + 0.6); }
+  else if (tipo === 'b') { pr.setValueAtTime(r0, t + 0.35); pr.linearRampToValueAtTime(r1, t + 0.62); pr.setValueAtTime(r1, t + 1.25); pr.linearRampToValueAtTime(r0, t + 1.5); }
+  else if (tipo === 'v') {
+    const alto = r0 * Math.pow(2, 0.3 / 12);
+    for (let k = 0; k < 9; k++) { const tk = t + 0.3 + k * 0.15; pr.setValueAtTime(r0, tk); pr.linearRampToValueAtTime(alto, tk + 0.075); pr.linearRampToValueAtTime(r0, tk + 0.15); }
+  }
+}
+
+/* ===== Treino de ouvido =====
+   O app toca, você responde. Cada tipo sorteia uma pergunta nova:
+     maiorMenor  um acorde: maior ou menor?
+     intervalo   duas notas, uma depois da outra: que distância?
+     grau        primeiro o I (a casa), depois um acorde da família: I, IV, V ou vi? */
+const sortear = lista => lista[Math.floor(Math.random() * lista.length)];
+const OUVIDO = {
+  maiorMenor: {
+    titulo: 'Maior ou menor?', dica: 'Maior soa aberto e alegre; menor, mais fechado.',
+    sortear() {
+      const raiz = sortear(['C', 'D', 'E', 'G', 'A', 'B', 'F']), menor = Math.random() < 0.5, nome = raiz + (menor ? 'm' : '');
+      return { tocar: () => ouvirAcorde(nome), opcoes: ['Maior', 'Menor'], certa: menor ? 1 : 0, explica: `Era ${nome}: ${menor ? 'menor' : 'maior'}.` };
+    }
+  },
+  intervalo: {
+    titulo: 'Que intervalo é este?', dica: 'Duas notas, uma depois da outra. Cante as duas antes de responder.',
+    sortear() {
+      const ops = [[3, 'Terça menor'], [4, 'Terça maior'], [5, 'Quarta justa'], [7, 'Quinta justa'], [12, 'Oitava']];
+      const k = Math.floor(Math.random() * ops.length), [casas] = ops[k];
+      const corda = sortear([0, 1]), casa = sortear([0, 1, 2, 3]);
+      return { tocar: () => ouvirSequencia([[corda, casa], [corda, casa + casas]], { passo: 0.75 }), opcoes: ops.map(o => o[1]), certa: k,
+        explica: `${ops[k][1]}: ${casas} casas de distância.` };
+    }
+  },
+  grau: {
+    titulo: 'Qual acorde da família?', dica: 'Primeiro toca o I, a casa. Depois, o acorde misterioso.',
+    sortear() {
+      const tons = { C: ['C', 'F', 'G', 'Am'], G: ['G', 'C', 'D', 'Em'], D: ['D', 'G', 'A', 'Bm'], A: ['A', 'D', 'E', 'F#m'] };
+      const tom = sortear(Object.keys(tons)), k = Math.floor(Math.random() * 4), acs = tons[tom];
+      return { tocar: () => ouvirAcordes([acs[0], acs[k]], { passo: 1.4 }), opcoes: ['I (a casa)', 'IV', 'V', 'vi (menor)'], certa: k,
+        explica: `Em ${tom}: ${['I', 'IV', 'V', 'vi'][k]} = ${acs[k]}.` };
+    }
+  }
+};
+function exercicioOuvido(area, tipo, { n = 5, aoFim = null } = {}) {
+  const ex = OUVIDO[tipo] || OUVIDO.maiorMenor;
+  let k = 0, acertos = 0, atual = null;
+  const proxima = () => {
+    if (k >= n) {
+      area.innerHTML = `<div class="ouvido"><h3>${esc(ex.titulo)}</h3><div class="qz-fim"><b>${acertos} de ${n}</b><span>${acertos === n ? 'Ouvido afiado!' : acertos >= n / 2 ? 'Muito bem. Repita amanhã e o número sobe.' : 'Ouvido se treina: tente de novo mais devagar.'}</span><button class="btn mini" id="ou-de-novo">De novo</button></div></div>`;
+      area.querySelector('#ou-de-novo').addEventListener('click', () => { k = 0; acertos = 0; proxima(); });
+      registrar('quiz', acertos);
+      aoFim?.(acertos);
+      return;
+    }
+    atual = ex.sortear();
+    area.innerHTML = `<div class="ouvido"><h3>${esc(ex.titulo)}</h3><p class="sub">${esc(ex.dica)}</p><p class="qz-num">Pergunta ${k + 1} de ${n}</p>
+      <button class="btn primario largo grande" id="ou-tocar">${IC.som} Ouvir de novo</button>
+      <div class="qz-opcoes">${atual.opcoes.map((o, i) => `<button class="opcao" data-k="${i}">${esc(o)}</button>`).join('')}</div><p class="qz-exp" aria-live="polite"></p></div>`;
+    area.querySelector('#ou-tocar').addEventListener('click', () => atual.tocar());
+    area.querySelectorAll('[data-k]').forEach(b => b.addEventListener('click', () => {
+      if (area.querySelector('.opcao[disabled]')) return;
+      const ok = +b.dataset.k === atual.certa;
+      if (ok) acertos++;
+      area.querySelectorAll('[data-k]').forEach(x => { x.disabled = true; if (+x.dataset.k === atual.certa) x.classList.add('certa'); else if (x === b) x.classList.add('errada'); });
+      area.querySelector('.qz-exp').innerHTML = `<b>${ok ? 'Isso!' : 'Quase.'}</b> ${esc(atual.explica)} <button class="btn mini" id="ou-prox">${k + 1 < n ? 'Próxima' : 'Ver resultado'}</button>`;
+      vibrar(ok ? 12 : [8, 40, 8]);
+      area.querySelector('#ou-prox').addEventListener('click', () => { k++; proxima(); });
+    }));
+    setTimeout(() => atual.tocar(), 250);
+  };
+  proxima();
+}
+
 function acordesAprendidos() {
   const set = new Set(S.acordesSei || []);
   for (const l of LESSONS) if (S.licoes[l.id]) l.passos.forEach(p => { if (p.t === 'acorde') set.add(p.acorde); });
@@ -355,8 +442,11 @@ const PASSOS = {
   troca(area, p) { return trocaUmMinuto(area, p.a, p.b); },
   afinar(area) { return miniAfinador(area); },
   // O jogo dentro da lição
-  tocar(area, p, { cont }) {
+  tocar(area, p, { cont, u }) {
     const m = p.musica ? acharMusica(p.musica) : null;
+    // no Iniciante os acordes difíceis viram fáceis; do Intermediário em diante, ficam como na cifra
+    const facil = p.facil ?? ((u && u.nivel) || 'iniciante') === 'iniciante';
+    const comoToca = a => (facil ? simplificar(a) : a);
     const titulo = p.titulo || (m ? `${m.titulo}${p.secao != null ? ': ' + m.secoes[p.secao].nome : ''}` : 'Toque junto');
     const modo = p.modo || 'espera';
     const nomesModo = { espera: 'Esperar por mim: a música para em cada acorde até você acertar.', tempo: 'No tempo: a música não para, e o microfone dá os pontos.', pratica: 'Prática: o app toca junto, sem pontos.' };
@@ -366,7 +456,8 @@ const PASSOS = {
         <h3>${esc(titulo)}</h3>
         ${m?.capo ? `<p class="sub">Capotraste na ${m.capo}ª casa para soar como a gravação (opcional).</p>` : ''}
         <p class="sub">${nomesModo[modo]}</p>
-        <div class="ps-acordes">${[...new Set((m ? musicaParaTrechos(m, p.secao ?? null) : lerSequencia(p.seq)).map(x => simplificar(x.acorde)))].map(a => `<figure>${diagramaAcorde(a, { tam: 'sm', rotulos: false })}<figcaption>${esc(a)}</figcaption></figure>`).join('')}</div>
+        <div class="ps-acordes">${[...new Set((m ? musicaParaTrechos(m, p.secao ?? null) : lerSequencia(p.seq)).map(x => comoToca(x.acorde)))].map(a => `<figure>${diagramaAcorde(a, { tam: 'sm', rotulos: false })}<figcaption>${esc(a)}</figcaption></figure>`).join('')}</div>
+        ${p.banda && modo !== 'espera' ? `<p class="sub">${IC.som} A banda toca junto (percussão, baixo e teclado).</p>` : ''}
         <button class="btn primario largo grande" id="ps-play">${IC.play} Começar</button>
         <div id="ps-fim"></div>
       </div>`;
@@ -376,14 +467,19 @@ const PASSOS = {
         const ok = r.pct === null || r.pct >= 50 || r.modo === 'espera';
         area.querySelector('#ps-fim').innerHTML = `<p class="ps-ok">${ok ? IC.check + ' Muito bem!' : 'Quase lá. Tente de novo ou continue.'}</p>`;
       };
-      if (m) jogarMusica(m, p.secao ?? null, { modo, ritmo: p.ritmo, vel: modo === 'tempo' ? 60 : 60, aoFim: fim });
+      if (m) jogarMusica(m, p.secao ?? null, { modo, ritmo: p.ritmo, vel: 60, facil, aoFim: fim });
       else {
         let ini = 0;
         const trechos = lerSequencia(p.seq).map(x => { const t = { ...x, inicio: ini }; ini += x.tempos; return t; });
+        const banda = p.banda && modo !== 'espera' ? { estilo: ESTILO_DO_PADRAO[p.padrao] || 'pop', partes: ['batida', 'baixo', 'teclado'] } : null;
         Jogo.abrir({ titulo, trechos, padrao: patternById(p.padrao || 'quatro'), ritmo: p.ritmo || 'acorde', bpm: p.bpm || 60, bpmBase: p.bpm || 60,
-          modo, entrada: modo === 'pratica' ? 'nenhuma' : 'mic', facil: true, aoFim: fim });
+          modo, entrada: modo === 'pratica' ? 'nenhuma' : 'mic', facil, banda, fone: !!S.cfg.fone, mix: { ...S.cfg.mix }, guia: true, aoFim: fim });
       }
     });
+  },
+  ouvido(area, p, { cont }) {
+    cont.textContent = 'Pular';
+    exercicioOuvido(area, p.tipo, { n: p.n || 5, aoFim: () => { cont.textContent = 'Continuar'; } });
   },
   notas(area, p, { cont }) {
     const me = MELODIAS.find(x => x.id === p.melodia);
@@ -408,6 +504,8 @@ function concluirLicao(l, u, area, cont, limpar) {
   $('#lc-barra').style.transform = 'scaleX(1)';
   const prox = LESSONS[LESSONS.findIndex(x => x.id === l.id) + 1];
   const musica = l.musicaFinal && u.musica ? acharMusica(u.musica) : null;
+  const uProx = prox ? unidadeDaLicao(prox.id) : null;
+  const fimDeNivel = uProx && uProx.nivel !== u.nivel && LESSONS.filter(x => unidadeDaLicao(x.id).nivel === u.nivel).every(x => S.licoes[x.id]);
   const novos = l.passos.filter(p => p.t === 'acorde').map(p => p.acorde);
   area.innerHTML = `
     <div class="ps-fim">
@@ -415,8 +513,10 @@ function concluirLicao(l, u, area, cont, limpar) {
       <h3>Lição concluída</h3>
       ${novos.length ? `<p>Você aprendeu: <b>${novos.join(', ')}</b></p>` : ''}
       ${musica ? `<p>Você já consegue tocar <b>${esc(musica.titulo)}</b> inteira.</p>` : ''}
+      ${fimDeNivel ? `<p class="ps-nivel">Você terminou o nível <b>${esc(nivelDe(u.nivel).nome)}</b>. Agora começa o <b>${esc(nivelDe(uProx.nivel).nome)}</b>: ${esc(nivelDe(uProx.nivel).resumo)}</p>` : ''}
     </div>`;
   vibrar([20, 60, 20]);
+  if (fimDeNivel) { S.cfg.nivel = uProx.nivel; nivelCurso = null; Store.salvar(); }
   cont.textContent = musica ? `Abrir ${musica.titulo}` : prox ? `Próxima: ${prox.titulo}` : 'Voltar';
   return () => {
     fecharJanela();
@@ -552,9 +652,32 @@ function renderAprender() {
   else if (abaAprender === 'apostilas') renderApostilas(c);
   else renderTreinos(c);
 }
+/* Seletor de nível (Iniciante, Intermediário, Avançado) */
+let nivelCurso = null, nivelApostilas = null;           // null = automático
+function nivelDoCurso() {
+  const prox = proximaLicao();
+  return prox ? unidadeDaLicao(prox.id).nivel : (S.cfg.nivel || 'avancado');
+}
+function seletorNivel(atual, info) {
+  return `<div class="niveis" role="radiogroup" aria-label="Nível">${NIVEIS.map(n => `<button role="radio" aria-checked="${n.id === atual}" data-nivel="${n.id}"><b>${esc(n.nome)}</b><small>${esc(info(n.id))}</small></button>`).join('')}</div>`;
+}
+function ligarNiveis(c, aoEscolher) {
+  $$('[data-nivel]', c).forEach(b => b.addEventListener('click', () => aoEscolher(b.dataset.nivel)));
+  // setas do teclado no grupo de níveis
+  const grupo = c.querySelector('.niveis');
+  grupo?.addEventListener('keydown', e => {
+    if (!['ArrowLeft', 'ArrowRight'].includes(e.key)) return;
+    const k = NIVEIS.findIndex(n => n.id === grupo.querySelector('[aria-checked="true"]').dataset.nivel);
+    const novo = NIVEIS[(k + (e.key === 'ArrowRight' ? 1 : NIVEIS.length - 1)) % NIVEIS.length].id;
+    aoEscolher(novo); setTimeout(() => c.querySelector(`[data-nivel="${novo}"]`)?.focus(), 0);
+  });
+}
 function renderCurso(c) {
   const prox = proximaLicao();
-  c.innerHTML = CURSO.map((u, ui) => {
+  const nivel = nivelCurso || nivelDoCurso();
+  const unidades = CURSO.filter(u => u.nivel === nivel);
+  const info = id => { const ls = LESSONS.filter(l => unidadeDaLicao(l.id).nivel === id); const f = ls.filter(l => S.licoes[l.id]).length; return f === ls.length ? 'Concluído' : `${f} de ${ls.length} lições`; };
+  c.innerHTML = `${seletorNivel(nivel, info)}<p class="sub nivel-resumo">${esc(nivelDe(nivel).resumo)}</p>` + unidades.map((u, ui) => {
     const feitas = u.licoes.filter(l => S.licoes[l.id]).length, m = u.musica ? acharMusica(u.musica) : null;
     return `<section class="unidade ${feitas === u.licoes.length ? 'completa' : ''}">
       <header class="un-topo"><span class="un-num">${ui + 1}</span><div><h3>${esc(u.titulo)}</h3><p class="sub">${esc(u.resumo)}</p></div><span class="un-cont">${feitas}/${u.licoes.length}</span></header>
@@ -570,18 +693,24 @@ function renderCurso(c) {
       ${m ? `<p class="un-musica">${IC.nota} No fim desta unidade: <b>${esc(m.titulo)}</b></p>` : ''}
     </section>`;
   }).join('');
+  ligarNiveis(c, id => { nivelCurso = id; renderCurso(c); });
   $$('[data-licao]', c).forEach(b => b.addEventListener('click', () => abrirLicao(b.dataset.licao)));
 }
 function renderApostilas(c) {
+  const nivel = nivelApostilas || S.cfg.nivel || nivelDoCurso();
+  const lista = APOSTILAS.filter(a => (a.nivel || 'iniciante') === nivel);
+  const info = id => { const as = APOSTILAS.filter(a => (a.nivel || 'iniciante') === id); const f = as.filter(a => S.apostilas?.[a.id]).length; return `${f} de ${as.length} lidas`; };
   c.innerHTML = `
-    <section class="secao">
+    ${nivel === 'iniciante' ? `<section class="secao">
       <div class="secao-topo"><h3>Mini vídeos</h3></div>
       <div class="videos">${Object.entries(VIDEOS).map(([id, v]) => `<button class="video-card" data-video="${id}"><span class="vc-capa"><img src="${v.arquivo.replace('.mp4', '.jpg')}" alt="" loading="lazy"><span class="vc-play" aria-hidden="true">${IC.play}</span></span><b>${esc(v.titulo)}</b></button>`).join('')}</div>
-    </section>
+    </section>` : ''}
+    ${seletorNivel(nivel, info)}
     <section class="secao">
-      <div class="secao-topo"><h3>Apostilas</h3><span class="sub">${APOSTILAS.length} textos curtos</span></div>
-      <div class="lista">${APOSTILAS.map((a, i) => `<button class="linha-apostila" data-apostila="${a.id}"><span class="la-num">${i + 1}</span><span class="la-txt"><b>${esc(a.titulo)}</b><small>${esc(a.resumo)}</small></span><span class="la-dir">${S.apostilas?.[a.id] ? `<span class="la-feita">${IC.check}</span>` : `<small>${a.min} min</small>`}</span></button>`).join('')}</div>
+      <div class="secao-topo"><h3>Apostilas: ${esc(nivelDe(nivel).nome)}</h3><span class="sub">${lista.length} textos curtos</span></div>
+      <div class="lista">${lista.map((a, i) => `<button class="linha-apostila" data-apostila="${a.id}"><span class="la-num">${i + 1}</span><span class="la-txt"><b>${esc(a.titulo)}</b><small>${esc(a.resumo)}</small></span><span class="la-dir">${S.apostilas?.[a.id] ? `<span class="la-feita">${IC.check}</span>` : `<small>${a.min} min</small>`}</span></button>`).join('')}</div>
     </section>`;
+  ligarNiveis(c, id => { nivelApostilas = id; renderApostilas(c); });
   $$('[data-video]', c).forEach(b => b.addEventListener('click', () => abrirVideo(b.dataset.video)));
   $$('[data-apostila]', c).forEach(b => b.addEventListener('click', () => abrirApostila(b.dataset.apostila)));
 }
@@ -646,21 +775,25 @@ function verificarBoasVindas() {
       <p class="sub">Lições curtas, um acorde de cada vez e músicas brasileiras de verdade. O microfone escuta você tocar.</p>
       <h3>Você já toca?</h3>
       <div class="modos">
-        <button class="modo" data-nivel="0"><b>Nunca toquei</b><small>Começar do zero</small></button>
-        <button class="modo" data-nivel="1"><b>Sei alguns acordes</b><small>Pular o básico</small></button>
-        <button class="modo" data-nivel="2"><b>Já toco músicas</b><small>Ir direto para as músicas</small></button>
+        <button class="modo" data-onb="0"><b>Nunca toquei</b><small>Começar do zero, no Iniciante</small></button>
+        <button class="modo" data-onb="1"><b>Sei alguns acordes</b><small>Pular o básico do Iniciante</small></button>
+        <button class="modo" data-onb="2"><b>Já toco músicas</b><small>Começar no Intermediário: pestana, samba, dedilhado</small></button>
+        <button class="modo" data-onb="3"><b>Toco bem, com pestana</b><small>Começar no Avançado: escalas, bossa, técnicas</small></button>
       </div>
     </div>`);
   $('#janela').classList.add('cheia');
-  $$('[data-nivel]').forEach(b => b.addEventListener('click', () => {
-    const nivel = +b.dataset.nivel;
+  $$('[data-onb]').forEach(b => b.addEventListener('click', () => {
+    const resp = +b.dataset.onb;
     S.onb = true;
-    const pular = nivel === 0 ? [] : nivel === 1 ? ['u1', 'u2'] : ['u1', 'u2', 'u3', 'u4'];
+    // as lições anteriores ao ponto de partida ficam marcadas como vistas (dá para abrir quando quiser)
+    const pular = resp === 0 ? [] : resp === 1 ? ['u1', 'u2'] : resp === 2 ? CURSO.filter(u => u.nivel === 'iniciante').map(u => u.id)
+      : CURSO.filter(u => u.nivel !== 'avancado').map(u => u.id);
     CURSO.filter(u => pular.includes(u.id)).forEach(u => u.licoes.forEach(l => { S.licoes[l.id] = true; }));
-    if (nivel >= 1) S.cfg.modo = 'tempo';
+    S.cfg.nivel = resp <= 1 ? 'iniciante' : resp === 2 ? 'intermediario' : 'avancado';
+    if (resp >= 1) S.cfg.modo = 'tempo';
     Store.salvar();
     fecharJanela();
-    if (nivel === 2) irPara('musicas');
-    else { irPara('hoje'); const p = proximaLicao(); if (p) abrirLicao(p.id); }
+    irPara(resp >= 2 ? 'aprender' : 'hoje');
+    const p = proximaLicao(); if (p) abrirLicao(p.id);
   }));
 }

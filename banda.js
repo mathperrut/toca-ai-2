@@ -5,9 +5,9 @@
    verdade (pasta sons/banda, ver sons/CREDITOS.txt).
 
    COMO FUNCIONA
-   • Cada ritmo (pop, rock, baião, samba, pagode, bossa, samba-rock)
+   • Cada ritmo (pop, rock, baião, samba, pagode, bossa, samba-rock, valsa)
      é uma "receita" escrita em semicolcheias: um compasso de 4 tempos
-     tem 16 passos (4 por tempo).
+     tem 16 passos (4 por tempo); o de 2 tempos, 8; a valsa (3 tempos), 12.
    • A percussão repete a receita. O baixo e o teclado seguem a mesma
      receita, mas com as notas do acorde da vez: R = fundamental,
      5 = quinta, 8 = oitava, A = nota de aproximação (meio tom antes
@@ -86,10 +86,17 @@ const ESTILOS = {
       ['chimbal', [0, 2, 4, 6, 8, 10, 12, 14], 0.42], ['agogo-agudo', [2, 10], 0.32], ['agogo-grave', [6, 14], 0.32]],
     baixo: [[0, 'R', 3], [3, 'R', 3], [6, '5', 2], [8, 'R', 3], [11, '8', 3], [14, 'A', 2]],
     teclado: [[3, 2, 0.42], [6, 2, 0.36], [11, 2, 0.42], [14, 2, 0.36]]
+  },
+  // 3 tempos: baixo no 1, piano no 2 e no 3 ("TUM, pá, pá")
+  valsa: {
+    nome: 'Valsa', passos: 12, instrumento: 'piano',
+    perc: [['bumbo', [0], 0.5], ['aro', [4, 8], 0.32], ['shaker-ida', [0, 4, 8], 0.2], ['shaker-volta', [2, 6, 10], 0.24]],
+    baixo: [[0, 'R', 4], [8, '5', 4]],
+    teclado: [[4, 3, 0.36], [8, 3, 0.36]]
   }
 };
 // Ritmo da mão direita (data.js) -> estilo da banda
-const ESTILO_DO_PADRAO = { quatro: 'rock', baixocima: 'pop', pop: 'pop', dedilhado: 'balada', baiao: 'baiao', samba: 'samba', pagode: 'pagode', bossa: 'bossa', sambarock: 'sambarock' };
+const ESTILO_DO_PADRAO = { quatro: 'rock', baixocima: 'pop', pop: 'pop', dedilhado: 'balada', baiao: 'baiao', samba: 'samba', pagode: 'pagode', bossa: 'bossa', sambarock: 'sambarock', valsa: 'valsa' };
 function estiloDaMusica(m) { return ESTILO_DO_PADRAO[m && m.padrao] || 'pop'; }
 
 /* ---------- Mixer ----------

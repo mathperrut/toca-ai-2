@@ -18,9 +18,22 @@ Segunda versão do [Toca Aí](https://github.com/mathperrut/toca-a-). A base é 
 | 1. Base e correções | Botão Voltar nas lições, botão "Consegui", trocas com microfone, som certo para cada imagem, nome e ícone novos | **Pronta** |
 | 2. Tocar junto e mudar o tom | Violão + batida, violão + batida + banda, tudo (gravação original); volume de cada parte; tom −6 a +6; repetir um trecho | **Pronta** |
 | 3. Microfone mais preciso | Medir a precisão com gravações reais; jeito novo de ouvir as notas; ensinar o app a ouvir o seu violão | **Pronta** |
-| 4. Níveis e conteúdo | Iniciante, Intermediário e Avançado; cifragem, teoria, técnica, ritmos, treino de ouvido | Planejada |
+| 4. Níveis e conteúdo | Iniciante, Intermediário e Avançado no curso, nas apostilas e nas músicas; cifragem, teoria, técnica, ritmos, treino de ouvido | **Pronta** |
 | 5. Vozes do instrutor | Vozes gravadas no app (feminina, masculina, grave e fina) | Planejada |
 | 6. Recursos extras | Repetir trecho com velocidade subindo, descobrir acordes ouvindo, treino de ouvido, gravar você tocando | Planejada |
+
+### O que mudou na Fase 4
+- **Três níveis** no curso, nas apostilas e nas músicas: **Iniciante** (9 unidades, 35 lições), **Intermediário** (6 unidades, 24 lições) e **Avançado** (6 unidades, 22 lições). A tela de boas-vindas pergunta o seu nível e começa no lugar certo.
+- **A cifra por dentro** (fim do Iniciante): por que o A é o Lá (as letras dos monges medievais e as sílabas de Guido d’Arezzo), maior e menor, os números (7, 7M, 9, 6, 13, sus4), sustenido e bemol, diminuto, meio-diminuto e a barra do baixo. Toque em cada parte de **F#m7/E** e ouça o acorde sendo montado.
+- **Intermediário:** pestana (F, Bm e um desenho que vira 12 acordes), intervalos, tríades e sétimas, samba e pagode com a banda, dedilhado p-i-m-a e valsa em 3 tempos, campo harmônico, graus e transposição, e um repertório.
+- **Avançado:** escala maior e pentatônica com improviso em cima da banda, II–V–I, dominantes secundárias e diminuto de passagem, acordes da bossa nova (7M(9), m7(9), 7(13)), baixo que anda, técnicas (hammer-on, pull-off, slide, bend, vibrato, abafado), tirar música de ouvido e um repertório de bossa e samba.
+- **Treino de ouvido** dentro das lições: maior ou menor, intervalos e graus (I, IV, V, vi).
+- **11 apostilas novas** (20 no total, separadas por nível), cada uma com desenhos que tocam, analogia, pegadinha e teste.
+- **23 músicas novas** (só os acordes, sem letra): 12 no Intermediário (Trem das Onze, Aquarela, Malandragem, Pais e Filhos…) e 11 no Avançado (Garota de Ipanema, Chega de Saudade, Wave, Flor de Lis, As Rosas Não Falam…).
+- **Acordes fáceis por música:** nas músicas do Intermediário e do Avançado os acordes começam como na cifra; a escolha fica guardada em cada música.
+- **Mais desenhos de acorde:** diminuto, meio-diminuto, sus4, 6, m6, 6(9), 7(9), m7(9), 7(13), 7(b9), 7(#9), 7(b13), 7(#11), 7(4/9), m7(11), m7M, aumentado, e acordes com baixo (C/E, G/B, D/F#, Bb/D, Dm/F…).
+
+**Como o app monta um acorde com baixo (para estudar):** para C/E, ele pega o desenho do C e procura o Mi nas três cordas mais graves (até a casa 5), abafando as cordas de baixo. Depois confere se as cordas de cima ainda têm as notas que fazem o acorde (a quinta pode faltar), se a mão alcança (no máximo 4 casas de distância) e se bastam 4 dedos. Entre as opções que passam, fica com a de menor "custo": menos cordas abafadas, sem buraco no meio e sem esticar a mão. Arquivo: `acordes.js`, função `comBaixo`.
 
 ### O que mudou na Fase 3
 - **Testado com gravações de verdade:** 8.438 batidas do [GuitarSet](https://zenodo.org/records/3371780) (violonistas reais, licença CC BY 4.0), avaliadas num robô do GitHub (branch `laboratorio`, arquivo `lab/avaliar.py`).
@@ -124,8 +137,8 @@ No navegador, o botão abre a busca do Cifra Club; você copia a cifra e cola em
 Mais 8 do **Jorge Ben Jor** (Taj Mahal, Mas Que Nada, W/Brasil, País Tropical...) e 7 **melodias de domínio público** para treinar notas soltas.
 
 ### Curso, apostilas e vídeos
-- **Curso:** 8 unidades, 30 lições curtas (uma ideia por tela). Cada unidade termina numa música que usa só o que você aprendeu: Em → Em e D → Em, C e D → G e baião → Am e batida pop → A, E e tablatura → sétimas e Jorge Ben.
-- **Apostilas (9):** como o violão funciona, afinar, postura, ler diagrama e tablatura, notas, como os acordes se formam, ritmo, ritmos brasileiros e como estudar. Cada uma tem analogias, "pegadinhas" e um quiz de 3 perguntas.
+- **Curso em 3 níveis:** 21 unidades e 81 lições curtas (uma ideia por tela). No Iniciante, cada unidade termina numa música que usa só o que você aprendeu: Em → Em e D → Em, C e D → G e baião → Am e batida pop → A, E e tablatura → sétimas e Jorge Ben → a cifra. Depois vêm o Intermediário e o Avançado (veja a Fase 4).
+- **Apostilas (20, por nível):** como o violão funciona, afinar, postura, ler diagrama e tablatura, a cifra por dentro, como os acordes se formam, ritmo e como estudar (Iniciante); notas no braço, ritmos brasileiros, intervalos e tríades, pestana, dedilhados, campo harmônico e transposição (Intermediário); escalas e pentatônica, harmonia, acordes da bossa nova, técnicas, tirar música de ouvido, samba e choro (Avançado). Cada uma tem analogias, "pegadinhas" e um teste.
 - **Mini vídeos (10):** de 25 a 57 segundos, com narração e o som do violão: partes do violão, cordas, afinar, postura, diagrama, batida, tablatura, como jogar, samba e rotina de estudo.
 
 ### Som de violão gravado
