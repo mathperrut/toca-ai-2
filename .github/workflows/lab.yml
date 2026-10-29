@@ -1,47 +1,72 @@
 # =========================================================
-# Laboratório do Toca Aí 2: experimentos que precisam baixar dados
-# grandes da internet (o ambiente de desenvolvimento não acessa esses sites).
-# Roda a cada envio para a branch "laboratorio" e guarda os resultados em lab/saida.
+# Laboratório do Toca Aí 2: experimentos que precisam da internet
+# (o ambiente de desenvolvimento não acessa esses sites).
+# Roda as tarefas listadas em lab/tarefas.txt e guarda os resultados em lab/saida.
 # Não mexe no app: o APK continua sendo gerado só pela branch main.
+#   microfone    avalia o reconhecimento de acordes com o GuitarSet (CC BY 4.0)
+#   *.mjs        script Node (ex.: musicas.mjs busca acordes no Cifra Club, sem letra)
+#   *.py         script Python
 # =========================================================
 name: Laboratorio
 
 on:
   push:
     branches: [laboratorio]
+    paths-ignore: ['lab/saida/**']
   workflow_dispatch:
 
 permissions:
   contents: write
 
+concurrency:
+  group: laboratorio
+  cancel-in-progress: false
+
 jobs:
   lab:
     runs-on: ubuntu-latest
-    timeout-minutes: 150
+    timeout-minutes: 180
     steps:
       - uses: actions/checkout@v4
+
+      - name: Pegar o app (branch main) para os scripts usarem
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          path: app
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
 
       - uses: actions/setup-python@v5
         with:
           python-version: '3.10'
 
       - name: Instalar bibliotecas
+        working-directory: lab
         run: |
+          npm init -y >/dev/null && npm i linkedom@0.18.12 --no-audit --no-fund
           pip install numpy scipy soundfile
-          pip install basic-pitch || echo "basic-pitch não instalou"
-          pip install onnxruntime || true
+          if grep -q '^microfone' tarefas.txt; then pip install basic-pitch || true; pip install onnxruntime || true; fi
+          if grep -q 'vozes' tarefas.txt; then pip install kokoro-onnx soundfile || true; fi
 
-      - name: Baixar o GuitarSet (licença CC BY 4.0)
+      - name: Rodar as tarefas
+        working-directory: lab
         run: |
-          mkdir -p dados && cd dados
-          curl -sSL --retry 3 -o anot.zip "https://zenodo.org/records/3371780/files/annotation.zip?download=1"
-          curl -sSL --retry 3 -o mic.zip "https://zenodo.org/records/3371780/files/audio_mono-mic.zip?download=1"
-          ls -la
-          unzip -q anot.zip -d anot && unzip -q mic.zip -d mic
-          find anot -name '*.jams' | wc -l; find mic -name '*.wav' | wc -l
-
-      - name: Avaliar o microfone
-        run: python lab/avaliar.py dados lab/saida
+          mkdir -p saida
+          for s in $(grep -v '^#' tarefas.txt); do
+            case "$s" in
+              microfone)
+                mkdir -p ../dados && cd ../dados
+                curl -sSL --retry 3 -o anot.zip "https://zenodo.org/records/3371780/files/annotation.zip?download=1"
+                curl -sSL --retry 3 -o mic.zip "https://zenodo.org/records/3371780/files/audio_mono-mic.zip?download=1"
+                unzip -q -o anot.zip -d anot && unzip -q -o mic.zip -d mic
+                cd ../lab && python3 avaliar.py ../dados saida ;;
+              *.py) python3 "$s" 2>&1 | tee "saida/$(basename $s .py).log" ;;
+              *.mjs) node "$s" 2>&1 | tee "saida/$(basename $s .mjs).log" ;;
+            esac
+          done
 
       - name: Guardar os resultados
         if: always()
@@ -49,5 +74,5 @@ jobs:
           git config user.name "Claude"
           git config user.email "noreply@anthropic.com"
           git add lab/saida || true
-          git commit -m "Laboratório: resultados da avaliação do microfone" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>" -m "Claude-Session: https://claude.ai/code/session_014TkUTkW8waQiCU4jaKRQKK" || echo "nada novo"
-          git push || true
+          git commit -m "Laboratório: resultados" -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>" -m "Claude-Session: https://claude.ai/code/session_014TkUTkW8waQiCU4jaKRQKK" || echo "nada novo"
+          for i in 1 2 3; do git pull --rebase && git push && break; sleep 5; done

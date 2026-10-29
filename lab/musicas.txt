@@ -1,0 +1,25 @@
+# nível | busca no Cifra Club | artista esperado
+intermediario | deixa a vida me levar | zeca pagodinho
+intermediario | trem das onze | adoniran barbosa
+intermediario | o que é o que é | gonzaguinha
+intermediario | aquarela | toquinho
+intermediario | leãozinho | caetano veloso
+intermediario | azul da cor do mar | tim maia
+intermediario | gostava tanto de você | tim maia
+intermediario | pais e filhos | legião urbana
+intermediario | malandragem | cássia eller
+intermediario | disritmia | martinho da vila
+intermediario | andança | beth carvalho
+intermediario | coisinha do pai | beth carvalho
+intermediario | tá escrito | revelação
+intermediario | o sol nascerá | cartola
+avancado | garota de ipanema | tom jobim
+avancado | corcovado | tom jobim
+avancado | wave | tom jobim
+avancado | chega de saudade | tom jobim
+avancado | samba de uma nota só | tom jobim
+avancado | águas de março | tom jobim
+avancado | o barquinho | roberto menescal
+avancado | carinhoso | pixinguinha
+avancado | flor de lis | djavan
+avancado | as rosas não falam | cartola
